@@ -1,0 +1,887 @@
+[
+  {
+    "rowName": "Ammo",
+    "itemId": "Item_Ammo_12Guage_C",
+    "category": "EModItemCategory::Ammunition"
+  },
+  {
+    "rowName": "Ammo",
+    "itemId": "Item_Ammo_12GuageSlug_C",
+    "category": "EModItemCategory::Ammunition"
+  },
+  {
+    "rowName": "Ammo",
+    "itemId": "Item_Ammo_300Magnum_C",
+    "category": "EModItemCategory::Ammunition"
+  },
+  {
+    "rowName": "Ammo",
+    "itemId": "Item_Ammo_40mm_C",
+    "category": "EModItemCategory::Ammunition"
+  },
+  {
+    "rowName": "Ammo",
+    "itemId": "Item_Ammo_40mmBluezone_C",
+    "category": "EModItemCategory::Ammunition"
+  },
+  {
+    "rowName": "Ammo",
+    "itemId": "Item_Ammo_45ACP_C",
+    "category": "EModItemCategory::Ammunition"
+  },
+  {
+    "rowName": "Ammo",
+    "itemId": "Item_Ammo_556mm_C",
+    "category": "EModItemCategory::Ammunition"
+  },
+  {
+    "rowName": "Ammo",
+    "itemId": "Item_Ammo_57mm_C",
+    "category": "EModItemCategory::Ammunition"
+  },
+  {
+    "rowName": "Ammo",
+    "itemId": "Item_Ammo_762mm_C",
+    "category": "EModItemCategory::Ammunition"
+  },
+  {
+    "rowName": "Ammo",
+    "itemId": "Item_Ammo_9mm_C",
+    "category": "EModItemCategory::Ammunition"
+  },
+  {
+    "rowName": "Ammo",
+    "itemId": "Item_Ammo_Bolt_C",
+    "category": "EModItemCategory::Ammunition"
+  },
+  {
+    "rowName": "Ammo",
+    "itemId": "Item_Ammo_Flare_C",
+    "category": "EModItemCategory::Ammunition"
+  },
+  {
+    "rowName": "Ammo",
+    "itemId": "Item_Ammo_Mortar_C",
+    "category": "EModItemCategory::Ammunition"
+  },
+  {
+    "rowName": "Ammo",
+    "itemId": "Item_Ammo_ZiplinegunHook_C",
+    "category": "EModItemCategory::Ammunition"
+  },
+  {
+    "rowName": "AR",
+    "itemId": "Item_Weapon_ACE32_C",
+    "category": "EModItemCategory::AR"
+  },
+  {
+    "rowName": "AR",
+    "itemId": "Item_Weapon_AK47_C",
+    "category": "EModItemCategory::AR"
+  },
+  {
+    "rowName": "AR",
+    "itemId": "Item_Weapon_AUG_C",
+    "category": "EModItemCategory::AR"
+  },
+  {
+    "rowName": "AR",
+    "itemId": "Item_Weapon_BerylM762_C",
+    "category": "EModItemCategory::AR"
+  },
+  {
+    "rowName": "AR",
+    "itemId": "Item_Weapon_FAMASG2_C",
+    "category": "EModItemCategory::AR"
+  },
+  {
+    "rowName": "AR",
+    "itemId": "Item_Weapon_G36C_C",
+    "category": "EModItemCategory::AR"
+  },
+  {
+    "rowName": "AR",
+    "itemId": "Item_Weapon_Groza_C",
+    "category": "EModItemCategory::AR"
+  },
+  {
+    "rowName": "AR",
+    "itemId": "Item_Weapon_HK416_C",
+    "category": "EModItemCategory::AR"
+  },
+  {
+    "rowName": "AR",
+    "itemId": "Item_Weapon_K2_C",
+    "category": "EModItemCategory::AR"
+  },
+  {
+    "rowName": "AR",
+    "itemId": "Item_Weapon_M16A4_C",
+    "category": "EModItemCategory::AR"
+  },
+  {
+    "rowName": "AR",
+    "itemId": "Item_Weapon_Mk47Mutant_C",
+    "category": "EModItemCategory::AR"
+  },
+  {
+    "rowName": "AR",
+    "itemId": "Item_Weapon_QBZ95_C",
+    "category": "EModItemCategory::AR"
+  },
+  {
+    "rowName": "AR",
+    "itemId": "Item_Weapon_SCAR-L_C",
+    "category": "EModItemCategory::AR"
+  },
+  {
+    "rowName": "Armor",
+    "itemId": "Item_Armor_C_01_Lv3_C",
+    "category": "EModItemCategory::Armor"
+  },
+  {
+    "rowName": "Armor",
+    "itemId": "Item_Armor_D_01_Lv2_C",
+    "category": "EModItemCategory::Armor"
+  },
+  {
+    "rowName": "Armor",
+    "itemId": "Item_Armor_E_01_Lv1_C",
+    "category": "EModItemCategory::Armor"
+  },
+  {
+    "rowName": "Attachment",
+    "itemId": "Item_Attach_Weapon_Lower_Foregrip_C",
+    "category": "EModItemCategory::Attachment"
+  },
+  {
+    "rowName": "Attachment",
+    "itemId": "Item_Attach_Weapon_Lower_HalfGrip_C",
+    "category": "EModItemCategory::Attachment"
+  },
+  {
+    "rowName": "Attachment",
+    "itemId": "Item_Attach_Weapon_Lower_LaserPointer_C",
+    "category": "EModItemCategory::Attachment"
+  },
+  {
+    "rowName": "Attachment",
+    "itemId": "Item_Attach_Weapon_Lower_LightweightForeGrip_C",
+    "category": "EModItemCategory::Attachment"
+  },
+  {
+    "rowName": "Attachment",
+    "itemId": "Item_Attach_Weapon_Lower_QuickDraw_Large_Crossbow_C",
+    "category": "EModItemCategory::Attachment"
+  },
+  {
+    "rowName": "Attachment",
+    "itemId": "Item_Attach_Weapon_Lower_ThumbGrip_C",
+    "category": "EModItemCategory::Attachment"
+  },
+  {
+    "rowName": "Attachment",
+    "itemId": "Item_Attach_Weapon_Lower_TiltedGrip_C",
+    "category": "EModItemCategory::Attachment"
+  },
+  {
+    "rowName": "Attachment",
+    "itemId": "Item_Attach_Weapon_Magazine_Extended_Large_C",
+    "category": "EModItemCategory::Attachment"
+  },
+  {
+    "rowName": "Attachment",
+    "itemId": "Item_Attach_Weapon_Magazine_Extended_Medium_C",
+    "category": "EModItemCategory::Attachment"
+  },
+  {
+    "rowName": "Attachment",
+    "itemId": "Item_Attach_Weapon_Magazine_Extended_SniperRifle_C",
+    "category": "EModItemCategory::Attachment"
+  },
+  {
+    "rowName": "Attachment",
+    "itemId": "Item_Attach_Weapon_Magazine_ExtendedQuickDraw_Large_C",
+    "category": "EModItemCategory::Attachment"
+  },
+  {
+    "rowName": "Attachment",
+    "itemId": "Item_Attach_Weapon_Magazine_ExtendedQuickDraw_Medium_C",
+    "category": "EModItemCategory::Attachment"
+  },
+  {
+    "rowName": "Attachment",
+    "itemId": "Item_Attach_Weapon_Magazine_ExtendedQuickDraw_SniperRifle_C",
+    "category": "EModItemCategory::Attachment"
+  },
+  {
+    "rowName": "Attachment",
+    "itemId": "Item_Attach_Weapon_Magazine_QuickDraw_Large_C",
+    "category": "EModItemCategory::Attachment"
+  },
+  {
+    "rowName": "Attachment",
+    "itemId": "Item_Attach_Weapon_Magazine_QuickDraw_Medium_C",
+    "category": "EModItemCategory::Attachment"
+  },
+  {
+    "rowName": "Attachment",
+    "itemId": "Item_Attach_Weapon_Muzzle_AR_MuzzleBrake_C",
+    "category": "EModItemCategory::Attachment"
+  },
+  {
+    "rowName": "Attachment",
+    "itemId": "Item_Attach_Weapon_Muzzle_Choke_C",
+    "category": "EModItemCategory::Attachment"
+  },
+  {
+    "rowName": "Attachment",
+    "itemId": "Item_Attach_Weapon_Muzzle_Compensator_Large_C",
+    "category": "EModItemCategory::Attachment"
+  },
+  {
+    "rowName": "Attachment",
+    "itemId": "Item_Attach_Weapon_Muzzle_Compensator_Medium_C",
+    "category": "EModItemCategory::Attachment"
+  },
+  {
+    "rowName": "Attachment",
+    "itemId": "Item_Attach_Weapon_Muzzle_Compensator_SniperRifle_C",
+    "category": "EModItemCategory::Attachment"
+  },
+  {
+    "rowName": "Attachment",
+    "itemId": "Item_Attach_Weapon_Muzzle_Duckbill_C",
+    "category": "EModItemCategory::Attachment"
+  },
+  {
+    "rowName": "Attachment",
+    "itemId": "Item_Attach_Weapon_Muzzle_FlashHider_Large_C",
+    "category": "EModItemCategory::Attachment"
+  },
+  {
+    "rowName": "Attachment",
+    "itemId": "Item_Attach_Weapon_Muzzle_FlashHider_Medium_C",
+    "category": "EModItemCategory::Attachment"
+  },
+  {
+    "rowName": "Attachment",
+    "itemId": "Item_Attach_Weapon_Muzzle_FlashHider_SniperRifle_C",
+    "category": "EModItemCategory::Attachment"
+  },
+  {
+    "rowName": "Attachment",
+    "itemId": "Item_Attach_Weapon_Muzzle_Suppressor_Large_C",
+    "category": "EModItemCategory::Attachment"
+  },
+  {
+    "rowName": "Attachment",
+    "itemId": "Item_Attach_Weapon_Muzzle_Suppressor_Medium_C",
+    "category": "EModItemCategory::Attachment"
+  },
+  {
+    "rowName": "Attachment",
+    "itemId": "Item_Attach_Weapon_Muzzle_Suppressor_SniperRifle_C",
+    "category": "EModItemCategory::Attachment"
+  },
+  {
+    "rowName": "Attachment",
+    "itemId": "Item_Attach_Weapon_SideRail_DotSight_RMR_C",
+    "category": "EModItemCategory::Attachment"
+  },
+  {
+    "rowName": "Attachment",
+    "itemId": "Item_Attach_Weapon_Stock_AR_Composite_C",
+    "category": "EModItemCategory::Attachment"
+  },
+  {
+    "rowName": "Attachment",
+    "itemId": "Item_Attach_Weapon_Stock_AR_HeavyStock_C",
+    "category": "EModItemCategory::Attachment"
+  },
+  {
+    "rowName": "Attachment",
+    "itemId": "Item_Attach_Weapon_Stock_SniperRifle_BulletLoops_C",
+    "category": "EModItemCategory::Attachment"
+  },
+  {
+    "rowName": "Attachment",
+    "itemId": "Item_Attach_Weapon_Stock_SniperRifle_CheekPad_C",
+    "category": "EModItemCategory::Attachment"
+  },
+  {
+    "rowName": "Attachment",
+    "itemId": "Item_Attach_Weapon_Stock_UZI_C",
+    "category": "EModItemCategory::Attachment"
+  },
+  {
+    "rowName": "Attachment",
+    "itemId": "Item_Attach_Weapon_Upper_ACOG_01_C",
+    "category": "EModItemCategory::Attachment"
+  },
+  {
+    "rowName": "Attachment",
+    "itemId": "Item_Attach_Weapon_Upper_Aimpoint_C",
+    "category": "EModItemCategory::Attachment"
+  },
+  {
+    "rowName": "Attachment",
+    "itemId": "Item_Attach_Weapon_Upper_CQBSS_C",
+    "category": "EModItemCategory::Attachment"
+  },
+  {
+    "rowName": "Attachment",
+    "itemId": "Item_Attach_Weapon_Upper_DotSight_01_C",
+    "category": "EModItemCategory::Attachment"
+  },
+  {
+    "rowName": "Attachment",
+    "itemId": "Item_Attach_Weapon_Upper_DualOptic_4x1x_C",
+    "category": "EModItemCategory::Attachment"
+  },
+  {
+    "rowName": "Attachment",
+    "itemId": "Item_Attach_Weapon_Upper_Holosight_C",
+    "category": "EModItemCategory::Attachment"
+  },
+  {
+    "rowName": "Attachment",
+    "itemId": "Item_Attach_Weapon_Upper_PM2_01_C",
+    "category": "EModItemCategory::Attachment"
+  },
+  {
+    "rowName": "Attachment",
+    "itemId": "Item_Attach_Weapon_Upper_Scope3x_C",
+    "category": "EModItemCategory::Attachment"
+  },
+  {
+    "rowName": "Attachment",
+    "itemId": "Item_Attach_Weapon_Upper_Scope6x_C",
+    "category": "EModItemCategory::Attachment"
+  },
+  {
+    "rowName": "Attachment",
+    "itemId": "Item_Attach_Weapon_Upper_Thermal_C",
+    "category": "EModItemCategory::Attachment"
+  },
+  {
+    "rowName": "Backpact_BlueBlock",
+    "itemId": "Item_Back_BlueBlocker",
+    "category": "EModItemCategory::Backpack"
+  },
+  {
+    "rowName": "Backpact_BlueBlock",
+    "itemId": "Item_Back_BlueBlocker_Lv1",
+    "category": "EModItemCategory::Backpack"
+  },
+  {
+    "rowName": "Backpact_BlueBlock",
+    "itemId": "Item_Back_BlueBlocker_Lv3",
+    "category": "EModItemCategory::Backpack"
+  },
+  {
+    "rowName": "Backpact",
+    "itemId": "Item_Back_C_02_Lv3_C",
+    "category": "EModItemCategory::Backpack"
+  },
+  {
+    "rowName": "Backpack",
+    "itemId": "Item_Back_E_01_Lv1_C",
+    "category": "EModItemCategory::Backpack"
+  },
+  {
+    "rowName": "Backpact",
+    "itemId": "Item_Back_F_01_Lv2_C",
+    "category": "EModItemCategory::Backpack"
+  },
+  {
+    "rowName": "Consumable",
+    "itemId": "InstantRevivalKit_C",
+    "category": "EModItemCategory::Consumable"
+  },
+  {
+    "rowName": "Consumable",
+    "itemId": "Item_Boost_AdrenalineSyringe_C",
+    "category": "EModItemCategory::Consumable"
+  },
+  {
+    "rowName": "Consumable",
+    "itemId": "Item_Boost_EnergyDrink_C",
+    "category": "EModItemCategory::Consumable"
+  },
+  {
+    "rowName": "Consumable",
+    "itemId": "Item_Boost_PainKiller_C",
+    "category": "EModItemCategory::Consumable"
+  },
+  {
+    "rowName": "Consumable",
+    "itemId": "Item_Heal_Bandage_C",
+    "category": "EModItemCategory::Consumable"
+  },
+  {
+    "rowName": "Consumable",
+    "itemId": "Item_Heal_BattleReadyKit_C",
+    "category": "EModItemCategory::Consumable"
+  },
+  {
+    "rowName": "Consumable",
+    "itemId": "Item_Heal_FirstAid_C",
+    "category": "EModItemCategory::Consumable"
+  },
+  {
+    "rowName": "Consumable",
+    "itemId": "Item_Heal_MedKit_C",
+    "category": "EModItemCategory::Consumable"
+  },
+  {
+    "rowName": "Crossbow",
+    "itemId": "Item_Weapon_Crossbow_C",
+    "category": "EModItemCategory::Crossbow"
+  },
+  {
+    "rowName": "DMR",
+    "itemId": "Item_Weapon_Dragunov_C",
+    "category": "EModItemCategory::DMR"
+  },
+  {
+    "rowName": "DMR",
+    "itemId": "Item_Weapon_FNFal_C",
+    "category": "EModItemCategory::DMR"
+  },
+  {
+    "rowName": "DMR",
+    "itemId": "Item_Weapon_Mini14_C",
+    "category": "EModItemCategory::DMR"
+  },
+  {
+    "rowName": "DMR",
+    "itemId": "Item_Weapon_Mk12_C",
+    "category": "EModItemCategory::DMR"
+  },
+  {
+    "rowName": "DMR",
+    "itemId": "Item_Weapon_Mk14_C",
+    "category": "EModItemCategory::DMR"
+  },
+  {
+    "rowName": "DMR",
+    "itemId": "Item_Weapon_QBU88_C",
+    "category": "EModItemCategory::DMR"
+  },
+  {
+    "rowName": "DMR",
+    "itemId": "Item_Weapon_SKS_C",
+    "category": "EModItemCategory::DMR"
+  },
+  {
+    "rowName": "DMR",
+    "itemId": "Item_Weapon_VSS_C",
+    "category": "EModItemCategory::DMR"
+  },
+  {
+    "rowName": "Handgun",
+    "itemId": "Item_Weapon_BZGL_C",
+    "category": "EModItemCategory::Handgun"
+  },
+  {
+    "rowName": "Handgun",
+    "itemId": "Item_Weapon_DesertEagle_C",
+    "category": "EModItemCategory::Handgun"
+  },
+  {
+    "rowName": "Handgun",
+    "itemId": "Item_Weapon_FlareGun_C",
+    "category": "EModItemCategory::Handgun"
+  },
+  {
+    "rowName": "Handgun",
+    "itemId": "Item_Weapon_G18_C",
+    "category": "EModItemCategory::Handgun"
+  },
+  {
+    "rowName": "Handgun",
+    "itemId": "Item_Weapon_M1911_C",
+    "category": "EModItemCategory::Handgun"
+  },
+  {
+    "rowName": "Handgun",
+    "itemId": "Item_Weapon_M79_C",
+    "category": "EModItemCategory::Handgun"
+  },
+  {
+    "rowName": "Handgun",
+    "itemId": "Item_Weapon_M9_C",
+    "category": "EModItemCategory::Handgun"
+  },
+  {
+    "rowName": "Handgun",
+    "itemId": "Item_Weapon_NagantM1895_C",
+    "category": "EModItemCategory::Handgun"
+  },
+  {
+    "rowName": "Handgun",
+    "itemId": "Item_Weapon_Rhino_C",
+    "category": "EModItemCategory::Handgun"
+  },
+  {
+    "rowName": "Handgun",
+    "itemId": "Item_Weapon_Sawnoff_C",
+    "category": "EModItemCategory::Handgun"
+  },
+  {
+    "rowName": "Handgun",
+    "itemId": "Item_Weapon_StunGun_C",
+    "category": "EModItemCategory::Handgun"
+  },
+  {
+    "rowName": "Handgun",
+    "itemId": "Item_Weapon_vz61Skorpion_C",
+    "category": "EModItemCategory::Handgun"
+  },
+  {
+    "rowName": "Handgun",
+    "itemId": "Item_Weapon_Ziplinegun_C",
+    "category": "EModItemCategory::Handgun"
+  },
+  {
+    "rowName": "Helmet",
+    "itemId": "Item_Head_E_01_Lv1_C",
+    "category": "EModItemCategory::Helmet"
+  },
+  {
+    "rowName": "Helmet",
+    "itemId": "Item_Head_F_01_Lv2_C",
+    "category": "EModItemCategory::Helmet"
+  },
+  {
+    "rowName": "Helmet",
+    "itemId": "Item_Head_G_01_Lv3_C",
+    "category": "EModItemCategory::Helmet"
+  },
+  {
+    "rowName": "Launcher",
+    "itemId": "Item_Weapon_Mortar_C",
+    "category": "EModItemCategory::Launcher"
+  },
+  {
+    "rowName": "Launcher",
+    "itemId": "Item_Weapon_PanzerFaust100M_C",
+    "category": "EModItemCategory::Launcher"
+  },
+  {
+    "rowName": "LMG",
+    "itemId": "Item_Weapon_DP28_C",
+    "category": "EModItemCategory::LMG"
+  },
+  {
+    "rowName": "LMG",
+    "itemId": "Item_Weapon_M249_C",
+    "category": "EModItemCategory::LMG"
+  },
+  {
+    "rowName": "LMG",
+    "itemId": "Item_Weapon_MG3_C",
+    "category": "EModItemCategory::LMG"
+  },
+  {
+    "rowName": "Melee",
+    "itemId": "Item_Weapon_Cowbar_C",
+    "category": "EModItemCategory::Melee"
+  },
+  {
+    "rowName": "Melee",
+    "itemId": "Item_Weapon_Machete_C",
+    "category": "EModItemCategory::Melee"
+  },
+  {
+    "rowName": "Melee",
+    "itemId": "Item_Weapon_Pan_C",
+    "category": "EModItemCategory::Melee"
+  },
+  {
+    "rowName": "Melee",
+    "itemId": "Item_Weapon_Pickaxe_C",
+    "category": "EModItemCategory::Melee"
+  },
+  {
+    "rowName": "Melee",
+    "itemId": "Item_Weapon_Sickle_C",
+    "category": "EModItemCategory::Melee"
+  },
+  {
+    "rowName": "Misc",
+    "itemId": "Item_BulletproofShield_C",
+    "category": "EModItemCategory::Misc"
+  },
+  {
+    "rowName": "Misc",
+    "itemId": "Item_EmergencyPickup_C",
+    "category": "EModItemCategory::Misc"
+  },
+  {
+    "rowName": "Misc",
+    "itemId": "Item_JerryCan_C",
+    "category": "EModItemCategory::Misc"
+  },
+  {
+    "rowName": "Misc",
+    "itemId": "Item_Mountainbike_C",
+    "category": "EModItemCategory::Misc"
+  },
+  {
+    "rowName": "Misc",
+    "itemId": "Item_Neon_Coin_C",
+    "category": "EModItemCategory::Misc"
+  },
+  {
+    "rowName": "Misc",
+    "itemId": "Item_RandomBox_AR_C",
+    "category": "EModItemCategory::Misc"
+  },
+  {
+    "rowName": "Misc",
+    "itemId": "Item_RandomBox_DmrSr_C",
+    "category": "EModItemCategory::Misc"
+  },
+  {
+    "rowName": "Misc",
+    "itemId": "Item_RandomBox_LMG_C",
+    "category": "EModItemCategory::Misc"
+  },
+  {
+    "rowName": "Misc",
+    "itemId": "Item_RandomBox_SMG_C",
+    "category": "EModItemCategory::Misc"
+  },
+  {
+    "rowName": "Misc",
+    "itemId": "Item_Special_BackupParachute_C",
+    "category": "EModItemCategory::Misc"
+  },
+  {
+    "rowName": "Misc",
+    "itemId": "Item_Tiger_SelfRevive_C",
+    "category": "EModItemCategory::Misc"
+  },
+  {
+    "rowName": "Misc",
+    "itemId": "Item_Weapon_IntegratedRepair_C",
+    "category": "EModItemCategory::Misc"
+  },
+  {
+    "rowName": "Misc",
+    "itemId": "Item_Weapon_TacPack_C",
+    "category": "EModItemCategory::Misc"
+  },
+  {
+    "rowName": "Misc",
+    "itemId": "Item_Weapon_TraumaBag_C",
+    "category": "EModItemCategory::Misc"
+  },
+  {
+    "rowName": "Shotgun",
+    "itemId": "Item_Weapon_Berreta686_C",
+    "category": "EModItemCategory::Shotgun"
+  },
+  {
+    "rowName": "Shotgun",
+    "itemId": "Item_Weapon_DP12_C",
+    "category": "EModItemCategory::Shotgun"
+  },
+  {
+    "rowName": "Shotgun",
+    "itemId": "Item_Weapon_OriginS12_C",
+    "category": "EModItemCategory::Shotgun"
+  },
+  {
+    "rowName": "Shotgun",
+    "itemId": "Item_Weapon_Saiga12_C",
+    "category": "EModItemCategory::Shotgun"
+  },
+  {
+    "rowName": "Shotgun",
+    "itemId": "Item_Weapon_Winchester_C",
+    "category": "EModItemCategory::Shotgun"
+  },
+  {
+    "rowName": "SMG",
+    "itemId": "Item_Weapon_BizonPP19_C",
+    "category": "EModItemCategory::SMG"
+  },
+  {
+    "rowName": "SMG",
+    "itemId": "Item_Weapon_JS9_C",
+    "category": "EModItemCategory::SMG"
+  },
+  {
+    "rowName": "SMG",
+    "itemId": "Item_Weapon_MP5K_C",
+    "category": "EModItemCategory::SMG"
+  },
+  {
+    "rowName": "SMG",
+    "itemId": "Item_Weapon_MP9_C",
+    "category": "EModItemCategory::SMG"
+  },
+  {
+    "rowName": "SMG",
+    "itemId": "Item_Weapon_P90_C",
+    "category": "EModItemCategory::SMG"
+  },
+  {
+    "rowName": "SMG",
+    "itemId": "Item_Weapon_Thompson_C",
+    "category": "EModItemCategory::SMG"
+  },
+  {
+    "rowName": "SMG",
+    "itemId": "Item_Weapon_UMP_C",
+    "category": "EModItemCategory::SMG"
+  },
+  {
+    "rowName": "SMG",
+    "itemId": "Item_Weapon_UZI_C",
+    "category": "EModItemCategory::SMG"
+  },
+  {
+    "rowName": "SMG",
+    "itemId": "Item_Weapon_Vector_C",
+    "category": "EModItemCategory::SMG"
+  },
+  {
+    "rowName": "SR",
+    "itemId": "Item_Weapon_AWM_C",
+    "category": "EModItemCategory::SR"
+  },
+  {
+    "rowName": "SR",
+    "itemId": "Item_Weapon_Kar98k_C",
+    "category": "EModItemCategory::SR"
+  },
+  {
+    "rowName": "SR",
+    "itemId": "Item_Weapon_L6_C",
+    "category": "EModItemCategory::SR"
+  },
+  {
+    "rowName": "SR",
+    "itemId": "Item_Weapon_M24_C",
+    "category": "EModItemCategory::SR"
+  },
+  {
+    "rowName": "SR",
+    "itemId": "Item_Weapon_Mosin_C",
+    "category": "EModItemCategory::SR"
+  },
+  {
+    "rowName": "SR",
+    "itemId": "Item_Weapon_Win1894_C",
+    "category": "EModItemCategory::SR"
+  },
+  {
+    "rowName": "ThrowableItem",
+    "itemId": "Item_Weapon_Apple_C",
+    "category": "EModItemCategory::Throwable"
+  },
+  {
+    "rowName": "ThrowableItem",
+    "itemId": "Item_Weapon_Bluebomb_SubZero_C",
+    "category": "EModItemCategory::Throwable"
+  },
+  {
+    "rowName": "ThrowableItem",
+    "itemId": "Item_Weapon_BluezoneGrenade_C",
+    "category": "EModItemCategory::Throwable"
+  },
+  {
+    "rowName": "ThrowableItem",
+    "itemId": "Item_Weapon_C4_C",
+    "category": "EModItemCategory::Throwable"
+  },
+  {
+    "rowName": "ThrowableItem",
+    "itemId": "Item_Weapon_CoverStructDropHandFlare_C",
+    "category": "EModItemCategory::Throwable"
+  },
+  {
+    "rowName": "ThrowableItem",
+    "itemId": "Item_Weapon_FlashBang_C",
+    "category": "EModItemCategory::Throwable"
+  },
+  {
+    "rowName": "ThrowableItem",
+    "itemId": "Item_Weapon_Grenade_C",
+    "category": "EModItemCategory::Throwable"
+  },
+  {
+    "rowName": "ThrowableItem",
+    "itemId": "Item_Weapon_Molotov_C",
+    "category": "EModItemCategory::Throwable"
+  },
+  {
+    "rowName": "ThrowableItem",
+    "itemId": "Item_Weapon_PackageFlare_C",
+    "category": "EModItemCategory::Throwable"
+  },
+  {
+    "rowName": "ThrowableItem",
+    "itemId": "Item_Weapon_Rock_C",
+    "category": "EModItemCategory::Throwable"
+  },
+  {
+    "rowName": "ThrowableItem",
+    "itemId": "Item_Weapon_SmokeBomb_C",
+    "category": "EModItemCategory::Throwable"
+  },
+  {
+    "rowName": "ThrowableItem",
+    "itemId": "Item_Weapon_Snowball_C",
+    "category": "EModItemCategory::Throwable"
+  },
+  {
+    "rowName": "ThrowableItem",
+    "itemId": "Item_Weapon_StickyGrenade_C",
+    "category": "EModItemCategory::Throwable"
+  },
+  {
+    "rowName": "Wearable",
+    "itemId": "Item_Ghillie_01_C",
+    "category": "EModItemCategory::Wearable"
+  },
+  {
+    "rowName": "Wearable",
+    "itemId": "Item_Ghillie_02_C",
+    "category": "EModItemCategory::Wearable"
+  },
+  {
+    "rowName": "Wearable",
+    "itemId": "Item_Ghillie_03_C",
+    "category": "EModItemCategory::Wearable"
+  },
+  {
+    "rowName": "Wearable",
+    "itemId": "Item_Ghillie_04_C",
+    "category": "EModItemCategory::Wearable"
+  },
+  {
+    "rowName": "Wearable",
+    "itemId": "Item_Ghillie_05_C",
+    "category": "EModItemCategory::Wearable"
+  },
+  {
+    "rowName": "Wearable",
+    "itemId": "Item_Ghillie_07_C",
+    "category": "EModItemCategory::Wearable"
+  },
+  {
+    "rowName": "Wearable",
+    "itemId": "Item_Ghillie_08_C",
+    "category": "EModItemCategory::Wearable"
+  },
+  {
+    "rowName": "Wearable",
+    "itemId": "Item_Ghillie_BlueBlocker_C",
+    "category": "EModItemCategory::Wearable"
+  }
+]

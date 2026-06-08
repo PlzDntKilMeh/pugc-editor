@@ -1,0 +1,1150 @@
+{
+  "EActivationRoundPhase": [
+    {
+      "value": "None",
+      "label": "None",
+      "key": "K_IGU_014",
+      "rowName": "EActivationRoundPhase_None"
+    },
+    {
+      "value": "DeviceCreation",
+      "label": "Device Creation",
+      "key": "K_IGU_015",
+      "rowName": "EActivationRoundPhase_DeviceCreation"
+    },
+    {
+      "value": "Standby_BeforeSpawn",
+      "label": "Standby Before Spawn",
+      "key": "K_IGU_016",
+      "rowName": "EActivationRoundPhase_Standby_BeforeSpawn"
+    },
+    {
+      "value": "Standby_AfterSpawn",
+      "label": "Standby After Spawn",
+      "key": "K_IGU_017",
+      "rowName": "EActivationRoundPhase_Standby_AfterSpawn"
+    },
+    {
+      "value": "RoundStart_BeforeSpawn",
+      "label": "Round Start Before Spawn",
+      "key": "K_IGU_018",
+      "rowName": "EActivationRoundPhase_RoundStart_BeforeSpawn"
+    },
+    {
+      "value": "RoundStart_AfterSpawn",
+      "label": "Round Start After Spawn",
+      "key": "K_IGU_019",
+      "rowName": "EActivationRoundPhase_RoundStart_AfterSpawn"
+    }
+  ],
+  "EBlueZoneShape": [
+    {
+      "value": "None",
+      "label": "None",
+      "key": "K_IGU_036",
+      "rowName": "EBlueZoneShape_None"
+    },
+    {
+      "value": "Circle",
+      "label": "Circle",
+      "key": "K_IGU_037",
+      "rowName": "EBlueZoneShape_Circle"
+    },
+    {
+      "value": "Rectangle",
+      "label": "Rectangle",
+      "key": "K_IGU_038",
+      "rowName": "EBlueZoneShape_Rectangle"
+    }
+  ],
+  "ECameraViewBehaviour": [
+    {
+      "value": "FpsAndTps",
+      "label": "FPS and TPS",
+      "key": "K_IGU_052",
+      "rowName": "ECameraViewBehaviour_FpsAndTps"
+    },
+    {
+      "value": "FpsOnly",
+      "label": "FPS Only",
+      "key": "K_IGU_053",
+      "rowName": "ECameraViewBehaviour_FpsOnly"
+    },
+    {
+      "value": "TpsOnly",
+      "label": "TPS Only",
+      "key": "K_IGU_054",
+      "rowName": "ECameraViewBehaviour_TpsOnly"
+    }
+  ],
+  "EDamageTypeCategory": [
+    {
+      "value": "Damage_BleedOut",
+      "label": "Damage Bleed Out",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_Blizzard",
+      "label": "Damage Blizzard",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_BlueZone",
+      "label": "Damage Blue Zone",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_BlueZoneGL",
+      "label": "Damage Blue Zone GL",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_BlueZoneGrenade",
+      "label": "Damage Blue Zone Grenade",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_BlueZoneModule",
+      "label": "Damage Blue Zone Module",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_CableCarHit",
+      "label": "Damage Cable Car Hit",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_CarePackageDropHit",
+      "label": "Damage Care Package Drop Hit",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_CKO",
+      "label": "Damage CKO",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_DBNO",
+      "label": "Damage DBNO",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_DropStructHit",
+      "label": "Damage Drop Struct Hit",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_Drown",
+      "label": "Damage Drown",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_Explosion",
+      "label": "Damage Explosion",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_Explosion_BlackZone",
+      "label": "Damage Explosion Black Zone",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_Explosion_Breach",
+      "label": "Damage Explosion Breach",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_Explosion_C4",
+      "label": "Damage Explosion C4",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_Explosion_GasPump",
+      "label": "Damage Explosion Gas Pump",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_Explosion_Grenade",
+      "label": "Damage Explosion Grenade",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_Explosion_JerryCan",
+      "label": "Damage Explosion Jerry Can",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_Explosion_LootTruck",
+      "label": "Damage Explosion Loot Truck",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_Explosion_Mortar",
+      "label": "Damage Explosion Mortar",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_Explosion_PanzerFaustBackBlast",
+      "label": "Damage Explosion Panzer Faust Back Blast",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_Explosion_PanzerFaustWarhead",
+      "label": "Damage Explosion Panzer Faust Warhead",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_Explosion_PanzerFaustWarheadVehicleArmorPenetration",
+      "label": "Damage Explosion Panzer Faust Warhead Vehicle Armor Penetration",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_Explosion_PlantedTimeBomb",
+      "label": "Damage Explosion Planted Time Bomb",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_Explosion_PropaneTank",
+      "label": "Damage Explosion Propane Tank",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_Explosion_RedZone",
+      "label": "Damage Explosion Red Zone",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_Explosion_StickyBomb",
+      "label": "Damage Explosion Sticky Bomb",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_Explosion_Vehicle",
+      "label": "Damage Explosion Vehicle",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_FBRMolotov",
+      "label": "Damage FBRMolotov",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_Gun",
+      "label": "Damage Gun",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_Gun_Penetrate_BRDM",
+      "label": "Damage Gun Penetrate BRDM",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_HelicopterHit",
+      "label": "Damage Helicopter Hit",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_Instant",
+      "label": "Damage Instant",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_Instant_Fall",
+      "label": "Damage Instant Fall",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_KillTruckHit",
+      "label": "Damage Kill Truck Hit",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_KillTruckTurret",
+      "label": "Damage Kill Truck Turret",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_Lava",
+      "label": "Damage Lava",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_LootTruckHit",
+      "label": "Damage Loot Truck Hit",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_Melee",
+      "label": "Damage Melee",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_MeleeThrow",
+      "label": "Damage Melee Throw",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_Molotov",
+      "label": "Damage Molotov",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_Monster",
+      "label": "Damage Monster",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_Punch",
+      "label": "Damage Punch",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_SandStorm",
+      "label": "Damage Sand Storm",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_SatelliteCrash",
+      "label": "Damage Satellite Crash",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_SatelliteCrashGround",
+      "label": "Damage Satellite Crash Ground",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_ShipHit",
+      "label": "Damage Ship Hit",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_SKBD_AOEBeneath",
+      "label": "Damage SKBD AOEBeneath",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_SKBD_AOEInstantKill",
+      "label": "Damage SKBD AOEInstant Kill",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_SKBD_FireDebuff",
+      "label": "Damage SKBD Fire Debuff",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_SKBD_LaserLine",
+      "label": "Damage SKBD Laser Line",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_SKBD_LaserSemiCircle",
+      "label": "Damage SKBD Laser Semi Circle",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_SKBD_NormalToilet",
+      "label": "Damage SKBD Normal Toilet",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_StunGun",
+      "label": "Damage Stun Gun",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_TrainHit",
+      "label": "Damage Train Hit",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_VehicleCrashHit",
+      "label": "Damage Vehicle Crash Hit",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_VehicleHit",
+      "label": "Damage Vehicle Hit",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Damage_ZombiePunch",
+      "label": "Damage Zombie Punch",
+      "key": "",
+      "rowName": ""
+    }
+  ],
+  "EModAIActionOption": [
+    {
+      "value": "Nothing",
+      "label": "None",
+      "key": "K_IGU_078",
+      "rowName": "EModAIActionOption_Nothing"
+    },
+    {
+      "value": "NavigationMove",
+      "label": "Follow Navigation",
+      "key": "K_IGU_079",
+      "rowName": "EModAIActionOption_NavigationMove"
+    }
+  ],
+  "EModAirDropTargetType": [
+    {
+      "value": "Center",
+      "label": "Center",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Device",
+      "label": "Device",
+      "key": "",
+      "rowName": ""
+    }
+  ],
+  "EModAirborneRouteType": [
+    {
+      "value": "Center",
+      "label": "Center",
+      "key": "K_IGU_067",
+      "rowName": "EModAirborneRouteType_Center"
+    },
+    {
+      "value": "BlueZoneCenter",
+      "label": "Blue Zone Center",
+      "key": "K_IGU_068",
+      "rowName": "EModAirborneRouteType_BlueZoneCenter"
+    },
+    {
+      "value": "Device",
+      "label": "Device Location",
+      "key": "K_IGU_069",
+      "rowName": "EModAirborneRouteType_Device"
+    },
+    {
+      "value": "Random",
+      "label": "Random",
+      "key": "K_IGU_070",
+      "rowName": "EModAirborneRouteType_Random"
+    }
+  ],
+  "EModColorType": [
+    {
+      "value": "Black",
+      "label": "Black",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Blue",
+      "label": "Blue",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Cyan",
+      "label": "Cyan",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Emerald",
+      "label": "Emerald",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Green",
+      "label": "Green",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Magenta",
+      "label": "Magenta",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "None",
+      "label": "None",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Orange",
+      "label": "Orange",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Purple",
+      "label": "Purple",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Red",
+      "label": "Red",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Silver",
+      "label": "Silver",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Turquoise",
+      "label": "Turquoise",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "White",
+      "label": "White",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Yellow",
+      "label": "Yellow",
+      "key": "",
+      "rowName": ""
+    }
+  ],
+  "EModDummyPlayerStanceOption": [
+    {
+      "value": "Stand",
+      "label": "Stand",
+      "key": "K_IGU_075",
+      "rowName": "EModDummyPlayerStanceOption_Stand"
+    },
+    {
+      "value": "Crouch",
+      "label": "Crouch",
+      "key": "K_IGU_076",
+      "rowName": "EModDummyPlayerStanceOption_Crouch"
+    },
+    {
+      "value": "Prone",
+      "label": "Prone",
+      "key": "K_IGU_077",
+      "rowName": "EModDummyPlayerStanceOption_Prone"
+    }
+  ],
+  "EModHeadIconType": [
+    {
+      "value": "Commander",
+      "label": "Commander",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Cross",
+      "label": "Cross",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Defense",
+      "label": "Defense",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "None",
+      "label": "None",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "NumberEight",
+      "label": "Number Eight",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "NumberFive",
+      "label": "Number Five",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "NumberFour",
+      "label": "Number Four",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "NumberNine",
+      "label": "Number Nine",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "NumberOne",
+      "label": "Number One",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "NumberSeven",
+      "label": "Number Seven",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "NumberSix",
+      "label": "Number Six",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "NumberThree",
+      "label": "Number Three",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "NumberTwo",
+      "label": "Number Two",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Reinforced",
+      "label": "Reinforced",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Target",
+      "label": "Target",
+      "key": "",
+      "rowName": ""
+    },
+    {
+      "value": "Zombie",
+      "label": "Zombie",
+      "key": "",
+      "rowName": ""
+    }
+  ],
+  "EModItemReceivePosition": [
+    {
+      "value": "PlayerLocation",
+      "label": "Player Location",
+      "key": "K_IGU_029",
+      "rowName": "EModItemReceivePosition_PlayerLocation"
+    },
+    {
+      "value": "PlayerInventory",
+      "label": "Player Inventory",
+      "key": "K_IGU_030",
+      "rowName": "EModItemReceivePosition_PlayerInventory"
+    }
+  ],
+  "EModItemRecipientFulledBackpackAction": [
+    {
+      "value": "DropItem",
+      "label": "Drop Item",
+      "key": "K_IGU_034",
+      "rowName": "EModItemRecipientFulledBackpackAction_DropItem"
+    },
+    {
+      "value": "DoNotProvide",
+      "label": "Do Not Provide",
+      "key": "K_IGU_035",
+      "rowName": "EModItemRecipientFulledBackpackAction_DoNotProvide"
+    }
+  ],
+  "EModItemRecipientInventoryAction": [
+    {
+      "value": "AllClear",
+      "label": "Reset All",
+      "key": "K_IGU_031",
+      "rowName": "EModItemRecipientInventoryAction_AllClear"
+    },
+    {
+      "value": "ClearInventory",
+      "label": "Reset Inventory",
+      "key": "K_IGU_032",
+      "rowName": "EModItemRecipientInventoryAction_ClearInventory"
+    },
+    {
+      "value": "PreserveInventory",
+      "label": "Preserve All",
+      "key": "K_IGU_033",
+      "rowName": "EModItemRecipientInventoryAction_PreserveInventory"
+    }
+  ],
+  "EModItemSpawnType": [
+    {
+      "value": "Sequential",
+      "label": "Sequential",
+      "key": "K_IGU_026",
+      "rowName": "EModItemSpawnType_Sequential"
+    },
+    {
+      "value": "Random",
+      "label": "Random",
+      "key": "K_IGU_027",
+      "rowName": "EModItemSpawnType_Random"
+    },
+    {
+      "value": "ConsumeRandom",
+      "label": "No Repeats Random",
+      "key": "K_IGU_028",
+      "rowName": "EModItemSpawnType_ConsumeRandom"
+    }
+  ],
+  "EModLightType": [
+    {
+      "value": "PointLight",
+      "label": "Point Light",
+      "key": "K_IGU_081",
+      "rowName": "EModLightType_PointLight"
+    },
+    {
+      "value": "SpotLight",
+      "label": "Spot Light",
+      "key": "K_IGU_082",
+      "rowName": "EModLightType_SpotLight"
+    }
+  ],
+  "EModObjectSubCategory": [
+    {
+      "value": "House",
+      "label": "House",
+      "key": "K_IGU_057",
+      "rowName": "EModObjectSubCategory_House"
+    },
+    {
+      "value": "Wall",
+      "label": "Wall",
+      "key": "K_IGU_058",
+      "rowName": "EModObjectSubCategory_Wall"
+    },
+    {
+      "value": "Floor",
+      "label": "Floor",
+      "key": "K_IGU_059",
+      "rowName": "EModObjectSubCategory_Floor"
+    },
+    {
+      "value": "Stair",
+      "label": "Stairs",
+      "key": "K_IGU_060",
+      "rowName": "EModObjectSubCategory_Stair"
+    },
+    {
+      "value": "Foliage",
+      "label": "Foliage",
+      "key": "K_IGU_061",
+      "rowName": "EModObjectSubCategory_Foliage"
+    },
+    {
+      "value": "Prop",
+      "label": "Prop",
+      "key": "K_IGU_062",
+      "rowName": "EModObjectSubCategory_Prop"
+    },
+    {
+      "value": "LargeHouse",
+      "label": "Large House",
+      "key": "K_IGU_063",
+      "rowName": "EModObjectSubCategory_LargeHouse"
+    },
+    {
+      "value": "MediumHouse",
+      "label": "Medium House",
+      "key": "K_IGU_064",
+      "rowName": "EModObjectSubCategory_MediumHouse"
+    },
+    {
+      "value": "SmallHouse",
+      "label": "Small House",
+      "key": "K_IGU_065",
+      "rowName": "EModObjectSubCategory_SmallHouse"
+    },
+    {
+      "value": "Destructible",
+      "label": "Destructible",
+      "key": "K_IGU_074",
+      "rowName": "EModObjectSubCategory_Destructible"
+    }
+  ],
+  "EModObjectType": [
+    {
+      "value": "Prop",
+      "label": "Prop",
+      "key": "K_IGU_055",
+      "rowName": "EModObjectType_Prop"
+    },
+    {
+      "value": "Device",
+      "label": "Device",
+      "key": "K_IGU_056",
+      "rowName": "EModObjectType_Device"
+    }
+  ],
+  "EModSuperJumpType": [
+    {
+      "value": "CallerUp",
+      "label": "Caller Up",
+      "key": "K_IGU_043",
+      "rowName": "EModSuperJumpType_CallerUp"
+    },
+    {
+      "value": "Reflect",
+      "label": "Reflect",
+      "key": "K_IGU_044",
+      "rowName": "EModSuperJumpType_Reflect"
+    }
+  ],
+  "EModTargetPlayer": [
+    {
+      "value": "ActivatingParty",
+      "label": "Activating Team",
+      "key": "K_IGU_000",
+      "rowName": "EModTargetPlayer_ActivatingParty"
+    },
+    {
+      "value": "ActivatingPlayer",
+      "label": "Activating Player",
+      "key": "K_IGU_001",
+      "rowName": "EModTargetPlayer_ActivatingPlayer"
+    },
+    {
+      "value": "AllPlayers",
+      "label": "All Players",
+      "key": "K_IGU_002",
+      "rowName": "EModTargetPlayer_AllPlayers"
+    },
+    {
+      "value": "SelectedParty",
+      "label": "Selected Team",
+      "key": "K_IGU_003",
+      "rowName": "EModTargetPlayer_SelectedParty"
+    },
+    {
+      "value": "SelectedPlayer",
+      "label": "Selected Player",
+      "key": "K_IGU_004",
+      "rowName": "EModTargetPlayer_SelectedPlayer"
+    },
+    {
+      "value": "HasTagPlayer",
+      "label": "Tagged Players",
+      "key": "K_IGU_005",
+      "rowName": "EModTargetPlayer_HasTagPlayer"
+    }
+  ],
+  "EModTeamDistributionMethod": [
+    {
+      "value": "Custom",
+      "label": "Custom",
+      "key": "K_IGU_071",
+      "rowName": "EModTeamDistributionMethod_Custom"
+    },
+    {
+      "value": "Balanced",
+      "label": "Balanced",
+      "key": "K_IGU_072",
+      "rowName": "EModTeamDistributionMethod_Balanced"
+    },
+    {
+      "value": "Sequential",
+      "label": "Sequential",
+      "key": "K_IGU_073",
+      "rowName": "EModTeamDistributionMethod_Sequential"
+    }
+  ],
+  "EModTriggerVolumeTriggerType": [
+    {
+      "value": "OnEnter",
+      "label": "On Enter",
+      "key": "K_IGU_023",
+      "rowName": "EModTriggerVolumeTriggerType_OnEnter"
+    },
+    {
+      "value": "OnExit",
+      "label": "On Exit",
+      "key": "K_IGU_024",
+      "rowName": "EModTriggerVolumeTriggerType_OnExit"
+    },
+    {
+      "value": "Both",
+      "label": "Both",
+      "key": "K_IGU_025",
+      "rowName": "EModTriggerVolumeTriggerType_Both"
+    }
+  ],
+  "EModUserPlayType": [
+    {
+      "value": "Spectator",
+      "label": "Spectator",
+      "key": "K_IGU_32",
+      "rowName": "EModUserPlayType_Spectator"
+    },
+    {
+      "value": "Observer",
+      "label": "Observer",
+      "key": "K_IGU_33",
+      "rowName": "EModUserPlayType_Observer"
+    }
+  ],
+  "EModUserSelectPlayType": [
+    {
+      "value": "NONE",
+      "label": "NONE",
+      "key": "K_IGU_045",
+      "rowName": "EModUserSelectPlayType_NONE"
+    },
+    {
+      "value": "SHOOTING_DEATHMATCH",
+      "label": "SHOOTING: DEATHMATCH",
+      "key": "K_IGU_046",
+      "rowName": "EModUserSelectPlayType_SHOOTING_DEATHMATCH"
+    },
+    {
+      "value": "SHOOTING_OCCUPATION",
+      "label": "SHOOTING: CONQUEST",
+      "key": "K_IGU_047",
+      "rowName": "EModUserSelectPlayType_SHOOTING_OCCUPATION"
+    },
+    {
+      "value": "SHOOTING_ETC",
+      "label": "OTHER SHOOTING",
+      "key": "K_IGU_048",
+      "rowName": "EModUserSelectPlayType_SHOOTING_ETC"
+    },
+    {
+      "value": "NONSHOOTING_PARKOUR",
+      "label": "NON-SHOOTING: PARKOUR",
+      "key": "K_IGU_049",
+      "rowName": "EModUserSelectPlayType_NONSHOOTING_PARKOUR"
+    },
+    {
+      "value": "NONSHOOTING_TRAINING",
+      "label": "NON-SHOOTING: TRAINING",
+      "key": "K_IGU_050",
+      "rowName": "EModUserSelectPlayType_NONSHOOTING_TRAINING"
+    },
+    {
+      "value": "NONSHOOTING_ETC",
+      "label": "OTHER NON-SHOOTING",
+      "key": "K_IGU_051",
+      "rowName": "EModUserSelectPlayType_NONSHOOTING_ETC"
+    },
+    {
+      "value": "SHOOTING_BATTLEROYALE",
+      "label": "SHOOTING: BATTLE ROYALE",
+      "key": "K_IGU_066",
+      "rowName": "EModUserSelectPlayType_SHOOTING_BATTLEROYALE"
+    },
+    {
+      "value": "NONSHOOTING_DEFENSE",
+      "label": "NON-SHOOTING: DEFENSE",
+      "key": "K_IGU_080",
+      "rowName": "EModUserSelectPlayType_NONSHOOTING_DEFENSE"
+    }
+  ],
+  "EModVolumeShape": [
+    {
+      "value": "Box",
+      "label": "Box",
+      "key": "K_IGU_020",
+      "rowName": "EModVolumeShape_Box"
+    },
+    {
+      "value": "Cube",
+      "label": "Cube",
+      "key": "K_IGU_021",
+      "rowName": "EModVolumeShape_Cube"
+    },
+    {
+      "value": "Sphere",
+      "label": "Sphere",
+      "key": "K_IGU_022",
+      "rowName": "EModVolumeShape_Sphere"
+    }
+  ],
+  "EModWeaponSlotType": [
+    {
+      "value": "PrimaryWeapon1",
+      "label": "Primary Weapon 1",
+      "key": "K_IGU_083",
+      "rowName": "EModWeaponSlotType_PrimaryWeapon1"
+    },
+    {
+      "value": "PrimaryWeapon2",
+      "label": "Primary Weapon 2",
+      "key": "K_IGU_084",
+      "rowName": "EModWeaponSlotType_PrimaryWeapon2"
+    },
+    {
+      "value": "SecondaryWeapon",
+      "label": "Secondary Weapon",
+      "key": "K_IGU_085",
+      "rowName": "EModWeaponSlotType_SecondaryWeapon"
+    },
+    {
+      "value": "MeleeWeapon",
+      "label": "Melee Weapon",
+      "key": "K_IGU_086",
+      "rowName": "EModWeaponSlotType_MeleeWeapon"
+    },
+    {
+      "value": "ThrowableWeapon",
+      "label": "Throwables",
+      "key": "K_IGU_087",
+      "rowName": "EModWeaponSlotType_ThrowableWeapon"
+    }
+  ],
+  "ERoundConditionScope": [
+    {
+      "value": "AllRounds",
+      "label": "All Rounds",
+      "key": "K_IGU_006",
+      "rowName": "ERoundConditionScope_AllRounds"
+    },
+    {
+      "value": "SpecificRound",
+      "label": "Specific Round",
+      "key": "K_IGU_007",
+      "rowName": "ERoundConditionScope_SpecificRound"
+    }
+  ],
+  "ERoundEventCondition": [
+    {
+      "value": "Standby_BeforeSpawn",
+      "label": "Standby Before Spawn",
+      "key": "K_IGU_008",
+      "rowName": "ERoundEventCondition_Standby_BeforeSpawn"
+    },
+    {
+      "value": "Standby_AfterSpawn",
+      "label": "Standby After Spawn",
+      "key": "K_IGU_009",
+      "rowName": "ERoundEventCondition_Standby_AfterSpawn"
+    },
+    {
+      "value": "RoundStart_BeforeSpawn",
+      "label": "Round Start Before Spawn",
+      "key": "K_IGU_010",
+      "rowName": "ERoundEventCondition_RoundStart_BeforeSpawn"
+    },
+    {
+      "value": "RoundStart_AfterSpawn",
+      "label": "Round Start After Spawn",
+      "key": "K_IGU_011",
+      "rowName": "ERoundEventCondition_RoundStart_AfterSpawn"
+    },
+    {
+      "value": "AfterRoundStartDelay",
+      "label": "Round Start After Delay",
+      "key": "K_IGU_012",
+      "rowName": "ERoundEventCondition_AfterRoundStartDelay"
+    },
+    {
+      "value": "RoundEnd",
+      "label": "Round End",
+      "key": "K_IGU_013",
+      "rowName": "ERoundEventCondition_RoundEnd"
+    },
+    {
+      "value": "Timeout",
+      "label": "Round Timeout",
+      "key": "K_IGU_088",
+      "rowName": "ERoundEventCondition_Timeout"
+    }
+  ],
+  "ESpecialZoneType": [
+    {
+      "value": "None",
+      "label": "None",
+      "key": "K_IGU_039",
+      "rowName": "ESpecialZoneType_None"
+    },
+    {
+      "value": "Blizzard",
+      "label": "Blizzard",
+      "key": "K_IGU_040",
+      "rowName": "ESpecialZoneType_Blizzard"
+    },
+    {
+      "value": "SandStorm",
+      "label": "Sandstorm",
+      "key": "K_IGU_041",
+      "rowName": "ESpecialZoneType_SandStorm"
+    },
+    {
+      "value": "EMP",
+      "label": "EMP",
+      "key": "K_IGU_042",
+      "rowName": "ESpecialZoneType_EMP"
+    }
+  ]
+}

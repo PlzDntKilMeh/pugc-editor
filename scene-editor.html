@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PUGC Scene Editor</title>
+  <link rel="stylesheet" href="styles.css">
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.168.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.168.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body class="scene-editor-page">
+  <header class="app-header">
+    <div class="toolbar">
+      <span style="font-weight:650;font-size:16px">PUGC Editor</span>
+      <label class="button" for="fileInput" style="cursor:pointer">Open</label>
+      <input type="file" id="fileInput" accept=".pugc,.pugcedit" style="display:none">
+      <span id="pugcName" class="subtle">Untitled blank project - drag &amp; drop or click Open</span>
+      <select id="langSelect" class="lang-select" title="Display language" hidden></select>
+    </div>
+    <div class="toolbar">
+      <button id="btnFocus"     class="button" disabled        title="Focus selected (F)">Focus</button>
+      <button id="btnCopy"      class="button" disabled        title="Copy selected object">Copy</button>
+      <button id="btnPaste"     class="button" disabled        title="Paste copied object">Paste</button>
+      <button id="btnDelete"    class="button" disabled        title="Delete selected">Delete</button>
+      <button id="btnSaveProject" class="button" disabled      title="Save editable scene project">Save Project</button>
+      <button id="btnGameSettings" class="button" type="button" title="Edit ruleset / game options / teams / creator">Game Settings</button>
+      <button id="btnSave"      class="button primary" disabled>Save .pugc</button>
+      <label style="display:inline-flex;align-items:center;gap:5px;font-size:13px;color:var(--text);margin-left:8px" title="Scroll while right-click-looking to adjust speed; double-click to reset">
+        Fly speed
+        <span id="flySpeedDisplay" style="min-width:36px;font-size:12px;color:var(--accent);cursor:pointer;user-select:none">1.0x</span>
+      </label>
+      <button id="btnHelp" class="button compact" type="button" title="Help" style="margin-left:auto;width:28px;padding:0;font-size:13px;font-weight:600;opacity:0.55;border-color:transparent;background:transparent;color:var(--muted)">?</button>
+      <div style="position:relative">
+        <button id="btnTipJar" class="button compact" type="button" title="Support the dev" style="width:28px;padding:0;font-size:15px;opacity:0.45;border-color:transparent;background:transparent;color:var(--muted)">&#9825;</button>
+        <div id="tipJarPanel" hidden style="position:absolute;right:0;top:calc(100% + 6px);z-index:200;background:var(--panel-2);border:1px solid var(--line);border-radius:8px;padding:14px 16px;width:210px;box-shadow:0 8px 24px rgba(0,0,0,0.4);font-size:13px;line-height:1.6">
+          <div style="font-size:11px;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.06em">Support the dev</div>
+          <div style="margin-bottom:6px">
+            <span style="color:var(--muted);font-size:12px">Cash App</span><br>
+            <span style="color:var(--accent-2);font-weight:600;user-select:all">$PlzDntKilMeh</span>
+          </div>
+          <div>
+            <span style="color:var(--muted);font-size:12px">PayPal</span><br>
+            <a href="https://paypal.me/buy360mods" target="_blank" rel="noopener" style="color:var(--accent-2);font-weight:600;text-decoration:none">paypal.me/buy360mods</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="scene-layout">
+    <aside class="scene-sidebar">
+      <div style="padding:10px 10px 6px;border-bottom:1px solid var(--line)">
+        <input id="objFilter" type="search" class="search" placeholder="Filter objects..." style="width:100%;margin:0">
+        <div id="objCount" class="subtle" style="margin-top:6px;padding-left:2px">0 objects, 0 circle tools, 0 grid tools</div>
+        <div class="scene-outliner-actions">
+          <button id="btnCreateCollection" class="button" type="button" disabled title="Group the selected objects into a collection">Collection</button>
+          <button id="btnCreateCircleTool" class="button" type="button" disabled title="Make a circle pattern from the selected objects">Circle</button>
+          <button id="btnCreateGridTool" class="button" type="button" disabled title="Make a grid pattern from the selected objects">Grid</button>
+          <button id="btnChainAiPath" class="button" type="button" disabled title="Chain the selected AI Navigation devices into a travel path, ordered by device index">AI Path</button>
+          <button id="btnSelectionTools" class="button" type="button" disabled title="Distribute or align the selected objects">Align</button>
+        </div>
+      </div>
+      <div id="objList" class="scene-obj-list"></div>
+    </aside>
+
+    <div class="scene-viewport" id="viewport">
+      <canvas id="sceneCanvas"></canvas>
+      <div class="segmented scene-view-toggle">
+        <button id="btnView3d" class="seg active" type="button" title="3D scene view">3D</button>
+        <button id="btnViewGraph" class="seg" type="button" title="Logic graph view (read-only)">Graph</button>
+      </div>
+      <div id="sceneGraph" class="flow-graph scene-graph" hidden>
+        <div class="graph-tabbar">
+          <div class="segmented graph-tabs">
+            <button id="btnGraphCurrentTab" class="seg active" type="button">Current</button>
+            <button id="btnGraphReferenceTab" class="seg" type="button">Reference</button>
+          </div>
+          <div class="graph-tab-actions">
+            <span id="referenceGraphCount" class="subtle">Load a second file to browse its device logic</span>
+            <label class="button compact graph-file-button" for="referenceFileInput" title="Load another file's device logic">Load Reference</label>
+            <input type="file" id="referenceFileInput" accept=".pugc,.pugcedit" hidden>
+            <button id="btnSelectAllReferenceLogic" class="button compact" type="button">All</button>
+            <button id="btnClearReferenceSelection" class="button compact" type="button" disabled>Clear</button>
+            <button id="btnCopyReferenceLogic" class="button compact primary" type="button" disabled>Copy</button>
+          </div>
+        </div>
+        <div id="liveGraphPanel" class="graph-tab-panel">
+          <div id="liveGraph" class="graph-pane-body"></div>
+        </div>
+        <div id="referenceGraphPanel" class="graph-tab-panel" hidden>
+          <div id="referenceGraph" class="graph-pane-body"></div>
+        </div>
+      </div>
+      <div class="scene-viewport-overlay">
+        <details id="budgetOverlay" class="scene-budget-overlay" open>
+          <summary>
+            <span>Placement Budget</span>
+            <span id="budgetOverlaySummary">0 objects</span>
+          </summary>
+          <div id="limitPanel" class="scene-limit-panel"></div>
+        </details>
+        <details id="viewerSettings" class="scene-budget-overlay">
+          <summary><span>Viewer Settings</span></summary>
+          <div class="scene-limit-panel scene-settings-panel">
+            <label class="scene-settings-row"><input type="checkbox" id="chkTextures" checked> Textures</label>
+            <label class="scene-settings-row">Opacity
+              <input type="range" id="opacitySlider" min="0" max="1" step="0.01" value="1">
+              <span id="opacityValue">100%</span>
+            </label>
+            <label class="scene-settings-row">Skybox
+              <input type="range" id="skyboxBrightnessSlider" min="0" max="3" step="0.05" value="0.5">
+              <span id="skyboxBrightnessValue">50%</span>
+            </label>
+            <label class="scene-settings-row"><input type="checkbox" id="chkAiPaths" checked> AI travel paths</label>
+            <label class="scene-settings-row"><input type="checkbox" id="chkDeviceIcons" checked> Device icons</label>
+            <div class="scene-settings-sub">Device areas</div>
+            <div id="areaToggleList" class="scene-settings-areas"></div>
+          </div>
+        </details>
+        <details id="precisionTest" class="scene-budget-overlay" style="display: none">
+          <summary><span>Precision Test</span></summary>
+          <div class="scene-limit-panel scene-settings-panel">
+            <div class="scene-settings-sub">Translation decimals (UE4 units)</div>
+            <label class="scene-settings-row">Decimals
+              <select id="precTransDecimals">
+                <option value="full">Full</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+              </select>
+            </label>
+            <div class="scene-settings-sub">Rotation format</div>
+            <label class="scene-settings-row">As
+              <select id="precRotFormat">
+                <option value="quat">Quaternion XYZW</option>
+                <option value="euler">Euler YXZ degrees</option>
+              </select>
+            </label>
+            <div class="scene-settings-sub">Rotation decimals</div>
+            <label class="scene-settings-row">Decimals
+              <select id="precRotDecimals">
+                <option value="full">Full</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+              </select>
+            </label>
+            <div class="scene-settings-sub">Rotation snap (degrees, 0 = off)</div>
+            <label class="scene-settings-row">Snap deg
+              <input id="precRotSnap" type="number" min="0" max="180" step="0.5" value="0" style="width:60px;text-align:right">
+            </label>
+            <div class="scene-settings-sub">Rounding mode (non-snap)</div>
+            <label class="scene-settings-row">Mode
+              <select id="precRoundMode">
+                <option value="round">Round (nearest)</option>
+                <option value="floor">Floor (down)</option>
+                <option value="ceil">Ceil (up)</option>
+                <option value="trunc">Truncate (to 0)</option>
+              </select>
+            </label>
+            <div id="precStatus" class="subtle" style="margin-top:4px;font-size:11px">Full precision</div>
+          </div>
+        </details>
+      </div>
+      <div id="propsEmpty" class="scene-transform-empty" style="display:none">Select an object or tool to edit its transform</div>
+      <div id="propsContent" class="scene-transform-overlay" style="display:none">
+        <div class="scene-transform-overlay-head">
+          <span>Transform</span>
+          <span id="propTransformTarget">Selected</span>
+        </div>
+        <div class="scene-transform-mode">
+          <button id="btnTranslate" class="mode-btn active" type="button" title="Move">Move</button>
+          <button id="btnRotate" class="mode-btn" type="button" title="Rotate">Rotate</button>
+          <button id="btnScale" class="mode-btn" type="button" title="Scale (R)">Scale</button>
+        </div>
+        <div class="scene-transform-snap">
+          <label class="scene-transform-snap-toggle" title="Snap moves/rotations to fixed increments">
+            <input id="snapToggle" type="checkbox"> Snap
+          </label>
+          <label title="Move snap, in UE4 cm">cm<input id="snapMove" class="numeric-input" type="text" inputmode="decimal" value="100"></label>
+          <label title="Rotate snap, in degrees">deg<input id="snapRot" class="numeric-input" type="text" inputmode="decimal" value="15"></label>
+        </div>
+        <div class="scene-props-section">
+          <div class="scene-props-label">Position (UE4 cm)</div>
+          <div id="propPos" class="scene-props-mono"></div>
+          <div class="scene-transform-grid">
+            <label>X<input id="propPosX" class="numeric-input transform-input" type="text" inputmode="decimal"></label>
+            <label>Y<input id="propPosY" class="numeric-input transform-input" type="text" inputmode="decimal"></label>
+            <label>Z<input id="propPosZ" class="numeric-input transform-input" type="text" inputmode="decimal"></label>
+          </div>
+        </div>
+        <div class="scene-props-section">
+          <div class="scene-props-label">Rotation (Euler deg)</div>
+          <div id="propRot" class="scene-props-mono"></div>
+          <div class="scene-transform-grid">
+            <label>P<input id="propRotP" class="numeric-input transform-input" type="text" inputmode="decimal"></label>
+            <label>Y<input id="propRotY" class="numeric-input transform-input" type="text" inputmode="decimal"></label>
+            <label>R<input id="propRotR" class="numeric-input transform-input" type="text" inputmode="decimal"></label>
+          </div>
+        </div>
+        <div class="scene-props-section">
+          <div class="scene-props-label">Scale</div>
+          <div id="propScale" class="scene-props-mono"></div>
+          <div class="scene-transform-grid">
+            <label>X<input id="propScaleX" class="numeric-input transform-input" type="text" inputmode="decimal"></label>
+            <label>Y<input id="propScaleY" class="numeric-input transform-input" type="text" inputmode="decimal"></label>
+            <label>Z<input id="propScaleZ" class="numeric-input transform-input" type="text" inputmode="decimal"></label>
+          </div>
+          <div class="subtle">PUBG clamps scale below 0.1 up to 0.1.</div>
+        </div>
+        <div id="selectionToolSection" hidden>
+          <div class="scene-sel-section">
+            <div class="scene-sel-section-title">Distribute (m spacing)</div>
+            <div class="scene-sel-distribute">
+              <div class="scene-sel-axis-row">
+                <span>X</span>
+                <input id="distSpacingX" class="numeric-input" type="text" inputmode="decimal" value="5">
+                <button id="btnDistX" class="sel-btn" type="button">Dist</button>
+              </div>
+              <div class="scene-sel-axis-row">
+                <span>Y</span>
+                <input id="distSpacingY" class="numeric-input" type="text" inputmode="decimal" value="5">
+                <button id="btnDistY" class="sel-btn" type="button">Dist</button>
+              </div>
+              <div class="scene-sel-axis-row">
+                <span>Z</span>
+                <input id="distSpacingZ" class="numeric-input" type="text" inputmode="decimal" value="5">
+                <button id="btnDistZ" class="sel-btn" type="button">Dist</button>
+              </div>
+            </div>
+            <div class="scene-sel-section-title">Align</div>
+            <div class="scene-sel-align">
+              <div class="scene-sel-axis-row">
+                <span>X</span>
+                <button id="btnAlignXMin" class="sel-btn" type="button">Min</button>
+                <button id="btnAlignXCenter" class="sel-btn" type="button">Ctr</button>
+                <button id="btnAlignXMax" class="sel-btn" type="button">Max</button>
+              </div>
+              <div class="scene-sel-axis-row">
+                <span>Y</span>
+                <button id="btnAlignYMin" class="sel-btn" type="button">Min</button>
+                <button id="btnAlignYCenter" class="sel-btn" type="button">Ctr</button>
+                <button id="btnAlignYMax" class="sel-btn" type="button">Max</button>
+              </div>
+              <div class="scene-sel-axis-row">
+                <span>Z</span>
+                <button id="btnAlignZMin" class="sel-btn" type="button">Min</button>
+                <button id="btnAlignZCenter" class="sel-btn" type="button">Ctr</button>
+                <button id="btnAlignZMax" class="sel-btn" type="button">Max</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="scene-hud">
+        <div class="scene-fps-overlay"><span>FPS</span><strong id="fpsValue">--</strong></div>
+        <span id="hudCoords" class="scene-hud-text"></span>
+      </div>
+    </div>
+
+    <aside class="scene-props-panel">
+      <div class="scene-tool-panel">
+        <div class="scene-tool-title">Place Objects</div>
+        <input id="placeObjectInput" type="hidden">
+        <div class="place-picker">
+          <button id="placeObjectButton" class="place-picker-button" type="button">
+            <span id="placeObjectButtonText">Choose an object</span>
+          </button>
+          <div id="placeObjectMenu" class="place-picker-menu" hidden>
+            <input id="placeObjectSearch" class="search" type="search" placeholder="Search objects and devices">
+            <div id="placeCategoryList" class="place-category-list"></div>
+            <div id="placeObjectGrid" class="place-object-grid"></div>
+          </div>
+        </div>
+        <div class="place-preview">
+          <div class="place-preview-thumb"><img id="placePreviewImg" alt=""></div>
+          <div class="place-preview-meta">
+            <div id="placePreviewName" class="place-preview-name">Choose an object</div>
+            <div id="placePreviewType" class="place-preview-type"></div>
+          </div>
+        </div>
+        <button id="btnPlaceOne" class="button primary full" type="button">Place One</button>
+        <div class="subtle scene-tool-note">Tip: select objects, then use Circle/Grid Tool to make a pattern.</div>
+
+        <div id="toolParamsSection" hidden>
+          <div class="scene-tool-title compact" id="toolParamsTitle">Tool Settings</div>
+          <div id="circleToolPanel">
+          <div class="scene-slider-stack">
+            <label class="scene-slider-input">Diameter <input id="circleDiameterSlider" type="range" min="0" max="10000" step="1" value="4452"><input id="circleDiameter" class="numeric-input" type="text" inputmode="decimal" value="20"></label>
+            <label class="scene-slider-input">Count <input id="circleCountSlider" type="range" min="0" max="10000" step="1" value="0"><input id="circleCount" class="numeric-input" type="text" inputmode="numeric" data-integer="true" value="3"></label>
+          </div>
+          <div class="scene-slider-stack">
+            <label class="scene-slider-input">Object pitch <input id="circleObjectPitchSlider" type="range" min="-180" max="180" step="0.5" value="0"><input id="circleObjectPitch" class="numeric-input" type="text" inputmode="decimal" value="0"></label>
+            <label class="scene-slider-input">Object yaw <input id="circleRotOffsetSlider" type="range" min="-180" max="180" step="0.5" value="0"><input id="circleRotOffsetManual" class="numeric-input" type="text" inputmode="decimal" value="0"></label>
+            <label class="scene-slider-input">Object roll <input id="circleObjectRollSlider" type="range" min="-180" max="180" step="0.5" value="0"><input id="circleObjectRoll" class="numeric-input" type="text" inputmode="decimal" value="0"></label>
+            <label class="scene-slider-input">Yaw step <input id="circleRotationStepSlider" type="range" min="-180" max="180" step="0.5" value="0"><input id="circleRotationStep" class="numeric-input" type="text" inputmode="decimal" value="0"></label>
+            <label class="scene-slider-input">Radial step <input id="circleRadialStepSlider" type="range" min="-5" max="5" step="0.05" value="0"><input id="circleRadialStep" class="numeric-input" type="text" inputmode="decimal" value="0"></label>
+            <label class="scene-slider-input">Height step <input id="circleHeightStepSlider" type="range" min="-5" max="5" step="0.05" value="0"><input id="circleHeightStep" class="numeric-input" type="text" inputmode="decimal" value="0"></label>
+          </div>
+          <div class="scene-slider-stack">
+            <label class="scene-slider-input">Scale X <input id="circleScaleXSlider" type="range" min="0.1" max="10" step="0.01" value="1"><input id="circleScaleX" class="numeric-input" type="text" inputmode="decimal" value="1"></label>
+            <label class="scene-slider-input">Scale Y <input id="circleScaleYSlider" type="range" min="0.1" max="10" step="0.01" value="1"><input id="circleScaleY" class="numeric-input" type="text" inputmode="decimal" value="1"></label>
+            <label class="scene-slider-input">Scale Z <input id="circleScaleZSlider" type="range" min="0.1" max="10" step="0.01" value="1"><input id="circleScaleZ" class="numeric-input" type="text" inputmode="decimal" value="1"></label>
+            <label class="scene-slider-input">Scale step X <input id="circleScaleStepXSlider" type="range" min="-1" max="1" step="0.01" value="0"><input id="circleScaleStepX" class="numeric-input" type="text" inputmode="decimal" value="0"></label>
+            <label class="scene-slider-input">Scale step Y <input id="circleScaleStepYSlider" type="range" min="-1" max="1" step="0.01" value="0"><input id="circleScaleStepY" class="numeric-input" type="text" inputmode="decimal" value="0"></label>
+            <label class="scene-slider-input">Scale step Z <input id="circleScaleStepZSlider" type="range" min="-1" max="1" step="0.01" value="0"><input id="circleScaleStepZ" class="numeric-input" type="text" inputmode="decimal" value="0"></label>
+          </div>
+          <label class="scene-tool-check"><input id="circleScaleOffsets" type="checkbox"> Scale template offsets</label>
+          <button id="btnReleaseCircle" class="button full" type="button" hidden title="Detach this tool's objects into free scene objects (undo to restore)">Release objects (bake)</button>
+          <div id="circlePreviewText" class="subtle scene-tool-note"></div>
+        </div>
+        <div id="gridToolPanel" hidden>
+          <div class="scene-slider-stack">
+            <label class="scene-slider-input">Columns <input id="gridColumnsSlider" type="range" min="1" max="100" step="1" value="3"><input id="gridColumns" class="numeric-input" type="text" inputmode="numeric" data-integer="true" value="3"></label>
+            <label class="scene-slider-input">Rows <input id="gridRowsSlider" type="range" min="1" max="100" step="1" value="3"><input id="gridRows" class="numeric-input" type="text" inputmode="numeric" data-integer="true" value="3"></label>
+            <label class="scene-slider-input">Layers <input id="gridLayersSlider" type="range" min="1" max="50" step="1" value="1"><input id="gridLayers" class="numeric-input" type="text" inputmode="numeric" data-integer="true" value="1"></label>
+            <label class="scene-slider-input">X spacing <input id="gridSpacingXSlider" type="range" min="0.1" max="200" step="0.1" value="5"><input id="gridSpacingX" class="numeric-input" type="text" inputmode="decimal" value="5"></label>
+            <label class="scene-slider-input">Y spacing <input id="gridSpacingYSlider" type="range" min="0.1" max="200" step="0.1" value="5"><input id="gridSpacingY" class="numeric-input" type="text" inputmode="decimal" value="5"></label>
+            <label class="scene-slider-input">Layer spacing <input id="gridSpacingZSlider" type="range" min="0" max="200" step="0.1" value="0"><input id="gridSpacingZ" class="numeric-input" type="text" inputmode="decimal" value="0"></label>
+            <label class="scene-slider-input">Object pitch <input id="gridObjectPitchSlider" type="range" min="-180" max="180" step="0.5" value="0"><input id="gridObjectPitch" class="numeric-input" type="text" inputmode="decimal" value="0"></label>
+            <label class="scene-slider-input">Object yaw <input id="gridObjectYawSlider" type="range" min="-180" max="180" step="0.5" value="0"><input id="gridObjectYaw" class="numeric-input" type="text" inputmode="decimal" value="0"></label>
+            <label class="scene-slider-input">Object roll <input id="gridObjectRollSlider" type="range" min="-180" max="180" step="0.5" value="0"><input id="gridObjectRoll" class="numeric-input" type="text" inputmode="decimal" value="0"></label>
+            <label class="scene-slider-input">Yaw step <input id="gridYawStepSlider" type="range" min="-180" max="180" step="0.5" value="0"><input id="gridYawStep" class="numeric-input" type="text" inputmode="decimal" value="0"></label>
+            <label class="scene-slider-input">Height step <input id="gridHeightStepSlider" type="range" min="-20" max="20" step="0.05" value="0"><input id="gridHeightStep" class="numeric-input" type="text" inputmode="decimal" value="0"></label>
+            <label class="scene-slider-input">Scale X <input id="gridScaleXSlider" type="range" min="0.1" max="10" step="0.01" value="1"><input id="gridScaleX" class="numeric-input" type="text" inputmode="decimal" value="1"></label>
+            <label class="scene-slider-input">Scale Y <input id="gridScaleYSlider" type="range" min="0.1" max="10" step="0.01" value="1"><input id="gridScaleY" class="numeric-input" type="text" inputmode="decimal" value="1"></label>
+            <label class="scene-slider-input">Scale Z <input id="gridScaleZSlider" type="range" min="0.1" max="10" step="0.01" value="1"><input id="gridScaleZ" class="numeric-input" type="text" inputmode="decimal" value="1"></label>
+          </div>
+          <button id="btnReleaseGrid" class="button full" type="button" hidden title="Detach this tool's objects into free scene objects (undo to restore)">Release objects (bake)</button>
+          <div id="gridPreviewText" class="subtle scene-tool-note"></div>
+        </div>
+        </div>
+      </div>
+      <div id="propsDetailsEmpty" class="scene-props-empty">Select an object or tool for mesh or device details</div>
+      <div id="propsDetailsContent" style="display:none">
+        <div class="scene-props-identity">
+          <div id="propName" class="scene-props-identity-name"></div>
+          <div id="propType" class="subtle"></div>
+        </div>
+        <div id="devNameSection" class="scene-props-section scene-props-name-section" style="display:none">
+          <label class="scene-props-label" for="propDeviceName">Label</label>
+          <input id="propDeviceName" type="text" class="devf-name-input" placeholder="(use device type name)">
+        </div>
+        <div id="devDataSection" style="display:none">
+          <div class="scene-dev-tabs" role="tablist">
+            <button class="scene-dev-tab active" type="button" data-dev-tab="basic">Basic</button>
+            <button class="scene-dev-tab" type="button" data-dev-tab="change">Change</button>
+            <button class="scene-dev-tab" type="button" data-dev-tab="triggers">Triggers</button>
+            <button class="scene-dev-tab" type="button" data-dev-tab="actions">Actions</button>
+          </div>
+          <div id="devTabBasic" class="scene-dev-tabpanel"><div id="propDeviceFields" class="devf-container"></div></div>
+          <div id="devTabChange" class="scene-dev-tabpanel" hidden><div id="propDeviceFieldsAdvanced" class="devf-container"></div></div>
+          <div id="devTabTriggers" class="scene-dev-tabpanel" hidden></div>
+          <div id="devTabActions" class="scene-dev-tabpanel" hidden></div>
+        </div>
+        <details class="scene-props-details" id="meshDetailsSection">
+          <summary>Mesh and template details</summary>
+          <div id="propMeshPath" class="scene-props-mono"></div>
+        </details>
+      </div>
+    </aside>
+  </div>
+
+  <div id="helpModal" class="gs-modal" hidden>
+    <div class="gs-dialog" style="width:min(640px,92vw);max-height:86vh">
+      <div class="gs-head"><span>Help</span><button id="helpClose" class="button compact" type="button">Close</button></div>
+      <div class="gs-body" style="display:grid;grid-template-columns:1fr 1fr;gap:0 24px;padding:16px 20px;overflow-y:auto">
+        <div>
+          <div class="help-section-title">Navigation</div>
+          <div class="help-row"><kbd>Right-drag</kbd><span>Look around (fly cam)</span></div>
+          <div class="help-row"><kbd>W A S D</kbd><span>Fly while right-dragging</span></div>
+          <div class="help-row"><kbd>Q / E</kbd><span>Fly down / up</span></div>
+          <div class="help-row"><kbd>Shift</kbd><span>Faster fly speed</span></div>
+          <div class="help-row"><kbd>Scroll</kbd><span>Zoom (or fly speed while looking)</span></div>
+          <div class="help-row"><kbd>Middle-drag</kbd><span>Orbit</span></div>
+          <div class="help-row"><kbd>Double-click fly speed</kbd><span>Reset fly speed to 1x</span></div>
+          <div class="help-section-title" style="margin-top:14px">Transform</div>
+          <div class="help-row"><kbd>R</kbd><span>Scale mode</span></div>
+          <div class="help-row"><kbd>F</kbd><span>Focus / frame selected object</span></div>
+          <div class="help-row"><kbd>Delete / Backspace</kbd><span>Delete selected</span></div>
+          <div class="help-row"><kbd>Escape</kbd><span>Deselect</span></div>
+        </div>
+        <div>
+          <div class="help-section-title">Edit</div>
+          <div class="help-row"><kbd>Ctrl Z</kbd><span>Undo</span></div>
+          <div class="help-row"><kbd>Ctrl Shift Z</kbd><span>Redo</span></div>
+          <div class="help-row"><kbd>Ctrl Y</kbd><span>Redo</span></div>
+          <div class="help-row"><kbd>Ctrl C</kbd><span>Copy selected object</span></div>
+          <div class="help-row"><kbd>Ctrl V</kbd><span>Paste copied object</span></div>
+          <div class="help-section-title" style="margin-top:14px">Selection</div>
+          <div class="help-row"><kbd>Left-click</kbd><span>Select object</span></div>
+          <div class="help-row"><kbd>Left-drag</kbd><span>Box-select multiple objects</span></div>
+          <div class="help-row"><kbd>Ctrl-click</kbd><span>Add to / remove from selection</span></div>
+          <div class="help-section-title" style="margin-top:14px">File</div>
+          <div class="help-row"><kbd>Drag &amp; drop</kbd><span>Open .pugc / .pugcedit file</span></div>
+        </div>
+        <div style="grid-column:1/-1;margin-top:16px;border-top:1px solid var(--border);padding-top:14px">
+          <div class="help-section-title">Device Inputs</div>
+          <p style="margin:6px 0 0;font-size:12px;line-height:1.6;color:var(--fg)">
+            If a device contains an invalid field value, the game will kick you when you move or copy that device, or when you open the device and click Apply.
+            This editor tries to prevent invalid values from being entered, but if you experience unexpected kicks, check the affected device's fields for out-of-range or missing values.
+          </p>
+        </div>
+        <div style="grid-column:1/-1;margin-top:16px;border-top:1px solid var(--border);padding-top:14px">
+          <div class="help-section-title">Rotation bug</div>
+          <p style="margin:6px 0 0;font-size:12px;line-height:1.6;color:var(--fg)">
+            There is a visual issue between this editor and PUBG where some rotations/transforms will look slightly desynchronized between the two,
+            and may cause some objects to appear rotated in game differently than in the editor. I think this is due to some internal precision or rounding issue in game or maybe the wrong origin for rotations im not sure.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="gameSettingsModal" class="gs-modal" hidden>
+    <div class="gs-dialog">
+      <div class="gs-head"><span>Game Settings</span><button id="gsClose" class="button compact" type="button">Close</button></div>
+      <div id="gsBody" class="gs-body"></div>
+    </div>
+  </div>
+
+  <div id="sceneStatus" class="scene-status-bar"></div>
+
+    <script>window.PUGC_ASSET_ENCODING = 'gz';</script>
+  <script type="module" src="scene-editor.js"></script>
+</body>
+</html>

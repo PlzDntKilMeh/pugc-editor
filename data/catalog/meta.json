@@ -1,0 +1,16 @@
+{
+  "generatedAt": "2026-05-27T23:47:43",
+  "source": "PUBG_IDA fmodel clean catalog",
+  "counts": {
+    "objects": 645,
+    "devices": 39,
+    "fields": 411,
+    "events": 308,
+    "items": 177,
+    "enums": 40,
+    "stringTables": 8,
+    "tags": 27,
+    "tagCategories": 5,
+    "placementBudgetRules": 8
+  }
+}

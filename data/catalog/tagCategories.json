@@ -1,0 +1,62 @@
+[
+  {
+    "id": "CommonTag",
+    "rowName": "CommonTag",
+    "label": "Common Tags",
+    "displayKey": "K_IGU_08",
+    "availableForMainTagIds": [
+      "MainTag_Training",
+      "MainTag_Parkour",
+      "MainTag_Casual",
+      "MainTag_PvE",
+      "MainTag_BattleTeam",
+      "MainTag_BattleFreeForAll"
+    ],
+    "maxSelectCount": 0
+  },
+  {
+    "id": "MainTag",
+    "rowName": "MainTag",
+    "label": "Main Tags",
+    "displayKey": "K_IGU_00",
+    "availableForMainTagIds": [],
+    "maxSelectCount": 1
+  },
+  {
+    "id": "SubTag_ClearTime",
+    "rowName": "SubTag_ClearTime",
+    "label": "Clear Time",
+    "displayKey": "K_IGU_24",
+    "availableForMainTagIds": [
+      "MainTag_Training",
+      "MainTag_Parkour",
+      "MainTag_Casual",
+      "MainTag_PvE"
+    ],
+    "maxSelectCount": 1
+  },
+  {
+    "id": "SubTag_Difficulty",
+    "rowName": "SubTag_Difficulty",
+    "label": "Difficulty",
+    "displayKey": "K_IGU_28",
+    "availableForMainTagIds": [
+      "MainTag_Training",
+      "MainTag_Parkour",
+      "MainTag_Casual",
+      "MainTag_PvE"
+    ],
+    "maxSelectCount": 1
+  },
+  {
+    "id": "SubTag_Team",
+    "rowName": "SubTag_Team",
+    "label": "Team",
+    "displayKey": "K_IGU_18",
+    "availableForMainTagIds": [
+      "MainTag_BattleTeam",
+      "MainTag_BattleFreeForAll"
+    ],
+    "maxSelectCount": 1
+  }
+]

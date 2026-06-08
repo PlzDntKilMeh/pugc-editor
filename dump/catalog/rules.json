@@ -1,0 +1,480 @@
+{
+  "creatorData": [
+    {
+      "path": "name",
+      "type": "String",
+      "label": "Name",
+      "description": ""
+    },
+    {
+      "path": "description",
+      "type": "String",
+      "label": "Description",
+      "description": ""
+    },
+    {
+      "path": "mainTagId",
+      "type": "String",
+      "label": "Main Tag",
+      "description": ""
+    },
+    {
+      "path": "subTagIds",
+      "type": "Array",
+      "label": "Sub Tags",
+      "description": ""
+    },
+    {
+      "path": "versionMajor",
+      "type": "Int",
+      "label": "Version Major",
+      "description": ""
+    },
+    {
+      "path": "versionMinor",
+      "type": "Int",
+      "label": "Version Minor",
+      "description": ""
+    },
+    {
+      "path": "ownerAccountId",
+      "type": "String",
+      "label": "Owner Account ID",
+      "description": ""
+    },
+    {
+      "path": "ownerNickName",
+      "type": "String",
+      "label": "Owner Nick Name",
+      "description": ""
+    }
+  ],
+  "roundRuleData": [
+    {
+      "path": "roundGameCount",
+      "schemaPath": "RoundGameCount",
+      "type": "Int",
+      "unrealType": "IntProperty",
+      "validator": "Class'/Script/TslGameMode.ModIntValidator'",
+      "validatorParam": {
+        "minValue": 1,
+        "maxValue": 100,
+        "valueSet": []
+      },
+      "advanced": false,
+      "hidden": false,
+      "labelKey": "K_IGU_21",
+      "labelNs": "NS_UGC_SETTINGS",
+      "descriptionKey": "K_IGU_02",
+      "descriptionNs": "NS_UGC_SETTINGS",
+      "label": "Round Count\t",
+      "description": "Set the total number of rounds.\r\nIf a team wins more than half of the total rounds, that team is declared the winner and the match ends.\r\nIf there are three or more teams and the number of wins is tied, all tied teams are declared winners."
+    },
+    {
+      "path": "goalScore",
+      "schemaPath": "GoalScore",
+      "type": "Int",
+      "unrealType": "IntProperty",
+      "validator": "Class'/Script/TslGameMode.ModIntValidator'",
+      "validatorParam": {
+        "minValue": 1,
+        "maxValue": 9999,
+        "valueSet": []
+      },
+      "advanced": false,
+      "hidden": false,
+      "labelKey": "K_IGU_22",
+      "labelNs": "NS_UGC_SETTINGS",
+      "descriptionKey": "K_IGU_03",
+      "descriptionNs": "NS_UGC_SETTINGS",
+      "label": "Target Score",
+      "description": "Set the target score required to win.\r\nThe round ends when a team or player reaches the target score.\r\nIf no one reaches the target score, the team or player with the higher score wins.\r\nIf scores are tied, all tied teams are awarded one win."
+    },
+    {
+      "path": "timeLimit",
+      "schemaPath": "TimeLimit",
+      "type": "Float",
+      "unrealType": "FloatProperty",
+      "validator": "Class'/Script/TslGameMode.ModFloatValidator'",
+      "validatorParam": {
+        "minValue": 1,
+        "maxValue": 3600,
+        "valueSet": []
+      },
+      "advanced": false,
+      "hidden": false,
+      "labelKey": "K_IGU_23",
+      "labelNs": "NS_UGC_SETTINGS",
+      "descriptionKey": "K_IGU_04",
+      "descriptionNs": "NS_UGC_SETTINGS",
+      "label": "Time Limit (s)",
+      "description": "Set the time limit per round.\r\nWhen the time limit expires, the team with the higher score wins the round."
+    },
+    {
+      "path": "warmupTime",
+      "schemaPath": "WarmupTime",
+      "type": "Float",
+      "unrealType": "FloatProperty",
+      "validator": "Class'/Script/TslGameMode.ModFloatValidator'",
+      "validatorParam": {
+        "minValue": 1,
+        "maxValue": 120,
+        "valueSet": []
+      },
+      "advanced": false,
+      "hidden": false,
+      "labelKey": "K_IGU_24",
+      "labelNs": "NS_UGC_SETTINGS",
+      "descriptionKey": "K_IGU_05",
+      "descriptionNs": "NS_UGC_SETTINGS",
+      "label": "Warm-up Time (s)",
+      "description": "Set the warm-up time before the match starts."
+    },
+    {
+      "path": "roundWarmupTime",
+      "schemaPath": "RoundWarmupTime",
+      "type": "Float",
+      "unrealType": "FloatProperty",
+      "validator": "Class'/Script/TslGameMode.ModFloatValidator'",
+      "validatorParam": {
+        "minValue": 1,
+        "maxValue": 10,
+        "valueSet": []
+      },
+      "advanced": false,
+      "hidden": false,
+      "labelKey": "K_IGU_25",
+      "labelNs": "NS_UGC_SETTINGS",
+      "descriptionKey": "K_IGU_06",
+      "descriptionNs": "NS_UGC_SETTINGS",
+      "label": "Round Warm-up Time (s)",
+      "description": "Set the warm-up time before each round starts."
+    },
+    {
+      "path": "goalRoundCount",
+      "schemaPath": "GoalRoundCount",
+      "type": "Int",
+      "unrealType": "IntProperty",
+      "validator": "Class'/Script/TslGameMode.ModIntValidator'",
+      "validatorParam": {
+        "minValue": 0,
+        "maxValue": 50,
+        "valueSet": []
+      },
+      "advanced": false,
+      "hidden": false,
+      "labelKey": "K_IGU_26",
+      "labelNs": "NS_UGC_SETTINGS",
+      "descriptionKey": "K_IGU_07",
+      "descriptionNs": "NS_UGC_SETTINGS",
+      "label": "Target Round Count",
+      "description": "Set the number of rounds required to win.\r\nIf set to 0, the game ends when a team wins more than half of the rounds.\r\nIf set to 1 or higher, the game ends when a team wins the specified number of rounds.\r\nIn this case, winning more than half the rounds does not apply."
+    },
+    {
+      "path": "bSaveInventoryWhenRoundEnded",
+      "schemaPath": "bSaveInventoryWhenRoundEnded",
+      "type": "Bool",
+      "unrealType": "BoolProperty",
+      "validator": "Class'/Script/TslGameMode.ModBoolValidator'",
+      "validatorParam": {},
+      "advanced": false,
+      "hidden": false,
+      "labelKey": "K_IGU_41",
+      "labelNs": "NS_UGC_SETTINGS",
+      "descriptionKey": "K_IGU_42",
+      "descriptionNs": "NS_UGC_SETTINGS",
+      "label": "Inventory Item Carry-Over",
+      "description": "Determine whether inventory items carry over to the next round."
+    },
+    {
+      "path": "bSaveInventoryWhenDied",
+      "schemaPath": "bSaveInventoryWhenDied",
+      "type": "Bool",
+      "unrealType": "BoolProperty",
+      "validator": "Class'/Script/TslGameMode.ModBoolValidator'",
+      "validatorParam": {},
+      "advanced": false,
+      "hidden": false,
+      "labelKey": "K_IGU_43",
+      "labelNs": "NS_UGC_SETTINGS",
+      "descriptionKey": "K_IGU_44",
+      "descriptionNs": "NS_UGC_SETTINGS",
+      "label": "Inventory Item Carry-Over (Dead)",
+      "description": "Determine whether inventory items carry over to the next round even if the player has died."
+    }
+  ],
+  "characterRuleData": [
+    {
+      "path": "characterHP",
+      "schemaPath": "CharacterHP",
+      "type": "Float",
+      "unrealType": "FloatProperty",
+      "validator": "Class'/Script/TslGameMode.ModFloatValidator'",
+      "validatorParam": {
+        "minValue": 1,
+        "maxValue": 500,
+        "valueSet": []
+      },
+      "advanced": false,
+      "hidden": false,
+      "labelKey": "",
+      "labelNs": "",
+      "descriptionKey": "",
+      "descriptionNs": "",
+      "label": "",
+      "description": ""
+    }
+  ],
+  "gameRuleData": [
+    {
+      "path": "teamDistributionMethod",
+      "schemaPath": "TeamDistributionMethod",
+      "type": "Enum",
+      "unrealType": "EModTeamDistributionMethod",
+      "validator": "",
+      "validatorParam": null,
+      "advanced": false,
+      "hidden": false,
+      "labelKey": "K_IGU_39",
+      "labelNs": "NS_UGC_SETTINGS",
+      "descriptionKey": "K_IGU_40",
+      "descriptionNs": "NS_UGC_SETTINGS",
+      "label": "Team Assignment Method",
+      "description": "Set how players are assigned to teams.\r\nCustom: Players manually select their teams.\r\nBalanced: Players are assigned at random and automatically placed into evenly sized teams.\r\nSequential: Players are assigned at random and placed into teams in sequential order."
+    },
+    {
+      "path": "teamSize",
+      "schemaPath": "TeamSize",
+      "type": "Int",
+      "unrealType": "IntProperty",
+      "validator": "Class'/Script/TslGameMode.ModIntValidator'",
+      "validatorParam": {
+        "minValue": 2,
+        "maxValue": 100,
+        "valueSet": []
+      },
+      "advanced": false,
+      "hidden": false,
+      "labelKey": "K_IGU_27",
+      "labelNs": "NS_UGC_SETTINGS",
+      "descriptionKey": "K_IGU_08",
+      "descriptionNs": "NS_UGC_SETTINGS",
+      "label": "Team Count",
+      "description": "Set the number of teams in the game."
+    },
+    {
+      "path": "squadSize",
+      "schemaPath": "SquadSize",
+      "type": "Int",
+      "unrealType": "IntProperty",
+      "validator": "Class'/Script/TslGameMode.ModIntValidator'",
+      "validatorParam": {
+        "minValue": 1,
+        "maxValue": 10,
+        "valueSet": []
+      },
+      "advanced": false,
+      "hidden": false,
+      "labelKey": "K_IGU_28",
+      "labelNs": "NS_UGC_SETTINGS",
+      "descriptionKey": "K_IGU_09",
+      "descriptionNs": "NS_UGC_SETTINGS",
+      "label": "Team Size",
+      "description": "Set the number of players per team."
+    },
+    {
+      "path": "teamKillDamageModifier",
+      "schemaPath": "TeamKillDamageModifier",
+      "type": "Float",
+      "unrealType": "FloatProperty",
+      "validator": "Class'/Script/TslGameMode.ModFloatValidator'",
+      "validatorParam": {
+        "minValue": 0,
+        "maxValue": 100,
+        "valueSet": []
+      },
+      "advanced": false,
+      "hidden": false,
+      "labelKey": "K_IGU_29",
+      "labelNs": "NS_UGC_SETTINGS",
+      "descriptionKey": "K_IGU_10",
+      "descriptionNs": "NS_UGC_SETTINGS",
+      "label": "Friendly Fire Damage Ratio",
+      "description": "Set the damage modifier for friendly fire."
+    },
+    {
+      "path": "enableDBNO",
+      "schemaPath": "EnableDBNO",
+      "type": "Bool",
+      "unrealType": "BoolProperty",
+      "validator": "",
+      "validatorParam": null,
+      "advanced": false,
+      "hidden": false,
+      "labelKey": "K_IGU_30",
+      "labelNs": "NS_UGC_SETTINGS",
+      "descriptionKey": "K_IGU_11",
+      "descriptionNs": "NS_UGC_SETTINGS",
+      "label": "Use DBNO",
+      "description": "Determine whether the Down But Not Out system is enabled."
+    },
+    {
+      "path": "cameraViewBehaviour",
+      "schemaPath": "CameraViewBehaviour",
+      "type": "Enum",
+      "unrealType": "ECameraViewBehaviour",
+      "validator": "",
+      "validatorParam": null,
+      "advanced": false,
+      "hidden": false,
+      "labelKey": "K_IGU_31",
+      "labelNs": "NS_UGC_SETTINGS",
+      "descriptionKey": "K_IGU_12",
+      "descriptionNs": "NS_UGC_SETTINGS",
+      "label": "Camera View",
+      "description": "Set the player's camera view."
+    },
+    {
+      "path": "useRespawn",
+      "schemaPath": "UseRespawn",
+      "type": "Bool",
+      "unrealType": "BoolProperty",
+      "validator": "",
+      "validatorParam": null,
+      "advanced": false,
+      "hidden": false,
+      "labelKey": "K_IGU_32",
+      "labelNs": "NS_UGC_SETTINGS",
+      "descriptionKey": "K_IGU_13",
+      "descriptionNs": "NS_UGC_SETTINGS",
+      "label": "Use Respawn",
+      "description": "Determine whether respawn is enabled."
+    },
+    {
+      "path": "respawnPeriod",
+      "schemaPath": "RespawnPeriod",
+      "type": "Float",
+      "unrealType": "FloatProperty",
+      "validator": "Class'/Script/TslGameMode.ModFloatValidator'",
+      "validatorParam": {
+        "minValue": 1,
+        "maxValue": 300,
+        "valueSet": []
+      },
+      "advanced": false,
+      "hidden": false,
+      "labelKey": "K_IGU_33",
+      "labelNs": "NS_UGC_SETTINGS",
+      "descriptionKey": "K_IGU_14",
+      "descriptionNs": "NS_UGC_SETTINGS",
+      "label": "Respawn Time (s)",
+      "description": "Set the time it takes to respawn after death."
+    },
+    {
+      "path": "respawnBuffEnabled",
+      "schemaPath": "RespawnBuffEnabled",
+      "type": "Bool",
+      "unrealType": "BoolProperty",
+      "validator": "",
+      "validatorParam": null,
+      "advanced": false,
+      "hidden": false,
+      "labelKey": "K_IGU_34",
+      "labelNs": "NS_UGC_SETTINGS",
+      "descriptionKey": "K_IGU_15",
+      "descriptionNs": "NS_UGC_SETTINGS",
+      "label": "Use Respawn Invincibility",
+      "description": "Determine whether to apply an invincibility buff on respawn."
+    },
+    {
+      "path": "respawnInvincibleDuration",
+      "schemaPath": "RespawnInvincibleDuration",
+      "type": "Float",
+      "unrealType": "FloatProperty",
+      "validator": "Class'/Script/TslGameMode.ModFloatValidator'",
+      "validatorParam": {
+        "minValue": 1,
+        "maxValue": 300,
+        "valueSet": []
+      },
+      "advanced": false,
+      "hidden": false,
+      "labelKey": "K_IGU_35",
+      "labelNs": "NS_UGC_SETTINGS",
+      "descriptionKey": "K_IGU_16",
+      "descriptionNs": "NS_UGC_SETTINGS",
+      "label": "Invincibility Duration (s)",
+      "description": "Set the invincibility buff duration after respawn."
+    },
+    {
+      "path": "enableLootBox",
+      "schemaPath": "EnableLootBox",
+      "type": "Bool",
+      "unrealType": "BoolProperty",
+      "validator": "",
+      "validatorParam": null,
+      "advanced": false,
+      "hidden": false,
+      "labelKey": "K_IGU_36",
+      "labelNs": "NS_UGC_SETTINGS",
+      "descriptionKey": "K_IGU_17",
+      "descriptionNs": "NS_UGC_SETTINGS",
+      "label": "Use Deathboxes",
+      "description": "Determine whether to spawn a deathbox when a player dies."
+    },
+    {
+      "path": "lootBoxLifeTime",
+      "schemaPath": "LootBoxLifeTime",
+      "type": "Float",
+      "unrealType": "FloatProperty",
+      "validator": "Class'/Script/TslGameMode.ModFloatValidator'",
+      "validatorParam": {
+        "minValue": 0,
+        "maxValue": 600,
+        "valueSet": []
+      },
+      "advanced": false,
+      "hidden": false,
+      "labelKey": "K_IGU_37",
+      "labelNs": "NS_UGC_SETTINGS",
+      "descriptionKey": "K_IGU_18",
+      "descriptionNs": "NS_UGC_SETTINGS",
+      "label": "Deathbox Duration (s)",
+      "description": "Set the duration for which the deathbox remains."
+    },
+    {
+      "path": "showKillFeedSquadNumber",
+      "schemaPath": "ShowKillFeedSquadNumber",
+      "type": "Bool",
+      "unrealType": "BoolProperty",
+      "validator": "",
+      "validatorParam": null,
+      "advanced": false,
+      "hidden": false,
+      "labelKey": "K_IGU_38",
+      "labelNs": "NS_UGC_SETTINGS",
+      "descriptionKey": "K_IGU_19",
+      "descriptionNs": "NS_UGC_SETTINGS",
+      "label": "Show Killfeed Team Numbers",
+      "description": "Determine whether to show each team's number in the killfeed."
+    }
+  ],
+  "userSelectableData": [
+    {
+      "path": "modUserSelectPlayType",
+      "schemaPath": "ModUserSelectPlayType",
+      "type": "Enum",
+      "unrealType": "EModUserSelectPlayType",
+      "validator": "",
+      "validatorParam": null,
+      "advanced": false,
+      "hidden": false,
+      "labelKey": "K_IGU_20",
+      "labelNs": "NS_UGC_SETTINGS",
+      "descriptionKey": "K_IGU_01",
+      "descriptionNs": "NS_UGC_SETTINGS",
+      "label": "Mode Type",
+      "description": "Determine the type of mode."
+    }
+  ]
+}

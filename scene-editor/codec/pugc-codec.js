@@ -1,0 +1,1 @@
+let o=null;function t(){return o||(o=(typeof window<"u"&&window.PUGC_CODEC||"client")==="server"?import("./pugc-codec-server.js").then(e=>e.serverCodec):import("./pugc-codec-client.js").then(e=>e.clientCodec)),o}export{t as getPugcCodec};

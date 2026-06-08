@@ -1,0 +1,5546 @@
+{
+  "-Glass": {
+    "AlphaTest": true
+  },
+  "AHospital_ADecal_a": {
+    "AlphaTest": true
+  },
+  "AHospital_ADecal_a_Proxy": {
+    "AlphaTest": true
+  },
+  "AHospital_ADecal_b": {
+    "AlphaTest": true
+  },
+  "AHospital_ADecal_b_Proxy": {
+    "AlphaTest": true
+  },
+  "AlpineHouse_HayMask_Mat": {
+    "AlphaTest": true
+  },
+  "AlpineHouse_HayMask_Mat_Proxy": {
+    "AlphaTest": true
+  },
+  "ASchool_Books_c_Mat": {
+    "AlphaTest": true
+  },
+  "ASchool_Books_c_Mat_Proxy": {
+    "AlphaTest": true
+  },
+  "ASchool_Carpet_Mat": {
+    "AlphaTest": true
+  },
+  "ASchool_Carpet_Mat_Proxy": {
+    "AlphaTest": true
+  },
+  "ASchool_Sign_Mat": {
+    "AlphaTest": true
+  },
+  "ASchool_Sign_Mat_Proxy": {
+    "AlphaTest": true
+  },
+  "BloodStain_03_Proxy": {
+    "AlphaTest": true
+  },
+  "BloodStain_2_Proxy": {
+    "AlphaTest": true
+  },
+  "BloodStain_Proxy": {
+    "AlphaTest": true
+  },
+  "Desert_Carpet_01": {
+    "AlphaTest": true
+  },
+  "Desert_Carpet_01_Proxy": {
+    "AlphaTest": true
+  },
+  "Desert_Decal_c_Mat": {
+    "AlphaTest": true
+  },
+  "Desert_Decal_c_Mat_Proxy": {
+    "AlphaTest": true
+  },
+  "Desert_R_Decal_a_Mat": {
+    "AlphaTest": true
+  },
+  "Desert_R_Decal_a_Mat_Proxy": {
+    "AlphaTest": true
+  },
+  "Desert_R_Decal_b_Mat": {
+    "AlphaTest": true
+  },
+  "Desert_R_Decal_b_Mat_Proxy": {
+    "AlphaTest": true
+  },
+  "Desert_R_Decal_c_Mat": {
+    "AlphaTest": true
+  },
+  "Desert_R_Decal_c_Mat_Proxy": {
+    "AlphaTest": true
+  },
+  "Desert_Tarp_Flag": {
+    "AlphaTest": true
+  },
+  "Desert_Tarp_Flag_Proxy": {
+    "AlphaTest": true
+  },
+  "MH_RoadMarking_b_Mat": {
+    "AlphaTest": true
+  },
+  "MH_RoadMarking_b_Mat_02": {
+    "AlphaTest": true
+  },
+  "MH_RoadMarking_b_Mat_02_Proxy": {
+    "AlphaTest": true
+  },
+  "MH_RoadMarking_b_Mat_Proxy": {
+    "AlphaTest": true
+  },
+  "MH_RoadMarking_c_Mat": {
+    "AlphaTest": true
+  },
+  "MH_RoadMarking_c_Mat_Proxy": {
+    "AlphaTest": true
+  },
+  "MH_RoadMarking_Mat": {
+    "AlphaTest": true
+  },
+  "MH_RoadMarking_Mat_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_BrokenWood_Decal_01": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_BrokenWood_Decal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_bro_Bush_03_wind_Leaf": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_bro_greenash_wind_Leaf": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_bro_London_Plane_wind_Leaf": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_bro_White_Oak_fall_IM_wind_Leaf": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_bro_White_Oak_wind_Leaf": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Ceiling_Decal_01": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Ceiling_Decal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Ceiling_Decal_Police_01": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Ceiling_Decal_Police_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_ChainlinkFence_Tall_A_01": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_ChainlinkFence_Tall_A_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Chipped_Paint_Backing_Decal": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Chipped_Paint_Backing_Decal_02": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Chipped_Paint_Backing_Decal_02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Chipped_Paint_Backing_Decal_03": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Chipped_Paint_Backing_Decal_03_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Chipped_Paint_Backing_Decal_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Chipped_Paint_Decal": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Chipped_Paint_Decal1": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Chipped_Paint_Decal1_2": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Chipped_Paint_Decal1_2_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Chipped_Paint_Decal1_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Chipped_Paint_Decal_02": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Chipped_Paint_Decal_02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Chipped_Paint_Decal_03": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Chipped_Paint_Decal_03_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Chipped_Paint_Decal_10": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Chipped_Paint_Decal_10_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Chipped_Paint_Decal_11": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Chipped_Paint_Decal_11_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Chipped_Paint_Decal_12": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Chipped_Paint_Decal_12_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Chipped_Paint_Decal_13": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Chipped_Paint_Decal_13_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Chipped_Paint_Decal_14": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Chipped_Paint_Decal_14_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Chipped_Paint_Decal_15": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Chipped_Paint_Decal_15_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Chipped_Paint_Decal_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Concrete_Damage_01": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Concrete_Damage_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_CornCan_01": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_CornCan_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Decals_Concrete": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Decals_Concrete_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Decals_Top": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Decals_Top_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Decal_ConcretePatch_07": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Decal_ConcretePatch_07_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Decal_ConcretePatch_10": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Decal_ConcretePatch_10_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Decal_ConcretePatch_Dark": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Decal_ConcretePatch_Dark_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Decal_Concrete_01": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Decal_Concrete_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Decal_Leaks_01": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Decal_Leaks_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Decal_Leaks_02": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Decal_Leaks_02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Decal_Trash_01": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Decal_Trash_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_DirtDecal_01": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_DirtDecal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_DirtDecal_02": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_DirtDecal_02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_DirtDecal_03": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_DirtDecal_03_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_DirtDecal_04": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_DirtDecal_04_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_DirtDecal_Dark": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_DirtDecal_Dark_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_DirtDecal_Police_01": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_DirtDecal_Police_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_EranglePaperSign_01": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_EranglePaperSign_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_ExteriorEdgeDecal_01": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_ExteriorEdgeDecal_01_PoliceINT": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_ExteriorEdgeDecal_01_PoliceINT_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_ExteriorEdgeDecal_01_Prison1": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_ExteriorEdgeDecal_01_Prison1_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_ExteriorEdgeDecal_01_Prison2": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_ExteriorEdgeDecal_01_Prison2_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_ExteriorEdgeDecal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_ExteriorEdgeDecal_02": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_ExteriorEdgeDecal_02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_ExteriorEdgeDecal_03": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_ExteriorEdgeDecal_03_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_ExteriorEdgeDecal_05": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_ExteriorEdgeDecal_05_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_ExteriorEdgeDecal_ControlTower_01": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_ExteriorEdgeDecal_ControlTower_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_ExteriorEdgeDecal_INT": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_ExteriorEdgeDecal_INT_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_ExteriorEdgeDecal_SecPost_Ext_01": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_ExteriorEdgeDecal_SecPost_Ext_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_ExteriorEdgeDecal_SecPost_Int_01": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_ExteriorEdgeDecal_SecPost_Int_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Fence01_01": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Fence01_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Fence01_Net": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Fence01_Net_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Flags_01": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Flags_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Flags_02": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Flags_02_metal": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Flags_02_metal_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Flags_02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Fridge_01": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Fridge_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_GarbageDesbris": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_GarbageDesbris_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_GraffitiStyle_01": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_GraffitiStyle_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Ground_Rubble_02": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Ground_Rubble_02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_HositalBed_01": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_HositalBed_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_HS_Campsite_01_Ext_Decal": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_HS_Campsite_01_Ext_Decal_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_HS_GuardPost_01_Ext_Decal": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_HS_GuardPost_01_Ext_Decal_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_HS_GuardPost_01_Int_Decal": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_HS_GuardPost_01_Int_Decal_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_HS_GuardPost_03_Ext_Decal": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_HS_GuardPost_03_Ext_Decal_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_HS_GuardPost_03_Int_Trim_01": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_HS_GuardPost_03_Int_Trim_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_HS_Residential_01_Wood_Decal_01": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_HS_Residential_01_Wood_Decal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_HS_WareHouse_01_10": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_HS_WareHouse_01_10_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_HS_Warehouse_04_Ext_Decal": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_HS_Warehouse_04_Ext_Decal_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_InteriorDecals": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_InteriorDecals_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Int_Trim_01": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Int_Trim_01_Prison": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Int_Trim_01_Prison_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Int_Trim_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Int_Trim_02": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Int_Trim_02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Int_Trim_03": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Int_Trim_03_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Ivy_01": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Ivy_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Large_Warehouse_Building_Kit": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Large_Warehouse_Building_Kit_2": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Large_Warehouse_Building_Kit_2_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Large_Warehouse_Building_Kit_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_MossDecal_01": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_MossDecal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_MossDecal_2": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_MossDecal_2_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_MossDecal_SecPost_2": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_MossDecal_SecPost_2_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Oppresion_Banner_01_Skinny_Tall": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Oppresion_Banner_01_Skinny_Tall_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_PaperDebris_Alpha": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_PaperDebris_Alpha_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_PaperPiles_01": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_PaperPiles_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Plant_Dead_01": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Plant_Dead_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_PlasterEdgeDecal": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_PlasterEdgeDecalDark": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_PlasterEdgeDecalDark_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_PlasterEdgeDecal_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_PlasterFade_02": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_PlasterFade_02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Poster_01": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Poster_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Powerplant_Trim_Masked_01": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Powerplant_Trim_Masked_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_PropagandaPapers_01": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_PropagandaPapers_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Rug_Medium_01": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Rug_Medium_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_School_Basketball_Hoop_01_ref": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_School_Basketball_Hoop_01_ref_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_School_WoodTrim_01": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_School_WoodTrim_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Stairs_Decal_01": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Stairs_Decal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Stairs_Decal_02": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Stairs_Decal_02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_StoreAwning_01": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_StoreAwning_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_TownHall_MetalRoof_01": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_TownHall_MetalRoof_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Town_Commercial_12_Roof_Decal": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Town_Commercial_12_Roof_Decal_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Town_Residential_02_2R_Edge": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Town_Residential_02_2R_Edge_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Town_Residential_02_EdgeDecal_01": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Town_Residential_02_EdgeDecal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Town_Residential_02_MossDecal_01": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Town_Residential_02_MossDecal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Town_Residential_02_MossDecal_02": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Town_Residential_02_MossDecal_02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Town_Residential_03_EdgeDecal_01": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Town_Residential_03_EdgeDecal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Unique_Factory_CornerDecal_2": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Unique_Factory_CornerDecal_2_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Unique_Military_Intel_01_Ext_Decal_01": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Unique_Military_Intel_01_Ext_Decal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Unique_Military_Intel_01_Int_Decal": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Unique_Military_Intel_01_Int_Decal_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Unique_Prison_Official_House_EdgeDecal_01": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Unique_Prison_Official_House_EdgeDecal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_WallPaperSigns_01": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_WallPaperSigns_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Wallpaper_01": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Wallpaper_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Wallpaper_03": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Wallpaper_03_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Wallpaper_05": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Wallpaper_05_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Warehouse_02_CornerDecal_01": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Warehouse_02_CornerDecal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Weed_Leafy_01": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Weed_Leafy_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Weed_Tall_01": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_Weed_Tall_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_WindowCurtain_01": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_WindowCurtain_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_WindowCurtain_02": {
+    "AlphaTest": true
+  },
+  "MI_Baltic_WindowCurtain_02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_bamboo_LG": {
+    "AlphaTest": true
+  },
+  "MI_bamboo_LG_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_barbedWire01": {
+    "AlphaTest": true
+  },
+  "MI_barbedWire01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_bed_Grid": {
+    "AlphaTest": true
+  },
+  "MI_bed_Grid_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Blanket_01": {
+    "AlphaTest": true
+  },
+  "MI_Blanket_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Bootcamp_Catwalk": {
+    "AlphaTest": true
+  },
+  "MI_Bootcamp_CatwalkGrating": {
+    "AlphaTest": true
+  },
+  "MI_Bootcamp_CatwalkGrating_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Bootcamp_Catwalk_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Bootcamp_Decal_1": {
+    "AlphaTest": true
+  },
+  "MI_Bootcamp_Decal_1_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Bootcamp_Decal_2": {
+    "AlphaTest": true
+  },
+  "MI_Bootcamp_Decal_2_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Bootcamp_Decal_4": {
+    "AlphaTest": true
+  },
+  "MI_Bootcamp_Decal_4_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Bootcamp_Decal_5": {
+    "AlphaTest": true
+  },
+  "MI_Bootcamp_Decal_5_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Bootcamp_Signage_01": {
+    "AlphaTest": true
+  },
+  "MI_Bootcamp_Signage_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Bootcamp_TargetBase": {
+    "AlphaTest": true
+  },
+  "MI_Bootcamp_TargetBase_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_bro_Lombardy_Poplar_wind_Branch": {
+    "AlphaTest": true
+  },
+  "MI_bro_Lombardy_Poplar_wind_Leaf": {
+    "AlphaTest": true
+  },
+  "MI_BulletHoles01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_cathedral_decals": {
+    "AlphaTest": true
+  },
+  "MI_cathedral_decals_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Chainlink01_wire": {
+    "AlphaTest": true
+  },
+  "MI_Chainlink01_wire_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Chimera_Tablecloth_01_dusty": {
+    "AlphaTest": true
+  },
+  "MI_Chimera_Tablecloth_01_dusty_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_chimney04": {
+    "AlphaTest": true
+  },
+  "MI_chimney04_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_City_Residential_01_1S_1F_EXT_decals": {
+    "AlphaTest": true
+  },
+  "MI_City_Residential_01_1S_1F_EXT_decals_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_City_Residential_Houses_New_Trims": {
+    "AlphaTest": true
+  },
+  "MI_City_Residential_Houses_New_Trims_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_City_Warehouse_04_Trims": {
+    "AlphaTest": true
+  },
+  "MI_City_Warehouse_04_Trims_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_CornerDecal_1": {
+    "AlphaTest": true
+  },
+  "MI_CornerDecal_10": {
+    "AlphaTest": true
+  },
+  "MI_CornerDecal_10_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_CornerDecal_11": {
+    "AlphaTest": true
+  },
+  "MI_CornerDecal_11_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_CornerDecal_12": {
+    "AlphaTest": true
+  },
+  "MI_CornerDecal_12_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_CornerDecal_13": {
+    "AlphaTest": true
+  },
+  "MI_CornerDecal_13b": {
+    "AlphaTest": true
+  },
+  "MI_CornerDecal_13b_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_CornerDecal_13_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_CornerDecal_14": {
+    "AlphaTest": true
+  },
+  "MI_CornerDecal_14_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_CornerDecal_1_Plaster": {
+    "AlphaTest": true
+  },
+  "MI_CornerDecal_1_Plaster_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_CornerDecal_1_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_CornerDecal_2": {
+    "AlphaTest": true
+  },
+  "MI_CornerDecal_2_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_CornerDecal_4": {
+    "AlphaTest": true
+  },
+  "MI_CornerDecal_4_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_CornerDecal_5": {
+    "AlphaTest": true
+  },
+  "MI_CornerDecal_5_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_CornerDecal_6": {
+    "AlphaTest": true
+  },
+  "MI_CornerDecal_6_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_CornerDecal_7": {
+    "AlphaTest": true
+  },
+  "MI_CornerDecal_7_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_CornerDecal_8": {
+    "AlphaTest": true
+  },
+  "MI_CornerDecal_8_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_CornerDecal_9": {
+    "AlphaTest": true
+  },
+  "MI_CornerDecal_9_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_CornerDecal_statue_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Debris_Papers": {
+    "AlphaTest": true
+  },
+  "MI_Debris_Papers_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_DecalPlane_01": {
+    "AlphaTest": true
+  },
+  "MI_DecalPlane_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_DecalPlane_03": {
+    "AlphaTest": true
+  },
+  "MI_DecalPlane_03_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_DecalPlane_04": {
+    "AlphaTest": true
+  },
+  "MI_DecalPlane_04_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_DecalPlane_07": {
+    "AlphaTest": true
+  },
+  "MI_DecalPlane_07_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_DecalPlane_08": {
+    "AlphaTest": true
+  },
+  "MI_DecalPlane_08_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Decals_Desert_Graffiti_01": {
+    "AlphaTest": true
+  },
+  "MI_Decals_Desert_Graffiti_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Decals_Desert_Graffiti_02": {
+    "AlphaTest": true
+  },
+  "MI_Decals_Desert_Graffiti_02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Decals_Desert_Graffiti_12": {
+    "AlphaTest": true
+  },
+  "MI_Decals_Desert_Graffiti_12_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Decal_Baltic_DirtGround_01": {
+    "AlphaTest": true
+  },
+  "MI_Decal_Baltic_DirtGround_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Decal_Baltic_DirtGround_02": {
+    "AlphaTest": true
+  },
+  "MI_Decal_Baltic_DirtGround_02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Decal_Baltic_Factory_Ground_Trash_02": {
+    "AlphaTest": true
+  },
+  "MI_Decal_Baltic_Factory_Ground_Trash_02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Decal_Baltic_Garage_01_Leaks_01": {
+    "AlphaTest": true
+  },
+  "MI_Decal_Baltic_Garage_01_Leaks_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Decal_Baltic_Ground_Rubble_01": {
+    "AlphaTest": true
+  },
+  "MI_Decal_Baltic_Ground_Rubble_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Decal_Baltic_Ground_Rubble_02": {
+    "AlphaTest": true
+  },
+  "MI_Decal_Baltic_Ground_Rubble_02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Decal_Baltic_Ground_Rubble_03": {
+    "AlphaTest": true
+  },
+  "MI_Decal_Baltic_Ground_Rubble_03_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Decal_Baltic_Ground_Rubble_04": {
+    "AlphaTest": true
+  },
+  "MI_Decal_Baltic_Ground_Rubble_04_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Decal_Baltic_Ground_Rubble_04_Y012": {
+    "AlphaTest": true
+  },
+  "MI_Decal_Baltic_Ground_Rubble_04_Y012_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Desert_CornerDecal_5": {
+    "AlphaTest": true
+  },
+  "MI_Desert_CornerDecal_5_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Desert_CornerDecal_6": {
+    "AlphaTest": true
+  },
+  "MI_Desert_CornerDecal_6_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Desert_CornerDecal_7_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Desert_GasStationVamos_02": {
+    "AlphaTest": true
+  },
+  "MI_Desert_GasStationVamos_02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Desert_Plaster_04_03_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Desert_Resort_Blinds1": {
+    "AlphaTest": true
+  },
+  "MI_Desert_Resort_Blinds1_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Desert_Resort_ExtEdgeDecal1": {
+    "AlphaTest": true
+  },
+  "MI_Desert_Resort_ExtEdgeDecal1_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Desert_Resort_leaking_01": {
+    "AlphaTest": true
+  },
+  "MI_Desert_Resort_leaking_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Desert_Slum_Building_03_1S_Decals": {
+    "AlphaTest": true
+  },
+  "MI_Desert_Slum_Building_03_1S_Decals_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Desert_Slum_Building_03_1S_New_Edges_01": {
+    "AlphaTest": true
+  },
+  "MI_Desert_Slum_Building_03_1S_New_Edges_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Desert_Slum_Building_03_1S_New_Edges_02": {
+    "AlphaTest": true
+  },
+  "MI_Desert_Slum_Building_03_1S_New_Edges_02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Desert_Slum_Building_03_1S_New_Edges_INT": {
+    "AlphaTest": true
+  },
+  "MI_Desert_Slum_Building_03_1S_New_Edges_INT_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Desert_Slum_Building_05_1S_New_Edges_01": {
+    "AlphaTest": true
+  },
+  "MI_Desert_Slum_Building_05_1S_New_Edges_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Desert_Slum_Building_05_1S_New_Edges_02": {
+    "AlphaTest": true
+  },
+  "MI_Desert_Slum_Building_05_1S_New_Edges_02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Desert_Slum_Building_05_1S_New_Edges_2": {
+    "AlphaTest": true
+  },
+  "MI_Desert_Slum_Building_05_1S_New_Edges_2_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Desert_Stairs_01": {
+    "AlphaTest": true
+  },
+  "MI_Desert_Stairs_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Desert_TruckStop_Diner_EdgeDecal_01": {
+    "AlphaTest": true
+  },
+  "MI_Desert_TruckStop_Diner_EdgeDecal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Desert_TruckStop_Diner_EdgeDecal_02": {
+    "AlphaTest": true
+  },
+  "MI_Desert_TruckStop_Diner_EdgeDecal_02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Desert_TruckStop_Motel_Curtain_01": {
+    "AlphaTest": true
+  },
+  "MI_Desert_TruckStop_Motel_Curtain_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Desert_TruckStop_Motel_EdgeDecal_01": {
+    "AlphaTest": true
+  },
+  "MI_Desert_TruckStop_Motel_EdgeDecal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Desert_TruckStop_PublicToliet_Decals_GrungeDrips_01": {
+    "AlphaTest": true
+  },
+  "MI_Desert_TruckStop_PublicToliet_Decals_GrungeDrips_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Desert_TruckStop_PublicToliet_ExteriorEdgeDecal_01": {
+    "AlphaTest": true
+  },
+  "MI_Desert_TruckStop_PublicToliet_ExteriorEdgeDecal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Desert_TruckStop_PublicToliet_ExteriorEdgeDecal_02": {
+    "AlphaTest": true
+  },
+  "MI_Desert_TruckStop_PublicToliet_ExteriorEdgeDecal_02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Desert_TruckStop_Storage_01_Decals_GrungeDrips_01": {
+    "AlphaTest": true
+  },
+  "MI_Desert_TruckStop_Storage_01_Decals_GrungeDrips_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Desert_TruckStop_Storage_01_EdgeDamage": {
+    "AlphaTest": true
+  },
+  "MI_Desert_TruckStop_Storage_01_EdgeDamage_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Desert_TruckStop_Storage_01_EdgeDecals_EXT": {
+    "AlphaTest": true
+  },
+  "MI_Desert_TruckStop_Storage_01_EdgeDecals_EXT_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Desert_TruckStop_Warehouse_01_Decals_Grunge_01": {
+    "AlphaTest": true
+  },
+  "MI_Desert_TruckStop_Warehouse_01_Decals_Grunge_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Desert_TruckStop_Warehouse_01_Door": {
+    "AlphaTest": true
+  },
+  "MI_Desert_TruckStop_Warehouse_01_Door_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Desert_TruckStop_Warehouse_01_EdgeDamage": {
+    "AlphaTest": true
+  },
+  "MI_Desert_TruckStop_Warehouse_01_EdgeDamage_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Desert_TruckStop_Warehouse_01_EdgeDecals": {
+    "AlphaTest": true
+  },
+  "MI_Desert_TruckStop_Warehouse_01_EdgeDecals_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Desert_TruckStop_Warehouse_WindowCover": {
+    "AlphaTest": true
+  },
+  "MI_Desert_TruckStop_Warehouse_WindowCover_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Desert_Village_Building_03_1S_Decals": {
+    "AlphaTest": true
+  },
+  "MI_Desert_Village_Building_03_1S_Decals_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Desert_Village_Building_03_1S_Edges": {
+    "AlphaTest": true
+  },
+  "MI_Desert_Village_Building_03_1S_Edges_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Desert_Village_Farmhouse_01_Edges": {
+    "AlphaTest": true
+  },
+  "MI_Desert_Village_Farmhouse_01_Edges_2": {
+    "AlphaTest": true
+  },
+  "MI_Desert_Village_Farmhouse_01_Edges_2_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Desert_Village_Farmhouse_01_Edges_INT": {
+    "AlphaTest": true
+  },
+  "MI_Desert_Village_Farmhouse_01_Edges_INT_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Desert_Village_Farmhouse_01_Edges_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Desert_Village_Farmhouse_01_GrungeDecals": {
+    "AlphaTest": true
+  },
+  "MI_Desert_Village_Farmhouse_01_GrungeDecals_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Desert_Village_Farmhouse_01_ThatchedRoof_01": {
+    "AlphaTest": true
+  },
+  "MI_Desert_Village_Farmhouse_01_ThatchedRoof_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Desert_Wood_End_01": {
+    "AlphaTest": true
+  },
+  "MI_Desert_Wood_End_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Desert_Wood_End_2": {
+    "AlphaTest": true
+  },
+  "MI_Desert_Wood_End_2_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_DOME_CHAINLINK_01": {
+    "AlphaTest": true
+  },
+  "MI_DOME_CHAINLINK_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Dome_Compound_Decals1": {
+    "AlphaTest": true
+  },
+  "MI_Dome_Compound_Decals1_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Dome_Decals_Drip1": {
+    "AlphaTest": true
+  },
+  "MI_Dome_Decals_Drip1_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Dome_Decals_Drip2": {
+    "AlphaTest": true
+  },
+  "MI_Dome_Decals_Drip2_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Dome_Decals_Drip3": {
+    "AlphaTest": true
+  },
+  "MI_Dome_Decals_Drip3_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Dome_ExtEdgeDecal1": {
+    "AlphaTest": true
+  },
+  "MI_Dome_ExtEdgeDecal1_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Dome_FloorMat_02": {
+    "AlphaTest": true
+  },
+  "MI_Dome_FloorMat_02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Dome_Floor_deco_Dirt01": {
+    "AlphaTest": true
+  },
+  "MI_Dome_Floor_deco_Dirt01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Dome_Floor_deco_Dirt02": {
+    "AlphaTest": true
+  },
+  "MI_Dome_Floor_deco_Dirt02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Dome_Glass_01": {
+    "AlphaTest": true
+  },
+  "MI_Dome_Glass_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Dome_marking_01": {
+    "AlphaTest": true
+  },
+  "MI_Dome_marking_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_DO_Decal_Rust_01": {
+    "AlphaTest": true
+  },
+  "MI_DO_Decal_Rust_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_DO_Decal_Rust_02": {
+    "AlphaTest": true
+  },
+  "MI_DO_Decal_Rust_02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_DO_Decal_Rust_03_light": {
+    "AlphaTest": true
+  },
+  "MI_DO_Decal_Rust_03_light_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_DO_Decal_Rust_light": {
+    "AlphaTest": true
+  },
+  "MI_DO_Decal_Rust_light_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_DO_Dino_Decal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_DO_Hay_Stack_ver2_alpha": {
+    "AlphaTest": true
+  },
+  "MI_DO_Hay_Stack_ver2_alpha_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_DO_Train_FlatCar_Alpha01": {
+    "AlphaTest": true
+  },
+  "MI_DO_Train_FlatCar_Alpha01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_DO_Trim_01": {
+    "AlphaTest": true
+  },
+  "MI_DO_Trim_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Fan01": {
+    "AlphaTest": true
+  },
+  "MI_Fan01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Fence01": {
+    "AlphaTest": true
+  },
+  "MI_Fence01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Fence01_wire": {
+    "AlphaTest": true
+  },
+  "MI_Fence01_wire_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_FoldingChair01": {
+    "AlphaTest": true
+  },
+  "MI_FoldingChair01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Glass_Arcade_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Hanging_Lamp": {
+    "AlphaTest": true
+  },
+  "MI_Hanging_Lamp_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_haybale01": {
+    "AlphaTest": true
+  },
+  "MI_haybale01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Heaven_Concrete_Decals_01": {
+    "AlphaTest": true
+  },
+  "MI_Heaven_Concrete_Decals_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Heaven_CornerStoreKit_Glass_01": {
+    "AlphaTest": true
+  },
+  "MI_Heaven_CornerStoreKit_Glass_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Heaven_CornerStoreKit_Trim": {
+    "AlphaTest": true
+  },
+  "MI_Heaven_CornerStoreKit_Trim_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Heaven_FlatMetal_01": {
+    "AlphaTest": true
+  },
+  "MI_Heaven_FlatMetal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Heaven_InteriorLight_OFF": {
+    "AlphaTest": true
+  },
+  "MI_Heaven_InteriorLight_OFF_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Heaven_InteriorLight_ON_Cool": {
+    "AlphaTest": true
+  },
+  "MI_Heaven_InteriorLight_ON_Cool_FlickerA": {
+    "AlphaTest": true
+  },
+  "MI_Heaven_InteriorLight_ON_Cool_FlickerA_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Heaven_InteriorLight_ON_Cool_FlickerB": {
+    "AlphaTest": true
+  },
+  "MI_Heaven_InteriorLight_ON_Cool_FlickerB_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Heaven_InteriorLight_ON_Cool_FlickerC": {
+    "AlphaTest": true
+  },
+  "MI_Heaven_InteriorLight_ON_Cool_FlickerC_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Heaven_InteriorLight_ON_Cool_FlickerD": {
+    "AlphaTest": true
+  },
+  "MI_Heaven_InteriorLight_ON_Cool_FlickerD_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Heaven_InteriorLight_ON_Cool_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Heaven_InteriorLight_ON_Warm": {
+    "AlphaTest": true
+  },
+  "MI_Heaven_InteriorLight_ON_Warm_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Heaven_MetalPitted_01": {
+    "AlphaTest": true
+  },
+  "MI_Heaven_MetalPitted_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Heaven_Ramp_02": {
+    "AlphaTest": true
+  },
+  "MI_Heaven_Ramp_02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Heaven_RustLeaks_02": {
+    "AlphaTest": true
+  },
+  "MI_Heaven_RustLeaks_02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Heaven_Trailer_01_DamageDecals_04": {
+    "AlphaTest": true
+  },
+  "MI_Heaven_Trailer_01_DamageDecals_04_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_heybale02": {
+    "AlphaTest": true
+  },
+  "MI_heybale02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_heybale2_oneSided": {
+    "AlphaTest": true
+  },
+  "MI_heybale2_oneSided_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_heybale2_twoSided": {
+    "AlphaTest": true
+  },
+  "MI_Honor_Board_01": {
+    "AlphaTest": true
+  },
+  "MI_Honor_Board_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Honor_Board_02": {
+    "AlphaTest": true
+  },
+  "MI_Honor_Board_02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Honor_board_03": {
+    "AlphaTest": true
+  },
+  "MI_Honor_board_03_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Hopital_Banner_01": {
+    "AlphaTest": true
+  },
+  "MI_Hopital_Banner_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Hopital_Banner_02": {
+    "AlphaTest": true
+  },
+  "MI_Hopital_Banner_02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Hospital_Floor_Dirt_Decal": {
+    "AlphaTest": true
+  },
+  "MI_Hospital_Floor_Dirt_Decal_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Hospital_Floor_Trash_Decal_01": {
+    "AlphaTest": true
+  },
+  "MI_Hospital_Floor_Trash_Decal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Kiki_InformationDesk_2": {
+    "AlphaTest": true
+  },
+  "MI_Kiki_InformationDesk_2_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Kiki_LeakDecal_01": {
+    "AlphaTest": true
+  },
+  "MI_Kiki_LeakDecal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Kiki_PlywoodSet01": {
+    "AlphaTest": true
+  },
+  "MI_Kiki_PlywoodSet01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Kiki_TrafficBarrierSystem_01": {
+    "AlphaTest": true
+  },
+  "MI_Kiki_TrafficBarrierSystem_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Lion_Cage_Container_Mask_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Lion_Small_Chair_Mask_02": {
+    "AlphaTest": true
+  },
+  "MI_Lion_Small_Chair_Mask_02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Lynx_BoxFan_01": {
+    "AlphaTest": true
+  },
+  "MI_Lynx_BoxFan_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Lynx_Debris_Set_01": {
+    "AlphaTest": true
+  },
+  "MI_Lynx_Debris_Set_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Lynx_ExteriorDecals_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Lynx_ExteriorDecals_02": {
+    "AlphaTest": true
+  },
+  "MI_Lynx_ExteriorDecals_02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Lynx_ExteriorDecals_City_Hut_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Lynx_ExteriorDecals_City_Hut_02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Lynx_ExteriorDecals_Guard_Post_01": {
+    "AlphaTest": true
+  },
+  "MI_Lynx_ExteriorDecals_Guard_Post_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Lynx_ExteriorDecals_Parking_Lot_01": {
+    "AlphaTest": true
+  },
+  "MI_Lynx_ExteriorDecals_Parking_Lot_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Lynx_ExteriorDecals_RoofDamage_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Lynx_ExteriorDecals_Tinted": {
+    "AlphaTest": true
+  },
+  "MI_Lynx_ExteriorDecals_Tinted_03_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Lynx_ExteriorDecals_Tinted_2_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Lynx_ExteriorDecals_Tinted_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Lynx_JunkFencing_Set_01": {
+    "AlphaTest": true
+  },
+  "MI_Lynx_JunkFencing_Set_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Lynx_ShoppingCart_01": {
+    "AlphaTest": true
+  },
+  "MI_Lynx_ShoppingCart_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Lynx_WoodCrates_Set_01": {
+    "AlphaTest": true
+  },
+  "MI_Lynx_WoodCrates_Set_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_MetalLocker_01": {
+    "AlphaTest": true
+  },
+  "MI_MetalLocker_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_MiddleDome_MetalDecal": {
+    "AlphaTest": true
+  },
+  "MI_MiddleDome_MetalDecal_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Military_Barracks_out_05": {
+    "AlphaTest": true
+  },
+  "MI_Military_Barracks_out_05_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_MIR_EXT_RedBrick_EdgeDecal_01": {
+    "AlphaTest": true
+  },
+  "MI_MIR_EXT_RedBrick_EdgeDecal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Neon_FieldTree_Branch02": {
+    "AlphaTest": true
+  },
+  "MI_Neon_FieldTree_Leaf02": {
+    "AlphaTest": true
+  },
+  "MI_Neon_ForestTree02_Leaf": {
+    "AlphaTest": true
+  },
+  "MI_NE_Fence_Concrete_01_Destroy": {
+    "AlphaTest": true
+  },
+  "MI_NE_Fence_Concrete_01_Destroy_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_NE_Fence_MergedFence_02": {
+    "AlphaTest": true
+  },
+  "MI_NE_Fence_MergedFence_02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_NE_Fence_Shrub_01_130": {
+    "AlphaTest": true
+  },
+  "MI_NE_Fence_Shrub_01_130_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_NE_MarketShowcase_01_glass": {
+    "AlphaTest": true
+  },
+  "MI_NE_Stadium_Edge_Decals_01": {
+    "AlphaTest": true
+  },
+  "MI_NE_Stadium_Edge_Decals_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_NE_Stadium_Floor_Patterns": {
+    "AlphaTest": true
+  },
+  "MI_NE_Stadium_Floor_Patterns_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_NE_StoneFence_02": {
+    "AlphaTest": true
+  },
+  "MI_NE_StoneFence_02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_NE_StrawDummy_01": {
+    "AlphaTest": true
+  },
+  "MI_NE_StrawDummy_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_NE_StrawDummy_02": {
+    "AlphaTest": true
+  },
+  "MI_NE_StrawDummy_02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Oasis_parasol_01_Fabric": {
+    "AlphaTest": true
+  },
+  "MI_Oasis_parasol_01_Fabric_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Oasis_parasol_01_tassel": {
+    "AlphaTest": true
+  },
+  "MI_Oasis_parasol_01_tassel_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_plant01": {
+    "AlphaTest": true
+  },
+  "MI_plant01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Plant_01": {
+    "AlphaTest": true
+  },
+  "MI_Plant_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Racing_TrafficBarrier_02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_revival_tower_02": {
+    "AlphaTest": true
+  },
+  "MI_RO_BasketballHoop": {
+    "AlphaTest": true
+  },
+  "MI_RO_BasketballHoop_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Savage_BootConcreteEdgeDecal": {
+    "AlphaTest": true
+  },
+  "MI_Savage_BootConcreteEdgeDecal_2": {
+    "AlphaTest": true
+  },
+  "MI_Savage_BootConcreteEdgeDecal_2_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Savage_BootConcreteEdgeDecal_4": {
+    "AlphaTest": true
+  },
+  "MI_Savage_BootConcreteEdgeDecal_4_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Savage_BootConcreteEdgeDecal_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Savage_Bridge00": {
+    "AlphaTest": true
+  },
+  "MI_Savage_Bridge00_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Savage_FenceRazorWire_01": {
+    "AlphaTest": true
+  },
+  "MI_Savage_RoadLine_01": {
+    "AlphaTest": true
+  },
+  "MI_Savage_RoadLine_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_School_WindowCurtain_02": {
+    "AlphaTest": true
+  },
+  "MI_School_WindowCurtain_02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Shipyard_Concrete_Decals_03": {
+    "AlphaTest": true
+  },
+  "MI_Shipyard_Concrete_Decals_03_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_SLB_Decal_02": {
+    "AlphaTest": true
+  },
+  "MI_SLB_Decal_02_B": {
+    "AlphaTest": true
+  },
+  "MI_SLB_Decal_02_B_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_SLB_Decal_02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_SLB_FlagBanner_01": {
+    "AlphaTest": true
+  },
+  "MI_SLB_FlagBanner_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_SLB_FlagHanging_02": {
+    "AlphaTest": true
+  },
+  "MI_SLB_FlagHanging_02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_SM_Baltic_sheetrock_rubble_01": {
+    "AlphaTest": true
+  },
+  "MI_SM_Baltic_sheetrock_rubble_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_SummerLand_Carpets_01": {
+    "AlphaTest": true
+  },
+  "MI_SummerLand_Carpets_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Summerland_CocretDamage": {
+    "AlphaTest": true
+  },
+  "MI_Summerland_CocretDamage_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Summerland_ExteriorEdgeDecal_ExteriorEdge02": {
+    "AlphaTest": true
+  },
+  "MI_Summerland_ExteriorEdgeDecal_ExteriorEdge02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Summerland_ExteriorEdgeDecal_Stairs_Straight_02": {
+    "AlphaTest": true
+  },
+  "MI_Summerland_ExteriorEdgeDecal_Stairs_Straight_02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Summerland_Exterior_AC_Unit_01": {
+    "AlphaTest": true
+  },
+  "MI_Summerland_Exterior_AC_Unit_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Summerland_MetalShelves_01": {
+    "AlphaTest": true
+  },
+  "MI_Summerland_MetalShelves_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Summerland_MilkCrates_01": {
+    "AlphaTest": true
+  },
+  "MI_Summerland_MilkCrates_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Summerland_Refrigerator_01": {
+    "AlphaTest": true
+  },
+  "MI_Summerland_Refrigerator_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Summerland_Ship_Decal": {
+    "AlphaTest": true
+  },
+  "MI_Summerland_Ship_Decal_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_tarp02": {
+    "AlphaTest": true
+  },
+  "MI_tarp02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_tarp03": {
+    "AlphaTest": true
+  },
+  "MI_tarp03_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Army_barracks_EdgeDecal_01": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Army_barracks_EdgeDecal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Army_barracks_EdgeDecal_02": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Army_barracks_EdgeDecal_02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Army_barracks_EdgeDecal_03": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Army_barracks_EdgeDecal_03_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Army_Garage_EdgeDecal_01": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Army_Garage_EdgeDecal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Bus_Terminal_Car_Wash_Unique": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Bus_Terminal_Car_Wash_Unique_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Bus_Terminal_Floor_Patterns_01": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Bus_Terminal_Floor_Patterns_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Chainlink_Fence_01": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Chainlink_Fence_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Chainlink_Fence_Net_01": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Chainlink_Fence_Net_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_ConcreteDamageDecal_01": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_ConcreteDamageDecal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_CornerDecal": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_CornerDecal_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_CornerStoreKit_Trim": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_CornerStoreKit_Trim_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_farms_hay_02": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_farms_hay_03": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_farms_hay_03_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_farms_rice_02": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_farms_rice_02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Fishing_Net": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Fishing_Net_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Funeral_flag_A": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Funeral_flag_A_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Glass": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Glass_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Hospitall_DecalLeaks_01": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Hospitall_DecalLeaks_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Hospitall_DecalLeaks_02": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Hospitall_DecalLeaks_02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Hospitall_Funeral_DecalLeaks_01": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Hospitall_Funeral_DecalLeaks_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Hospitall_Funeral_DecalLeaks_02": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Hospitall_Funeral_DecalLeaks_02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Hospital_cart_01_Ironwire": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Hospital_cart_01_Ironwire_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Hospital_Entryway_Banner_01": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Hospital_Entryway_Banner_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_HS_Com_02_EdgeDecal_01": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_HS_Com_02_EdgeDecal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_HS_Com_03_EdgeDecal_01": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_HS_Com_03_EdgeDecal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_HS_Com_03_EdgeDecal_02": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_HS_Com_03_EdgeDecal_02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_HS_Com_04_EdgeDecal_01": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_HS_Com_04_EdgeDecal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_HS_Com_04_Roof_trim_A_01": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_HS_Com_04_Roof_trim_A_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_HS_Roof_trim_01": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_HS_Roof_trim_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_HS_Roof_trim_A_01": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_HS_Roof_trim_A_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_HS_Roof_trim_A_02": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_HS_Roof_trim_A_02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_HS_Silverhouse_ExDecal": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_HS_Silverhouse_ExDecal_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_HS_Silverhouse_RoofTrim": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_HS_Silverhouse_RoofTrim_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Hwatu": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Hwatu_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Lab_Grunge_Decal_06": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Lab_Grunge_Decal_06_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Lab_Leaks_02": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Lab_Leaks_02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_palace_throne_01": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_palace_throne_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_palace_throne_03": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_palace_throne_03_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_PB_Decal_01": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_PB_Decal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Poster_Decal_01": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Poster_Decal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Prison_Building_01_FloorMetal": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Prison_Building_01_FloorMetal1": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Prison_Building_01_FloorMetal1_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Prison_Building_01_FloorMetal_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Prison_Building_01_Glass": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Prison_Building_01_Glass_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Prison_Center_Building_FloorMetal": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Prison_Center_Building_FloorMetal_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Prison_Center_Building_int_Decals": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Prison_Center_Building_int_Decals_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Prison_Center_Glass1": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Prison_Center_Glass1_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Prison_EdgeDecal_01": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Prison_EdgeDecal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Prison_EdgeDecal_02": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Prison_EdgeDecal_02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Prison_EdgeDecal_03": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Prison_EdgeDecal_03_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Prison_EdgeDecal_04": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Prison_EdgeDecal_04_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Prison_EdgeDecal_05": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Prison_EdgeDecal_05_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Residential_01_EdgeDecal": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Residential_01_EdgeDecal_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_residential_fan_01": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_residential_fan_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_School_Basketball_Stand": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_School_Basketball_Stand_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_School_Grade_Signs": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_School_Grade_Signs_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_School_Gym_Basketball_Court_Lines": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_School_Gym_Basketball_Court_Lines_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_SecretRoom_Roof_trim_A_01": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_SecretRoom_Roof_trim_A_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_SilverhouseBanner": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_SilverhouseBanner_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Studio_Industrial_Fan_01": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Studio_Industrial_Fan_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_temple_belltower_01": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_temple_belltower_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Temple_ceilingdeco_02": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Temple_ceilingdeco_02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_temple_ceiling_01": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_temple_ceiling_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_temple_giwa_trim_01": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_temple_giwa_trim_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_temple_pillar_01": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_temple_pillar_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_temple_pillar_02": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_temple_pillar_02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Temple_sign_01": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Temple_sign_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_TownHouse_Roof_Blue01": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_TownHouse_Roof_Blue01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Town_08_EdgeDecal_01": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Town_08_EdgeDecal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Town_08_EdgeDecal_02": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Town_08_EdgeDecal_02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Town_08_EdgeDecal_03": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Town_08_EdgeDecal_03_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Town_11b_Roof_Trim_01": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_Town_11b_Roof_Trim_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_WindowCover_01": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_WindowCover_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_WindowCover_02": {
+    "AlphaTest": true
+  },
+  "MI_Tiger_WindowCover_02_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_TileConcreteDecal": {
+    "AlphaTest": true
+  },
+  "MI_TileConcreteDecal_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_town01_Grass": {
+    "AlphaTest": true
+  },
+  "MI_town01_Grass_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_TrashSet_Boxes_03": {
+    "AlphaTest": true
+  },
+  "MI_TrashSet_Boxes_03_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Uaz_New_F_01": {
+    "AlphaTest": true
+  },
+  "MI_Vending_machine_Glass": {
+    "AlphaTest": true
+  },
+  "MI_Vikendi_Broken_Fabric": {
+    "AlphaTest": true
+  },
+  "MI_vintage_set1": {
+    "AlphaTest": true
+  },
+  "MI_vintage_set1_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_VK_CoalMine_Warehouse_01_Decals": {
+    "AlphaTest": true
+  },
+  "MI_VK_CoalMine_Warehouse_01_Decals_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_VK_EuropeanDumpTruck_Grill_01": {
+    "AlphaTest": true
+  },
+  "MI_VK_EuropeanDumpTruck_Grill_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Vk_GeneralPine_Leaf_01_Snow": {
+    "AlphaTest": true
+  },
+  "MI_Vk_GeneralPine_Leaf_01_Snow_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_VK_Lab_Camp_Metal_Floor": {
+    "AlphaTest": true
+  },
+  "MI_VK_Lab_Camp_Metal_Floor_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_VK_WaterDecal_01": {
+    "AlphaTest": true
+  },
+  "MI_VK_WaterDecal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_VS7_Concrete_Decal_01": {
+    "AlphaTest": true
+  },
+  "MI_VS7_Concrete_Decal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_VS7_EdgeDecal_01": {
+    "AlphaTest": true
+  },
+  "MI_VS7_EdgeDecal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Wall_Damage_01": {
+    "AlphaTest": true
+  },
+  "MI_Wall_Damage_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Wall_Damage_03_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Wall_Damage_05_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Wall_Damage_08": {
+    "AlphaTest": true
+  },
+  "MI_Wall_Damage_08_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Wall_Damage_11": {
+    "AlphaTest": true
+  },
+  "MI_Wall_Damage_11_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Wall_Damage_12": {
+    "AlphaTest": true
+  },
+  "MI_Wall_Damage_12_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Wheel_barrel_metal": {
+    "AlphaTest": true
+  },
+  "MI_Wheel_barrel_metal_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_WIndowGlas5": {
+    "AlphaTest": true
+  },
+  "MI_WIndowGlas5_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_WIndowGlass": {
+    "AlphaTest": true
+  },
+  "MI_WIndowGlass5": {
+    "AlphaTest": true
+  },
+  "MI_WIndowGlass5_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_WIndowGlass_Proxy": {
+    "AlphaTest": true
+  },
+  "Ml_Desert_NewComposite_ExEdge": {
+    "AlphaTest": true
+  },
+  "Ml_Desert_NewComposite_ExEdge_Proxy": {
+    "AlphaTest": true
+  },
+  "Ml_Desert_shed_01_ExEdge2": {
+    "AlphaTest": true
+  },
+  "Ml_Desert_shed_01_ExEdge2_Proxy": {
+    "AlphaTest": true
+  },
+  "Ml_Desert_shed_02_ExEdge1": {
+    "AlphaTest": true
+  },
+  "Ml_Desert_shed_02_ExEdge1_Proxy": {
+    "AlphaTest": true
+  },
+  "Ml_Tiger_Flowerwreath_Black": {
+    "AlphaTest": true
+  },
+  "Ml_Tiger_Flowerwreath_Black_Proxy": {
+    "AlphaTest": true
+  },
+  "Ml_Tiger_Funeral_flowerwreath_01": {
+    "AlphaTest": true
+  },
+  "Ml_Tiger_Funeral_flowerwreath_01_Proxy": {
+    "AlphaTest": true
+  },
+  "Motel_Decal_c_Mat": {
+    "AlphaTest": true
+  },
+  "Motel_Decal_c_Mat_Proxy": {
+    "AlphaTest": true
+  },
+  "M_AC_Glass_Inst1": {
+    "AlphaTest": true
+  },
+  "M_AC_Glass_Inst1_Proxy": {
+    "AlphaTest": true
+  },
+  "M_AC_Glass_Inst2": {
+    "AlphaTest": true
+  },
+  "M_AC_Glass_Inst2_Proxy": {
+    "AlphaTest": true
+  },
+  "M_Arena_Cloth_Bilboard2": {
+    "AlphaTest": true
+  },
+  "M_Arena_Cloth_Bilboard2_Proxy": {
+    "AlphaTest": true
+  },
+  "M_BombMode_Deploy_Emissive_v2": {
+    "AlphaTest": true
+  },
+  "M_BulletHoles1": {
+    "AlphaTest": true
+  },
+  "M_BulletHoles1_Proxy": {
+    "AlphaTest": true
+  },
+  "M_BulletHoles2": {
+    "AlphaTest": true
+  },
+  "M_BulletHoles2_Proxy": {
+    "AlphaTest": true
+  },
+  "M_Dark_Metal_2": {
+    "AlphaTest": true
+  },
+  "M_Dark_Metal_2_Proxy": {
+    "AlphaTest": true
+  },
+  "M_Factory_Corner_Decal_a": {
+    "AlphaTest": true
+  },
+  "M_Factory_Corner_Decal_a_Proxy": {
+    "AlphaTest": true
+  },
+  "M_Factory_Corner_Decal_b": {
+    "AlphaTest": true
+  },
+  "M_Factory_Corner_Decal_b_Proxy": {
+    "AlphaTest": true
+  },
+  "M_Factory_Corner_Decal_c": {
+    "AlphaTest": true
+  },
+  "M_Factory_Corner_Decal_c_Proxy": {
+    "AlphaTest": true
+  },
+  "M_Flicker": {
+    "AlphaTest": true
+  },
+  "M_Glass": {
+    "AlphaTest": true
+  },
+  "M_Glass_Inst": {
+    "AlphaTest": true
+  },
+  "M_Glass_Inst_Proxy": {
+    "AlphaTest": true
+  },
+  "M_Glass_Proxy": {
+    "AlphaTest": true
+  },
+  "M_hospital_bulletproof_Glass_01": {
+    "AlphaTest": true
+  },
+  "M_hospital_bulletproof_Glass_01_Proxy": {
+    "AlphaTest": true
+  },
+  "M_Lion_Fern_03": {
+    "AlphaTest": true
+  },
+  "M_Lion_Fern_03_Proxy": {
+    "AlphaTest": true
+  },
+  "M_Metal_Rust_Dark": {
+    "AlphaTest": true
+  },
+  "M_Metal_Rust_Dark_Proxy": {
+    "AlphaTest": true
+  },
+  "M_MilitaryBase_Decal": {
+    "AlphaTest": true
+  },
+  "M_MilitaryBase_Decal_Proxy": {
+    "AlphaTest": true
+  },
+  "M_Papers": {
+    "AlphaTest": true
+  },
+  "M_Papers_Proxy": {
+    "AlphaTest": true
+  },
+  "M_VK_SecretRoom_Ventilator": {
+    "AlphaTest": true
+  },
+  "M_VK_SecretRoom_Ventilator_Proxy": {
+    "AlphaTest": true
+  },
+  "M_Wood_05": {
+    "AlphaTest": true
+  },
+  "M_Wood_05_Proxy": {
+    "AlphaTest": true
+  },
+  "M_Wood_White_01": {
+    "AlphaTest": true
+  },
+  "M_Wood_White_01_Proxy": {
+    "AlphaTest": true
+  },
+  "Range_Hay_Stacks_01_Alpha": {
+    "AlphaTest": true
+  },
+  "Range_Hay_Stacks_01_Alpha_Proxy": {
+    "AlphaTest": true
+  },
+  "SilverM_Decal_Mat": {
+    "AlphaTest": true
+  },
+  "SilverM_Decal_Mat2": {
+    "AlphaTest": true
+  },
+  "SilverM_Decal_Mat2_Proxy": {
+    "AlphaTest": true
+  },
+  "SilverM_Decal_Mat_Proxy": {
+    "AlphaTest": true
+  },
+  "Tiger_Drying_Cloth_01": {
+    "AlphaTest": true
+  },
+  "Tiger_Drying_Cloth_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Animations/Battlegrounds/Anims/Revival/Machine/Materials/MI_revival_tower_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/ThirdParty/IndustrialCity/Materials/-Glass": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Blueprints/Buildings/UniqueThemes/Observatory/MI/MI_Baltic_ExteriorEdgeDecal_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Blueprints/Buildings/UniqueThemes/Observatory/MI/MI_DOME_CHAINLINK_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Blueprints/Buildings/UniqueThemes/Observatory/MI/MI_Dome_Compound_Decals1": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Blueprints/Buildings/UniqueThemes/Observatory/MI/MI_Dome_Decals_Drip1": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Blueprints/Buildings/UniqueThemes/Observatory/MI/MI_Dome_Decals_Drip2": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Blueprints/Buildings/UniqueThemes/Observatory/MI/MI_Dome_Decals_Drip3": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Blueprints/Buildings/UniqueThemes/Observatory/MI/MI_Dome_ExtEdgeDecal1": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Blueprints/Buildings/UniqueThemes/Observatory/MI/MI_Dome_FloorMat_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Blueprints/Buildings/UniqueThemes/Observatory/MI/MI_Dome_Floor_deco_Dirt01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Blueprints/Buildings/UniqueThemes/Observatory/MI/MI_Dome_Floor_deco_Dirt02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Blueprints/Buildings/UniqueThemes/Observatory/MI/MI_Dome_Glass_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Blueprints/Buildings/UniqueThemes/Observatory/MI/MI_Dome_marking_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Blueprints/Buildings/UniqueThemes/Observatory/MI/MI_MiddleDome_MetalDecal": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/HouseSets/Baltic_HS_Campsite_01/MI_Baltic_HS_Campsite_01_Ext_Decal": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/HouseSets/Baltic_HS_GasStation_v02/MI_Baltic_HS_GuardPost_01_Ext_Decal": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/HouseSets/Baltic_HS_GuardPost_01/MI_Baltic_HS_GuardPost_01_Int_Decal": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/HouseSets/Baltic_HS_GuardPost_03/MI_Baltic_HS_GuardPost_03_Ext_Decal": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/HouseSets/Baltic_HS_GuardPost_03/MI_Baltic_HS_GuardPost_03_Int_Trim_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/HouseSets/Baltic_HS_Residential_01/MI_Baltic_HS_Residential_01_Wood_Decal_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/HouseSets/Baltic_HS_WareHouse_01/MI_Baltic_HS_WareHouse_01_10": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/HouseSets/Baltic_HS_Warehouse_02/MI_Baltic_Warehouse_02_CornerDecal_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/HouseSets/Baltic_HS_WareHouse_04/MI_Baltic_HS_Warehouse_04_Ext_Decal": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/Shared/MI_Baltic_BrokenWood_Decal_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/Shared/MI_Baltic_Ceiling_Decal_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/Shared/MI_Baltic_Concrete_Damage_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/Shared/MI_Baltic_Int_Trim_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/Shared/MI_Baltic_PlasterEdgeDecal": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/Shared/MI_Baltic_PlasterEdgeDecalDark": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/Shared/MI_Baltic_School_WoodTrim_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/Shared/MI_Baltic_Stairs_Decal_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/Shared/MI_Baltic_Wallpaper_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/Shared/MI_Baltic_Wallpaper_03": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/Shared/MI_Baltic_Wallpaper_05": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/Towns/Baltic_Town_Commercial_12/MI_Baltic_Town_Commercial_12_Roof_Decal": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/Towns/Baltic_Town_Commercial_14/MI_Baltic_ExteriorEdgeDecal_05": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/Towns/Baltic_Town_Commercial_14/MI_Baltic_ExteriorEdgeDecal_INT": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/Towns/Baltic_Town_Commercial_14/MI_Baltic_Int_Trim_03": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/Towns/Baltic_Town_Garage_01/MI_Baltic_Unique_Factory_CornerDecal_2": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/Towns/Baltic_Town_Garage_01/MI_Decal_Baltic_Garage_01_Leaks_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/Towns/Baltic_Town_Residential_02/MI_Baltic_Town_Residential_02_2R_Edge": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/Towns/Baltic_Town_Residential_02/MI_Baltic_Town_Residential_02_EdgeDecal_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/Towns/Baltic_Town_Residential_02/MI_Baltic_Town_Residential_02_MossDecal_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/Towns/Baltic_Town_Residential_03/MI_Baltic_Town_Residential_03_EdgeDecal_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/Towns/Baltic_Town_Residential_11/MI_Baltic_ExteriorEdgeDecal_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/Towns/Baltic_Town_Shop_Clothing/MI_Baltic_Int_Trim_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/UniqueThemes/Baltic_Church/MI_Baltic_PlasterFade_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/UniqueThemes/Baltic_TownHall/MI_Baltic_Decals_Concrete": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/UniqueThemes/Baltic_TownHall/MI_Baltic_Decals_Top": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/UniqueThemes/Baltic_TownHall/MI_Baltic_InteriorDecals": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/UniqueThemes/Baltic_TownHall/MI_Baltic_TownHall_MetalRoof_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/UniqueThemes/Baltic_Unique_Mansion_03/MI_Baltic_Chipped_Paint_Decal_14": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/UniqueThemes/Baltic_Unique_Mansion_03/MI_Baltic_Chipped_Paint_Decal_15": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/UniqueThemes/Baltic_Unique_PoliceStation/Interior/MI_Baltic_Ceiling_Decal_Police_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/UniqueThemes/Baltic_Unique_PoliceStation/Interior/MI_Baltic_ExteriorEdgeDecal_01_PoliceINT": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/UniqueThemes/Baltic_Unique_PoliceStation/MI_Baltic_DirtDecal_Police_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/UniqueThemes/Baltic_Unique_PoliceStation/MI_Baltic_ExteriorEdgeDecal_03": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/UniqueThemes/Baltic_Unique_Power_Plant/MI_Baltic_Powerplant_Trim_Masked_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/UniqueThemes/Baltic_unique_prison/MainTown/Indoor/MI_Baltic_ExteriorEdgeDecal_01_Prison1": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/UniqueThemes/Baltic_unique_prison/MainTown/Indoor/MI_Baltic_ExteriorEdgeDecal_01_Prison2": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/UniqueThemes/Baltic_unique_prison/MainTown/Indoor/MI_Baltic_Int_Trim_01_Prison": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/UniqueThemes/Baltic_unique_prison/Official_House/MI_Baltic_Town_Residential_02_MossDecal_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/UniqueThemes/Baltic_unique_prison/Official_House/MI_Baltic_Unique_Prison_Official_House_EdgeDecal_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/UniqueThemes/Baltic_unique_prison/SecurityPost/MI_Baltic_Decal_ConcretePatch_10": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/UniqueThemes/Baltic_unique_prison/SecurityPost/MI_Baltic_ExteriorEdgeDecal_SecPost_Ext_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/UniqueThemes/Baltic_unique_prison/SecurityPost/MI_Baltic_ExteriorEdgeDecal_SecPost_Int_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/UniqueThemes/Baltic_unique_prison/SecurityPost/MI_Baltic_MossDecal_SecPost_2": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/UniqueThemes/Military/Baltic_Military_Barracks/MI_Military_Barracks_out_05": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/UniqueThemes/Military/Baltic_Military_ControlTower/MI_Baltic_ExteriorEdgeDecal_ControlTower_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/UniqueThemes/Military/Baltic_Unique_Military_Intel_01/MI_Baltic_Unique_Military_Intel_01_Ext_Decal_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/UniqueThemes/Military/Baltic_Unique_Military_Intel_01/MI_Baltic_Unique_Military_Intel_01_Int_Decal": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Meshes/Towns/Mylta/Mylta_MI/MI_Baltic_CornCan_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Meshes/UniqueThemes/Wharf/Large_Warehouse/Materials/MI_Baltic_DirtDecal_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Meshes/UniqueThemes/Wharf/Large_Warehouse/Materials/MI_Baltic_Large_Warehouse_Building_Kit": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Meshes/UniqueThemes/Wharf/Large_Warehouse/Materials/MI_Baltic_Large_Warehouse_Building_Kit_2": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Foliage/BalticBush/Baltic_bro_Bush_03_Imposter/MI_Baltic_bro_Bush_03_wind_Leaf": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Foliage/Baltictree/Baltic_bro_Lombardy_Poplar_IM/MI_bro_Lombardy_Poplar_wind_Branch": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Foliage/Baltictree/Baltic_bro_Lombardy_Poplar_IM/MI_bro_Lombardy_Poplar_wind_Leaf": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Foliage/Baltictree/Baltic_bro_London_Plane_IM/MI_Baltic_bro_London_Plane_wind_Leaf": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Foliage/Baltictree/Baltic_bro_White_Oak_IM/MI_Baltic_bro_White_Oak_fall_IM_wind_Leaf": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Foliage/Baltictree/Baltic_bro_White_Oak_IM/MI_Baltic_bro_White_Oak_wind_Leaf": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Foliage/Baltictree/Baltic_Green_Ash_Desktop_BRO/MI_Baltic_bro_greenash_wind_Leaf": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Foliage/Materials/MI_Baltic_Ivy_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Foliage/Materials/MI_Baltic_Weed_Leafy_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Foliage/Materials/MI_Baltic_Weed_Tall_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Old/Assets/World/Buildings/Materials/AHospital_ADecal_a": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Old/Assets/World/Buildings/Materials/ASchool_Books_c_Mat": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Old/Assets/World/Buildings/Materials/ASchool_Sign_Mat": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Old/Assets/World/Buildings/Materials/M_Dark_Metal_2": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Old/Assets/World/Buildings/Materials/M_Papers": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Old/Assets/World/Buildings/Materials/M_Wood_05": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Old/Assets/World/Buildings/Materials/M_Wood_White_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Old/Assets/World/Common/Materials/Decal/MI_TileConcreteDecal": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Old/Assets/World/Common/Materials/MI_Chainlink01_wire": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Old/Assets/World/Common/Materials/MI_Fan01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Old/Assets/World/Common/Materials/MI_FoldingChair01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Old/Assets/World/Common/Materials/MI_heybale2_oneSided": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Old/Assets/World/Common/Materials/MI_heybale2_twoSided": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Old/Assets/World/Common/Materials/MI_tarp02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Old/Assets/World/Common/Materials/MI_tarp03": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Old/Assets/World/Vegetation/Grass/Materials/MI_town01_Grass": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Old/Assets/World/Vegetation/Grass/Materials/tsl_Grass_01_LOD0_Inst": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Common/Materials/Chipping_Paint_Set/MI_Baltic_Chipped_Paint_Backing_Decal": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Common/Materials/Chipping_Paint_Set/MI_Baltic_Chipped_Paint_Backing_Decal_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Common/Materials/Chipping_Paint_Set/MI_Baltic_Chipped_Paint_Backing_Decal_03": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Common/Materials/Chipping_Paint_Set/MI_Baltic_Chipped_Paint_Decal": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Common/Materials/Chipping_Paint_Set/MI_Baltic_Chipped_Paint_Decal1": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Common/Materials/Chipping_Paint_Set/MI_Baltic_Chipped_Paint_Decal1_2": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Common/Materials/Chipping_Paint_Set/MI_Baltic_Chipped_Paint_Decal_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Common/Materials/Chipping_Paint_Set/MI_Baltic_Chipped_Paint_Decal_03": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Common/Materials/Chipping_Paint_Set/MI_Baltic_Chipped_Paint_Decal_10": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Common/Materials/Chipping_Paint_Set/MI_Baltic_Chipped_Paint_Decal_11": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Common/Materials/Chipping_Paint_Set/MI_Baltic_Chipped_Paint_Decal_12": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Common/Materials/Chipping_Paint_Set/MI_Baltic_Chipped_Paint_Decal_13": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Common/Materials/MI_Baltic_ChainlinkFence_Tall_A_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Common/Materials/MI_Baltic_EranglePaperSign_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Common/Materials/MI_Baltic_Fence01_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Common/Materials/MI_Baltic_Fence01_Net": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Common/Materials/MI_Baltic_Flags_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Common/Materials/MI_Baltic_Flags_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Common/Materials/MI_Baltic_Flags_02_metal": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Common/Materials/MI_Baltic_Fridge_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Common/Materials/MI_Baltic_GarbageDesbris": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Common/Materials/MI_Baltic_GraffitiStyle_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Common/Materials/MI_Baltic_HositalBed_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Common/Materials/MI_Baltic_Oppresion_Banner_01_Skinny_Tall": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Common/Materials/MI_Baltic_PaperDebris_Alpha": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Common/Materials/MI_Baltic_PaperPiles_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Common/Materials/MI_Baltic_Plant_Dead_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Common/Materials/MI_Baltic_Poster_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Common/Materials/MI_Baltic_PropagandaPapers_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Common/Materials/MI_Baltic_Rug_Medium_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Common/Materials/MI_Baltic_School_Basketball_Hoop_01_ref": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Common/Materials/MI_Baltic_StoreAwning_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Common/Materials/MI_Baltic_WallPaperSigns_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Common/Materials/MI_Baltic_WindowCurtain_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Common/Materials/MI_Baltic_WindowCurtain_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Common/Materials/MI_Honor_Board_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Common/Materials/MI_Honor_Board_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Common/Materials/MI_Honor_board_03": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Common/Materials/MI_SM_Baltic_sheetrock_rubble_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Decals/Materials/MI_Baltic_Decal_ConcretePatch_07": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Decals/Materials/MI_Baltic_Decal_ConcretePatch_Dark": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Decals/Materials/MI_Baltic_Decal_Concrete_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Decals/Materials/MI_Baltic_Decal_Leaks_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Decals/Materials/MI_Baltic_Decal_Leaks_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Decals/Materials/MI_Baltic_Decal_Trash_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Decals/Materials/MI_Baltic_DirtDecal_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Decals/Materials/MI_Baltic_DirtDecal_03": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Decals/Materials/MI_Baltic_DirtDecal_04": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Decals/Materials/MI_Baltic_DirtDecal_Dark": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Decals/Materials/MI_Baltic_Ground_Rubble_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Decals/Materials/MI_Baltic_MossDecal_2": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Decals/Materials/MI_Baltic_Stairs_Decal_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Decals/Materials/MI_Decal_Baltic_DirtGround_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Decals/Materials/MI_Decal_Baltic_DirtGround_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Decals/Materials/MI_Decal_Baltic_Factory_Ground_Trash_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Decals/Materials/MI_Decal_Baltic_Ground_Rubble_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Decals/Materials/MI_Decal_Baltic_Ground_Rubble_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Decals/Materials/MI_Decal_Baltic_Ground_Rubble_03": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Decals/Materials/MI_Decal_Baltic_Ground_Rubble_04": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Decals/Materials/MI_Decal_Baltic_Ground_Rubble_04_Y012": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Artifacts/Desert/Desert_Resort/MI/MI_Desert_Resort_Blinds1": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Artifacts/Desert/Desert_Resort/MI/MI_Desert_Resort_ExtEdgeDecal1": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Artifacts/Desert/Desert_Resort/MI/MI_Desert_Resort_leaking_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Artifacts/Desert/Desert_Slum_Building_03_1S_New/MI_Desert_Slum_Building_03_1S_Decals": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Artifacts/Desert/Desert_Slum_Building_03_1S_New/MI_Desert_Slum_Building_03_1S_New_Edges_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Artifacts/Desert/Desert_Slum_Building_03_1S_New/MI_Desert_Slum_Building_03_1S_New_Edges_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Artifacts/Desert/Desert_Slum_Building_03_1S_New/MI_Desert_Slum_Building_03_1S_New_Edges_INT": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Artifacts/Desert/Desert_Slum_Building_05_1S_New/MI_Desert_Slum_Building_05_1S_New_Edges_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Artifacts/Desert/Desert_Slum_Building_05_1S_New/MI_Desert_Slum_Building_05_1S_New_Edges_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Artifacts/Desert/Desert_Slum_Building_05_1S_New/MI_Desert_Slum_Building_05_1S_New_Edges_2": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Artifacts/Desert/Desert_TruckStop/MI/MI_Desert_TruckStop_Diner_EdgeDecal_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Artifacts/Desert/Desert_TruckStop/MI/MI_Desert_TruckStop_Diner_EdgeDecal_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Artifacts/Desert/Desert_TruckStop/MI/MI_Desert_TruckStop_Motel_Curtain_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Artifacts/Desert/Desert_TruckStop/MI/MI_Desert_TruckStop_Motel_EdgeDecal_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Artifacts/Desert/Desert_TruckStop/MI/PublicToliet/MI_Desert_TruckStop_PublicToliet_Decals_GrungeDrips_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Artifacts/Desert/Desert_TruckStop/MI/PublicToliet/MI_Desert_TruckStop_PublicToliet_ExteriorEdgeDecal_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Artifacts/Desert/Desert_TruckStop/MI/PublicToliet/MI_Desert_TruckStop_PublicToliet_ExteriorEdgeDecal_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Artifacts/Desert/Desert_TruckStop/MI/Storage_01/MI_Desert_TruckStop_Storage_01_Decals_GrungeDrips_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Artifacts/Desert/Desert_TruckStop/MI/Storage_01/MI_Desert_TruckStop_Storage_01_EdgeDamage": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Artifacts/Desert/Desert_TruckStop/MI/Storage_01/MI_Desert_TruckStop_Storage_01_EdgeDecals_EXT": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Artifacts/Desert/Desert_TruckStop/MI/Warehouse_01/MI_Desert_TruckStop_Warehouse_01_Decals_Grunge_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Artifacts/Desert/Desert_TruckStop/MI/Warehouse_01/MI_Desert_TruckStop_Warehouse_01_Door": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Artifacts/Desert/Desert_TruckStop/MI/Warehouse_01/MI_Desert_TruckStop_Warehouse_01_EdgeDamage": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Artifacts/Desert/Desert_TruckStop/MI/Warehouse_01/MI_Desert_TruckStop_Warehouse_01_EdgeDecals": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Artifacts/Desert/Desert_TruckStop/MI/Warehouse_01/MI_Desert_TruckStop_Warehouse_WindowCover": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Artifacts/Desert/Desert_Village_Building_03_1S_1F_New/MI_Desert_Village_Building_03_1S_Decals": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Artifacts/Desert/Desert_Village_Building_03_1S_1F_New/MI_Desert_Village_Building_03_1S_Edges": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Artifacts/Desert/Desert_Village_Building_03_1S_1F_New/MI_Desert_Wood_End_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Artifacts/Desert/Desert_Village_Building_03_1S_1F_New/MI_Desert_Wood_End_2": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Artifacts/Desert/Desert_Village_Farmhouse_01_1S_New/MI_Desert_Village_Farmhouse_01_Edges": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Artifacts/Desert/Desert_Village_Farmhouse_01_1S_New/MI_Desert_Village_Farmhouse_01_Edges_2": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Artifacts/Desert/Desert_Village_Farmhouse_01_1S_New/MI_Desert_Village_Farmhouse_01_Edges_INT": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Artifacts/Desert/Desert_Village_Farmhouse_01_1S_New/MI_Desert_Village_Farmhouse_01_GrungeDecals": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Artifacts/Desert/Desert_Village_Farmhouse_01_1S_New/MI_Desert_Village_Farmhouse_01_ThatchedRoof_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Artifacts/Desert/MilitaryBase/materials/M_MilitaryBase_Decal": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/AHospital_ADecal_b": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/AlpineHouse_HayMask_Mat": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/ASchool_Carpet_Mat": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/Desert_Decal_c_Mat": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/Masks/cartel_mansion_decals/Desert_R_Decal_a_Mat": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/Masks/cartel_mansion_decals/Desert_R_Decal_b_Mat": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/Masks/cartel_mansion_decals/MI_CornerDecal_7": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/Masks/cartel_mansion_decals/MI_Wall_Damage_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/Masks/cartel_mansion_decals/MI_Wall_Damage_08": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/Masks/cartel_mansion_decals/MI_Wall_Damage_12": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/Masks/Desert_R_Decal_c_Mat": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/Masks/MI_CornerDecal_1": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/Masks/MI_CornerDecal_10": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/Masks/MI_CornerDecal_11": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/Masks/MI_CornerDecal_12": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/Masks/MI_CornerDecal_13": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/Masks/MI_CornerDecal_13b": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/Masks/MI_CornerDecal_14": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/Masks/MI_CornerDecal_1_Plaster": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/Masks/MI_CornerDecal_2": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/Masks/MI_CornerDecal_4": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/Masks/MI_CornerDecal_5": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/Masks/MI_CornerDecal_6": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/Masks/MI_CornerDecal_8": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/Masks/MI_CornerDecal_9": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/Masks/MI_DecalPlane_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/Masks/MI_DecalPlane_03": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/Masks/MI_DecalPlane_04": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/Masks/MI_DecalPlane_07": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/Masks/MI_DecalPlane_08": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/Masks/MI_Desert_CornerDecal_5": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/Masks/MI_Desert_CornerDecal_6": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/Masks/MI_Wall_Damage_11": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/Masks/M_Factory_Corner_Decal_a": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/Masks/M_Factory_Corner_Decal_b": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/Masks/M_Factory_Corner_Decal_c": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/MH_RoadMarking_b_Mat": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/MH_RoadMarking_b_Mat_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/MH_RoadMarking_c_Mat": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/MH_RoadMarking_Mat": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/MI_cathedral_decals": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/MI_City_Residential_01_1S_1F_EXT_decals": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/MI_City_Residential_Houses_New_Trims": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/MI_City_Warehouse_04_Trims": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/MI_Debris_Papers": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/MI_Desert_Stairs_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/Motel_Decal_c_Mat": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/M_Arena_Cloth_Bilboard2": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/M_Metal_Rust_Dark": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/Savage/Outdoor/MI_Savage_BootConcreteEdgeDecal": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/Savage/Outdoor/MI_Savage_BootConcreteEdgeDecal_2": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/Savage/Outdoor/Unique/Bootcamp_Addon_01/Lion/MI_Savage_BootConcreteEdgeDecal_4": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/SilverM_Decal_Mat": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/SilverM_Decal_Mat2": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Chimera/Props/Materials/MI_Chimera_Tablecloth_01_dusty": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Common/Decals/DihorOtok/Materials/MI_DO_Decal_Rust_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Common/Decals/DihorOtok/Materials/MI_DO_Decal_Rust_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Common/Decals/DihorOtok/Materials/MI_DO_Decal_Rust_03_light": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Common/Decals/DihorOtok/Materials/MI_DO_Decal_Rust_light": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Common/Decals/DihorOtok/MI_VK_WaterDecal_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Common/DesOBJ/Materials/MI_Vikendi_Broken_Fabric": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Common/Exterior/Desert/TrashSet/Materials/MI_TrashSet_Boxes_03": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Common/Materials/Decal/MI_Decals_Desert_Graffiti_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Common/Materials/Decal/MI_Decals_Desert_Graffiti_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Common/Materials/Decal/MI_Decals_Desert_Graffiti_12": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Common/Materials/Decal/MI_Desert_GasStationVamos_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Common/Materials/Desert_Carpet_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Common/Materials/Desert_Tarp_Flag": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Common/Materials/DihorOtok/MI_DO_Hay_Stack_ver2_alpha": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Common/Materials/DihorOtok/MI_DO_Trim_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Common/Materials/MI_bamboo_LG": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Common/Materials/MI_barbedWire01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Common/Materials/MI_bed_Grid": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Common/Materials/MI_Blanket_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Common/Materials/MI_chimney04": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Common/Materials/MI_Fence01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Common/Materials/MI_Fence01_wire": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Common/Materials/MI_haybale01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Common/Materials/MI_heybale02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Common/Materials/MI_MetalLocker_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Common/Materials/MI_plant01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Common/Materials/MI_Savage_RoadLine_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Common/Materials/MI_vintage_set1": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Common/Materials/Range/Range_Hay_Stacks_01/Range_Hay_Stacks_01_Alpha": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Common/Materials/Savage/Bridges/MI_Savage_Bridge00": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Common/Materials/Savage/Decals/MI_Bootcamp_Decal_1": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Common/Materials/Savage/Decals/MI_Bootcamp_Decal_2": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Common/Materials/Savage/Decals/MI_Bootcamp_Decal_4": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Common/Materials/Savage/Decals/MI_Bootcamp_Decal_5": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Common/Materials/Savage/Fences/MI_Savage_FenceRazorWire_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Common/Materials/Savage/Lion/MI_Lion_Small_Chair_Mask_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Common/Materials/Savage/MI_Bootcamp_Catwalk": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Common/Materials/Savage/MI_Bootcamp_CatwalkGrating": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Common/Materials/Savage/MI_Bootcamp_Signage_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Common/Materials/Savage/MI_Bootcamp_TargetBase": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Common/Materials/Savage/MI_Hanging_Lamp": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Common/Materials/Savage/MI_Wheel_barrel_metal": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Common/Materials/Tiger_Drying_Cloth_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Common/Materials/Tiger_Drying_Cloth_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Common/SupplySystem/MI/MI_Vending_machine_Glass": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/DihorOtok_S7/Buildings/Materials/MI_VS7_EdgeDecal_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/DihorOtok_S7/DO_Trains/Material/MI_DO_Train_FlatCar_Alpha01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/DihorOtok_S7/DO_Trains/Material/M_Glass_Inst": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/DihorOtok_S7/Props/Materials/MI_VS7_Concrete_Decal_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Heaven/AssassinsCreed/Material/M_AC_Glass_Inst1": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Heaven/AssassinsCreed/Material/M_AC_Glass_Inst2": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Heaven/Buildings/Materials/Heaven_Trailer_01/MI_Heaven_Trailer_01_DamageDecals_04": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Heaven/Buildings/Materials/Shared/MI_Heaven_FlatMetal_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Heaven/Buildings/Materials/Shared/MI_Heaven_RustLeaks_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Heaven/LookDev/Materials/MI_Heaven_MetalPitted_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Heaven/Props/Common/Materials/CornerStore_Kit/MI_Heaven_CornerStoreKit_Trim": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Heaven/Props/Common/Materials/MI_Heaven_CornerStoreKit_Glass_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Heaven/Props/Common/Materials/MI_Heaven_InteriorLight_OFF": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Heaven/Props/Common/Materials/MI_Heaven_InteriorLight_ON_Cool": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Heaven/Props/Common/Materials/MI_Heaven_InteriorLight_ON_Cool_FlickerA": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Heaven/Props/Common/Materials/MI_Heaven_InteriorLight_ON_Cool_FlickerB": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Heaven/Props/Common/Materials/MI_Heaven_InteriorLight_ON_Cool_FlickerC": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Heaven/Props/Common/Materials/MI_Heaven_InteriorLight_ON_Cool_FlickerD": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Heaven/Props/Common/Materials/MI_Heaven_InteriorLight_ON_Warm": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Heaven/Props/Common/Materials/MI_Heaven_Ramp_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Heaven/Props/Decals/Materials/MI_Heaven_Concrete_Decals_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Kiki/Props/Common/InformationDesk_01/MI_Kiki_InformationDesk_2": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Kiki/Props/Common/PlywoodSet01/MI_Kiki_PlywoodSet01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Kiki/Props/Common/TrafficBarrierSystem/MI_Kiki_TrafficBarrierSystem_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Kiki/Props/Common/Vents/MI_Kiki_LeakDecal_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Miramar/Buildings/Materials/Lynx_Bunker/MI_Lynx_ExteriorDecals_Tinted": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Miramar/Buildings/Materials/Lynx_City_Guard_Post_01/MI_Lynx_ExteriorDecals_Guard_Post_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Miramar/Buildings/Materials/Lynx_City_Parking_Lot_01/MI_Lynx_ExteriorDecals_Parking_Lot_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Miramar/Buildings/Materials/MIR_Sample/Decal/MI_MIR_EXT_RedBrick_EdgeDecal_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Miramar/Props/Common/Materials/MI_Lynx_BoxFan_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Miramar/Props/Common/Materials/MI_Lynx_Debris_Set_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Miramar/Props/Common/Materials/MI_Lynx_JunkFencing_Set_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Miramar/Props/Common/Materials/MI_Lynx_ShoppingCart_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Miramar/Props/Common/Materials/MI_Lynx_WoodCrates_Set_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Miramar/Props/Common/Materials/MI_Oasis_parasol_01_Fabric": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Miramar/Props/Common/Materials/MI_Oasis_parasol_01_tassel": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/MI_WIndowGlas5": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/MI_WIndowGlass": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/MI_WIndowGlass5": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Neon/Buildings/Materials/Unique/Stadium/MI_NE_Stadium_Edge_Decals_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Neon/Buildings/Materials/Unique/Stadium/MI_NE_Stadium_Floor_Patterns": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Neon/Feature/Materials/MI_NE_MarketShowcase_01_glass": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Neon/Foliage/Tree/ST_Neon_FieldTree_01/MI_Neon_FieldTree_Branch02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Neon/Foliage/Tree/ST_Neon_FieldTree_01/MI_Neon_FieldTree_Leaf02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Neon/Foliage/Tree/ST_Neon_ForestTree_01/MI_Neon_ForestTree02_Leaf": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Neon/Props/Materials/Fence/MI_NE_Fence_Concrete_01_Destroy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Neon/Props/Materials/Fence/MI_NE_Fence_Shrub_01_130": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Neon/Props/Materials/Fence/MI_NE_StoneFence_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Neon/Props/Materials/MI_NE_Fence_MergedFence_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Neon/Props/Materials/MI_NE_StrawDummy_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Neon/Props/Materials/MI_NE_StrawDummy_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Neon/Props/Materials/MI_RO_BasketballHoop": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Summerland/Buildings/Materials/Shared/MI_Summerland_ExteriorEdgeDecal_ExteriorEdge02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Summerland/Buildings/Materials/Stairs/MI_Summerland_ExteriorEdgeDecal_Stairs_Straight_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Summerland/Buildings/Materials/Summerland_Ship/MI_Summerland_Ship_Decal": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Summerland/Props/Common/Materials/MI_SummerLand_Carpets_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Summerland/Props/Common/Materials/MI_Summerland_Exterior_AC_Unit_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Summerland/Props/Common/Materials/MI_Summerland_MetalShelves_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Summerland/Props/Common/Materials/MI_Summerland_MilkCrates_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Summerland/Props/Common/Materials/MI_Summerland_Refrigerator_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Summerland/Props/Common/Meshes/Fences/MI_Summerland_CocretDamage": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/Army_base/MI_Tiger_Army_barracks_EdgeDecal_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/Army_base/MI_Tiger_Army_barracks_EdgeDecal_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/Army_base/MI_Tiger_Army_barracks_EdgeDecal_03": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/Army_base/MI_Tiger_Army_Garage_EdgeDecal_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/Bus_terminal/MI_Tiger_Bus_Terminal_Car_Wash_Unique": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/Bus_terminal/MI_Tiger_Bus_Terminal_Floor_Patterns_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/FuneralHall/MI_Tiger_Hospitall_Funeral_DecalLeaks_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/FuneralHall/MI_Tiger_Hospitall_Funeral_DecalLeaks_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/Hospital/Basement/MI_Tiger_Lab_Grunge_Decal_06": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/Hospital/Basement/MI_Tiger_Lab_Leaks_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/Hospital/MI_Tiger_Hospitall_DecalLeaks_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/Hospital/MI_Tiger_Hospitall_DecalLeaks_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/HS/HS_Commercial_02/MI_Tiger_HS_Com_02_EdgeDecal_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/HS/HS_Commercial_02/MI_Tiger_HS_Roof_trim_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/HS/HS_common_03/MI_Tiger_HS_Com_03_EdgeDecal_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/HS/HS_common_03/MI_Tiger_HS_Com_03_EdgeDecal_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/HS/HS_common_03/MI_Tiger_HS_Roof_trim_A_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/HS/HS_Common_04/MI_Tiger_HS_Com_04_EdgeDecal_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/HS/HS_Common_04/MI_Tiger_HS_Com_04_Roof_trim_A_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/HS/HS_Silverhouse/MI_Tiger_HS_Silverhouse_ExDecal": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/HS/HS_Silverhouse/MI_Tiger_HS_Silverhouse_RoofTrim": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/MI_Tiger_ConcreteDamageDecal_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/MI_Tiger_CornerDecal": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/Prison/MI_Tiger_Prison_Building_01_FloorMetal": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/Prison/MI_Tiger_Prison_Building_01_FloorMetal1": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/Prison/MI_Tiger_Prison_Building_01_Glass": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/Prison/MI_Tiger_Prison_Center_Building_FloorMetal": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/Prison/MI_Tiger_Prison_Center_Building_int_Decals": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/Prison/MI_Tiger_Prison_Center_Glass1": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/Prison/MI_Tiger_Prison_EdgeDecal_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/Prison/MI_Tiger_Prison_EdgeDecal_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/Prison/MI_Tiger_Prison_EdgeDecal_03": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/Prison/MI_Tiger_Prison_EdgeDecal_04": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/Prison/MI_Tiger_Prison_EdgeDecal_05": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/School/MI_School_WindowCurtain_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/School/MI_Tiger_School_Basketball_Stand": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/School/MI_Tiger_School_Grade_Signs": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/School/MI_Tiger_School_Gym_Basketball_Court_Lines": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/SecretRoom/MI_Tiger_SecretRoom_Roof_trim_A_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/Shipyard/MI_Shipyard_Concrete_Decals_03": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/Temple/MI_Tiger_temple_belltower_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/Temple/MI_Tiger_temple_ceiling_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/Temple/MI_Tiger_temple_giwa_trim_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/Temple/MI_Tiger_temple_pillar_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/Temple/MI_Tiger_temple_pillar_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/Temple/MI_Tiger_Temple_sign_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/Town/Town_05/MI_Tiger_Town_08_EdgeDecal_03": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/Town/Town_08/MI_Tiger_Town_08_EdgeDecal_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/Town/Town_08/MI_Tiger_Town_08_EdgeDecal_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/Town/Town_11b/MI_Tiger_Town_11b_Roof_Trim_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/Town/Town_Residential_01/MI_Tiger_Residential_01_EdgeDecal": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/Town/Town_Residential_01b/MI_Tiger_HS_Roof_trim_A_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/Town/Town_Residential_01b/MI_Tiger_TownHouse_Roof_Blue01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Props/Materials/Decals/MI_Tiger_Poster_Decal_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Props/Materials/Hospital/MI_Hopital_Banner_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Props/Materials/Hospital/MI_Hopital_Banner_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Props/Materials/Hospital/MI_Hospital_Floor_Dirt_Decal": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Props/Materials/Hospital/MI_Hospital_Floor_Trash_Decal_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Props/Materials/Hospital/MI_Tiger_Funeral_flag_A": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Props/Materials/Hospital/MI_Tiger_Hospital_cart_01_Ironwire": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Props/Materials/Hospital/MI_Tiger_Hospital_Entryway_Banner_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Props/Materials/Hospital/Ml_Tiger_Flowerwreath_Black": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Props/Materials/Hospital/Ml_Tiger_Funeral_flowerwreath_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Props/Materials/MI_Tiger_Chainlink_Fence_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Props/Materials/MI_Tiger_Chainlink_Fence_Net_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Props/Materials/MI_Tiger_CornerStoreKit_Trim": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Props/Materials/MI_Tiger_farms_hay_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Props/Materials/MI_Tiger_farms_hay_03": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Props/Materials/MI_Tiger_farms_rice_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Props/Materials/MI_Tiger_Fishing_Net": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Props/Materials/MI_Tiger_Glass": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Props/Materials/MI_Tiger_Hwatu": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Props/Materials/MI_Tiger_palace_throne_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Props/Materials/MI_Tiger_palace_throne_03": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Props/Materials/MI_Tiger_PB_Decal_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Props/Materials/MI_Tiger_residential_fan_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Props/Materials/MI_Tiger_SilverhouseBanner": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Props/Materials/MI_Tiger_Temple_ceilingdeco_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Props/Materials/MI_Tiger_WindowCover_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Props/Materials/MI_Tiger_WindowCover_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Props/Materials/Studio/MI_Tiger_Studio_Industrial_Fan_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Props/Meshes/Hospital/M_hospital_bulletproof_Glass_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Props/Meshes/Hospital/SLB_Hospital/Mat/MI_SLB_Decal_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Props/Meshes/Hospital/SLB_Hospital/Mat/MI_SLB_Decal_02_B": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Props/Meshes/Hospital/SLB_Hospital/Mat/MI_SLB_FlagBanner_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Tiger/Props/Meshes/Hospital/SLB_Hospital/Mat/MI_SLB_FlagHanging_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Vegetation/Lion/Materials/M_Lion_Fern_03": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Vikendi/Buildings/Materials/HS/HS_Warehouse_01/MI_Baltic_MossDecal_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Vikendi/Buildings/Materials/Unique/CoalMIne/MI_VK_CoalMine_Warehouse_01_Decals": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Vikendi/Buildings/Materials/Unique/LabCamp/MI_VK_Lab_Camp_Metal_Floor": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Vikendi/Buildings/Materials/Unique/SecretRoom/M_VK_SecretRoom_Ventilator": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Vikendi/Foliage/Tree/ST_VK_GeneralPine_01/MI_Vk_GeneralPine_Leaf_01_Snow": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Vikendi/Props/Materials/Unique/CoalMine/MI_VK_EuropeanDumpTruck_Grill_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World_Desert/Common/Decals/M_BulletHoles1": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World_Desert/Common/Decals/M_BulletHoles2": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World_Desert/Desert_Beauty/DesertTown/Materials/Wires": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Buildings/Desert/New_buildings/Ml_Desert_NewComposite_ExEdge": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Buildings/Desert/New_buildings/Ml_Desert_shed_01_ExEdge2": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Buildings/Desert/New_buildings/Ml_Desert_shed_02_ExEdge1": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/AHospital_ADecal_a_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/AHospital_ADecal_b_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/AlpineHouse_HayMask_Mat_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/ASchool_Books_c_Mat_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/ASchool_Carpet_Mat_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/ASchool_Sign_Mat_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/BloodStain_03_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/BloodStain_2_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/BloodStain_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/Desert_Carpet_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/Desert_Decal_c_Mat_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/Desert_R_Decal_a_Mat_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/Desert_R_Decal_b_Mat_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/Desert_R_Decal_c_Mat_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/Desert_Tarp_Flag_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MH_RoadMarking_b_Mat_02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MH_RoadMarking_b_Mat_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MH_RoadMarking_c_Mat_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MH_RoadMarking_Mat_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_BrokenWood_Decal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Ceiling_Decal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Ceiling_Decal_Police_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_ChainlinkFence_Tall_A_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Chipped_Paint_Backing_Decal_02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Chipped_Paint_Backing_Decal_03_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Chipped_Paint_Backing_Decal_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Chipped_Paint_Decal1_2_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Chipped_Paint_Decal1_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Chipped_Paint_Decal_02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Chipped_Paint_Decal_03_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Chipped_Paint_Decal_10_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Chipped_Paint_Decal_11_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Chipped_Paint_Decal_12_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Chipped_Paint_Decal_13_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Chipped_Paint_Decal_14_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Chipped_Paint_Decal_15_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Chipped_Paint_Decal_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Concrete_Damage_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_CornCan_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Decals_Concrete_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Decals_Top_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Decal_ConcretePatch_07_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Decal_ConcretePatch_10_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Decal_ConcretePatch_Dark_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Decal_Concrete_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Decal_Leaks_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Decal_Leaks_02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Decal_Trash_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_DirtDecal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_DirtDecal_02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_DirtDecal_03_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_DirtDecal_04_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_DirtDecal_Dark_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_DirtDecal_Police_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_EranglePaperSign_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_ExteriorEdgeDecal_01_PoliceINT_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_ExteriorEdgeDecal_01_Prison1_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_ExteriorEdgeDecal_01_Prison2_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_ExteriorEdgeDecal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_ExteriorEdgeDecal_02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_ExteriorEdgeDecal_03_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_ExteriorEdgeDecal_05_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_ExteriorEdgeDecal_ControlTower_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_ExteriorEdgeDecal_INT_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_ExteriorEdgeDecal_SecPost_Ext_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_ExteriorEdgeDecal_SecPost_Int_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Fence01_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Fence01_Net_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Flags_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Flags_02_metal_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Flags_02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Fridge_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_GarbageDesbris_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_GraffitiStyle_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Ground_Rubble_02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_HositalBed_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_HS_Campsite_01_Ext_Decal_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_HS_GuardPost_01_Ext_Decal_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_HS_GuardPost_01_Int_Decal_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_HS_GuardPost_03_Ext_Decal_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_HS_GuardPost_03_Int_Trim_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_HS_Residential_01_Wood_Decal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_HS_WareHouse_01_10_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_HS_Warehouse_04_Ext_Decal_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_InteriorDecals_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Int_Trim_01_Prison_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Int_Trim_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Int_Trim_02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Int_Trim_03_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Ivy_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Large_Warehouse_Building_Kit_2_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Large_Warehouse_Building_Kit_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_MossDecal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_MossDecal_2_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_MossDecal_SecPost_2_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Oppresion_Banner_01_Skinny_Tall_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_PaperDebris_Alpha_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_PaperPiles_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Plant_Dead_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_PlasterEdgeDecalDark_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_PlasterEdgeDecal_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_PlasterFade_02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Poster_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Powerplant_Trim_Masked_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_PropagandaPapers_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Rug_Medium_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_School_Basketball_Hoop_01_ref_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_School_WoodTrim_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Stairs_Decal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Stairs_Decal_02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_StoreAwning_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_TownHall_MetalRoof_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Town_Commercial_12_Roof_Decal_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Town_Residential_02_2R_Edge_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Town_Residential_02_EdgeDecal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Town_Residential_02_MossDecal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Town_Residential_02_MossDecal_02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Town_Residential_03_EdgeDecal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Unique_Factory_CornerDecal_2_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Unique_Military_Intel_01_Ext_Decal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Unique_Military_Intel_01_Int_Decal_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Unique_Prison_Official_House_EdgeDecal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_WallPaperSigns_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Wallpaper_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Wallpaper_03_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Wallpaper_05_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Warehouse_02_CornerDecal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Weed_Leafy_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_Weed_Tall_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_WindowCurtain_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Baltic_WindowCurtain_02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_bamboo_LG_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_barbedWire01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_bed_Grid_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Blanket_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Bootcamp_CatwalkGrating_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Bootcamp_Catwalk_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Bootcamp_Decal_1_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Bootcamp_Decal_2_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Bootcamp_Decal_4_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Bootcamp_Decal_5_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Bootcamp_Signage_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Bootcamp_TargetBase_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_BulletHoles01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_cathedral_decals_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Chainlink01_wire_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Chimera_Tablecloth_01_dusty_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_chimney04_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_City_Residential_01_1S_1F_EXT_decals_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_City_Residential_Houses_New_Trims_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_City_Warehouse_04_Trims_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_CornerDecal_10_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_CornerDecal_11_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_CornerDecal_12_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_CornerDecal_13b_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_CornerDecal_13_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_CornerDecal_14_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_CornerDecal_1_Plaster_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_CornerDecal_1_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_CornerDecal_2_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_CornerDecal_4_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_CornerDecal_5_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_CornerDecal_6_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_CornerDecal_7_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_CornerDecal_8_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_CornerDecal_9_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_CornerDecal_statue_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Debris_Papers_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_DecalPlane_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_DecalPlane_03_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_DecalPlane_04_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_DecalPlane_07_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_DecalPlane_08_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Decals_Desert_Graffiti_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Decals_Desert_Graffiti_02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Decals_Desert_Graffiti_12_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Decal_Baltic_DirtGround_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Decal_Baltic_DirtGround_02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Decal_Baltic_Factory_Ground_Trash_02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Decal_Baltic_Garage_01_Leaks_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Decal_Baltic_Ground_Rubble_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Decal_Baltic_Ground_Rubble_02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Decal_Baltic_Ground_Rubble_03_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Decal_Baltic_Ground_Rubble_04_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Decal_Baltic_Ground_Rubble_04_Y012_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Desert_CornerDecal_5_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Desert_CornerDecal_6_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Desert_CornerDecal_7_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Desert_GasStationVamos_02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Desert_Plaster_04_03_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Desert_Resort_Blinds1_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Desert_Resort_ExtEdgeDecal1_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Desert_Resort_leaking_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Desert_Slum_Building_03_1S_Decals_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Desert_Slum_Building_03_1S_New_Edges_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Desert_Slum_Building_03_1S_New_Edges_02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Desert_Slum_Building_03_1S_New_Edges_INT_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Desert_Slum_Building_05_1S_New_Edges_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Desert_Slum_Building_05_1S_New_Edges_02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Desert_Slum_Building_05_1S_New_Edges_2_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Desert_Stairs_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Desert_TruckStop_Diner_EdgeDecal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Desert_TruckStop_Diner_EdgeDecal_02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Desert_TruckStop_Motel_Curtain_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Desert_TruckStop_Motel_EdgeDecal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Desert_TruckStop_PublicToliet_Decals_GrungeDrips_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Desert_TruckStop_PublicToliet_ExteriorEdgeDecal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Desert_TruckStop_PublicToliet_ExteriorEdgeDecal_02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Desert_TruckStop_Storage_01_Decals_GrungeDrips_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Desert_TruckStop_Storage_01_EdgeDamage_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Desert_TruckStop_Storage_01_EdgeDecals_EXT_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Desert_TruckStop_Warehouse_01_Decals_Grunge_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Desert_TruckStop_Warehouse_01_Door_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Desert_TruckStop_Warehouse_01_EdgeDamage_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Desert_TruckStop_Warehouse_01_EdgeDecals_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Desert_TruckStop_Warehouse_WindowCover_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Desert_Village_Building_03_1S_Decals_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Desert_Village_Building_03_1S_Edges_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Desert_Village_Farmhouse_01_Edges_2_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Desert_Village_Farmhouse_01_Edges_INT_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Desert_Village_Farmhouse_01_Edges_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Desert_Village_Farmhouse_01_GrungeDecals_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Desert_Village_Farmhouse_01_ThatchedRoof_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Desert_Wood_End_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Desert_Wood_End_2_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_DOME_CHAINLINK_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Dome_Compound_Decals1_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Dome_Decals_Drip1_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Dome_Decals_Drip2_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Dome_Decals_Drip3_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Dome_ExtEdgeDecal1_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Dome_FloorMat_02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Dome_Floor_deco_Dirt01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Dome_Floor_deco_Dirt02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Dome_Glass_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Dome_marking_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_DO_Decal_Rust_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_DO_Decal_Rust_02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_DO_Decal_Rust_03_light_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_DO_Decal_Rust_light_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_DO_Dino_Decal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_DO_Hay_Stack_ver2_alpha_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_DO_Train_FlatCar_Alpha01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_DO_Trim_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Fan01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Fence01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Fence01_wire_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_FoldingChair01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Glass_Arcade_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Hanging_Lamp_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_haybale01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Heaven_Concrete_Decals_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Heaven_CornerStoreKit_Glass_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Heaven_CornerStoreKit_Trim_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Heaven_FlatMetal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Heaven_InteriorLight_OFF_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Heaven_InteriorLight_ON_Cool_FlickerA_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Heaven_InteriorLight_ON_Cool_FlickerB_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Heaven_InteriorLight_ON_Cool_FlickerC_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Heaven_InteriorLight_ON_Cool_FlickerD_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Heaven_InteriorLight_ON_Cool_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Heaven_InteriorLight_ON_Warm_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Heaven_MetalPitted_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Heaven_Ramp_02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Heaven_RustLeaks_02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Heaven_Trailer_01_DamageDecals_04_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_heybale02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_heybale2_oneSided_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Honor_Board_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Honor_Board_02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Honor_board_03_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Hopital_Banner_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Hopital_Banner_02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Hospital_Floor_Dirt_Decal_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Hospital_Floor_Trash_Decal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Kiki_InformationDesk_2_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Kiki_LeakDecal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Kiki_PlywoodSet01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Kiki_TrafficBarrierSystem_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Lion_Cage_Container_Mask_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Lion_Small_Chair_Mask_02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Lynx_BoxFan_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Lynx_Debris_Set_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Lynx_ExteriorDecals_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Lynx_ExteriorDecals_02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Lynx_ExteriorDecals_City_Hut_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Lynx_ExteriorDecals_City_Hut_02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Lynx_ExteriorDecals_Guard_Post_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Lynx_ExteriorDecals_Parking_Lot_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Lynx_ExteriorDecals_RoofDamage_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Lynx_ExteriorDecals_Tinted_03_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Lynx_ExteriorDecals_Tinted_2_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Lynx_ExteriorDecals_Tinted_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Lynx_JunkFencing_Set_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Lynx_ShoppingCart_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Lynx_WoodCrates_Set_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_MetalLocker_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_MiddleDome_MetalDecal_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Military_Barracks_out_05_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_MIR_EXT_RedBrick_EdgeDecal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_NE_Fence_Concrete_01_Destroy_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_NE_Fence_MergedFence_02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_NE_Fence_Shrub_01_130_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_NE_Stadium_Edge_Decals_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_NE_Stadium_Floor_Patterns_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_NE_StoneFence_02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_NE_StrawDummy_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_NE_StrawDummy_02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Oasis_parasol_01_Fabric_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Oasis_parasol_01_tassel_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_plant01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Plant_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Racing_TrafficBarrier_02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_RO_BasketballHoop_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Savage_BootConcreteEdgeDecal_2_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Savage_BootConcreteEdgeDecal_4_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Savage_BootConcreteEdgeDecal_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Savage_Bridge00_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Savage_RoadLine_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_School_WindowCurtain_02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Shipyard_Concrete_Decals_03_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_SLB_Decal_02_B_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_SLB_Decal_02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_SLB_FlagBanner_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_SLB_FlagHanging_02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_SM_Baltic_sheetrock_rubble_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_SummerLand_Carpets_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Summerland_CocretDamage_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Summerland_ExteriorEdgeDecal_ExteriorEdge02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Summerland_ExteriorEdgeDecal_Stairs_Straight_02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Summerland_Exterior_AC_Unit_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Summerland_MetalShelves_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Summerland_MilkCrates_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Summerland_Refrigerator_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Summerland_Ship_Decal_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_tarp02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_tarp03_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_Army_barracks_EdgeDecal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_Army_barracks_EdgeDecal_02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_Army_barracks_EdgeDecal_03_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_Army_Garage_EdgeDecal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_Bus_Terminal_Car_Wash_Unique_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_Bus_Terminal_Floor_Patterns_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_Chainlink_Fence_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_Chainlink_Fence_Net_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_ConcreteDamageDecal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_CornerDecal_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_CornerStoreKit_Trim_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_farms_hay_03_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_farms_rice_02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_Fishing_Net_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_Funeral_flag_A_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_Glass_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_Hospitall_DecalLeaks_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_Hospitall_DecalLeaks_02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_Hospitall_Funeral_DecalLeaks_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_Hospitall_Funeral_DecalLeaks_02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_Hospital_cart_01_Ironwire_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_Hospital_Entryway_Banner_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_HS_Com_02_EdgeDecal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_HS_Com_03_EdgeDecal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_HS_Com_03_EdgeDecal_02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_HS_Com_04_EdgeDecal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_HS_Com_04_Roof_trim_A_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_HS_Roof_trim_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_HS_Roof_trim_A_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_HS_Roof_trim_A_02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_HS_Silverhouse_ExDecal_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_HS_Silverhouse_RoofTrim_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_Hwatu_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_Lab_Grunge_Decal_06_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_Lab_Leaks_02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_palace_throne_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_palace_throne_03_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_PB_Decal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_Poster_Decal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_Prison_Building_01_FloorMetal1_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_Prison_Building_01_FloorMetal_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_Prison_Building_01_Glass_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_Prison_Center_Building_FloorMetal_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_Prison_Center_Building_int_Decals_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_Prison_Center_Glass1_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_Prison_EdgeDecal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_Prison_EdgeDecal_02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_Prison_EdgeDecal_03_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_Prison_EdgeDecal_04_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_Prison_EdgeDecal_05_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_Residential_01_EdgeDecal_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_residential_fan_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_School_Basketball_Stand_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_School_Grade_Signs_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_School_Gym_Basketball_Court_Lines_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_SecretRoom_Roof_trim_A_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_SilverhouseBanner_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_Studio_Industrial_Fan_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_temple_belltower_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_Temple_ceilingdeco_02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_temple_ceiling_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_temple_giwa_trim_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_temple_pillar_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_temple_pillar_02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_Temple_sign_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_TownHouse_Roof_Blue01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_Town_08_EdgeDecal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_Town_08_EdgeDecal_02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_Town_08_EdgeDecal_03_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_Town_11b_Roof_Trim_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_WindowCover_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Tiger_WindowCover_02_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_TileConcreteDecal_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_town01_Grass_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_TrashSet_Boxes_03_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_vintage_set1_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_VK_CoalMine_Warehouse_01_Decals_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_VK_EuropeanDumpTruck_Grill_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Vk_GeneralPine_Leaf_01_Snow_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_VK_Lab_Camp_Metal_Floor_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_VK_WaterDecal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_VS7_Concrete_Decal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_VS7_EdgeDecal_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Wall_Damage_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Wall_Damage_03_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Wall_Damage_05_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Wall_Damage_08_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Wall_Damage_11_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Wall_Damage_12_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Wheel_barrel_metal_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_WIndowGlas5_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_WIndowGlass5_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_WIndowGlass_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/Ml_Desert_NewComposite_ExEdge_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/Ml_Desert_shed_01_ExEdge2_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/Ml_Desert_shed_02_ExEdge1_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/Ml_Tiger_Flowerwreath_Black_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/Ml_Tiger_Funeral_flowerwreath_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/Motel_Decal_c_Mat_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/M_AC_Glass_Inst1_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/M_AC_Glass_Inst2_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/M_Arena_Cloth_Bilboard2_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/M_BulletHoles1_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/M_BulletHoles2_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/M_Dark_Metal_2_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/M_Factory_Corner_Decal_a_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/M_Factory_Corner_Decal_b_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/M_Factory_Corner_Decal_c_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/M_Glass_Inst_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/M_Glass_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/M_hospital_bulletproof_Glass_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/M_Lion_Fern_03_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/M_Metal_Rust_Dark_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/M_MilitaryBase_Decal_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/M_Papers_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/M_VK_SecretRoom_Ventilator_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/M_Wood_05_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/M_Wood_White_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/Range_Hay_Stacks_01_Alpha_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/SilverM_Decal_Mat2_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/SilverM_Decal_Mat_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/tsl_Grass_01_LOD0_Inst_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/Wires_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Effects/Clets/Material/M_Flicker": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Item/BombMode_Deploy/Materials/M_BombMode_Deploy_Emissive_v2": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Maps/lobby/lobby_customize/lobby_customize_HarleyDavison/Materials/MI_Plant_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Maps/lobby/lobby_customize/lobby_customize_VelocityGarage/Decals/MI_Lynx_ExteriorDecals_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Vehicles/Uaz/Materials/MI_Uaz_New_F_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Weapon/Accessories/M_Glass": {
+    "AlphaTest": true
+  },
+  "tsl_Grass_01_LOD0_Inst": {
+    "AlphaTest": true
+  },
+  "tsl_Grass_01_LOD0_Inst_Proxy": {
+    "AlphaTest": true
+  },
+  "Wires": {
+    "AlphaTest": true
+  },
+  "Wires_Proxy": {
+    "AlphaTest": true
+  }
+}

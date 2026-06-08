@@ -1,0 +1,488 @@
+{
+  "DataTable'/Game/Blueprints/Mod/VehicleModDataTable.VehicleModDataTable'": [
+    {
+      "value": "/Game/Vehicles/AquaRail/BluePrint/AquaRail.AquaRail",
+      "label": "AquaRail",
+      "rowName": "AquaRail"
+    },
+    {
+      "value": "/Game/Vehicles/Bicycle/BP/BP_Bicycle.BP_Bicycle",
+      "label": "Bicycle",
+      "rowName": "Bicycle"
+    },
+    {
+      "value": "/Game/Vehicles/Blanc/Blueprint/BP_Blanc_Esports.BP_Blanc_Esports",
+      "label": "Blanc",
+      "rowName": "Blanc"
+    },
+    {
+      "value": "/Game/Vehicles/Boat_PG117/BluePrint/Boat_PG117.Boat_PG117",
+      "label": "Boat",
+      "rowName": "Boat"
+    },
+    {
+      "value": "/Game/Vehicles/Buggy/BluePrint/Buggy.Buggy",
+      "label": "Buggy",
+      "rowName": "Buggy"
+    },
+    {
+      "value": "/Game/Vehicles/CoupeRB/BP_CoupeRB.BP_CoupeRB",
+      "label": "CoupeRB",
+      "rowName": "CoupeRB"
+    },
+    {
+      "value": "/Game/Vehicles/Dacia/BluePrint/Dacia_A_03_v2_Esports.Dacia_A_03_v2_Esports",
+      "label": "Dacia",
+      "rowName": "Dacia"
+    },
+    {
+      "value": "/Game/Vehicles/DirtBike/Blueprints/BP_Dirtbike.BP_Dirtbike",
+      "label": "Dirtbike",
+      "rowName": "Dirtbike"
+    },
+    {
+      "value": "/Game/Vehicles/Food_Truck/BluePrint/BP_Food_Truck.BP_Food_Truck",
+      "label": "Food_Truck",
+      "rowName": "Food_Truck"
+    },
+    {
+      "value": "/Game/Vehicles/LadaNiva/BluePrint/BP_Niva_Esports.BP_Niva_Esports",
+      "label": "Jima",
+      "rowName": "Niva"
+    },
+    {
+      "value": "/Game/Vehicles/MiniBus/BluePrint/BP_MiniBus.BP_MiniBus",
+      "label": "MiniBus",
+      "rowName": "MiniBus"
+    },
+    {
+      "value": "/Game/Vehicles/Mirado/BluePrint/BP_Mirado_A_03_Esports.BP_Mirado_A_03_Esports",
+      "label": "Mirado",
+      "rowName": "Mirado"
+    },
+    {
+      "value": "/Game/Vehicles/Motorcycle/BluePrint/BP_Motorbike_04.BP_Motorbike_04",
+      "label": "Motorbike",
+      "rowName": "Motorbike"
+    },
+    {
+      "value": "/Game/Vehicles/Motorglider/BP_Motorglider.BP_Motorglider",
+      "label": "Motorglider",
+      "rowName": "Motorglider"
+    },
+    {
+      "value": "/Game/Vehicles/Pickup/BluePrint/BP_PickupTruck_A_esports.BP_PickupTruck_A_esports",
+      "label": "PickupTruck",
+      "rowName": "PickupTruck"
+    },
+    {
+      "value": "/Game/Vehicles/PicoBus/BluePrint/BP_PicoBus.BP_PicoBus",
+      "label": "PicoBus",
+      "rowName": "PicoBus"
+    },
+    {
+      "value": "/Game/Vehicles/Pillar_Car/BluePrint/BP_Pillar_Car.BP_Pillar_Car",
+      "label": "Pillar_Car",
+      "rowName": "Pillar_Car"
+    },
+    {
+      "value": "/Game/Vehicles/PonyCoupe/BP_PonyCoupe_Esports.BP_PonyCoupe_Esports",
+      "label": "PonyCoupe",
+      "rowName": "PonyCoupe"
+    },
+    {
+      "value": "/Game/Vehicles/Porter/BP_Porter.BP_Porter",
+      "label": "Porter",
+      "rowName": "Porter"
+    },
+    {
+      "value": "/Game/Vehicles/Rony/BluePrint/BP_M_Rony_A_Esports.BP_M_Rony_A_Esports",
+      "label": "Rony",
+      "rowName": "Rony"
+    },
+    {
+      "value": "/Game/Vehicles/Uaz/BluePrint/Uaz_B_01_esports.Uaz_B_01_esports",
+      "label": "UAZ",
+      "rowName": "UAZ"
+    }
+  ],
+  "VehicleModDataTable": [
+    {
+      "value": "/Game/Vehicles/AquaRail/BluePrint/AquaRail.AquaRail",
+      "label": "AquaRail",
+      "rowName": "AquaRail"
+    },
+    {
+      "value": "/Game/Vehicles/Bicycle/BP/BP_Bicycle.BP_Bicycle",
+      "label": "Bicycle",
+      "rowName": "Bicycle"
+    },
+    {
+      "value": "/Game/Vehicles/Blanc/Blueprint/BP_Blanc_Esports.BP_Blanc_Esports",
+      "label": "Blanc",
+      "rowName": "Blanc"
+    },
+    {
+      "value": "/Game/Vehicles/Boat_PG117/BluePrint/Boat_PG117.Boat_PG117",
+      "label": "Boat",
+      "rowName": "Boat"
+    },
+    {
+      "value": "/Game/Vehicles/Buggy/BluePrint/Buggy.Buggy",
+      "label": "Buggy",
+      "rowName": "Buggy"
+    },
+    {
+      "value": "/Game/Vehicles/CoupeRB/BP_CoupeRB.BP_CoupeRB",
+      "label": "CoupeRB",
+      "rowName": "CoupeRB"
+    },
+    {
+      "value": "/Game/Vehicles/Dacia/BluePrint/Dacia_A_03_v2_Esports.Dacia_A_03_v2_Esports",
+      "label": "Dacia",
+      "rowName": "Dacia"
+    },
+    {
+      "value": "/Game/Vehicles/DirtBike/Blueprints/BP_Dirtbike.BP_Dirtbike",
+      "label": "Dirtbike",
+      "rowName": "Dirtbike"
+    },
+    {
+      "value": "/Game/Vehicles/Food_Truck/BluePrint/BP_Food_Truck.BP_Food_Truck",
+      "label": "Food_Truck",
+      "rowName": "Food_Truck"
+    },
+    {
+      "value": "/Game/Vehicles/LadaNiva/BluePrint/BP_Niva_Esports.BP_Niva_Esports",
+      "label": "Jima",
+      "rowName": "Niva"
+    },
+    {
+      "value": "/Game/Vehicles/MiniBus/BluePrint/BP_MiniBus.BP_MiniBus",
+      "label": "MiniBus",
+      "rowName": "MiniBus"
+    },
+    {
+      "value": "/Game/Vehicles/Mirado/BluePrint/BP_Mirado_A_03_Esports.BP_Mirado_A_03_Esports",
+      "label": "Mirado",
+      "rowName": "Mirado"
+    },
+    {
+      "value": "/Game/Vehicles/Motorcycle/BluePrint/BP_Motorbike_04.BP_Motorbike_04",
+      "label": "Motorbike",
+      "rowName": "Motorbike"
+    },
+    {
+      "value": "/Game/Vehicles/Motorglider/BP_Motorglider.BP_Motorglider",
+      "label": "Motorglider",
+      "rowName": "Motorglider"
+    },
+    {
+      "value": "/Game/Vehicles/Pickup/BluePrint/BP_PickupTruck_A_esports.BP_PickupTruck_A_esports",
+      "label": "PickupTruck",
+      "rowName": "PickupTruck"
+    },
+    {
+      "value": "/Game/Vehicles/PicoBus/BluePrint/BP_PicoBus.BP_PicoBus",
+      "label": "PicoBus",
+      "rowName": "PicoBus"
+    },
+    {
+      "value": "/Game/Vehicles/Pillar_Car/BluePrint/BP_Pillar_Car.BP_Pillar_Car",
+      "label": "Pillar_Car",
+      "rowName": "Pillar_Car"
+    },
+    {
+      "value": "/Game/Vehicles/PonyCoupe/BP_PonyCoupe_Esports.BP_PonyCoupe_Esports",
+      "label": "PonyCoupe",
+      "rowName": "PonyCoupe"
+    },
+    {
+      "value": "/Game/Vehicles/Porter/BP_Porter.BP_Porter",
+      "label": "Porter",
+      "rowName": "Porter"
+    },
+    {
+      "value": "/Game/Vehicles/Rony/BluePrint/BP_M_Rony_A_Esports.BP_M_Rony_A_Esports",
+      "label": "Rony",
+      "rowName": "Rony"
+    },
+    {
+      "value": "/Game/Vehicles/Uaz/BluePrint/Uaz_B_01_esports.Uaz_B_01_esports",
+      "label": "UAZ",
+      "rowName": "UAZ"
+    }
+  ],
+  "DataTable'/Game/Blueprints/Mod/InteractTriggerModDataTable.InteractTriggerModDataTable'": [
+    {
+      "value": "/Game/Assets/World/Common/Exterior/Savage/Lion/SM_Computer_01a_SM_Computer_01a_LOD0.SM_Computer_01a_SM_Computer_01a_LOD0",
+      "label": "Computer",
+      "rowName": "Computer"
+    },
+    {
+      "value": "/Game/Assets/World/Tutorial/IndoorRange/Props/Meshes/SM_IndoorRange_Controller_01.SM_IndoorRange_Controller_01",
+      "label": "Controller",
+      "rowName": "Controller"
+    },
+    {
+      "value": "/Game/Assets/World/Common/RevivalSystem/SM_revival_tower_device_01.SM_revival_tower_device_01",
+      "label": "Device",
+      "rowName": "Device"
+    },
+    {
+      "value": "/Game/Assets/World/Baltic/Props/Common/Meshes/SM_Baltic_Generator_02.SM_Baltic_Generator_02",
+      "label": "Generator",
+      "rowName": "Generator"
+    },
+    {
+      "value": "/Game/Assets/World/Common/Exterior/DihorOtok/Common/SM_DO_Stone_plant_pot_02.SM_DO_Stone_plant_pot_02",
+      "label": "Pot",
+      "rowName": "Pot"
+    }
+  ],
+  "InteractTriggerModDataTable": [
+    {
+      "value": "/Game/Assets/World/Common/Exterior/Savage/Lion/SM_Computer_01a_SM_Computer_01a_LOD0.SM_Computer_01a_SM_Computer_01a_LOD0",
+      "label": "Computer",
+      "rowName": "Computer"
+    },
+    {
+      "value": "/Game/Assets/World/Tutorial/IndoorRange/Props/Meshes/SM_IndoorRange_Controller_01.SM_IndoorRange_Controller_01",
+      "label": "Controller",
+      "rowName": "Controller"
+    },
+    {
+      "value": "/Game/Assets/World/Common/RevivalSystem/SM_revival_tower_device_01.SM_revival_tower_device_01",
+      "label": "Device",
+      "rowName": "Device"
+    },
+    {
+      "value": "/Game/Assets/World/Baltic/Props/Common/Meshes/SM_Baltic_Generator_02.SM_Baltic_Generator_02",
+      "label": "Generator",
+      "rowName": "Generator"
+    },
+    {
+      "value": "/Game/Assets/World/Common/Exterior/DihorOtok/Common/SM_DO_Stone_plant_pot_02.SM_DO_Stone_plant_pot_02",
+      "label": "Pot",
+      "rowName": "Pot"
+    }
+  ],
+  "DataTable'/Game/Blueprints/Mod/DamageTriggerModDataTable.DamageTriggerModDataTable'": [
+    {
+      "value": "/Game/Assets/World/Baltic/Props/OldProps/Baltic_BarrierSand01.Baltic_BarrierSand01",
+      "label": "Cube",
+      "rowName": "Cube"
+    },
+    {
+      "value": "/Game/Assets/World/Baltic/Props/OldProps/Baltic_Cupboard.Baltic_Cupboard",
+      "label": "Cupboard",
+      "rowName": "Cupboard"
+    },
+    {
+      "value": "/Game/Assets/World/Baltic/Props/OldProps/Baltic_Range_Target_01.Baltic_Range_Target_01",
+      "label": "RangeTarget1",
+      "rowName": "RangeTarget1"
+    },
+    {
+      "value": "/Game/Assets/World/Baltic/Props/OldProps/Baltic_Range_Target_02.Baltic_Range_Target_02",
+      "label": "RangeTarget2",
+      "rowName": "RangeTarget2"
+    },
+    {
+      "value": "/Game/Assets/World/Baltic/Props/OldProps/Baltic_Range_Target_03.Baltic_Range_Target_03",
+      "label": "RangeTarget3",
+      "rowName": "RangeTarget3"
+    },
+    {
+      "value": "/Game/Assets/World/Baltic/Props/OldProps/Baltic_Range_Target_04.Baltic_Range_Target_04",
+      "label": "RangeTarget4",
+      "rowName": "RangeTarget4"
+    },
+    {
+      "value": "/Game/Assets/World/Baltic/Props/OldProps/Baltic_Range_Target_05.Baltic_Range_Target_05",
+      "label": "RangeTarget5",
+      "rowName": "RangeTarget5"
+    },
+    {
+      "value": "/Game/Assets/World/Buildings/Unique/ShootingRange/Range_Target_06.Range_Target_06",
+      "label": "RangeTarget6",
+      "rowName": "RangeTarget6"
+    },
+    {
+      "value": "/Game/Assets/World/Common/Exterior/Range/range_target_02/range_target_02a.range_target_02a",
+      "label": "RangeTarget7",
+      "rowName": "RangeTarget7"
+    },
+    {
+      "value": "/Game/Assets/World/Arcade/Boardwalk/Props/Common/Boardwalk_Ball_01/SM_Boardwalk_Ball_01.SM_Boardwalk_Ball_01",
+      "label": "RedBall",
+      "rowName": "RedBall"
+    },
+    {
+      "value": "/Game/Assets/World/Sanhok_DES/Exterior/Hide_Asset/HM_DES_Red_Light.HM_DES_Red_Light",
+      "label": "RedLight",
+      "rowName": "RedLight"
+    }
+  ],
+  "DamageTriggerModDataTable": [
+    {
+      "value": "/Game/Assets/World/Baltic/Props/OldProps/Baltic_BarrierSand01.Baltic_BarrierSand01",
+      "label": "Cube",
+      "rowName": "Cube"
+    },
+    {
+      "value": "/Game/Assets/World/Baltic/Props/OldProps/Baltic_Cupboard.Baltic_Cupboard",
+      "label": "Cupboard",
+      "rowName": "Cupboard"
+    },
+    {
+      "value": "/Game/Assets/World/Baltic/Props/OldProps/Baltic_Range_Target_01.Baltic_Range_Target_01",
+      "label": "RangeTarget1",
+      "rowName": "RangeTarget1"
+    },
+    {
+      "value": "/Game/Assets/World/Baltic/Props/OldProps/Baltic_Range_Target_02.Baltic_Range_Target_02",
+      "label": "RangeTarget2",
+      "rowName": "RangeTarget2"
+    },
+    {
+      "value": "/Game/Assets/World/Baltic/Props/OldProps/Baltic_Range_Target_03.Baltic_Range_Target_03",
+      "label": "RangeTarget3",
+      "rowName": "RangeTarget3"
+    },
+    {
+      "value": "/Game/Assets/World/Baltic/Props/OldProps/Baltic_Range_Target_04.Baltic_Range_Target_04",
+      "label": "RangeTarget4",
+      "rowName": "RangeTarget4"
+    },
+    {
+      "value": "/Game/Assets/World/Baltic/Props/OldProps/Baltic_Range_Target_05.Baltic_Range_Target_05",
+      "label": "RangeTarget5",
+      "rowName": "RangeTarget5"
+    },
+    {
+      "value": "/Game/Assets/World/Buildings/Unique/ShootingRange/Range_Target_06.Range_Target_06",
+      "label": "RangeTarget6",
+      "rowName": "RangeTarget6"
+    },
+    {
+      "value": "/Game/Assets/World/Common/Exterior/Range/range_target_02/range_target_02a.range_target_02a",
+      "label": "RangeTarget7",
+      "rowName": "RangeTarget7"
+    },
+    {
+      "value": "/Game/Assets/World/Arcade/Boardwalk/Props/Common/Boardwalk_Ball_01/SM_Boardwalk_Ball_01.SM_Boardwalk_Ball_01",
+      "label": "RedBall",
+      "rowName": "RedBall"
+    },
+    {
+      "value": "/Game/Assets/World/Sanhok_DES/Exterior/Hide_Asset/HM_DES_Red_Light.HM_DES_Red_Light",
+      "label": "RedLight",
+      "rowName": "RedLight"
+    }
+  ],
+  "DataTable'/Game/Blueprints/Mod/BGMTable.BGMTable'": [
+    {
+      "value": "BGM_Christmas1",
+      "label": "BGM_Christmas_01",
+      "rowName": "BGM_Christmas1"
+    },
+    {
+      "value": "BGM_Christmas2",
+      "label": "BGM_Christmas_02",
+      "rowName": "BGM_Christmas2"
+    },
+    {
+      "value": "BGM_Halloween",
+      "label": "BGM_Halloween_01",
+      "rowName": "BGM_Halloween"
+    },
+    {
+      "value": "BGM_Landmark",
+      "label": "BGM_Landmark_01",
+      "rowName": "BGM_Landmark"
+    },
+    {
+      "value": "BGM_POBG",
+      "label": "BGM_POBG_01",
+      "rowName": "BGM_POBG"
+    },
+    {
+      "value": "BGM_SLB",
+      "label": "BGM_SLB_01",
+      "rowName": "BGM_SLB"
+    },
+    {
+      "value": "BGM_Tactical1",
+      "label": "BGM_TDM_01",
+      "rowName": "BGM_Tactical1"
+    },
+    {
+      "value": "BGM_Tactical2",
+      "label": "BGM_TDM_02",
+      "rowName": "BGM_Tactical2"
+    },
+    {
+      "value": "BGM_OverPower",
+      "label": "Lone Survivor's Dream (Bizarre Battle Royale)",
+      "rowName": "BGM_OverPower"
+    },
+    {
+      "value": "BGM_EA_Lobby",
+      "label": "Ready To Battle (Early Access)",
+      "rowName": "BGM_EA_Lobby"
+    }
+  ],
+  "BGMTable": [
+    {
+      "value": "BGM_Christmas1",
+      "label": "BGM_Christmas_01",
+      "rowName": "BGM_Christmas1"
+    },
+    {
+      "value": "BGM_Christmas2",
+      "label": "BGM_Christmas_02",
+      "rowName": "BGM_Christmas2"
+    },
+    {
+      "value": "BGM_Halloween",
+      "label": "BGM_Halloween_01",
+      "rowName": "BGM_Halloween"
+    },
+    {
+      "value": "BGM_Landmark",
+      "label": "BGM_Landmark_01",
+      "rowName": "BGM_Landmark"
+    },
+    {
+      "value": "BGM_POBG",
+      "label": "BGM_POBG_01",
+      "rowName": "BGM_POBG"
+    },
+    {
+      "value": "BGM_SLB",
+      "label": "BGM_SLB_01",
+      "rowName": "BGM_SLB"
+    },
+    {
+      "value": "BGM_Tactical1",
+      "label": "BGM_TDM_01",
+      "rowName": "BGM_Tactical1"
+    },
+    {
+      "value": "BGM_Tactical2",
+      "label": "BGM_TDM_02",
+      "rowName": "BGM_Tactical2"
+    },
+    {
+      "value": "BGM_OverPower",
+      "label": "Lone Survivor's Dream (Bizarre Battle Royale)",
+      "rowName": "BGM_OverPower"
+    },
+    {
+      "value": "BGM_EA_Lobby",
+      "label": "Ready To Battle (Early Access)",
+      "rowName": "BGM_EA_Lobby"
+    }
+  ]
+}

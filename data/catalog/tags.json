@@ -1,0 +1,245 @@
+[
+  {
+    "id": "CommonTag_BattleRoyale",
+    "rowName": "CommonTag_BattleRoyale",
+    "type": "EModTagType::Common",
+    "categoryId": "CommonTag",
+    "label": "Battle Royale",
+    "displayKey": "K_IGU_09",
+    "sortOrder": 0
+  },
+  {
+    "id": "CommonTag_Deathmatch",
+    "rowName": "CommonTag_Deathmatch",
+    "type": "EModTagType::Common",
+    "categoryId": "CommonTag",
+    "label": "Deathmatch",
+    "displayKey": "K_IGU_10",
+    "sortOrder": 1
+  },
+  {
+    "id": "CommonTag_Conquest",
+    "rowName": "CommonTag_Conquest",
+    "type": "EModTagType::Common",
+    "categoryId": "CommonTag",
+    "label": "Conquest",
+    "displayKey": "K_IGU_11",
+    "sortOrder": 2
+  },
+  {
+    "id": "CommonTag_Puzzle",
+    "rowName": "CommonTag_Puzzle",
+    "type": "EModTagType::Common",
+    "categoryId": "CommonTag",
+    "label": "Puzzle",
+    "displayKey": "K_IGU_12",
+    "sortOrder": 3
+  },
+  {
+    "id": "CommonTag_Racing",
+    "rowName": "CommonTag_Racing",
+    "type": "EModTagType::Common",
+    "categoryId": "CommonTag",
+    "label": "Racing",
+    "displayKey": "K_IGU_13",
+    "sortOrder": 4
+  },
+  {
+    "id": "CommonTag_Party",
+    "rowName": "CommonTag_Party",
+    "type": "EModTagType::Common",
+    "categoryId": "CommonTag",
+    "label": "Party",
+    "displayKey": "K_IGU_14",
+    "sortOrder": 5
+  },
+  {
+    "id": "CommonTag_Defense",
+    "rowName": "CommonTag_Defense",
+    "type": "EModTagType::Common",
+    "categoryId": "CommonTag",
+    "label": "Defense",
+    "displayKey": "K_IGU_15",
+    "sortOrder": 6
+  },
+  {
+    "id": "CommonTag_GunGame",
+    "rowName": "CommonTag_GunGame",
+    "type": "EModTagType::Common",
+    "categoryId": "CommonTag",
+    "label": "Gun Game",
+    "displayKey": "K_IGU_16",
+    "sortOrder": 7
+  },
+  {
+    "id": "CommonTag_Wave",
+    "rowName": "CommonTag_Wave",
+    "type": "EModTagType::Common",
+    "categoryId": "CommonTag",
+    "label": "Wave",
+    "displayKey": "K_IGU_17",
+    "sortOrder": 8
+  },
+  {
+    "id": "MainTag_None",
+    "rowName": "MainTag_None",
+    "type": "EModTagType::Main",
+    "categoryId": "MainTag",
+    "label": "None",
+    "displayKey": "K_IGU_01",
+    "sortOrder": 0
+  },
+  {
+    "id": "MainTag_BattleTeam",
+    "rowName": "MainTag_BattleTeam",
+    "type": "EModTagType::Main",
+    "categoryId": "MainTag",
+    "label": "Battle (Team)",
+    "displayKey": "K_IGU_02",
+    "sortOrder": 1
+  },
+  {
+    "id": "MainTag_BattleFreeForAll",
+    "rowName": "MainTag_BattleFreeForAll",
+    "type": "EModTagType::Main",
+    "categoryId": "MainTag",
+    "label": "Battle (Free-For-All)",
+    "displayKey": "K_IGU_03",
+    "sortOrder": 2
+  },
+  {
+    "id": "MainTag_Training",
+    "rowName": "MainTag_Training",
+    "type": "EModTagType::Main",
+    "categoryId": "MainTag",
+    "label": "Training",
+    "displayKey": "K_IGU_04",
+    "sortOrder": 3
+  },
+  {
+    "id": "MainTag_Parkour",
+    "rowName": "MainTag_Parkour",
+    "type": "EModTagType::Main",
+    "categoryId": "MainTag",
+    "label": "Parkour",
+    "displayKey": "K_IGU_05",
+    "sortOrder": 4
+  },
+  {
+    "id": "MainTag_Casual",
+    "rowName": "MainTag_Casual",
+    "type": "EModTagType::Main",
+    "categoryId": "MainTag",
+    "label": "Casual",
+    "displayKey": "K_IGU_06",
+    "sortOrder": 5
+  },
+  {
+    "id": "MainTag_PvE",
+    "rowName": "MainTag_PvE",
+    "type": "EModTagType::Main",
+    "categoryId": "MainTag",
+    "label": "PvE",
+    "displayKey": "K_IGU_07",
+    "sortOrder": 6
+  },
+  {
+    "id": "SubTag_ClearTime_Under5min",
+    "rowName": "SubTag_ClearTime_Under5min",
+    "type": "EModTagType::Sub",
+    "categoryId": "SubTag_ClearTime",
+    "label": "Under 5 min",
+    "displayKey": "K_IGU_25",
+    "sortOrder": 0
+  },
+  {
+    "id": "SubTag_ClearTime_5_10min",
+    "rowName": "SubTag_ClearTime_5_10min",
+    "type": "EModTagType::Sub",
+    "categoryId": "SubTag_ClearTime",
+    "label": "5-10 min",
+    "displayKey": "K_IGU_26",
+    "sortOrder": 1
+  },
+  {
+    "id": "SubTag_ClearTime_Over10min",
+    "rowName": "SubTag_ClearTime_Over10min",
+    "type": "EModTagType::Sub",
+    "categoryId": "SubTag_ClearTime",
+    "label": "Over 10 min",
+    "displayKey": "K_IGU_27",
+    "sortOrder": 2
+  },
+  {
+    "id": "SubTag_Difficulty_Easy",
+    "rowName": "SubTag_Difficulty_Easy",
+    "type": "EModTagType::Sub",
+    "categoryId": "SubTag_Difficulty",
+    "label": "Easy",
+    "displayKey": "K_IGU_29",
+    "sortOrder": 0
+  },
+  {
+    "id": "SubTag_Difficulty_Normal",
+    "rowName": "SubTag_Difficulty_Normal",
+    "type": "EModTagType::Sub",
+    "categoryId": "SubTag_Difficulty",
+    "label": "Normal",
+    "displayKey": "K_IGU_30",
+    "sortOrder": 1
+  },
+  {
+    "id": "SubTag_Difficulty_Hard",
+    "rowName": "SubTag_Difficulty_Hard",
+    "type": "EModTagType::Sub",
+    "categoryId": "SubTag_Difficulty",
+    "label": "Hard",
+    "displayKey": "K_IGU_31",
+    "sortOrder": 2
+  },
+  {
+    "id": "SubTag_Team_1vs1",
+    "rowName": "SubTag_Team_1vs1",
+    "type": "EModTagType::Sub",
+    "categoryId": "SubTag_Team",
+    "label": "1v1",
+    "displayKey": "K_IGU_19",
+    "sortOrder": 0
+  },
+  {
+    "id": "SubTag_Team_2vs2",
+    "rowName": "SubTag_Team_2vs2",
+    "type": "EModTagType::Sub",
+    "categoryId": "SubTag_Team",
+    "label": "2v2",
+    "displayKey": "K_IGU_20",
+    "sortOrder": 1
+  },
+  {
+    "id": "SubTag_Team_3vs3",
+    "rowName": "SubTag_Team_3vs3",
+    "type": "EModTagType::Sub",
+    "categoryId": "SubTag_Team",
+    "label": "3v3",
+    "displayKey": "K_IGU_21",
+    "sortOrder": 2
+  },
+  {
+    "id": "SubTag_Team_4vs4",
+    "rowName": "SubTag_Team_4vs4",
+    "type": "EModTagType::Sub",
+    "categoryId": "SubTag_Team",
+    "label": "4v4",
+    "displayKey": "K_IGU_22",
+    "sortOrder": 3
+  },
+  {
+    "id": "SubTag_Team_NvsN",
+    "rowName": "SubTag_Team_NvsN",
+    "type": "EModTagType::Sub",
+    "categoryId": "SubTag_Team",
+    "label": "NvN",
+    "displayKey": "K_IGU_23",
+    "sortOrder": 4
+  }
+]

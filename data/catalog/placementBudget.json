@@ -1,0 +1,59 @@
+{
+  "source": "manual-ingame-observed",
+  "notes": "Matches the game's placement-budget validator shape: rows filter by objectType, subCategory, or objectId and add SpawnWeight.",
+  "rules": [
+    {
+      "key": "total",
+      "label": "Total",
+      "match": "all"
+    },
+    {
+      "key": "prop",
+      "label": "Props",
+      "objectType": "Prop",
+      "limit": 3000
+    },
+    {
+      "key": "device",
+      "label": "Devices",
+      "objectType": "Device",
+      "limit": 1000
+    },
+    {
+      "key": "LargeHouse",
+      "label": "Large House",
+      "subCategory": "LargeHouse",
+      "limit": 1
+    },
+    {
+      "key": "MediumHouse",
+      "label": "Medium House",
+      "subCategory": "MediumHouse",
+      "limit": 5
+    },
+    {
+      "key": "SmallHouse",
+      "label": "Small House",
+      "subCategory": "SmallHouse",
+      "limit": 40
+    },
+    {
+      "key": "vehicle-spawn-device",
+      "label": "Vehicle Spawn Device",
+      "objectId": 25,
+      "limit": 25
+    },
+    {
+      "key": "light-device",
+      "label": "Light Device",
+      "objectId": 33,
+      "limit": 100
+    },
+    {
+      "key": "smoke-device",
+      "label": "Smoke Device",
+      "objectId": 36,
+      "limit": 30
+    }
+  ]
+}
