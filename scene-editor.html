@@ -13,7 +13,7 @@
     }
   }
   </script>
-  <!-- Google tag (gtag.js) -->
+  
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MXSN3MTTY8"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -423,6 +423,10 @@
             If a device contains an invalid field value, the game will kick you when you move or copy that device, or when you open the device and click Apply.
             This editor tries to prevent invalid values from being entered, but if you experience unexpected kicks, check the affected device's fields for out-of-range or missing values.
           </p>
+          <label class="devf-check" style="display:inline-flex;margin-top:10px;font-size:12px" title="Removes min/max limits from all device field number inputs. Values outside the normal range will be written to the file as-is. Use with caution — the game may reject or ignore out-of-range values at runtime.">
+            <input type="checkbox" id="gsAllowOutOfRange">
+            <span>Allow out-of-range values — bypasses min/max on all device numeric fields</span>
+          </label>
         </div>
         <div style="grid-column:1/-1;margin-top:16px;border-top:1px solid var(--border);padding-top:14px">
           <div class="help-section-title">Rotation bug</div>
