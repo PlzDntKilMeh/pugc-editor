@@ -466,11 +466,6 @@
   },
   {
     "rowName": "DMR",
-    "itemId": "Item_Weapon_QBU88_C",
-    "category": "EModItemCategory::DMR"
-  },
-  {
-    "rowName": "DMR",
     "itemId": "Item_Weapon_SKS_C",
     "category": "EModItemCategory::DMR"
   },
@@ -501,11 +496,6 @@
   },
   {
     "rowName": "Handgun",
-    "itemId": "Item_Weapon_M1911_C",
-    "category": "EModItemCategory::Handgun"
-  },
-  {
-    "rowName": "Handgun",
     "itemId": "Item_Weapon_M79_C",
     "category": "EModItemCategory::Handgun"
   },
@@ -517,11 +507,6 @@
   {
     "rowName": "Handgun",
     "itemId": "Item_Weapon_NagantM1895_C",
-    "category": "EModItemCategory::Handgun"
-  },
-  {
-    "rowName": "Handgun",
-    "itemId": "Item_Weapon_Rhino_C",
     "category": "EModItemCategory::Handgun"
   },
   {
@@ -568,11 +553,6 @@
     "rowName": "Launcher",
     "itemId": "Item_Weapon_PanzerFaust100M_C",
     "category": "EModItemCategory::Launcher"
-  },
-  {
-    "rowName": "LMG",
-    "itemId": "Item_Weapon_DP28_C",
-    "category": "EModItemCategory::LMG"
   },
   {
     "rowName": "LMG",
@@ -656,6 +636,11 @@
   },
   {
     "rowName": "Misc",
+    "itemId": "Item_SpareTire_C",
+    "category": "EModItemCategory::Misc"
+  },
+  {
+    "rowName": "Misc",
     "itemId": "Item_Special_BackupParachute_C",
     "category": "EModItemCategory::Misc"
   },
@@ -703,11 +688,6 @@
     "rowName": "Shotgun",
     "itemId": "Item_Weapon_Winchester_C",
     "category": "EModItemCategory::Shotgun"
-  },
-  {
-    "rowName": "SMG",
-    "itemId": "Item_Weapon_BizonPP19_C",
-    "category": "EModItemCategory::SMG"
   },
   {
     "rowName": "SMG",
@@ -767,11 +747,6 @@
   {
     "rowName": "SR",
     "itemId": "Item_Weapon_M24_C",
-    "category": "EModItemCategory::SR"
-  },
-  {
-    "rowName": "SR",
-    "itemId": "Item_Weapon_Mosin_C",
     "category": "EModItemCategory::SR"
   },
   {

@@ -2658,7 +2658,7 @@
     "objectType": "EModObjectType::Device",
     "subCategory": "EModObjectSubCategory::None",
     "spawnWeight": 1,
-    "objectClass": "/Game/Blueprints/Mod/Device/DeviceActor/BP_DummyActor.BP_DummyActor_C",
+    "objectClass": "/Game/Blueprints/Mod/Device/DeviceActor/BP_TimerModActor.BP_TimerModActor_C",
     "previewActorClass": "/Game/Blueprints/Mod/DefaultPreviewActor.DefaultPreviewActor_C",
     "iconTexture": "/Game/Blueprints/Mod/UI/Textures/DeviceIcon/T_ModDevice_Timer.T_ModDevice_Timer",
     "fields": [
@@ -2677,6 +2677,58 @@
         "descriptionNs": "NS_UGC_TIMERDEVICE",
         "label": "Activation Phase",
         "description": "Set the phase during which the device is activated.\r\nNone: Activates only when triggered by an event.\r\nDevice Creation: Activates immediately when the device is created.\r\nStandby Before Spawn: Activates during the standby phase before players spawn.\r\nStandby After Spawn: Activates during the standby phase after players spawn.\r\nRound Start Before Spawn: Activates at round start, before players spawn.\r\nRound Start After Spawn: Activates at round start, after players spawn."
+      },
+      {
+        "path": "bPlayEndSound",
+        "schemaPath": "bPlayEndSound",
+        "type": "Bool",
+        "unrealType": "BoolProperty",
+        "validator": "",
+        "validatorParam": null,
+        "advanced": false,
+        "hidden": false,
+        "labelKey": "K_IGU_25",
+        "labelNs": "NS_UGC_TIMERDEVICE",
+        "descriptionKey": "K_IGU_26",
+        "descriptionNs": "NS_UGC_TIMERDEVICE",
+        "label": "Timer End Sound",
+        "description": "Determine whether a sound effect is played when the timer ends."
+      },
+      {
+        "path": "bShowWidget",
+        "schemaPath": "bShowWidget",
+        "type": "Bool",
+        "unrealType": "BoolProperty",
+        "validator": "",
+        "validatorParam": null,
+        "advanced": false,
+        "hidden": false,
+        "labelKey": "K_IGU_27",
+        "labelNs": "NS_UGC_TIMERDEVICE",
+        "descriptionKey": "K_IGU_28",
+        "descriptionNs": "NS_UGC_TIMERDEVICE",
+        "label": "Show Widget",
+        "description": "Determine whether the timer widget is displayed on-screen."
+      },
+      {
+        "path": "endWarningSoundPlayCount",
+        "schemaPath": "EndWarningSoundPlayCount",
+        "type": "Int",
+        "unrealType": "IntProperty",
+        "validator": "Class'/Script/TslGameMode.ModIntValidator'",
+        "validatorParam": {
+          "minValue": 0,
+          "maxValue": 999,
+          "valueSet": []
+        },
+        "advanced": false,
+        "hidden": false,
+        "labelKey": "K_IGU_23",
+        "labelNs": "NS_UGC_TIMERDEVICE",
+        "descriptionKey": "K_IGU_24",
+        "descriptionNs": "NS_UGC_TIMERDEVICE",
+        "label": "Near-End Warning Count",
+        "description": "Set how many times the sound effect is played when the timer is about to end."
       },
       {
         "path": "intervalSecond",
@@ -2717,6 +2769,38 @@
         "descriptionNs": "NS_UGC_TIMERDEVICE",
         "label": "Repeat Count",
         "description": "Set how many times the timer cycle repeats."
+      },
+      {
+        "path": "timeFormat",
+        "schemaPath": "TimeFormat",
+        "type": "Enum",
+        "unrealType": "ETimeCountFormat",
+        "validator": "",
+        "validatorParam": null,
+        "advanced": false,
+        "hidden": false,
+        "labelKey": "K_IGU_29",
+        "labelNs": "NS_UGC_TIMERDEVICE",
+        "descriptionKey": "K_IGU_30",
+        "descriptionNs": "NS_UGC_TIMERDEVICE",
+        "label": "Time Format",
+        "description": "Set the format used to display time in the timer widget."
+      },
+      {
+        "path": "widgetLoc",
+        "schemaPath": "WidgetLoc",
+        "type": "Enum",
+        "unrealType": "ETimerWidgetLocation",
+        "validator": "",
+        "validatorParam": null,
+        "advanced": false,
+        "hidden": false,
+        "labelKey": "K_IGU_31",
+        "labelNs": "NS_UGC_TIMERDEVICE",
+        "descriptionKey": "K_IGU_32",
+        "descriptionNs": "NS_UGC_TIMERDEVICE",
+        "label": "Widget Position",
+        "description": "Select where the timer widget is displayed on the screen."
       }
     ],
     "triggers": [
@@ -7068,6 +7152,134 @@
         "description": "Set the health of the vehicle."
       },
       {
+        "path": "vehiclePerformanceData",
+        "schemaPath": "VehiclePerformanceData",
+        "type": "Object",
+        "unrealType": "VehiclePerformanceModData",
+        "validator": "",
+        "validatorParam": null,
+        "advanced": false,
+        "hidden": false,
+        "labelKey": "",
+        "labelNs": "",
+        "descriptionKey": "",
+        "descriptionNs": "",
+        "label": "",
+        "description": ""
+      },
+      {
+        "path": "vehiclePerformanceData.canBeDamaged",
+        "schemaPath": "VehiclePerformanceData.CanBeDamaged",
+        "type": "Bool",
+        "unrealType": "BoolProperty",
+        "validator": "Class'/Script/TslGameMode.ModBoolValidator'",
+        "validatorParam": {},
+        "advanced": false,
+        "hidden": false,
+        "labelKey": "K_IGU_47",
+        "labelNs": "NS_UGC_VEHICLESPAWNDEVICE",
+        "descriptionKey": "K_IGU_48",
+        "descriptionNs": "NS_UGC_VEHICLESPAWNDEVICE",
+        "label": "Damage",
+        "description": "Determine whether the vehicle can take damage."
+      },
+      {
+        "path": "vehiclePerformanceData.canBeTirePunctured",
+        "schemaPath": "VehiclePerformanceData.CanBeTirePunctured",
+        "type": "Bool",
+        "unrealType": "BoolProperty",
+        "validator": "Class'/Script/TslGameMode.ModBoolValidator'",
+        "validatorParam": {},
+        "advanced": false,
+        "hidden": false,
+        "labelKey": "K_IGU_49",
+        "labelNs": "NS_UGC_VEHICLESPAWNDEVICE",
+        "descriptionKey": "K_IGU_50",
+        "descriptionNs": "NS_UGC_VEHICLESPAWNDEVICE",
+        "label": "Tire Puncturing",
+        "description": "Determine whether the vehicle's tires can be punctured."
+      },
+      {
+        "path": "vehiclePerformanceData.dragMultiplier",
+        "schemaPath": "VehiclePerformanceData.DragMultiplier",
+        "type": "Float",
+        "unrealType": "FloatProperty",
+        "validator": "Class'/Script/TslGameMode.ModFloatValidator'",
+        "validatorParam": {
+          "minValue": 0.10000000149011612,
+          "maxValue": 3,
+          "valueSet": []
+        },
+        "advanced": false,
+        "hidden": false,
+        "labelKey": "K_IGU_43",
+        "labelNs": "NS_UGC_VEHICLESPAWNDEVICE",
+        "descriptionKey": "K_IGU_44",
+        "descriptionNs": "NS_UGC_VEHICLESPAWNDEVICE",
+        "label": "Drag Ratio",
+        "description": "Set the vehicle's drag ratio.\r\nHigher values reduce both top speed and acceleration."
+      },
+      {
+        "path": "vehiclePerformanceData.massMultiplier",
+        "schemaPath": "VehiclePerformanceData.MassMultiplier",
+        "type": "Float",
+        "unrealType": "FloatProperty",
+        "validator": "Class'/Script/TslGameMode.ModFloatValidator'",
+        "validatorParam": {
+          "minValue": 0.10000000149011612,
+          "maxValue": 3,
+          "valueSet": []
+        },
+        "advanced": false,
+        "hidden": false,
+        "labelKey": "K_IGU_45",
+        "labelNs": "NS_UGC_VEHICLESPAWNDEVICE",
+        "descriptionKey": "K_IGU_46",
+        "descriptionNs": "NS_UGC_VEHICLESPAWNDEVICE",
+        "label": "Mass Ratio",
+        "description": "Set the vehicle's overall mass ratio.\r\nHigher values reduce acceleration and deceleration responsiveness, but improve traction stability."
+      },
+      {
+        "path": "vehiclePerformanceData.maxRPMMultiplier",
+        "schemaPath": "VehiclePerformanceData.MaxRPMMultiplier",
+        "type": "Float",
+        "unrealType": "FloatProperty",
+        "validator": "Class'/Script/TslGameMode.ModFloatValidator'",
+        "validatorParam": {
+          "minValue": 0.0099999997764825821,
+          "maxValue": 3,
+          "valueSet": []
+        },
+        "advanced": false,
+        "hidden": false,
+        "labelKey": "K_IGU_39",
+        "labelNs": "NS_UGC_VEHICLESPAWNDEVICE",
+        "descriptionKey": "K_IGU_40",
+        "descriptionNs": "NS_UGC_VEHICLESPAWNDEVICE",
+        "label": "Max RPM Ratio",
+        "description": "Set the vehicle's maximum RPM ratio.\r\nHigher values increase top speed. Actual top speed is also affected by factors like torque and drag."
+      },
+      {
+        "path": "vehiclePerformanceData.torqueMultiplier",
+        "schemaPath": "VehiclePerformanceData.TorqueMultiplier",
+        "type": "Float",
+        "unrealType": "FloatProperty",
+        "validator": "Class'/Script/TslGameMode.ModFloatValidator'",
+        "validatorParam": {
+          "minValue": 0.0099999997764825821,
+          "maxValue": 3,
+          "valueSet": []
+        },
+        "advanced": false,
+        "hidden": false,
+        "labelKey": "K_IGU_41",
+        "labelNs": "NS_UGC_VEHICLESPAWNDEVICE",
+        "descriptionKey": "K_IGU_42",
+        "descriptionNs": "NS_UGC_VEHICLESPAWNDEVICE",
+        "label": "Torque Ratio",
+        "description": "Set the vehicle's torque ratio.\r\nHigher values increase acceleration."
+      },
+      {
         "path": "volumeShape",
         "schemaPath": "VolumeShape",
         "type": "Enum",
@@ -7632,6 +7844,25 @@
         "descriptionNs": "NS_UGC_SUPERJUMPDEVICE",
         "label": "Activation Phase",
         "description": "Set the phase during which the device is activated.\r\nNone: Activates only when triggered by an event.\r\nDevice Creation: Activates immediately when the device is created.\r\nStandby Before Spawn: Activates during the standby phase before players spawn.\r\nStandby After Spawn: Activates during the standby phase after players spawn.\r\nRound Start Before Spawn: Activates at round start, before players spawn.\r\nRound Start After Spawn: Activates at round start, after players spawn."
+      },
+      {
+        "path": "targetType",
+        "schemaPath": "TargetType",
+        "type": "Enum",
+        "unrealType": "EModSuperJumpTargetType",
+        "validator": "Class'/Script/TslGameMode.ModEnumValidator'",
+        "validatorParam": {
+          "exceptEnums": [],
+          "selectEnums": []
+        },
+        "advanced": false,
+        "hidden": false,
+        "labelKey": "K_IGU_21",
+        "labelNs": "NS_UGC_SUPERJUMPDEVICE",
+        "descriptionKey": "K_IGU_22",
+        "descriptionNs": "NS_UGC_SUPERJUMPDEVICE",
+        "label": "Target Type",
+        "description": "Select the type of target to which the super jump effect is applied."
       },
       {
         "path": "type",
@@ -10422,6 +10653,22 @@
         "description": "Set the phase during which the device is activated.\r\nNone: Activates only when triggered by an event.\r\nDevice Creation: Activates immediately when the device is created.\r\nStandby Before Spawn: Activates during the standby phase before players spawn.\r\nStandby After Spawn: Activates during the standby phase after players spawn.\r\nRound Start Before Spawn: Activates at round start, before players spawn.\r\nRound Start After Spawn: Activates at round start, after players spawn."
       },
       {
+        "path": "bRestrictDrive",
+        "schemaPath": "bRestrictDrive",
+        "type": "Bool",
+        "unrealType": "BoolProperty",
+        "validator": "Class'/Script/TslGameMode.ModBoolValidator'",
+        "validatorParam": {},
+        "advanced": false,
+        "hidden": false,
+        "labelKey": "K_IGU_17",
+        "labelNs": "NS_UGC_ACTIONRESTRICTDEVICE",
+        "descriptionKey": "K_IGU_18",
+        "descriptionNs": "NS_UGC_ACTIONRESTRICTDEVICE",
+        "label": "Driving",
+        "description": "Determine whether driving vehicles is restricted."
+      },
+      {
         "path": "bRestrictJump",
         "schemaPath": "bRestrictJump",
         "type": "Bool",
@@ -10485,12 +10732,12 @@
         },
         "advanced": false,
         "hidden": false,
-        "labelKey": "K_IGU_03",
-        "labelNs": "NS_UGC_ACTIONRESTRICTDEVICE",
-        "descriptionKey": "K_IGU_04",
-        "descriptionNs": "NS_UGC_ACTIONRESTRICTDEVICE",
-        "label": "Weapon Slots",
-        "description": "Set which weapon slots are restricted."
+        "labelKey": "",
+        "labelNs": "",
+        "descriptionKey": "",
+        "descriptionNs": "",
+        "label": "",
+        "description": ""
       },
       {
         "path": "targetInfo",
@@ -11554,6 +11801,924 @@
         "descriptionNs": "NS_UGC_BLUEBOMBPLANTDEVICE",
         "label": "Give Blue Zone Generator",
         "description": "Grants the Blue Zone Generator to the target players when this device is triggered.",
+        "targetClass": ""
+      }
+    ]
+  },
+  "46": {
+    "objectId": 46,
+    "rowName": "StopwatchDevice",
+    "namespace": "NS_UGC_STOPWATCHDEVICE",
+    "displayKey": "K_IGU_00",
+    "descriptionKey": "K_IGU_01",
+    "name": "Stopwatch Device",
+    "description": "Measure and control time.",
+    "objectType": "EModObjectType::Device",
+    "subCategory": "EModObjectSubCategory::None",
+    "spawnWeight": 1,
+    "objectClass": "/Game/Blueprints/Mod/Device/DeviceActor/BP_StopwatchModActor.BP_StopwatchModActor_C",
+    "previewActorClass": "/Game/Blueprints/Mod/DefaultPreviewActor.DefaultPreviewActor_C",
+    "iconTexture": "/Game/Blueprints/Mod/UI/Textures/DeviceIcon/T_ModDevice_Stopwatch.T_ModDevice_Stopwatch",
+    "fields": [
+      {
+        "path": "activationRoundPhase",
+        "schemaPath": "ActivationRoundPhase",
+        "type": "Enum",
+        "unrealType": "EActivationRoundPhase",
+        "validator": "",
+        "validatorParam": null,
+        "advanced": false,
+        "hidden": false,
+        "labelKey": "K_IGU_04",
+        "labelNs": "NS_UGC_DEVICECOMMON",
+        "descriptionKey": "K_IGU_16",
+        "descriptionNs": "NS_UGC_DEVICECOMMON",
+        "label": "Activation Phase",
+        "description": "Set the phase during which the device is activated.\r\nNone: Activates only when triggered by an event.\r\nDevice Creation: Activates immediately when the device is created.\r\nStandby Before Spawn: Activates during the standby phase before players spawn.\r\nStandby After Spawn: Activates during the standby phase after players spawn.\r\nRound Start Before Spawn: Activates at round start, before players spawn.\r\nRound Start After Spawn: Activates at round start, after players spawn."
+      },
+      {
+        "path": "bShowWidget",
+        "schemaPath": "bShowWidget",
+        "type": "Bool",
+        "unrealType": "BoolProperty",
+        "validator": "",
+        "validatorParam": null,
+        "advanced": false,
+        "hidden": false,
+        "labelKey": "K_IGU_04",
+        "labelNs": "NS_UGC_STOPWATCHDEVICE",
+        "descriptionKey": "K_IGU_05",
+        "descriptionNs": "NS_UGC_STOPWATCHDEVICE",
+        "label": "Show Widget",
+        "description": "Determine whether the stopwatch widget is displayed on-screen."
+      },
+      {
+        "path": "maxRecordCount",
+        "schemaPath": "MaxRecordCount",
+        "type": "Int",
+        "unrealType": "IntProperty",
+        "validator": "Class'/Script/TslGameMode.ModIntValidator'",
+        "validatorParam": {
+          "minValue": 1,
+          "maxValue": 5,
+          "valueSet": []
+        },
+        "advanced": false,
+        "hidden": false,
+        "labelKey": "K_IGU_28",
+        "labelNs": "NS_UGC_STOPWATCHDEVICE",
+        "descriptionKey": "K_IGU_29",
+        "descriptionNs": "NS_UGC_STOPWATCHDEVICE",
+        "label": "Max Record Count",
+        "description": "Set the maximum number of records that can be saved."
+      },
+      {
+        "path": "recordScope",
+        "schemaPath": "RecordScope",
+        "type": "Enum",
+        "unrealType": "ERecordScope",
+        "validator": "",
+        "validatorParam": null,
+        "advanced": false,
+        "hidden": false,
+        "labelKey": "K_IGU_30",
+        "labelNs": "NS_UGC_STOPWATCHDEVICE",
+        "descriptionKey": "K_IGU_31",
+        "descriptionNs": "NS_UGC_STOPWATCHDEVICE",
+        "label": "Record Scope",
+        "description": "Set the scope of records saved.\r\nGlobal: Displays records of all players in the widget.\r\nPersonal: Displays only personal records in the widget."
+      },
+      {
+        "path": "startSecond",
+        "schemaPath": "StartSecond",
+        "type": "Float",
+        "unrealType": "FloatProperty",
+        "validator": "Class'/Script/TslGameMode.ModFloatValidator'",
+        "validatorParam": {
+          "minValue": 0,
+          "maxValue": 600,
+          "valueSet": []
+        },
+        "advanced": false,
+        "hidden": false,
+        "labelKey": "K_IGU_02",
+        "labelNs": "NS_UGC_STOPWATCHDEVICE",
+        "descriptionKey": "K_IGU_03",
+        "descriptionNs": "NS_UGC_STOPWATCHDEVICE",
+        "label": "Start Time (s)",
+        "description": "Set the start time in seconds."
+      },
+      {
+        "path": "timeFormat",
+        "schemaPath": "TimeFormat",
+        "type": "Enum",
+        "unrealType": "ETimeCountFormat",
+        "validator": "None",
+        "validatorParam": {
+          "exceptEnums": [],
+          "selectEnums": []
+        },
+        "advanced": false,
+        "hidden": false,
+        "labelKey": "K_IGU_26",
+        "labelNs": "NS_UGC_STOPWATCHDEVICE",
+        "descriptionKey": "K_IGU_27",
+        "descriptionNs": "NS_UGC_STOPWATCHDEVICE",
+        "label": "Time Format",
+        "description": "Set the format used to display time."
+      }
+    ],
+    "triggers": [
+      {
+        "name": "OnActivateDevice",
+        "labelKey": "K_IGU_00",
+        "labelNs": "NS_UGC_DEVICECOMMON",
+        "descriptionKey": "K_IGU_17",
+        "descriptionNs": "NS_UGC_DEVICECOMMON",
+        "label": "On Activate Device",
+        "description": "Triggered when the device is activated.",
+        "targetClass": ""
+      },
+      {
+        "name": "OnDeactivateDevice",
+        "labelKey": "K_IGU_01",
+        "labelNs": "NS_UGC_DEVICECOMMON",
+        "descriptionKey": "K_IGU_18",
+        "descriptionNs": "NS_UGC_DEVICECOMMON",
+        "label": "On Deactivate Device",
+        "description": "Triggered when the device is deactivated.",
+        "targetClass": ""
+      },
+      {
+        "name": "TriggerEndWatch",
+        "labelKey": "K_IGU_14",
+        "labelNs": "NS_UGC_STOPWATCHDEVICE",
+        "descriptionKey": "K_IGU_15",
+        "descriptionNs": "NS_UGC_STOPWATCHDEVICE",
+        "label": "On Stopwatch End",
+        "description": "Triggered when the stopwatch ends.",
+        "targetClass": ""
+      },
+      {
+        "name": "TriggerPauseWatch",
+        "labelKey": "K_IGU_12",
+        "labelNs": "NS_UGC_STOPWATCHDEVICE",
+        "descriptionKey": "K_IGU_13",
+        "descriptionNs": "NS_UGC_STOPWATCHDEVICE",
+        "label": "On Stopwatch Pause",
+        "description": "Triggered when the stopwatch is paused.",
+        "targetClass": ""
+      },
+      {
+        "name": "TriggerRecordWatch",
+        "labelKey": "K_IGU_10",
+        "labelNs": "NS_UGC_STOPWATCHDEVICE",
+        "descriptionKey": "K_IGU_11",
+        "descriptionNs": "NS_UGC_STOPWATCHDEVICE",
+        "label": "On Stopwatch Record",
+        "description": "Triggered when time is recorded.",
+        "targetClass": ""
+      },
+      {
+        "name": "TriggerResumeWatch",
+        "labelKey": "K_IGU_08",
+        "labelNs": "NS_UGC_STOPWATCHDEVICE",
+        "descriptionKey": "K_IGU_09",
+        "descriptionNs": "NS_UGC_STOPWATCHDEVICE",
+        "label": "On Stopwatch Resume",
+        "description": "Triggered when the stopwatch resumes.",
+        "targetClass": ""
+      },
+      {
+        "name": "TriggerStartWatch",
+        "labelKey": "K_IGU_06",
+        "labelNs": "NS_UGC_STOPWATCHDEVICE",
+        "descriptionKey": "K_IGU_07",
+        "descriptionNs": "NS_UGC_STOPWATCHDEVICE",
+        "label": "On Stopwatch Start",
+        "description": "Triggered when the stopwatch starts.",
+        "targetClass": ""
+      }
+    ],
+    "actions": [
+      {
+        "name": "ActivateDevice",
+        "labelKey": "K_IGU_02",
+        "labelNs": "NS_UGC_DEVICECOMMON",
+        "descriptionKey": "K_IGU_19",
+        "descriptionNs": "NS_UGC_DEVICECOMMON",
+        "label": "Activate Device",
+        "description": "Enables the target device when this device is triggered.",
+        "targetClass": ""
+      },
+      {
+        "name": "DeactivateDevice",
+        "labelKey": "K_IGU_03",
+        "labelNs": "NS_UGC_DEVICECOMMON",
+        "descriptionKey": "K_IGU_20",
+        "descriptionNs": "NS_UGC_DEVICECOMMON",
+        "label": "Deactivate Device",
+        "description": "Disables the target device when this device is triggered.",
+        "targetClass": ""
+      },
+      {
+        "name": "ActionEndWatch",
+        "labelKey": "K_IGU_24",
+        "labelNs": "NS_UGC_STOPWATCHDEVICE",
+        "descriptionKey": "K_IGU_25",
+        "descriptionNs": "NS_UGC_STOPWATCHDEVICE",
+        "label": "End Stopwatch",
+        "description": "Ends the stopwatch.",
+        "targetClass": ""
+      },
+      {
+        "name": "ActionPauseWatch",
+        "labelKey": "K_IGU_22",
+        "labelNs": "NS_UGC_STOPWATCHDEVICE",
+        "descriptionKey": "K_IGU_22",
+        "descriptionNs": "NS_UGC_STOPWATCHDEVICE",
+        "label": "Pause Stopwatch",
+        "description": "Pause Stopwatch",
+        "targetClass": ""
+      },
+      {
+        "name": "ActionRecordWatch",
+        "labelKey": "K_IGU_20",
+        "labelNs": "NS_UGC_STOPWATCHDEVICE",
+        "descriptionKey": "K_IGU_21",
+        "descriptionNs": "NS_UGC_STOPWATCHDEVICE",
+        "label": "Record Stopwatch",
+        "description": "Records the current time.",
+        "targetClass": ""
+      },
+      {
+        "name": "ActionResumeWatch",
+        "labelKey": "K_IGU_18",
+        "labelNs": "NS_UGC_STOPWATCHDEVICE",
+        "descriptionKey": "K_IGU_19",
+        "descriptionNs": "NS_UGC_STOPWATCHDEVICE",
+        "label": "Resume Stopwatch",
+        "description": "Resumes the stopwatch.",
+        "targetClass": ""
+      },
+      {
+        "name": "ActionStartWatch",
+        "labelKey": "K_IGU_16",
+        "labelNs": "NS_UGC_STOPWATCHDEVICE",
+        "descriptionKey": "K_IGU_17",
+        "descriptionNs": "NS_UGC_STOPWATCHDEVICE",
+        "label": "Start Stopwatch",
+        "description": "Starts the stopwatch.",
+        "targetClass": ""
+      }
+    ]
+  },
+  "47": {
+    "objectId": 47,
+    "rowName": "CheckPointDevice",
+    "namespace": "NS_UGC_CHECKPOINTDEVICE",
+    "displayKey": "K_IGU_00",
+    "descriptionKey": "K_IGU_01",
+    "name": "Checkpoint Device",
+    "description": "Create checkpoints for players to pass through.",
+    "objectType": "EModObjectType::Device",
+    "subCategory": "EModObjectSubCategory::None",
+    "spawnWeight": 1,
+    "objectClass": "/Game/Blueprints/Mod/Device/DeviceActor/BP_CheckPointModActor.BP_CheckPointModActor_C",
+    "previewActorClass": "/Game/Blueprints/Mod/Device/PreviewActor/BP_CheckPointPreviewActor.BP_CheckPointPreviewActor_C",
+    "iconTexture": "/Game/Blueprints/Mod/UI/Textures/DeviceIcon/T_ModDevice_CheckPoint.T_ModDevice_CheckPoint",
+    "fields": [
+      {
+        "path": "activationRoundPhase",
+        "schemaPath": "ActivationRoundPhase",
+        "type": "Enum",
+        "unrealType": "EActivationRoundPhase",
+        "validator": "",
+        "validatorParam": null,
+        "advanced": false,
+        "hidden": true,
+        "labelKey": "K_IGU_04",
+        "labelNs": "NS_UGC_DEVICECOMMON",
+        "descriptionKey": "K_IGU_16",
+        "descriptionNs": "NS_UGC_DEVICECOMMON",
+        "label": "Activation Phase",
+        "description": "Set the phase during which the device is activated.\r\nNone: Activates only when triggered by an event.\r\nDevice Creation: Activates immediately when the device is created.\r\nStandby Before Spawn: Activates during the standby phase before players spawn.\r\nStandby After Spawn: Activates during the standby phase after players spawn.\r\nRound Start Before Spawn: Activates at round start, before players spawn.\r\nRound Start After Spawn: Activates at round start, after players spawn."
+      },
+      {
+        "path": "alpha",
+        "schemaPath": "Alpha",
+        "type": "Float",
+        "unrealType": "FloatProperty",
+        "validator": "Class'/Script/TslGameMode.ModFloatValidator'",
+        "validatorParam": {
+          "minValue": 0,
+          "maxValue": 0.69999998807907104,
+          "valueSet": []
+        },
+        "advanced": false,
+        "hidden": false,
+        "labelKey": "K_IGU_10",
+        "labelNs": "NS_UGC_CHECKPOINTDEVICE",
+        "descriptionKey": "K_IGU_11",
+        "descriptionNs": "NS_UGC_CHECKPOINTDEVICE",
+        "label": "Transparency",
+        "description": "Set the transparency of the checkpoint area."
+      },
+      {
+        "path": "height",
+        "schemaPath": "Height",
+        "type": "Float",
+        "unrealType": "FloatProperty",
+        "validator": "Class'/Script/TslGameMode.ModFloatValidator'",
+        "validatorParam": {
+          "minValue": 1,
+          "maxValue": 10000,
+          "valueSet": []
+        },
+        "advanced": false,
+        "hidden": false,
+        "labelKey": "K_IGU_08",
+        "labelNs": "NS_UGC_CHECKPOINTDEVICE",
+        "descriptionKey": "K_IGU_09",
+        "descriptionNs": "NS_UGC_CHECKPOINTDEVICE",
+        "label": "Height",
+        "description": "Set the height of the checkpoint area in centimeters."
+      },
+      {
+        "path": "radius",
+        "schemaPath": "Radius",
+        "type": "Float",
+        "unrealType": "FloatProperty",
+        "validator": "Class'/Script/TslGameMode.ModFloatValidator'",
+        "validatorParam": {
+          "minValue": 1,
+          "maxValue": 10000,
+          "valueSet": []
+        },
+        "advanced": false,
+        "hidden": false,
+        "labelKey": "K_IGU_04",
+        "labelNs": "NS_UGC_CHECKPOINTDEVICE",
+        "descriptionKey": "K_IGU_05",
+        "descriptionNs": "NS_UGC_CHECKPOINTDEVICE",
+        "label": "Radius",
+        "description": "Set the radius of the circular checkpoint area in centimeters."
+      },
+      {
+        "path": "shape",
+        "schemaPath": "Shape",
+        "type": "Enum",
+        "unrealType": "ECheckpointShape",
+        "validator": "Class'/Script/TslGameMode.ModEnumValidator'",
+        "validatorParam": {
+          "exceptEnums": [],
+          "selectEnums": []
+        },
+        "advanced": false,
+        "hidden": false,
+        "labelKey": "K_IGU_02",
+        "labelNs": "NS_UGC_CHECKPOINTDEVICE",
+        "descriptionKey": "K_IGU_03",
+        "descriptionNs": "NS_UGC_CHECKPOINTDEVICE",
+        "label": "Area Shape",
+        "description": "Set the shape of the checkpoint area."
+      },
+      {
+        "path": "width",
+        "schemaPath": "Width",
+        "type": "Float",
+        "unrealType": "FloatProperty",
+        "validator": "Class'/Script/TslGameMode.ModFloatValidator'",
+        "validatorParam": {
+          "minValue": 1,
+          "maxValue": 10000,
+          "valueSet": []
+        },
+        "advanced": false,
+        "hidden": false,
+        "labelKey": "K_IGU_06",
+        "labelNs": "NS_UGC_CHECKPOINTDEVICE",
+        "descriptionKey": "K_IGU_07",
+        "descriptionNs": "NS_UGC_CHECKPOINTDEVICE",
+        "label": "Width",
+        "description": "Set the width of the checkpoint area in centimeters."
+      }
+    ],
+    "triggers": [
+      {
+        "name": "OnActivateDevice",
+        "labelKey": "K_IGU_00",
+        "labelNs": "NS_UGC_DEVICECOMMON",
+        "descriptionKey": "K_IGU_17",
+        "descriptionNs": "NS_UGC_DEVICECOMMON",
+        "label": "On Activate Device",
+        "description": "Triggered when the device is activated.",
+        "targetClass": ""
+      },
+      {
+        "name": "TriggerCheckpointPassed",
+        "labelKey": "K_IGU_12",
+        "labelNs": "NS_UGC_CHECKPOINTDEVICE",
+        "descriptionKey": "K_IGU_13",
+        "descriptionNs": "NS_UGC_CHECKPOINTDEVICE",
+        "label": "On Checkpoint Passed",
+        "description": "Triggered when a player or designated target passes through the checkpoint.",
+        "targetClass": ""
+      },
+      {
+        "name": "OnDeactivateDevice",
+        "labelKey": "K_IGU_01",
+        "labelNs": "NS_UGC_DEVICECOMMON",
+        "descriptionKey": "K_IGU_18",
+        "descriptionNs": "NS_UGC_DEVICECOMMON",
+        "label": "On Deactivate Device",
+        "description": "Triggered when the device is deactivated.",
+        "targetClass": ""
+      }
+    ],
+    "actions": [
+      {
+        "name": "ActivateDevice",
+        "labelKey": "K_IGU_02",
+        "labelNs": "NS_UGC_DEVICECOMMON",
+        "descriptionKey": "K_IGU_19",
+        "descriptionNs": "NS_UGC_DEVICECOMMON",
+        "label": "Activate Device",
+        "description": "Enables the target device when this device is triggered.",
+        "targetClass": ""
+      },
+      {
+        "name": "DeactivateDevice",
+        "labelKey": "K_IGU_03",
+        "labelNs": "NS_UGC_DEVICECOMMON",
+        "descriptionKey": "K_IGU_20",
+        "descriptionNs": "NS_UGC_DEVICECOMMON",
+        "label": "Deactivate Device",
+        "description": "Disables the target device when this device is triggered.",
+        "targetClass": ""
+      }
+    ]
+  },
+  "48": {
+    "objectId": 48,
+    "rowName": "CheckPointManagerDevice",
+    "namespace": "NS_UGC_CHECKPOINTMANAGERDEVICE",
+    "displayKey": "K_IGU_00",
+    "descriptionKey": "K_IGU_01",
+    "name": "Checkpoint Manager Device",
+    "description": "Manage multiple checkpoints in sequence.",
+    "objectType": "EModObjectType::Device",
+    "subCategory": "EModObjectSubCategory::None",
+    "spawnWeight": 1,
+    "objectClass": "/Game/Blueprints/Mod/Device/DeviceActor/BP_DummyActor.BP_DummyActor_C",
+    "previewActorClass": "/Game/Blueprints/Mod/Device/PreviewActor/CheckpointManagerModPreviewActor_BP.CheckpointManagerModPreviewActor_BP_C",
+    "iconTexture": "/Game/Blueprints/Mod/UI/Textures/DeviceIcon/T_ModDevice_CheckPointManager.T_ModDevice_CheckPointManager",
+    "fields": [
+      {
+        "path": "activationRoundPhase",
+        "schemaPath": "ActivationRoundPhase",
+        "type": "Enum",
+        "unrealType": "EActivationRoundPhase",
+        "validator": "",
+        "validatorParam": null,
+        "advanced": false,
+        "hidden": false,
+        "labelKey": "K_IGU_04",
+        "labelNs": "NS_UGC_DEVICECOMMON",
+        "descriptionKey": "K_IGU_16",
+        "descriptionNs": "NS_UGC_DEVICECOMMON",
+        "label": "Activation Phase",
+        "description": "Set the phase during which the device is activated.\r\nNone: Activates only when triggered by an event.\r\nDevice Creation: Activates immediately when the device is created.\r\nStandby Before Spawn: Activates during the standby phase before players spawn.\r\nStandby After Spawn: Activates during the standby phase after players spawn.\r\nRound Start Before Spawn: Activates at round start, before players spawn.\r\nRound Start After Spawn: Activates at round start, after players spawn."
+      },
+      {
+        "path": "applyTarget",
+        "schemaPath": "ApplyTarget",
+        "type": "Object",
+        "unrealType": "ModTargetInfo",
+        "validator": "",
+        "validatorParam": null,
+        "advanced": false,
+        "hidden": false,
+        "labelKey": "",
+        "labelNs": "",
+        "descriptionKey": "",
+        "descriptionNs": "",
+        "label": "",
+        "description": ""
+      },
+      {
+        "path": "applyTarget.squadMemberId",
+        "schemaPath": "ApplyTarget.SquadMemberID",
+        "type": "Int",
+        "unrealType": "IntProperty",
+        "validator": "Class'/Script/TslGameMode.ModIntValidator'",
+        "validatorParam": {
+          "minValue": 1,
+          "maxValue": 100,
+          "valueSet": []
+        },
+        "advanced": false,
+        "hidden": false,
+        "labelKey": "K_IGU_07",
+        "labelNs": "NS_UGC_DEVICECOMMON",
+        "descriptionKey": "K_IGU_23",
+        "descriptionNs": "NS_UGC_DEVICECOMMON",
+        "label": "Team Member ID",
+        "description": "Specify the ID of the team member to target."
+      },
+      {
+        "path": "applyTarget.targetPlayerTag",
+        "schemaPath": "ApplyTarget.TargetPlayerTag",
+        "type": "String",
+        "unrealType": "StrProperty",
+        "validator": "Class'/Script/TslGameMode.ModStringValidator'",
+        "validatorParam": {
+          "maxLen": 20,
+          "bAllowEmpty": true,
+          "stringDataTable": "None"
+        },
+        "advanced": false,
+        "hidden": false,
+        "labelKey": "K_IGU_08",
+        "labelNs": "NS_UGC_DEVICECOMMON",
+        "descriptionKey": "K_IGU_24",
+        "descriptionNs": "NS_UGC_DEVICECOMMON",
+        "label": "Player Tag",
+        "description": "Specify the tag of the players to target."
+      },
+      {
+        "path": "applyTarget.targetType",
+        "schemaPath": "ApplyTarget.TargetType",
+        "type": "Enum",
+        "unrealType": "EModTargetPlayer",
+        "validator": "Class'/Script/TslGameMode.ModEnumValidator'",
+        "validatorParam": {
+          "exceptEnums": [],
+          "selectEnums": [
+            "AllPlayers",
+            "SelectedParty",
+            "SelectedPlayer",
+            "HasTagPlayer"
+          ]
+        },
+        "advanced": false,
+        "hidden": false,
+        "labelKey": "K_IGU_05",
+        "labelNs": "NS_UGC_DEVICECOMMON",
+        "descriptionKey": "K_IGU_21",
+        "descriptionNs": "NS_UGC_DEVICECOMMON",
+        "label": "Target",
+        "description": "Set the target to which the effect is applied.\r\nAll Players: Applies to all players.\r\nSelected Team: Applies only to the selected team.\r\nSelected Player: Applies only to the selected player.\r\nTagged Players: Applies only to players with the specified tag."
+      },
+      {
+        "path": "applyTarget.teamId",
+        "schemaPath": "ApplyTarget.TeamID",
+        "type": "Int",
+        "unrealType": "IntProperty",
+        "validator": "Class'/Script/TslGameMode.ModIntValidator'",
+        "validatorParam": {
+          "minValue": 1,
+          "maxValue": 100,
+          "valueSet": []
+        },
+        "advanced": false,
+        "hidden": false,
+        "labelKey": "K_IGU_06",
+        "labelNs": "NS_UGC_DEVICECOMMON",
+        "descriptionKey": "K_IGU_22",
+        "descriptionNs": "NS_UGC_DEVICECOMMON",
+        "label": "Team ID",
+        "description": "Specify the ID of the team to target."
+      },
+      {
+        "path": "bEnableLoop",
+        "schemaPath": "bEnableLoop",
+        "type": "Bool",
+        "unrealType": "BoolProperty",
+        "validator": "",
+        "validatorParam": null,
+        "advanced": false,
+        "hidden": false,
+        "labelKey": "K_IGU_06",
+        "labelNs": "NS_UGC_CHECKPOINTMANAGERDEVICE",
+        "descriptionKey": "K_IGU_07",
+        "descriptionNs": "NS_UGC_CHECKPOINTMANAGERDEVICE",
+        "label": "Repeat Sequence",
+        "description": "Determine whether the checkpoint sequence repeats after a player passes the final checkpoint."
+      },
+      {
+        "path": "bPlayCheckpointPassedSound",
+        "schemaPath": "bPlayCheckpointPassedSound",
+        "type": "Bool",
+        "unrealType": "BoolProperty",
+        "validator": "",
+        "validatorParam": null,
+        "advanced": false,
+        "hidden": false,
+        "labelKey": "K_IGU_16",
+        "labelNs": "NS_UGC_CHECKPOINTMANAGERDEVICE",
+        "descriptionKey": "K_IGU_17",
+        "descriptionNs": "NS_UGC_CHECKPOINTMANAGERDEVICE",
+        "label": "Play Sound",
+        "description": "Play a sound when a player passes through a checkpoint."
+      },
+      {
+        "path": "bShowCheckpointIndex",
+        "schemaPath": "bShowCheckpointIndex",
+        "type": "Bool",
+        "unrealType": "BoolProperty",
+        "validator": "",
+        "validatorParam": null,
+        "advanced": false,
+        "hidden": false,
+        "labelKey": "K_IGU_14",
+        "labelNs": "NS_UGC_CHECKPOINTMANAGERDEVICE",
+        "descriptionKey": "K_IGU_15",
+        "descriptionNs": "NS_UGC_CHECKPOINTMANAGERDEVICE",
+        "label": "Show Next Checkpoint Widget",
+        "description": "Determine whether to display the widget that marks the location of the next checkpoint."
+      },
+      {
+        "path": "bShowEditPath",
+        "schemaPath": "bShowEditPath",
+        "type": "Bool",
+        "unrealType": "BoolProperty",
+        "validator": "",
+        "validatorParam": null,
+        "advanced": false,
+        "hidden": false,
+        "labelKey": "K_IGU_08",
+        "labelNs": "NS_UGC_CHECKPOINTMANAGERDEVICE",
+        "descriptionKey": "K_IGU_09",
+        "descriptionNs": "NS_UGC_CHECKPOINTMANAGERDEVICE",
+        "label": "Show Edit Path",
+        "description": "Determine whether to show the path between checkpoints in Edit mode."
+      },
+      {
+        "path": "bShowNavigationWidget",
+        "schemaPath": "bShowNavigationWidget",
+        "type": "Bool",
+        "unrealType": "BoolProperty",
+        "validator": "",
+        "validatorParam": null,
+        "advanced": false,
+        "hidden": false,
+        "labelKey": "K_IGU_12",
+        "labelNs": "NS_UGC_CHECKPOINTMANAGERDEVICE",
+        "descriptionKey": "K_IGU_13",
+        "descriptionNs": "NS_UGC_CHECKPOINTMANAGERDEVICE",
+        "label": "Show Navigation Widget",
+        "description": "Determine whether to display the navigation widget that guides a player to the next checkpoint."
+      },
+      {
+        "path": "checkpointList",
+        "schemaPath": "CheckpointList",
+        "type": "Array",
+        "unrealType": "ArrayProperty",
+        "validator": "Class'/Script/TslGameMode.ModArrayUniqueValidator'",
+        "validatorParam": {
+          "maxNum": 50,
+          "bIgnoreEmptyInitializedValue": true
+        },
+        "advanced": false,
+        "hidden": false,
+        "labelKey": "K_IGU_02",
+        "labelNs": "NS_UGC_CHECKPOINTMANAGERDEVICE",
+        "descriptionKey": "K_IGU_03",
+        "descriptionNs": "NS_UGC_CHECKPOINTMANAGERDEVICE",
+        "label": "Checkpoint List",
+        "description": "Select checkpoint devices that a player must pass through in order."
+      },
+      {
+        "path": "checkpointList[]",
+        "schemaPath": "CheckpointList[]",
+        "type": "Device",
+        "unrealType": "StructProperty",
+        "validator": "Class'/Script/TslGameMode.ModDeviceValidator'",
+        "validatorParam": {
+          "availableDeviceObjectIdList": [
+            47
+          ]
+        },
+        "advanced": false,
+        "hidden": false,
+        "labelKey": "",
+        "labelNs": "",
+        "descriptionKey": "",
+        "descriptionNs": "",
+        "label": "",
+        "description": ""
+      },
+      {
+        "path": "editPathColor",
+        "schemaPath": "EditPathColor",
+        "type": "Enum",
+        "unrealType": "EModColorType",
+        "validator": "Class'/Script/TslGameMode.ModEnumValidator'",
+        "validatorParam": {
+          "exceptEnums": [
+            "Black",
+            "None"
+          ],
+          "selectEnums": []
+        },
+        "advanced": false,
+        "hidden": false,
+        "labelKey": "K_IGU_10",
+        "labelNs": "NS_UGC_CHECKPOINTMANAGERDEVICE",
+        "descriptionKey": "K_IGU_11",
+        "descriptionNs": "NS_UGC_CHECKPOINTMANAGERDEVICE",
+        "label": "Edit Path Color",
+        "description": "Set the color of the path shown in Edit mode."
+      }
+    ],
+    "triggers": [
+      {
+        "name": "OnActivateDevice",
+        "labelKey": "K_IGU_00",
+        "labelNs": "NS_UGC_DEVICECOMMON",
+        "descriptionKey": "K_IGU_17",
+        "descriptionNs": "NS_UGC_DEVICECOMMON",
+        "label": "On Activate Device",
+        "description": "Triggered when the device is activated.",
+        "targetClass": ""
+      },
+      {
+        "name": "TriggerAllCheckpointsPassed",
+        "labelKey": "K_IGU_18",
+        "labelNs": "NS_UGC_CHECKPOINTMANAGERDEVICE",
+        "descriptionKey": "K_IGU_19",
+        "descriptionNs": "NS_UGC_CHECKPOINTMANAGERDEVICE",
+        "label": "On All Checkpoints Passed",
+        "description": "Triggered when a player passes through all checkpoints.",
+        "targetClass": ""
+      },
+      {
+        "name": "TriggerCheckpointPassed",
+        "labelKey": "K_IGU_20",
+        "labelNs": "NS_UGC_CHECKPOINTMANAGERDEVICE",
+        "descriptionKey": "K_IGU_21",
+        "descriptionNs": "NS_UGC_CHECKPOINTMANAGERDEVICE",
+        "label": "On Checkpoint Passed",
+        "description": "Triggered each time a player passes a checkpoint.",
+        "targetClass": ""
+      },
+      {
+        "name": "OnDeactivateDevice",
+        "labelKey": "K_IGU_01",
+        "labelNs": "NS_UGC_DEVICECOMMON",
+        "descriptionKey": "K_IGU_18",
+        "descriptionNs": "NS_UGC_DEVICECOMMON",
+        "label": "On Deactivate Device",
+        "description": "Triggered when the device is deactivated.",
+        "targetClass": ""
+      }
+    ],
+    "actions": [
+      {
+        "name": "ActivateDevice",
+        "labelKey": "K_IGU_02",
+        "labelNs": "NS_UGC_DEVICECOMMON",
+        "descriptionKey": "K_IGU_19",
+        "descriptionNs": "NS_UGC_DEVICECOMMON",
+        "label": "Activate Device",
+        "description": "Enables the target device when this device is triggered.",
+        "targetClass": ""
+      },
+      {
+        "name": "DeactivateDevice",
+        "labelKey": "K_IGU_03",
+        "labelNs": "NS_UGC_DEVICECOMMON",
+        "descriptionKey": "K_IGU_20",
+        "descriptionNs": "NS_UGC_DEVICECOMMON",
+        "label": "Deactivate Device",
+        "description": "Disables the target device when this device is triggered.",
+        "targetClass": ""
+      }
+    ]
+  },
+  "49": {
+    "objectId": 49,
+    "rowName": "BillboardDevice",
+    "namespace": "NS_UGC_BILLBOARDDEVICE",
+    "displayKey": "K_IGU_00",
+    "descriptionKey": "K_IGU_01",
+    "name": "Billboard Device",
+    "description": "Display information from connected devices.",
+    "objectType": "EModObjectType::Device",
+    "subCategory": "EModObjectSubCategory::None",
+    "spawnWeight": 1,
+    "objectClass": "/Game/Blueprints/Mod/Device/DeviceActor/BP_BillboardModActor.BP_BillboardModActor_C",
+    "previewActorClass": "/Game/Blueprints/Mod/Device/PreviewActor/BillboardPreviewActor_BP.BillboardPreviewActor_BP_C",
+    "iconTexture": "/Game/Blueprints/Mod/UI/Textures/DeviceIcon/T_ModDevice_Billboard.T_ModDevice_Billboard",
+    "fields": [
+      {
+        "path": "activationRoundPhase",
+        "schemaPath": "ActivationRoundPhase",
+        "type": "Enum",
+        "unrealType": "EActivationRoundPhase",
+        "validator": "",
+        "validatorParam": null,
+        "advanced": false,
+        "hidden": false,
+        "labelKey": "K_IGU_04",
+        "labelNs": "NS_UGC_DEVICECOMMON",
+        "descriptionKey": "K_IGU_16",
+        "descriptionNs": "NS_UGC_DEVICECOMMON",
+        "label": "Activation Phase",
+        "description": "Set the phase during which the device is activated.\r\nNone: Activates only when triggered by an event.\r\nDevice Creation: Activates immediately when the device is created.\r\nStandby Before Spawn: Activates during the standby phase before players spawn.\r\nStandby After Spawn: Activates during the standby phase after players spawn.\r\nRound Start Before Spawn: Activates at round start, before players spawn.\r\nRound Start After Spawn: Activates at round start, after players spawn."
+      },
+      {
+        "path": "connectedDevice",
+        "schemaPath": "ConnectedDevice",
+        "type": "Device",
+        "unrealType": "StructProperty",
+        "validator": "Class'/Script/TslGameMode.ModDeviceValidator'",
+        "validatorParam": {
+          "availableDeviceObjectIdList": [
+            46
+          ]
+        },
+        "advanced": false,
+        "hidden": false,
+        "labelKey": "K_IGU_02",
+        "labelNs": "NS_UGC_BILLBOARDDEVICE",
+        "descriptionKey": "K_IGU_03",
+        "descriptionNs": "NS_UGC_BILLBOARDDEVICE",
+        "label": "Connected Devices",
+        "description": "Select the devices to display on the billboard."
+      },
+      {
+        "path": "displayOrder",
+        "schemaPath": "DisplayOrder",
+        "type": "Enum",
+        "unrealType": "EBillboardSortType",
+        "validator": "Class'/Script/TslGameMode.ModEnumValidator'",
+        "validatorParam": {
+          "exceptEnums": [],
+          "selectEnums": []
+        },
+        "advanced": false,
+        "hidden": false,
+        "labelKey": "K_IGU_04",
+        "labelNs": "NS_UGC_BILLBOARDDEVICE",
+        "descriptionKey": "K_IGU_05",
+        "descriptionNs": "NS_UGC_BILLBOARDDEVICE",
+        "label": "Display Order",
+        "description": "Set the order of information displayed."
+      }
+    ],
+    "triggers": [
+      {
+        "name": "OnActivateDevice",
+        "labelKey": "K_IGU_00",
+        "labelNs": "NS_UGC_DEVICECOMMON",
+        "descriptionKey": "K_IGU_17",
+        "descriptionNs": "NS_UGC_DEVICECOMMON",
+        "label": "On Activate Device",
+        "description": "Triggered when the device is activated.",
+        "targetClass": ""
+      },
+      {
+        "name": "OnDeactivateDevice",
+        "labelKey": "K_IGU_01",
+        "labelNs": "NS_UGC_DEVICECOMMON",
+        "descriptionKey": "K_IGU_18",
+        "descriptionNs": "NS_UGC_DEVICECOMMON",
+        "label": "On Deactivate Device",
+        "description": "Triggered when the device is deactivated.",
+        "targetClass": ""
+      }
+    ],
+    "actions": [
+      {
+        "name": "ActivateDevice",
+        "labelKey": "K_IGU_02",
+        "labelNs": "NS_UGC_DEVICECOMMON",
+        "descriptionKey": "K_IGU_19",
+        "descriptionNs": "NS_UGC_DEVICECOMMON",
+        "label": "Activate Device",
+        "description": "Enables the target device when this device is triggered.",
+        "targetClass": ""
+      },
+      {
+        "name": "DeactivateDevice",
+        "labelKey": "K_IGU_03",
+        "labelNs": "NS_UGC_DEVICECOMMON",
+        "descriptionKey": "K_IGU_20",
+        "descriptionNs": "NS_UGC_DEVICECOMMON",
+        "label": "Deactivate Device",
+        "description": "Disables the target device when this device is triggered.",
+        "targetClass": ""
+      },
+      {
+        "name": "UpdateBillboard",
+        "labelKey": "K_IGU_06",
+        "labelNs": "NS_UGC_BILLBOARDDEVICE",
+        "descriptionKey": "K_IGU_07",
+        "descriptionNs": "NS_UGC_BILLBOARDDEVICE",
+        "label": "Update Billboard",
+        "description": "Update the information displayed on the billboard.",
         "targetClass": ""
       }
     ]

@@ -1142,6 +1142,18 @@
   "MI_Desert_Plaster_04_03_Proxy": {
     "AlphaTest": true
   },
+  "MI_Desert_RaceFlags_03": {
+    "AlphaTest": true
+  },
+  "MI_Desert_RaceFlags_03_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Desert_RampGrating_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Desert_RampGrating_02_Proxy": {
+    "AlphaTest": true
+  },
   "MI_Desert_Resort_Blinds1": {
     "AlphaTest": true
   },
@@ -1296,6 +1308,15 @@
     "AlphaTest": true
   },
   "MI_Desert_TruckStop_Warehouse_WindowCover_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Desert_VamosSignLarge_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Desert_VamosSignSmall_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Desert_VamosSign_01_Proxy": {
     "AlphaTest": true
   },
   "MI_Desert_Village_Building_03_1S_Decals": {
@@ -1461,6 +1482,12 @@
     "AlphaTest": true
   },
   "MI_DO_Trim_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_DO_Xmas_Tinsel_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_DO_Xmas_Wreath_01_Proxy": {
     "AlphaTest": true
   },
   "MI_Fan01": {
@@ -1860,6 +1887,9 @@
     "AlphaTest": true
   },
   "MI_Plant_01_Proxy": {
+    "AlphaTest": true
+  },
+  "MI_Racing_Machete_Chainsaw_03_Proxy": {
     "AlphaTest": true
   },
   "MI_Racing_TrafficBarrier_02_Proxy": {
@@ -2579,6 +2609,9 @@
   "MI_WIndowGlass_Proxy": {
     "AlphaTest": true
   },
+  "MI_Winter_racing_gate_finish_alp_Text_Proxy": {
+    "AlphaTest": true
+  },
   "Ml_Desert_NewComposite_ExEdge": {
     "AlphaTest": true
   },
@@ -2762,6 +2795,9 @@
   "TslGame/Content/Animations/Battlegrounds/Anims/Revival/Machine/Materials/MI_revival_tower_02": {
     "AlphaTest": true
   },
+  "TslGame/Content/Assets/ThirdParty/FirstAidKit/Materials/M_Glass": {
+    "AlphaTest": true
+  },
   "TslGame/Content/Assets/ThirdParty/IndustrialCity/Materials/-Glass": {
     "AlphaTest": true
   },
@@ -2838,6 +2874,9 @@
     "AlphaTest": true
   },
   "TslGame/Content/Assets/World/Baltic/Buildings/Materials/Shared/MI_Baltic_Concrete_Damage_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/Shared/MI_Baltic_ExteriorEdgeDecal_03": {
     "AlphaTest": true
   },
   "TslGame/Content/Assets/World/Baltic/Buildings/Materials/Shared/MI_Baltic_Int_Trim_01": {
@@ -2930,9 +2969,6 @@
   "TslGame/Content/Assets/World/Baltic/Buildings/Materials/UniqueThemes/Baltic_Unique_PoliceStation/MI_Baltic_DirtDecal_Police_01": {
     "AlphaTest": true
   },
-  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/UniqueThemes/Baltic_Unique_PoliceStation/MI_Baltic_ExteriorEdgeDecal_03": {
-    "AlphaTest": true
-  },
   "TslGame/Content/Assets/World/Baltic/Buildings/Materials/UniqueThemes/Baltic_Unique_Power_Plant/MI_Baltic_Powerplant_Trim_Masked_01": {
     "AlphaTest": true
   },
@@ -3020,13 +3056,7 @@
   "TslGame/Content/Assets/World/Baltic/Old/Assets/World/Buildings/Materials/AHospital_ADecal_a": {
     "AlphaTest": true
   },
-  "TslGame/Content/Assets/World/Baltic/Old/Assets/World/Buildings/Materials/ASchool_Books_c_Mat": {
-    "AlphaTest": true
-  },
   "TslGame/Content/Assets/World/Baltic/Old/Assets/World/Buildings/Materials/ASchool_Sign_Mat": {
-    "AlphaTest": true
-  },
-  "TslGame/Content/Assets/World/Baltic/Old/Assets/World/Buildings/Materials/M_Dark_Metal_2": {
     "AlphaTest": true
   },
   "TslGame/Content/Assets/World/Baltic/Old/Assets/World/Buildings/Materials/M_Papers": {
@@ -3359,6 +3389,9 @@
   "TslGame/Content/Assets/World/Buildings/Materials/AlpineHouse_HayMask_Mat": {
     "AlphaTest": true
   },
+  "TslGame/Content/Assets/World/Buildings/Materials/ASchool_Books_c_Mat": {
+    "AlphaTest": true
+  },
   "TslGame/Content/Assets/World/Buildings/Materials/ASchool_Carpet_Mat": {
     "AlphaTest": true
   },
@@ -3497,6 +3530,9 @@
   "TslGame/Content/Assets/World/Buildings/Materials/M_Arena_Cloth_Bilboard2": {
     "AlphaTest": true
   },
+  "TslGame/Content/Assets/World/Buildings/Materials/M_Dark_Metal_2": {
+    "AlphaTest": true
+  },
   "TslGame/Content/Assets/World/Buildings/Materials/M_Metal_Rust_Dark": {
     "AlphaTest": true
   },
@@ -3549,6 +3585,9 @@
     "AlphaTest": true
   },
   "TslGame/Content/Assets/World/Common/Materials/Decal/MI_Desert_GasStationVamos_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Common/Materials/Desert/MI_Desert_RaceFlags_03": {
     "AlphaTest": true
   },
   "TslGame/Content/Assets/World/Common/Materials/Desert_Carpet_01": {
@@ -4703,6 +4742,15 @@
   "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Desert_Plaster_04_03_Proxy": {
     "AlphaTest": true
   },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Desert_RaceFlags_03_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Desert_RampGrating_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Desert_RampGrating_02_Proxy": {
+    "AlphaTest": true
+  },
   "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Desert_Resort_Blinds1_Proxy": {
     "AlphaTest": true
   },
@@ -4779,6 +4827,15 @@
     "AlphaTest": true
   },
   "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Desert_TruckStop_Warehouse_WindowCover_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Desert_VamosSignLarge_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Desert_VamosSignSmall_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Desert_VamosSign_01_Proxy": {
     "AlphaTest": true
   },
   "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Desert_Village_Building_03_1S_Decals_Proxy": {
@@ -4863,6 +4920,12 @@
     "AlphaTest": true
   },
   "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_DO_Trim_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_DO_Xmas_Tinsel_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_DO_Xmas_Wreath_01_Proxy": {
     "AlphaTest": true
   },
   "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Fan01_Proxy": {
@@ -5067,6 +5130,9 @@
     "AlphaTest": true
   },
   "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Plant_01_Proxy": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Racing_Machete_Chainsaw_03_Proxy": {
     "AlphaTest": true
   },
   "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Racing_TrafficBarrier_02_Proxy": {
@@ -5423,6 +5489,9 @@
   "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_WIndowGlass_Proxy": {
     "AlphaTest": true
   },
+  "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/MI_Winter_racing_gate_finish_alp_Text_Proxy": {
+    "AlphaTest": true
+  },
   "TslGame/Content/Blueprints/Mod/Object/ProxyAssets/Material/Ml_Desert_NewComposite_ExEdge_Proxy": {
     "AlphaTest": true
   },
@@ -5526,9 +5595,6 @@
     "AlphaTest": true
   },
   "TslGame/Content/Vehicles/Uaz/Materials/MI_Uaz_New_F_01": {
-    "AlphaTest": true
-  },
-  "TslGame/Content/Weapon/Accessories/M_Glass": {
     "AlphaTest": true
   },
   "tsl_Grass_01_LOD0_Inst": {

@@ -6,6 +6,11 @@
       "rowName": "AquaRail"
     },
     {
+      "value": "/Game/Vehicles/ATV/Blueprints/BP_ATV.BP_ATV",
+      "label": "ATV",
+      "rowName": "ATV"
+    },
+    {
       "value": "/Game/Vehicles/Bicycle/BP/BP_Bicycle.BP_Bicycle",
       "label": "Bicycle",
       "rowName": "Bicycle"
@@ -19,6 +24,11 @@
       "value": "/Game/Vehicles/Boat_PG117/BluePrint/Boat_PG117.Boat_PG117",
       "label": "Boat",
       "rowName": "Boat"
+    },
+    {
+      "value": "/Game/Vehicles/BRDM/BP_BRDM.BP_BRDM",
+      "label": "BRDM",
+      "rowName": "BRDM"
     },
     {
       "value": "/Game/Vehicles/Buggy/BluePrint/Buggy.Buggy",
@@ -99,6 +109,16 @@
       "value": "/Game/Vehicles/Rony/BluePrint/BP_M_Rony_A_Esports.BP_M_Rony_A_Esports",
       "label": "Rony",
       "rowName": "Rony"
+    },
+    {
+      "value": "/Game/Vehicles/Scooter/BluePrint/BP_Scooter.BP_Scooter",
+      "label": "Scooter",
+      "rowName": "Scooter"
+    },
+    {
+      "value": "/Game/Vehicles/TukTukTuk/BluePrint/BP_TukTukTuk.BP_TukTukTuk",
+      "label": "Tukshai",
+      "rowName": "TukTukTuk"
     },
     {
       "value": "/Game/Vehicles/Uaz/BluePrint/Uaz_B_01_esports.Uaz_B_01_esports",
@@ -113,6 +133,11 @@
       "rowName": "AquaRail"
     },
     {
+      "value": "/Game/Vehicles/ATV/Blueprints/BP_ATV.BP_ATV",
+      "label": "ATV",
+      "rowName": "ATV"
+    },
+    {
       "value": "/Game/Vehicles/Bicycle/BP/BP_Bicycle.BP_Bicycle",
       "label": "Bicycle",
       "rowName": "Bicycle"
@@ -126,6 +151,11 @@
       "value": "/Game/Vehicles/Boat_PG117/BluePrint/Boat_PG117.Boat_PG117",
       "label": "Boat",
       "rowName": "Boat"
+    },
+    {
+      "value": "/Game/Vehicles/BRDM/BP_BRDM.BP_BRDM",
+      "label": "BRDM",
+      "rowName": "BRDM"
     },
     {
       "value": "/Game/Vehicles/Buggy/BluePrint/Buggy.Buggy",
@@ -206,6 +236,16 @@
       "value": "/Game/Vehicles/Rony/BluePrint/BP_M_Rony_A_Esports.BP_M_Rony_A_Esports",
       "label": "Rony",
       "rowName": "Rony"
+    },
+    {
+      "value": "/Game/Vehicles/Scooter/BluePrint/BP_Scooter.BP_Scooter",
+      "label": "Scooter",
+      "rowName": "Scooter"
+    },
+    {
+      "value": "/Game/Vehicles/TukTukTuk/BluePrint/BP_TukTukTuk.BP_TukTukTuk",
+      "label": "Tukshai",
+      "rowName": "TukTukTuk"
     },
     {
       "value": "/Game/Vehicles/Uaz/BluePrint/Uaz_B_01_esports.Uaz_B_01_esports",

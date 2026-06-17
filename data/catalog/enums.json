@@ -37,6 +37,20 @@
       "rowName": "EActivationRoundPhase_RoundStart_AfterSpawn"
     }
   ],
+  "EBillboardSortType": [
+    {
+      "value": "Ascending",
+      "label": "Ascending",
+      "key": "K_IGU_090",
+      "rowName": "EBillboardSortType_Ascending"
+    },
+    {
+      "value": "Descending",
+      "label": "Descending",
+      "key": "K_IGU_091",
+      "rowName": "EBillboardSortType_Descending"
+    }
+  ],
   "EBlueZoneShape": [
     {
       "value": "None",
@@ -75,6 +89,20 @@
       "label": "TPS Only",
       "key": "K_IGU_054",
       "rowName": "ECameraViewBehaviour_TpsOnly"
+    }
+  ],
+  "ECheckpointShape": [
+    {
+      "value": "Square",
+      "label": "Rectangle",
+      "key": "K_IGU_089",
+      "rowName": "ECheckpointShape_Square"
+    },
+    {
+      "value": "Circle",
+      "label": "Circle",
+      "key": "K_IGU_102",
+      "rowName": "ECheckpointShape_Circle"
     }
   ],
   "EDamageTypeCategory": [
@@ -849,6 +877,40 @@
       "rowName": "EModObjectType_Device"
     }
   ],
+  "EModStopwatchRecordScope": [
+    {
+      "value": "Personal",
+      "label": "Personal",
+      "key": "K_IGU_100",
+      "rowName": "EModStopwatchRecordScope_Personal"
+    },
+    {
+      "value": "Global",
+      "label": "Global",
+      "key": "K_IGU_101",
+      "rowName": "EModStopwatchRecordScope_Global"
+    }
+  ],
+  "EModSuperJumpTargetType": [
+    {
+      "value": "All",
+      "label": "All",
+      "key": "K_IGU_092",
+      "rowName": "EModSuperJumpTargetType_All"
+    },
+    {
+      "value": "CharacterOnly",
+      "label": "Character Only",
+      "key": "K_IGU_093",
+      "rowName": "EModSuperJumpTargetType_CharacterOnly"
+    },
+    {
+      "value": "VehicleOnly",
+      "label": "Vehicle Only",
+      "key": "K_IGU_094",
+      "rowName": "EModSuperJumpTargetType_VehicleOnly"
+    }
+  ],
   "EModSuperJumpType": [
     {
       "value": "CallerUp",
@@ -1145,6 +1207,40 @@
       "label": "EMP",
       "key": "K_IGU_042",
       "rowName": "ESpecialZoneType_EMP"
+    }
+  ],
+  "ETimeCountFormat": [
+    {
+      "value": "Sec",
+      "label": "Seconds (SS)",
+      "key": "K_IGU_095",
+      "rowName": "ETimeCountFormat_Sec"
+    },
+    {
+      "value": "MinSec",
+      "label": "Minutes, Seconds (MM:SS)",
+      "key": "K_IGU_096",
+      "rowName": "ETimeCountFormat_MinSec"
+    },
+    {
+      "value": "MinSecMilli",
+      "label": "Minutes, Seconds, Milliseconds (MM:SS:MS)",
+      "key": "K_IGU_097",
+      "rowName": "ETimeCountFormat_MinSecMilli"
+    }
+  ],
+  "ETimerWidgetLocation": [
+    {
+      "value": "Left",
+      "label": "Left",
+      "key": "K_IGU_098",
+      "rowName": "ETimerWidgetLocation_Left"
+    },
+    {
+      "value": "Center",
+      "label": "Center",
+      "key": "K_IGU_099",
+      "rowName": "ETimerWidgetLocation_Center"
     }
   ]
 }
