@@ -2180,9 +2180,6 @@
   "MI_Tiger_Hospital_Entryway_Banner_01_Proxy": {
     "AlphaTest": true
   },
-  "MI_Tiger_HS_Com_02_EdgeDecal_01": {
-    "AlphaTest": true
-  },
   "MI_Tiger_HS_Com_02_EdgeDecal_01_Proxy": {
     "AlphaTest": true
   },
@@ -2795,13 +2792,13 @@
   "TslGame/Content/Animations/Battlegrounds/Anims/Revival/Machine/Materials/MI_revival_tower_02": {
     "AlphaTest": true
   },
-  "TslGame/Content/Assets/ThirdParty/FirstAidKit/Materials/M_Glass": {
-    "AlphaTest": true
-  },
   "TslGame/Content/Assets/ThirdParty/IndustrialCity/Materials/-Glass": {
     "AlphaTest": true
   },
-  "TslGame/Content/Assets/World/Baltic/Blueprints/Buildings/UniqueThemes/Observatory/MI/MI_Baltic_ExteriorEdgeDecal_02": {
+  "TslGame/Content/Assets/World/Arcade/Compound/Buildings/Materials/Compound_Brige/MI_Baltic_ExteriorEdgeDecal_03": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Arcade/Compound/Buildings/Materials/Compound_ShootRange/MI_Baltic_ExteriorEdgeDecal_02": {
     "AlphaTest": true
   },
   "TslGame/Content/Assets/World/Baltic/Blueprints/Buildings/UniqueThemes/Observatory/MI/MI_DOME_CHAINLINK_01": {
@@ -2876,7 +2873,7 @@
   "TslGame/Content/Assets/World/Baltic/Buildings/Materials/Shared/MI_Baltic_Concrete_Damage_01": {
     "AlphaTest": true
   },
-  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/Shared/MI_Baltic_ExteriorEdgeDecal_03": {
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/Shared/MI_Baltic_ExteriorEdgeDecal_01": {
     "AlphaTest": true
   },
   "TslGame/Content/Assets/World/Baltic/Buildings/Materials/Shared/MI_Baltic_Int_Trim_01": {
@@ -2933,9 +2930,6 @@
   "TslGame/Content/Assets/World/Baltic/Buildings/Materials/Towns/Baltic_Town_Residential_03/MI_Baltic_Town_Residential_03_EdgeDecal_01": {
     "AlphaTest": true
   },
-  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/Towns/Baltic_Town_Residential_11/MI_Baltic_ExteriorEdgeDecal_01": {
-    "AlphaTest": true
-  },
   "TslGame/Content/Assets/World/Baltic/Buildings/Materials/Towns/Baltic_Town_Shop_Clothing/MI_Baltic_Int_Trim_02": {
     "AlphaTest": true
   },
@@ -2981,13 +2975,13 @@
   "TslGame/Content/Assets/World/Baltic/Buildings/Materials/UniqueThemes/Baltic_unique_prison/MainTown/Indoor/MI_Baltic_Int_Trim_01_Prison": {
     "AlphaTest": true
   },
+  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/UniqueThemes/Baltic_unique_prison/Official_House/MI_Baltic_Decal_ConcretePatch_10": {
+    "AlphaTest": true
+  },
   "TslGame/Content/Assets/World/Baltic/Buildings/Materials/UniqueThemes/Baltic_unique_prison/Official_House/MI_Baltic_Town_Residential_02_MossDecal_02": {
     "AlphaTest": true
   },
   "TslGame/Content/Assets/World/Baltic/Buildings/Materials/UniqueThemes/Baltic_unique_prison/Official_House/MI_Baltic_Unique_Prison_Official_House_EdgeDecal_01": {
-    "AlphaTest": true
-  },
-  "TslGame/Content/Assets/World/Baltic/Buildings/Materials/UniqueThemes/Baltic_unique_prison/SecurityPost/MI_Baltic_Decal_ConcretePatch_10": {
     "AlphaTest": true
   },
   "TslGame/Content/Assets/World/Baltic/Buildings/Materials/UniqueThemes/Baltic_unique_prison/SecurityPost/MI_Baltic_ExteriorEdgeDecal_SecPost_Ext_01": {
@@ -3012,9 +3006,6 @@
     "AlphaTest": true
   },
   "TslGame/Content/Assets/World/Baltic/Buildings/Meshes/Towns/Mylta/Mylta_MI/MI_Baltic_CornCan_01": {
-    "AlphaTest": true
-  },
-  "TslGame/Content/Assets/World/Baltic/Buildings/Meshes/UniqueThemes/Wharf/Large_Warehouse/Materials/MI_Baltic_DirtDecal_01": {
     "AlphaTest": true
   },
   "TslGame/Content/Assets/World/Baltic/Buildings/Meshes/UniqueThemes/Wharf/Large_Warehouse/Materials/MI_Baltic_Large_Warehouse_Building_Kit": {
@@ -3056,28 +3047,25 @@
   "TslGame/Content/Assets/World/Baltic/Old/Assets/World/Buildings/Materials/AHospital_ADecal_a": {
     "AlphaTest": true
   },
-  "TslGame/Content/Assets/World/Baltic/Old/Assets/World/Buildings/Materials/ASchool_Sign_Mat": {
+  "TslGame/Content/Assets/World/Baltic/Old/Assets/World/Buildings/Materials/AHospital_ADecal_b": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Old/Assets/World/Buildings/Materials/ASchool_Carpet_Mat": {
     "AlphaTest": true
   },
   "TslGame/Content/Assets/World/Baltic/Old/Assets/World/Buildings/Materials/M_Papers": {
     "AlphaTest": true
   },
-  "TslGame/Content/Assets/World/Baltic/Old/Assets/World/Buildings/Materials/M_Wood_05": {
-    "AlphaTest": true
-  },
   "TslGame/Content/Assets/World/Baltic/Old/Assets/World/Buildings/Materials/M_Wood_White_01": {
     "AlphaTest": true
   },
-  "TslGame/Content/Assets/World/Baltic/Old/Assets/World/Common/Materials/Decal/MI_TileConcreteDecal": {
+  "TslGame/Content/Assets/World/Baltic/Old/Assets/World/Common/Materials/MI_barbedWire01": {
     "AlphaTest": true
   },
   "TslGame/Content/Assets/World/Baltic/Old/Assets/World/Common/Materials/MI_Chainlink01_wire": {
     "AlphaTest": true
   },
-  "TslGame/Content/Assets/World/Baltic/Old/Assets/World/Common/Materials/MI_Fan01": {
-    "AlphaTest": true
-  },
-  "TslGame/Content/Assets/World/Baltic/Old/Assets/World/Common/Materials/MI_FoldingChair01": {
+  "TslGame/Content/Assets/World/Baltic/Old/Assets/World/Common/Materials/MI_haybale01": {
     "AlphaTest": true
   },
   "TslGame/Content/Assets/World/Baltic/Old/Assets/World/Common/Materials/MI_heybale2_oneSided": {
@@ -3086,10 +3074,7 @@
   "TslGame/Content/Assets/World/Baltic/Old/Assets/World/Common/Materials/MI_heybale2_twoSided": {
     "AlphaTest": true
   },
-  "TslGame/Content/Assets/World/Baltic/Old/Assets/World/Common/Materials/MI_tarp02": {
-    "AlphaTest": true
-  },
-  "TslGame/Content/Assets/World/Baltic/Old/Assets/World/Common/Materials/MI_tarp03": {
+  "TslGame/Content/Assets/World/Baltic/Old/Assets/World/Common/Materials/MI_MetalLocker_01": {
     "AlphaTest": true
   },
   "TslGame/Content/Assets/World/Baltic/Old/Assets/World/Vegetation/Grass/Materials/MI_town01_Grass": {
@@ -3233,6 +3218,9 @@
   "TslGame/Content/Assets/World/Baltic/Props/Decals/Materials/MI_Baltic_Decal_Trash_01": {
     "AlphaTest": true
   },
+  "TslGame/Content/Assets/World/Baltic/Props/Decals/Materials/MI_Baltic_DirtDecal_01": {
+    "AlphaTest": true
+  },
   "TslGame/Content/Assets/World/Baltic/Props/Decals/Materials/MI_Baltic_DirtDecal_02": {
     "AlphaTest": true
   },
@@ -3246,6 +3234,9 @@
     "AlphaTest": true
   },
   "TslGame/Content/Assets/World/Baltic/Props/Decals/Materials/MI_Baltic_Ground_Rubble_02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Baltic/Props/Decals/Materials/MI_Baltic_MossDecal_01": {
     "AlphaTest": true
   },
   "TslGame/Content/Assets/World/Baltic/Props/Decals/Materials/MI_Baltic_MossDecal_2": {
@@ -3276,6 +3267,9 @@
     "AlphaTest": true
   },
   "TslGame/Content/Assets/World/Baltic/Props/Decals/Materials/MI_Decal_Baltic_Ground_Rubble_04_Y012": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Artifacts/Desert/Desert_Bunker/obj_4/ASchool_Sign_Mat": {
     "AlphaTest": true
   },
   "TslGame/Content/Assets/World/Buildings/Artifacts/Desert/Desert_Resort/MI/MI_Desert_Resort_Blinds1": {
@@ -3383,28 +3377,16 @@
   "TslGame/Content/Assets/World/Buildings/Artifacts/Desert/MilitaryBase/materials/M_MilitaryBase_Decal": {
     "AlphaTest": true
   },
-  "TslGame/Content/Assets/World/Buildings/Materials/AHospital_ADecal_b": {
-    "AlphaTest": true
-  },
   "TslGame/Content/Assets/World/Buildings/Materials/AlpineHouse_HayMask_Mat": {
     "AlphaTest": true
   },
   "TslGame/Content/Assets/World/Buildings/Materials/ASchool_Books_c_Mat": {
     "AlphaTest": true
   },
-  "TslGame/Content/Assets/World/Buildings/Materials/ASchool_Carpet_Mat": {
-    "AlphaTest": true
-  },
   "TslGame/Content/Assets/World/Buildings/Materials/Desert_Decal_c_Mat": {
     "AlphaTest": true
   },
-  "TslGame/Content/Assets/World/Buildings/Materials/Masks/cartel_mansion_decals/Desert_R_Decal_a_Mat": {
-    "AlphaTest": true
-  },
-  "TslGame/Content/Assets/World/Buildings/Materials/Masks/cartel_mansion_decals/Desert_R_Decal_b_Mat": {
-    "AlphaTest": true
-  },
-  "TslGame/Content/Assets/World/Buildings/Materials/Masks/cartel_mansion_decals/MI_CornerDecal_7": {
+  "TslGame/Content/Assets/World/Buildings/Materials/DihorOtok/MI_DO_Trim_01": {
     "AlphaTest": true
   },
   "TslGame/Content/Assets/World/Buildings/Materials/Masks/cartel_mansion_decals/MI_Wall_Damage_01": {
@@ -3414,6 +3396,12 @@
     "AlphaTest": true
   },
   "TslGame/Content/Assets/World/Buildings/Materials/Masks/cartel_mansion_decals/MI_Wall_Damage_12": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/Masks/Desert_R_Decal_a_Mat": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/Masks/Desert_R_Decal_b_Mat": {
     "AlphaTest": true
   },
   "TslGame/Content/Assets/World/Buildings/Materials/Masks/Desert_R_Decal_c_Mat": {
@@ -3453,6 +3441,9 @@
     "AlphaTest": true
   },
   "TslGame/Content/Assets/World/Buildings/Materials/Masks/MI_CornerDecal_6": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Buildings/Materials/Masks/MI_CornerDecal_7": {
     "AlphaTest": true
   },
   "TslGame/Content/Assets/World/Buildings/Materials/Masks/MI_CornerDecal_8": {
@@ -3536,6 +3527,9 @@
   "TslGame/Content/Assets/World/Buildings/Materials/M_Metal_Rust_Dark": {
     "AlphaTest": true
   },
+  "TslGame/Content/Assets/World/Buildings/Materials/M_Wood_05": {
+    "AlphaTest": true
+  },
   "TslGame/Content/Assets/World/Buildings/Materials/Savage/Outdoor/MI_Savage_BootConcreteEdgeDecal": {
     "AlphaTest": true
   },
@@ -3587,6 +3581,9 @@
   "TslGame/Content/Assets/World/Common/Materials/Decal/MI_Desert_GasStationVamos_02": {
     "AlphaTest": true
   },
+  "TslGame/Content/Assets/World/Common/Materials/Decal/MI_TileConcreteDecal": {
+    "AlphaTest": true
+  },
   "TslGame/Content/Assets/World/Common/Materials/Desert/MI_Desert_RaceFlags_03": {
     "AlphaTest": true
   },
@@ -3599,13 +3596,7 @@
   "TslGame/Content/Assets/World/Common/Materials/DihorOtok/MI_DO_Hay_Stack_ver2_alpha": {
     "AlphaTest": true
   },
-  "TslGame/Content/Assets/World/Common/Materials/DihorOtok/MI_DO_Trim_01": {
-    "AlphaTest": true
-  },
   "TslGame/Content/Assets/World/Common/Materials/MI_bamboo_LG": {
-    "AlphaTest": true
-  },
-  "TslGame/Content/Assets/World/Common/Materials/MI_barbedWire01": {
     "AlphaTest": true
   },
   "TslGame/Content/Assets/World/Common/Materials/MI_bed_Grid": {
@@ -3617,25 +3608,31 @@
   "TslGame/Content/Assets/World/Common/Materials/MI_chimney04": {
     "AlphaTest": true
   },
+  "TslGame/Content/Assets/World/Common/Materials/MI_Fan01": {
+    "AlphaTest": true
+  },
   "TslGame/Content/Assets/World/Common/Materials/MI_Fence01": {
     "AlphaTest": true
   },
   "TslGame/Content/Assets/World/Common/Materials/MI_Fence01_wire": {
     "AlphaTest": true
   },
-  "TslGame/Content/Assets/World/Common/Materials/MI_haybale01": {
+  "TslGame/Content/Assets/World/Common/Materials/MI_FoldingChair01": {
     "AlphaTest": true
   },
   "TslGame/Content/Assets/World/Common/Materials/MI_heybale02": {
-    "AlphaTest": true
-  },
-  "TslGame/Content/Assets/World/Common/Materials/MI_MetalLocker_01": {
     "AlphaTest": true
   },
   "TslGame/Content/Assets/World/Common/Materials/MI_plant01": {
     "AlphaTest": true
   },
   "TslGame/Content/Assets/World/Common/Materials/MI_Savage_RoadLine_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Common/Materials/MI_tarp02": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Common/Materials/MI_tarp03": {
     "AlphaTest": true
   },
   "TslGame/Content/Assets/World/Common/Materials/MI_vintage_set1": {
@@ -3767,13 +3764,13 @@
   "TslGame/Content/Assets/World/Kiki/Props/Common/Vents/MI_Kiki_LeakDecal_01": {
     "AlphaTest": true
   },
-  "TslGame/Content/Assets/World/Miramar/Buildings/Materials/Lynx_Bunker/MI_Lynx_ExteriorDecals_Tinted": {
-    "AlphaTest": true
-  },
   "TslGame/Content/Assets/World/Miramar/Buildings/Materials/Lynx_City_Guard_Post_01/MI_Lynx_ExteriorDecals_Guard_Post_01": {
     "AlphaTest": true
   },
   "TslGame/Content/Assets/World/Miramar/Buildings/Materials/Lynx_City_Parking_Lot_01/MI_Lynx_ExteriorDecals_Parking_Lot_01": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/Miramar/Buildings/Materials/Lynx_Decals/MI_Lynx_ExteriorDecals_Tinted": {
     "AlphaTest": true
   },
   "TslGame/Content/Assets/World/Miramar/Buildings/Materials/MIR_Sample/Decal/MI_MIR_EXT_RedBrick_EdgeDecal_01": {
@@ -3807,6 +3804,9 @@
     "AlphaTest": true
   },
   "TslGame/Content/Assets/World/MI_WIndowGlass5": {
+    "AlphaTest": true
+  },
+  "TslGame/Content/Assets/World/M_Glass": {
     "AlphaTest": true
   },
   "TslGame/Content/Assets/World/Neon/Buildings/Materials/Unique/Stadium/MI_NE_Stadium_Edge_Decals_01": {
@@ -3857,6 +3857,9 @@
   "TslGame/Content/Assets/World/Summerland/Buildings/Materials/Summerland_Ship/MI_Summerland_Ship_Decal": {
     "AlphaTest": true
   },
+  "TslGame/Content/Assets/World/Summerland/Demos/Concrete/MI_Summerland_CocretDamage": {
+    "AlphaTest": true
+  },
   "TslGame/Content/Assets/World/Summerland/Props/Common/Materials/MI_SummerLand_Carpets_01": {
     "AlphaTest": true
   },
@@ -3870,9 +3873,6 @@
     "AlphaTest": true
   },
   "TslGame/Content/Assets/World/Summerland/Props/Common/Materials/MI_Summerland_Refrigerator_01": {
-    "AlphaTest": true
-  },
-  "TslGame/Content/Assets/World/Summerland/Props/Common/Meshes/Fences/MI_Summerland_CocretDamage": {
     "AlphaTest": true
   },
   "TslGame/Content/Assets/World/Tiger/Buildings/Materials/Army_base/MI_Tiger_Army_barracks_EdgeDecal_01": {
@@ -3909,9 +3909,6 @@
     "AlphaTest": true
   },
   "TslGame/Content/Assets/World/Tiger/Buildings/Materials/Hospital/MI_Tiger_Hospitall_DecalLeaks_02": {
-    "AlphaTest": true
-  },
-  "TslGame/Content/Assets/World/Tiger/Buildings/Materials/HS/HS_Commercial_02/MI_Tiger_HS_Com_02_EdgeDecal_01": {
     "AlphaTest": true
   },
   "TslGame/Content/Assets/World/Tiger/Buildings/Materials/HS/HS_Commercial_02/MI_Tiger_HS_Roof_trim_01": {
@@ -4134,9 +4131,6 @@
     "AlphaTest": true
   },
   "TslGame/Content/Assets/World/Vegetation/Lion/Materials/M_Lion_Fern_03": {
-    "AlphaTest": true
-  },
-  "TslGame/Content/Assets/World/Vikendi/Buildings/Materials/HS/HS_Warehouse_01/MI_Baltic_MossDecal_01": {
     "AlphaTest": true
   },
   "TslGame/Content/Assets/World/Vikendi/Buildings/Materials/Unique/CoalMIne/MI_VK_CoalMine_Warehouse_01_Decals": {
