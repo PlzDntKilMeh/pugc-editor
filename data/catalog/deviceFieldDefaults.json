@@ -1,0 +1,24 @@
+{
+  "25": {
+    "spawnVehicleName": "/Game/Vehicles/Uaz/BluePrint/Uaz_B_01_esports.Uaz_B_01_esports",
+    "bConsumeFuel": true,
+    "initialFuelTankPercent": 50,
+    "vehicleHealth": 3000,
+    "bRemoveVehicleOnDestruction": true,
+    "bAutoRespawnVehicle": false,
+    "vehiclePerformanceData.maxRPMMultiplier": 1,
+    "vehiclePerformanceData.torqueMultiplier": 1,
+    "vehiclePerformanceData.dragMultiplier": 1,
+    "vehiclePerformanceData.massMultiplier": 1,
+    "vehiclePerformanceData.canBeTirePunctured": true,
+    "vehiclePerformanceData.canBeDamaged": true,
+    "boxExtent": {
+      "x": 50,
+      "y": 50,
+      "z": 50
+    },
+    "cubeExtent": 50,
+    "sphereRadius": 50,
+    "volumeShape": "Sphere"
+  }
+}

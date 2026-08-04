@@ -149,7 +149,7 @@ import {
 
 // --- Catalog ------------------------------------------------------------------
 
-const catalog = { devices: {}, objects: {}, placementBudget: { rules: [] }, enums: {}, items: [], stringTables: {}, tags: [], tagCategories: [], translations: {}, saveFormat: {} };
+const catalog = { devices: {}, objects: {}, placementBudget: { rules: [] }, enums: {}, items: [], stringTables: {}, tags: [], tagCategories: [], translations: {}, saveFormat: {}, deviceFieldDefaults: {} };
 
 // Display language for localized labels (tags etc.). Defaults to English; persisted across sessions.
 // translations.json is culture -> namespace -> key -> text; tr() falls back en -> the baked English label.
@@ -238,7 +238,7 @@ let placementRows = [];
 let placementCategory = '';
 
 async function loadCatalog() {
-  const [d, o, b, enums, items, rules, stringTables, tags, tagCategories, translations, saveFormat] = await Promise.all([
+  const [d, o, b, enums, items, rules, stringTables, tags, tagCategories, translations, saveFormat, deviceFieldDefaults] = await Promise.all([
     fetch('data/catalog/devices.json').then(r => r.json()),
     fetch('data/catalog/objects.json').then(r => r.json()),
     fetch('data/catalog/placementBudget.json').then(r => r.ok ? r.json() : { rules: [] }).catch(() => ({ rules: [] })),
@@ -251,6 +251,7 @@ async function loadCatalog() {
     fetch('data/catalog/translations.json').then(r => r.ok ? r.json() : {}).catch(() => ({})),
     // Optional: may not exist yet on older published sites until the next pak-server dump.
     fetch('data/catalog/saveFormat.json').then(r => r.ok ? r.json() : {}).catch(() => ({})),
+    fetch('data/catalog/deviceFieldDefaults.json').then(r => r.ok ? r.json() : {}).catch(() => ({})),
   ]);
   Object.assign(catalog.devices, d);
   Object.assign(catalog.objects, o);
@@ -263,6 +264,7 @@ async function loadCatalog() {
   catalog.tagCategories = Array.isArray(tagCategories) ? tagCategories : [];
   catalog.translations = translations && typeof translations === 'object' ? translations : {};
   catalog.saveFormat = saveFormat && typeof saveFormat === 'object' ? saveFormat : {};
+  catalog.deviceFieldDefaults = deviceFieldDefaults && typeof deviceFieldDefaults === 'object' ? deviceFieldDefaults : {};
   if (!availableLanguages().includes(currentLang)) currentLang = 'en';
 }
 
