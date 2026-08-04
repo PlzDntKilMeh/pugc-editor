@@ -1,1 +1,16 @@
-import*as i from"three";function n(r){return r.name="Baked MOD level",r.traverse(e=>{if(!e.isMesh)return;e.frustumCulled=!0;const t=Array.isArray(e.material)?e.material:[e.material];for(const a of t)a&&(a.side=i.DoubleSide,a.needsUpdate=!0)}),r}export{n as prepareBakedLevelScene};
+import * as THREE from 'three';
+
+export function prepareBakedLevelScene(root) {
+  root.name = 'Baked MOD level';
+  root.traverse(obj => {
+    if (!obj.isMesh) return;
+    obj.frustumCulled = true;
+    const mats = Array.isArray(obj.material) ? obj.material : [obj.material];
+    for (const m of mats) {
+      if (!m) continue;
+      m.side = THREE.DoubleSide;
+      m.needsUpdate = true;
+    }
+  });
+  return root;
+}

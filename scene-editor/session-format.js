@@ -1,1 +1,35 @@
-const r="pugc-editor-session",n=1,o=".pugcedit";function i(t,e={}){return{format:r,version:1,savedAt:new Date().toISOString(),metadata:e,snapshot:t}}function s(t){const e=JSON.parse(t);if(e?.format!==r)throw new Error("Not a PUGC editor project file");if(e.version!==1)throw new Error(`Unsupported editor project version ${e.version}`);if(!e.snapshot?.pugcJson)throw new Error("Editor project is missing scene data");return e}function S(t="Untitled"){return`${String(t||"Untitled").replace(/\.(pugc|json|pugcedit)$/i,"").replace(/[\\/:*?"<>|]+/g,"_").trim()||"Untitled"}${o}`}export{o as EDITOR_SESSION_EXTENSION,r as EDITOR_SESSION_FORMAT,n as EDITOR_SESSION_VERSION,i as createEditorSession,S as editorSessionName,s as parseEditorSession};
+export const EDITOR_SESSION_FORMAT = 'pugc-editor-session';
+export const EDITOR_SESSION_VERSION = 1;
+export const EDITOR_SESSION_EXTENSION = '.pugcedit';
+
+export function createEditorSession(snapshot, metadata = {}) {
+  return {
+    format: EDITOR_SESSION_FORMAT,
+    version: EDITOR_SESSION_VERSION,
+    savedAt: new Date().toISOString(),
+    metadata,
+    snapshot,
+  };
+}
+
+export function parseEditorSession(text) {
+  const parsed = JSON.parse(text);
+  if (parsed?.format !== EDITOR_SESSION_FORMAT) {
+    throw new Error('Not a PUGC editor project file');
+  }
+  if (parsed.version !== EDITOR_SESSION_VERSION) {
+    throw new Error(`Unsupported editor project version ${parsed.version}`);
+  }
+  if (!parsed.snapshot?.pugcJson) {
+    throw new Error('Editor project is missing scene data');
+  }
+  return parsed;
+}
+
+export function editorSessionName(sourceName = 'Untitled') {
+  const base = String(sourceName || 'Untitled')
+    .replace(/\.(pugc|json|pugcedit)$/i, '')
+    .replace(/[\\/:*?"<>|]+/g, '_')
+    .trim() || 'Untitled';
+  return `${base}${EDITOR_SESSION_EXTENSION}`;
+}

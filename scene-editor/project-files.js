@@ -1,1 +1,285 @@
-import{createEditorSession as F,parseEditorSession as N}from"./session-format.js";import{getPugcObjectsFromJson as L}from"./pugc-objects.js";import{getPugcCodec as _}from"./codec/pugc-codec.js";import{trackEvent as s}from"./analytics.js";const y="Untitled.pugc";function B(r=new Date){const t=o=>String(o).padStart(2,"0");return[r.getFullYear(),t(r.getMonth()+1),t(r.getDate()),"_",t(r.getHours()),t(r.getMinutes()),t(r.getSeconds())].join("")}function E(r,t){const o=String(r||"").replace(/\.(pugc|json|pugcedit)$/i,"").trim();return o&&o.toLowerCase()!=="untitled"?r:String(t?.creatorData?.name||"").trim()||r||y}function P(r,t){return`${String(r||"Untitled").replace(/\.(pugc|json|pugcedit)$/i,"").replace(/[\\/:*?"<>|]+/g,"_").trim()||"Untitled"}_${B()}${t}`}function D(r,t){const o=URL.createObjectURL(r);Object.assign(document.createElement("a"),{href:o,download:t}).click(),URL.revokeObjectURL(o)}async function H(r,t,o={}){if(typeof window.showSaveFilePicker=="function"){const n=await window.showSaveFilePicker({suggestedName:t,...o}),d=await n.createWritable();try{await d.write(r)}finally{await d.close()}return n.name||t}return D(r,t),t}async function U(r,t,o,n,d){try{const c=await H(r,t,o);return n(`Saved ${c}`),c}catch(c){return c?.name!=="AbortError"&&(n(`Save error: ${c.message}`,!0),s("app_error",{error_type:d,message:c.message})),null}}function G({getPugcJson:r,setPugcJson:t,getPugcName:o,setPugcName:n,getPugcFileInfo:d,setPugcFileInfo:c,resetHistory:j,getPugcObjects:b,buildScene:h,makeSnapshot:$,restoreSnapshot:C,setStatus:i,makeNewProjectData:k,els:m}){function v(){m.savePugc&&(m.savePugc.disabled=!1),m.saveProject&&(m.saveProject.disabled=!1)}function w(e){m.projectName&&(m.projectName.textContent=e)}return{startDefaultProject(){t({objects:[],...k?.()||{}}),n(y),c?.({source:"Blank project",hasHeader:!1,format:"New PUGC export",headerLength:0,headerHex:"",magic:"",version:null,marker:"",saveHeader:!0}),j(),w("Untitled blank project"),v(),h(b()||[]),i("Blank project ready")},async loadEditorProjectFile(e){i(`Opening ${e.name}...`);try{const a=N(await e.text());n(a.metadata?.pugcName||y),c?.(a.metadata?.pugcFileInfo||{source:"Editor project",hasHeader:null,format:"Editor project",saveHeader:!0}),j(),C(a.snapshot),w(`${e.name} (editor project)`),v(),i(`Opened ${e.name}`),s("project_open",{method:"pugcedit"})}catch(a){i(`Project open error: ${a.message}`,!0),console.error(a),s("app_error",{error_type:"load_pugcedit",message:a.message})}},async loadPugcFile(e){i(`Decoding ${e.name}...`);try{const a=new Uint8Array(await e.arrayBuffer()),p=await _(),{json:u,name:l,fileInfo:f}=await p.decode(a,e.name),g=L(u);if(!Array.isArray(g))throw new Error("No objects[] array found in decoded PUGC");t(u),n(l),c?.({source:e.name,...f||{},saveHeader:!0}),j(),w(e.name),v(),h(g),s("project_open",{method:"pugc"})}catch(a){i(`Error: ${a.message}`,!0),console.error(a),s("app_error",{error_type:"load_pugc",message:a.message})}},openSceneFile(e){e&&(/\.pugcedit$/i.test(e.name)?this.loadEditorProjectFile(e):/\.pugc$/i.test(e.name)?this.loadPugcFile(e):i("Open a .pugc or .pugcedit file",!0))},async saveEditorProject(){const e=$();if(!e)return;const a=E(o(),r()),p=F(e,{pugcName:a,pugcFileInfo:d?.()||null}),u=P(a,".pugcedit"),l=new Blob([JSON.stringify(p,null,2)],{type:"application/json"});await U(l,u,{types:[{description:"PUGC Editor Project",accept:{"application/json":[".pugcedit"]}}]},i,"save_pugcedit")&&s("project_save",{format:"pugcedit"})},async savePugc(){const e=r(),a=E(o(),e);if(!(!e||!a)){i("Repacking...");try{const u=await(await _()).encode(e,a),l=P(a,".pugc"),f=new Blob([u],{type:"application/octet-stream"}),g=await U(f,l,{types:[{description:"PUGC File",accept:{"application/octet-stream":[".pugc"]}}]},i,"save_pugc");g&&(c?.({source:g,hasHeader:!0,format:"PUGC v2 wrapper",headerLength:13,headerHex:"2E 70 75 67 63 01 00 00 00 99 76 E5 CD",magic:".pugc",version:1,marker:"99 76 E5 CD",saveHeader:!0}),s("project_export",{format:"pugc",object_count:(b()||[]).length}))}catch(p){i(`Save error: ${p.message}`,!0),s("app_error",{error_type:"save_pugc_encode",message:p.message})}}}}}export{G as createProjectFileController};
+import {
+  createEditorSession,
+  parseEditorSession,
+} from './session-format.js';
+import { getPugcObjectsFromJson } from './pugc-objects.js';
+import { getPugcCodec } from './codec/pugc-codec.js';
+import { trackEvent } from './analytics.js';
+
+const DEFAULT_PUGC_NAME = 'Untitled.pugc';
+// The .pugc wrapper format version - effectively invariant (see PUGC_V2_HEADER in the codec), so unlike
+// buildVersion it's safe to default without a catalog: there's nothing to go stale.
+const SAVE_FORMAT_DATA_VERSION = 1;
+
+// The game's save format carries top-level name/dataVersion/buildVersion/editFileData fields that the editor
+// never had a reason to populate for a scene built from scratch. Without them the game silently rejects the file.
+// buildVersion has no invariant fallback - it changes every PUBG patch, so guessing a stale value here would
+// just reproduce the original bug more quietly. If data/catalog/saveFormat.json (from pak-server's
+// CatalogExtractor.BuildSaveFormatDefaults()) hasn't loaded, `warn` is called instead of faking a value.
+function ensurePugcSaveMetadata(pugcJson, saveFormatDefaults, warn) {
+  const now = Math.floor(Date.now() / 1000);
+  const accountId = String(pugcJson.creatorData?.ownerAccountId || '').trim();
+  const defaults = saveFormatDefaults && typeof saveFormatDefaults === 'object' ? saveFormatDefaults : {};
+
+  if (typeof pugcJson.name !== 'string') pugcJson.name = '';
+  if (typeof pugcJson.dataVersion !== 'number') pugcJson.dataVersion = SAVE_FORMAT_DATA_VERSION;
+  if (!pugcJson.buildVersion) {
+    if (defaults.buildVersion) {
+      pugcJson.buildVersion = defaults.buildVersion;
+    } else {
+      warn?.('buildVersion missing from saveFormat catalog - run a fresh pak-server dump; this .pugc may not load in-game.');
+    }
+  }
+
+  const efd = pugcJson.editFileData || (pugcJson.editFileData = {
+    createAccountId: accountId,
+    createTime: now,
+    lastModifierAccountId: accountId,
+    lastModifiedTime: now,
+    editPlayers: [],
+    lastHostPlayerData: null,
+  });
+  efd.lastModifierAccountId = accountId || efd.lastModifierAccountId || '';
+  efd.lastModifiedTime = now;
+  if (accountId) {
+    efd.editPlayers ||= [];
+    let entry = efd.editPlayers.find(p => p.accountId === accountId);
+    if (!entry) {
+      entry = { accountId, editData: { editCount: 0, editTime: 0 } };
+      efd.editPlayers.push(entry);
+    }
+    entry.editData.editCount = (entry.editData.editCount || 0) + 1;
+    efd.lastHostPlayerData = { accountId, editData: { ...entry.editData } };
+  }
+  return pugcJson;
+}
+
+function formatSaveTimestamp(date = new Date()) {
+  const pad = value => String(value).padStart(2, '0');
+  return [
+    date.getFullYear(),
+    pad(date.getMonth() + 1),
+    pad(date.getDate()),
+    '_',
+    pad(date.getHours()),
+    pad(date.getMinutes()),
+    pad(date.getSeconds()),
+  ].join('');
+}
+
+function bestSaveName(pugcName, pugcJson) {
+  const base = String(pugcName || '').replace(/\.(pugc|json|pugcedit)$/i, '').trim();
+  if (base && base.toLowerCase() !== 'untitled') return pugcName;
+  const creatorName = String(pugcJson?.creatorData?.name || '').trim();
+  return creatorName || pugcName || DEFAULT_PUGC_NAME;
+}
+
+function timestampedSaveName(sourceName, extension) {
+  const base = String(sourceName || 'Untitled')
+    .replace(/\.(pugc|json|pugcedit)$/i, '')
+    .replace(/[\\/:*?"<>|]+/g, '_')
+    .trim() || 'Untitled';
+  return `${base}_${formatSaveTimestamp()}${extension}`;
+}
+
+function downloadBlob(blob, downloadName) {
+  const url = URL.createObjectURL(blob);
+  const a = Object.assign(document.createElement('a'), { href: url, download: downloadName });
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+async function saveBlob(blob, suggestedName, pickerOptions = {}) {
+  if (typeof window.showSaveFilePicker === 'function') {
+    const handle = await window.showSaveFilePicker({
+      suggestedName,
+      ...pickerOptions,
+    });
+    const writable = await handle.createWritable();
+    try {
+      await writable.write(blob);
+    } finally {
+      await writable.close();
+    }
+    return handle.name || suggestedName;
+  }
+  downloadBlob(blob, suggestedName);
+  return suggestedName;
+}
+
+// Saves a blob and reports the result via setStatus, swallowing user-cancelled
+// (AbortError) save-picker dismissals. Returns the saved name, or null if the
+// save did not complete.
+async function saveBlobWithStatus(blob, suggestedName, pickerOptions, setStatus, errorType) {
+  try {
+    const savedName = await saveBlob(blob, suggestedName, pickerOptions);
+    setStatus(`Saved ${savedName}`);
+    return savedName;
+  } catch (err) {
+    if (err?.name !== 'AbortError') {
+      setStatus(`Save error: ${err.message}`, true);
+      trackEvent('app_error', { error_type: errorType, message: err.message });
+    }
+    return null;
+  }
+}
+
+export function createProjectFileController({
+  getPugcJson,
+  setPugcJson,
+  getPugcName,
+  setPugcName,
+  getPugcFileInfo,
+  setPugcFileInfo,
+  resetHistory,
+  getPugcObjects,
+  buildScene,
+  makeSnapshot,
+  restoreSnapshot,
+  setStatus,
+  makeNewProjectData,
+  getSaveFormatDefaults,
+  els,
+}) {
+  function enableSaves() {
+    if (els.savePugc) els.savePugc.disabled = false;
+    if (els.saveProject) els.saveProject.disabled = false;
+  }
+
+  function setProjectLabel(text) {
+    if (els.projectName) els.projectName.textContent = text;
+  }
+
+  return {
+    startDefaultProject() {
+      setPugcJson({ objects: [], ...(makeNewProjectData?.() || {}) });
+      setPugcName(DEFAULT_PUGC_NAME);
+      setPugcFileInfo?.({
+        source: 'Blank project',
+        hasHeader: false,
+        format: 'New PUGC export',
+        headerLength: 0,
+        headerHex: '',
+        magic: '',
+        version: null,
+        marker: '',
+        saveHeader: true,
+      });
+      resetHistory();
+      setProjectLabel('Untitled blank project');
+      enableSaves();
+      buildScene(getPugcObjects() || []);
+      setStatus('Blank project ready');
+    },
+
+    async loadEditorProjectFile(file) {
+      setStatus(`Opening ${file.name}...`);
+      try {
+        const session = parseEditorSession(await file.text());
+        setPugcName(session.metadata?.pugcName || DEFAULT_PUGC_NAME);
+        setPugcFileInfo?.(session.metadata?.pugcFileInfo || {
+          source: 'Editor project',
+          hasHeader: null,
+          format: 'Editor project',
+          saveHeader: true,
+        });
+        resetHistory();
+        restoreSnapshot(session.snapshot);
+        setProjectLabel(`${file.name} (editor project)`);
+        enableSaves();
+        setStatus(`Opened ${file.name}`);
+        trackEvent('project_open', { method: 'pugcedit' });
+      } catch (err) {
+        setStatus(`Project open error: ${err.message}`, true);
+        console.error(err);
+        trackEvent('app_error', { error_type: 'load_pugcedit', message: err.message });
+      }
+    },
+
+    async loadPugcFile(file) {
+      setStatus(`Decoding ${file.name}...`);
+      try {
+        const bytes = new Uint8Array(await file.arrayBuffer());
+        const codec = await getPugcCodec();
+        const { json, name, fileInfo } = await codec.decode(bytes, file.name);
+        const objects = getPugcObjectsFromJson(json);
+        if (!Array.isArray(objects)) throw new Error('No objects[] array found in decoded PUGC');
+
+        setPugcJson(json);
+        setPugcName(name);
+        setPugcFileInfo?.({ source: file.name, ...(fileInfo || {}), saveHeader: true });
+        resetHistory();
+        setProjectLabel(file.name);
+        enableSaves();
+        buildScene(objects);
+        trackEvent('project_open', { method: 'pugc' });
+      } catch (err) {
+        setStatus(`Error: ${err.message}`, true);
+        console.error(err);
+        trackEvent('app_error', { error_type: 'load_pugc', message: err.message });
+      }
+    },
+
+    openSceneFile(file) {
+      if (!file) return;
+      if (/\.pugcedit$/i.test(file.name)) {
+        this.loadEditorProjectFile(file);
+      } else if (/\.pugc$/i.test(file.name)) {
+        this.loadPugcFile(file);
+      } else {
+        setStatus('Open a .pugc or .pugcedit file', true);
+      }
+    },
+
+    async saveEditorProject() {
+      const snapshot = makeSnapshot();
+      if (!snapshot) return;
+      const pugcName = bestSaveName(getPugcName(), getPugcJson());
+      const session = createEditorSession(snapshot, { pugcName, pugcFileInfo: getPugcFileInfo?.() || null });
+      const downloadName = timestampedSaveName(pugcName, '.pugcedit');
+      const blob = new Blob([JSON.stringify(session, null, 2)], { type: 'application/json' });
+      const savedName = await saveBlobWithStatus(blob, downloadName, {
+        types: [{ description: 'PUGC Editor Project', accept: { 'application/json': ['.pugcedit'] } }],
+      }, setStatus, 'save_pugcedit');
+      if (savedName) trackEvent('project_save', { format: 'pugcedit'});
+    },
+
+    async savePugc() {
+      const pugcJson = getPugcJson();
+      const pugcName = bestSaveName(getPugcName(), pugcJson);
+      if (!pugcJson || !pugcName) return;
+      ensurePugcSaveMetadata(pugcJson, getSaveFormatDefaults?.(), message => {
+        console.warn(`[savePugc] ${message}`);
+        trackEvent('app_error', { error_type: 'save_pugc_missing_build_version', message });
+      });
+      setStatus('Repacking...');
+      try {
+        const codec = await getPugcCodec();
+        const bytes = await codec.encode(pugcJson, pugcName);
+
+        const downloadName = timestampedSaveName(pugcName, '.pugc');
+        const blob = new Blob([bytes], { type: 'application/octet-stream' });
+        const savedName = await saveBlobWithStatus(blob, downloadName, {
+          types: [{ description: 'PUGC File', accept: { 'application/octet-stream': ['.pugc'] } }],
+        }, setStatus, 'save_pugc');
+        if (savedName) {
+          setPugcFileInfo?.({
+            source: savedName,
+            hasHeader: true,
+            format: 'PUGC v2 wrapper',
+            headerLength: 13,
+            headerHex: '2E 70 75 67 63 01 00 00 00 99 76 E5 CD',
+            magic: '.pugc',
+            version: 1,
+            marker: '99 76 E5 CD',
+            saveHeader: true,
+          });
+          trackEvent('project_export', { format: 'pugc', object_count: (getPugcObjects() || []).length });
+        }
+      } catch (err) {
+        setStatus(`Save error: ${err.message}`, true);
+        trackEvent('app_error', { error_type: 'save_pugc_encode', message: err.message });
+      }
+    },
+  };
+}

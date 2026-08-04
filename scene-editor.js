@@ -1,7 +1,4299 @@
-import*as u from"three";import{OrbitControls as gr}from"three/addons/controls/OrbitControls.js";import{TransformControls as hr}from"three/addons/controls/TransformControls.js";import{GLTFLoader as br}from"three/addons/loaders/GLTFLoader.js";import{RGBELoader as yr}from"three/addons/loaders/RGBELoader.js";import{clampObjectScaleValue as ze,clampThreeScale as lt,clampUeScale3D as Ve,multiplyScale3D as Sr,setPrecisionTest as Ir,threePosToUe4 as N,threeQuatToUe4 as Be,threeScaleToUe4 as dt,ue4PosToThree as se,ue4QuatToThree as wn,ue4ScaleToThree as Ot}from"./scene-editor/coords.js";import{createPatternToolFromSnapshot as Cn,getPatternTemplates as Xe,patternTemplatesKey as vr,patternToolEulerDegrees as jr,serializePatternTool as Bn}from"./scene-editor/pattern-tools.js";import{circleInputPrecision as Ln,circleSliderToNumber as Er,formatCircleNumber as je,setInputValue as I,syncCircleRange as Pn,syncLinearRange as H}from"./scene-editor/pattern-inputs.js";import{createHistoryController as xr}from"./scene-editor/history.js";import{SELECTION_COLOR as Rn,SELECTION_OPACITY as Tr,applyItemSelection as ut,clearItemSelection as wt,selectionColorForIndex as Or,setItemNormalMaterials as wr,setItemSelectedMaterials as Cr}from"./scene-editor/selection.js";import{bindNumericInput as Br,bindSliderInputPair as Qt,numericInputValue as g}from"./scene-editor/form-utils.js";import{trackEvent as Ct}from"./scene-editor/analytics.js";import{catalogKind as Lr,catalogLabel as Wt,placementCategoryKey as Pr,placementIconUrl as Rr,setNameTranslator as Dr}from"./scene-editor/catalog-utils.js";import{buildPlacementRows as Mr,placementCategories as $r,selectedCatalogValue as kr}from"./scene-editor/placement-catalog.js";import{getObjectMeta as Nr}from"./scene-editor/object-meta.js";import{computePlacementBudgetRows as Ar}from"./scene-editor/placement-budget.js";import{clearBpGeoCache as Fr,clearTextureCache as Dn,getAssetMeshGeo as Mn,getBpGeo as $n,loadTexture as kn,prepareEditorPivotGeo as Gr}from"./scene-editor/mesh-assets.js";import{disposeSceneObject as ft,frameObject as Yr}from"./scene-editor/three-utils.js";import{prepareBakedLevelScene as zr}from"./scene-editor/terrain-utils.js";import{escHtml as Bt,setNumericInputValue as en}from"./scene-editor/text-utils.js";import{applyMultiSelectionTransform as Nn,createMultiTransformStart as An,objectEulerDegrees as pt}from"./scene-editor/transform-utils.js";import{createPropsPanelController as Vr}from"./scene-editor/props-panel.js";import{applyOutOfRangeMode as Xr}from"./scene-editor/device-fields.js";import{createLogicGraph as Fn}from"./scene-editor/logic-graph.js";import{createGameSettingsController as qr}from"./scene-editor/game-settings.js";import{getDevicePropPath as tn,getDeviceFieldConnectionsForItems as Zr,getObjectIconUrl as Ur,createDeviceLinkController as _r}from"./scene-editor/device-links.js";import{applySelectionClasses as Kr,renderObjectList as Hr,scrollListToActiveItem as Jr}from"./scene-editor/object-list.js";import{renderPlacementPicker as Qr}from"./scene-editor/placement-picker.js";import{clipboardAnchorToThree as Gn,clipboardEntryOffsetToThree as Yn,clonePlain as C,makeObjectsClipboardPayload as zn,makePatternClipboardPayload as Vn,makePastedObject as Wr,objectClipboardEntries as Xn}from"./scene-editor/clipboard-utils.js";import{newSceneObject as ec}from"./scene-editor/scene-object-factory.js";import{fitCameraToItems as tc,focusCircleTool as nc,focusGridTool as oc,focusSelectedItems as rc}from"./scene-editor/camera-focus.js";import{applyFlyMovement as cc,formatFlySpeed as ic,updateFpsHud as ac}from"./scene-editor/viewport-motion.js";import{createProjectFileController as sc}from"./scene-editor/project-files.js";import{parseEditorSession as lc}from"./scene-editor/session-format.js";import{getPugcCodec as dc}from"./scene-editor/codec/pugc-codec.js";import{createEditorItem as uc,disposeEditorItem as qn,resetEditorItemToPlaceholder as fc}from"./scene-editor/scene-items.js";import{applyOpacityToItems as pc,applyRealMeshToItem as mc,applyTextureToggleToItems as gc,upgradeMeshesForItems as hc}from"./scene-editor/mesh-items.js";import{getPugcObjectsFromJson as Zn,isCatalogDeviceObjectId as bc,nextDeviceIndexForObject as yc,removePugcObject as Sc}from"./scene-editor/pugc-objects.js";const y={devices:{},objects:{},placementBudget:{rules:[]},enums:{},items:[],stringTables:{},tags:[],tagCategories:[],translations:{}};let oe="en";try{oe=localStorage.getItem("pugcLang")||"en"}catch{}function Un(){return[...new Set(["en",...Object.keys(y.translations||{})])].sort((t,n)=>t==="en"?-1:n==="en"?1:t.localeCompare(n))}function Lt(e,t,n){if(!t)return n;const o=y.translations||{};return o[oe]?.[e]?.[t]??o.en?.[e]?.[t]??n}let _n=null,nn=null;function Kn(){if(_n===oe&&nn)return nn;const e={};for(const[t,n]of Object.entries(y.enums||{}))e[t]=Array.isArray(n)?n.map(o=>({...o,englishLabel:o.label||o.value,label:Lt("NS_UGC_ENUM",o.key,o.label||o.value)})):n;return _n=oe,nn=e,e}const Ic={en:"English",es:"Spanish","es-MX":"Spanish (Mexico)",fr:"French",de:"German",it:"Italian",pl:"Polish",pt:"Portuguese","pt-BR":"Portuguese (Brazil)",ru:"Russian",tr:"Turkish",ar:"Arabic",ja:"Japanese",ko:"Korean","zh-CN":"Chinese (Simplified)","zh-TW":"Chinese (Traditional)",th:"Thai",id:"Indonesian",vi:"Vietnamese"};function vc(e){return Ic[e]||e}function jc(){const e=document.getElementById("langSelect");if(!e)return;const t=Un();e.innerHTML=t.map(n=>`<option value="${n}"${n===oe?" selected":""}>${vc(n)}</option>`).join(""),e.hidden=t.length<=1,Ct("language_loaded",{language_code:oe}),e.addEventListener("change",()=>{oe=e.value||"en";try{localStorage.setItem("pugcLang",oe)}catch{}Ct("language_change",{language_code:oe}),Ec()})}function Ec(){for(const e of S)e.meta=ee(e.ueObj.objectId);for(const e of Q)e.meta={...ee(e.ueObj.objectId),isDevice:!0};try{T()}catch{}try{pe()}catch{}try{Hn()}catch{}try{const e=document.getElementById("placeObjectButtonText"),t=Jn();e&&(e.textContent=t?Wt(t):"Choose an object")}catch{}if(d)try{K(d)}catch{}try{Kt()}catch{}document.getElementById("gameSettingsModal")?.hidden||Ht?.renderGameSettings()}let on=[],Le="";async function xc(){const[e,t,n,o,c,i,r,a,l,f]=await Promise.all([fetch("data/catalog/devices.json").then(s=>s.json()),fetch("data/catalog/objects.json").then(s=>s.json()),fetch("data/catalog/placementBudget.json").then(s=>s.ok?s.json():{rules:[]}).catch(()=>({rules:[]})),fetch("data/catalog/enums.json").then(s=>s.json()).catch(()=>({})),fetch("data/catalog/items.json").then(s=>s.json()).catch(()=>[]),fetch("data/catalog/rules.json").then(s=>s.ok?s.json():{}).catch(()=>({})),fetch("data/catalog/stringTables.json").then(s=>s.ok?s.json():{}).catch(()=>({})),fetch("data/catalog/tags.json").then(s=>s.ok?s.json():[]).catch(()=>[]),fetch("data/catalog/tagCategories.json").then(s=>s.ok?s.json():[]).catch(()=>[]),fetch("data/catalog/translations.json").then(s=>s.ok?s.json():{}).catch(()=>({}))]);Object.assign(y.devices,e),Object.assign(y.objects,t),y.placementBudget=n&&Array.isArray(n.rules)?n:{rules:[]},y.enums=o||{},y.items=Array.isArray(c)?c:[],y.rules=i||{},y.stringTables=r||{},y.tags=Array.isArray(a)?a:[],y.tagCategories=Array.isArray(l)?l:[],y.translations=f&&typeof f=="object"?f:{},Un().includes(oe)||(oe="en")}function Hn(){on=Mr(y);const e=$r(on);(!Le||!e.includes(Le))&&(Le=e[0]||""),mt()}function Pt(e,{close:t=!0,apply:n=!0,keepTemplates:o=!1}={}){o||(F=null,G++);const c=document.getElementById("placeObjectInput");c&&(c.value=Mi(e));const i=y.objects[String(e)]||y.devices[String(e)]||null,r=document.getElementById("placeObjectButtonText");r&&(r.textContent=i?Wt(i):"Choose an object"),i&&(Le=Pr({...i,kind:y.devices[String(e)]?"Device":"Object"})),pe(),mt(),n&&be(),t&&document.getElementById("placeObjectMenu")?.setAttribute("hidden","")}function mt(){Qr({categoryList:document.getElementById("placeCategoryList"),grid:document.getElementById("placeObjectGrid"),placementRows:on,placementCategory:Le,selectedId:ke(),query:(document.getElementById("placeObjectSearch")?.value||"").trim().toLowerCase(),onCategoryChange:e=>{Le=e||Le,mt()},onObjectSelect:e=>Pt(e)})}function Jn(){const e=ke();return Number.isFinite(e)&&(y.objects[String(e)]||y.devices[String(e)])||null}function pe(){const e=Jn(),t=document.getElementById("placePreviewImg"),n=document.getElementById("placePreviewName"),o=document.getElementById("placePreviewType");if(!(!t||!n||!o)){if(!e){t.removeAttribute("src"),t.style.display="none",n.textContent="Choose an object",o.textContent="";return}n.textContent=Wt(e),o.textContent=`${Lr(e,y.devices)} ${e.objectId}${e.subCategory?` - ${e.subCategory.replace(/^EModObjectSubCategory::/,"")}`:""}`,e.iconTexture?(t.onload=()=>{t.style.display="block"},t.onerror=()=>{t.style.display="none"},t.src=Rr(e)):(t.removeAttribute("src"),t.style.display="none")}}function ee(e){return Nr(y,e)}function Tc(e){const t=Array.isArray(e)&&e.length?new Set(e.map(Number)):null;return S.filter(n=>n.ueObj&&n.ueObj.deviceIndex!==-1&&(!t||t.has(Number(n.ueObj.objectId)))).map(n=>{const o=ee(n.ueObj.objectId),c=n.ueObj.userDeviceName||o?.name||`Device ${n.ueObj.deviceIndex}`;return{objectId:Number(n.ueObj.objectId),deviceIndex:n.ueObj.deviceIndex,label:`#${n.ueObj.deviceIndex} ${c}`}}).sort((n,o)=>(n.deviceIndex??0)-(o.deviceIndex??0))}function Qn(e){const t=String(e||"").split(".").pop().toLowerCase();return t==="tag"||t.endsWith("tag")||t.includes("playertag")}function rn(e,t,n){if(typeof e=="string"){Qn(t)&&e.trim()&&n.add(e.trim());return}if(Array.isArray(e)){e.forEach((o,c)=>rn(o,`${t}[${c}]`,n));return}if(!(!e||typeof e!="object"))for(const[o,c]of Object.entries(e))rn(c,t?`${t}.${o}`:o,n)}function cn(e){const t=new Set,n=e?.ueObj||e,o=y.devices[String(n?.objectId)];if(!n?.devicePropertyData)return t;let c;try{c=JSON.parse(n.devicePropertyData)}catch{return t}rn(c,"",t);for(const i of o?.fields||[]){if(i.type!=="String"||!Qn(i.path))continue;const r=tn(c,i.path);typeof r=="string"&&r.trim()&&t.add(r.trim())}return t}function Wn(e){const t=new Set;for(const n of e||[])for(const o of cn(n))t.add(o);return[...t].sort((n,o)=>n.localeCompare(o))}function Oc(){return Wn(_()||[])}function wc(){return Wn(Q)}function eo(e){return Zr(e,y)}function to(){return eo(S)}function Cc(){$t?.dispose()}function Y(){$t?.update()}function Rt(e){return Ur(e,y)}function Bc(){const e=document.getElementById("limitPanel");if(!e)return;const t=_()||[],n=Ar(t,y),o=document.getElementById("budgetOverlaySummary"),c=n.filter(r=>Number.isFinite(r.limit)&&r.weighted>r.limit).length;o&&(o.textContent=c?`${c} over limit`:`${t.length.toLocaleString()} object${t.length===1?"":"s"}`,o.classList.toggle("over",c>0));const i=n.map(r=>{const a=Number.isFinite(r.limit)?r.limit:null,l=a!==null&&r.weighted>a,f=a!==null&&r.weighted===a,s=l?" over":f?" full":"",v=Number.isInteger(r.weighted)?r.weighted:r.weighted.toFixed(1),O=r.count!==r.weighted?` (${r.count})`:"",j=a===null?"?":String(a);return`<div class="scene-limit-row${s}">
-      <span>${Bt(r.label)}</span>
-      <strong>${Bt(v)}${Bt(O)} / ${Bt(j)}</strong>
-    </div>`}).join("");e.innerHTML=`<div class="scene-limit-title">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { TransformControls } from 'three/addons/controls/TransformControls.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
+import {
+  MIN_OBJECT_SCALE,
+  clampObjectScaleValue,
+  clampThreeScale,
+  clampUeScale3D,
+  multiplyScale3D,
+  setPrecisionTest,
+  threePosToUe4,
+  threeQuatToUe4,
+  threeScaleToUe4,
+  ue4PosToThree,
+  ue4QuatToThree,
+  ue4ScaleToThree,
+} from './scene-editor/coords.js';
+import {
+  createPatternToolFromSnapshot,
+  getPatternTemplates,
+  patternTemplatesKey,
+  patternToolEulerDegrees,
+  serializePatternTool,
+} from './scene-editor/pattern-tools.js';
+import {
+  circleInputPrecision,
+  circleSliderToNumber,
+  formatCircleNumber,
+  setInputValue,
+  syncCircleRange,
+  syncLinearRange,
+} from './scene-editor/pattern-inputs.js';
+import { createHistoryController } from './scene-editor/history.js';
+import {
+  SELECTION_COLOR as SEL_COLOR,
+  SELECTION_OPACITY as SEL_OPACITY,
+  applyItemSelection,
+  clearItemSelection,
+  itemNormalColor as itemNrmColor,
+  selectionColorForIndex,
+  setItemNormalMaterials,
+  setItemSelectedMaterials,
+} from './scene-editor/selection.js';
+import {
+  bindNumericInput,
+  bindSliderInputPair,
+  numericInputValue,
+  sanitizeNumericText,
+} from './scene-editor/form-utils.js';
+import { trackEvent } from './scene-editor/analytics.js';
+import {
+  catalogKind,
+  catalogLabel,
+  cleanCategoryKey,
+  placementCategoryKey,
+  placementIconUrl,
+  setNameTranslator,
+} from './scene-editor/catalog-utils.js';
+import {
+  buildPlacementRows,
+  placementCategories,
+  selectedCatalogValue as formatSelectedCatalogValue,
+} from './scene-editor/placement-catalog.js';
+import { getObjectMeta as getCatalogObjectMeta } from './scene-editor/object-meta.js';
+import { computePlacementBudgetRows } from './scene-editor/placement-budget.js';
+import {
+  clearBpGeoCache,
+  clearTextureCache,
+  decodeBpMesh,
+  getAssetMeshGeo,
+  getBpGeo,
+  loadTexture,
+  prepareEditorPivotGeo,
+} from './scene-editor/mesh-assets.js';
+import {
+  disposeObjectMaterials,
+  disposeSceneObject,
+  frameObject as frameThreeObject,
+} from './scene-editor/three-utils.js';
+import { prepareBakedLevelScene } from './scene-editor/terrain-utils.js';
+import {
+  escHtml,
+  setNumericInputValue,
+} from './scene-editor/text-utils.js';
+import {
+  applyMultiSelectionTransform,
+  createMultiTransformStart,
+  objectEulerDegrees,
+} from './scene-editor/transform-utils.js';
+import { createPropsPanelController } from './scene-editor/props-panel.js';
+import { applyOutOfRangeMode } from './scene-editor/device-fields.js';
+import { createLogicGraph } from './scene-editor/logic-graph.js';
+import { createGameSettingsController } from './scene-editor/game-settings.js';
+import {
+  getDevicePropPath,
+  getDeviceFieldConnectionsForItems as _getDeviceFieldConnectionsForItems,
+  getObjectIconUrl as _getObjectIconUrl,
+  createDeviceLinkController,
+} from './scene-editor/device-links.js';
+import {
+  applySelectionClasses,
+  renderObjectList,
+  scrollListToActiveItem,
+} from './scene-editor/object-list.js';
+import { renderPlacementPicker as renderPlacementPickerView } from './scene-editor/placement-picker.js';
+import {
+  clipboardAnchorToThree,
+  clipboardEntryOffsetToThree,
+  clonePlain,
+  makeObjectsClipboardPayload,
+  makePatternClipboardPayload,
+  makePastedObject as makePastedObjectFromSource,
+  objectClipboardEntries,
+} from './scene-editor/clipboard-utils.js';
+import { newSceneObject as createSceneObjectData } from './scene-editor/scene-object-factory.js';
+import {
+  fitCameraToItems,
+  focusCircleTool,
+  focusGridTool,
+  focusSelectedItems,
+} from './scene-editor/camera-focus.js';
+import {
+  applyFlyMovement as applyFlyMovementStep,
+  formatFlySpeed,
+  updateFpsHud as updateFpsHudState,
+} from './scene-editor/viewport-motion.js';
+import { createProjectFileController } from './scene-editor/project-files.js';
+import { parseEditorSession } from './scene-editor/session-format.js';
+import { getPugcCodec } from './scene-editor/codec/pugc-codec.js';
+import {
+  createEditorItem,
+  disposeEditorItem,
+  resetEditorItemToPlaceholder,
+} from './scene-editor/scene-items.js';
+import {
+  applyOpacityToItems,
+  applyRealMeshToItem,
+  applyTextureToggleToItems,
+  upgradeMeshesForItems,
+} from './scene-editor/mesh-items.js';
+import {
+  getPugcObjectsFromJson,
+  isCatalogDeviceObjectId,
+  nextDeviceIndexForObject,
+  removePugcObject as removePugcObjectFromArray,
+} from './scene-editor/pugc-objects.js';
+
+// --- Catalog ------------------------------------------------------------------
+
+const catalog = { devices: {}, objects: {}, placementBudget: { rules: [] }, enums: {}, items: [], stringTables: {}, tags: [], tagCategories: [], translations: {}, saveFormat: {} };
+
+// Display language for localized labels (tags etc.). Defaults to English; persisted across sessions.
+// translations.json is culture -> namespace -> key -> text; tr() falls back en -> the baked English label.
+let currentLang = 'en';
+try { currentLang = localStorage.getItem('pugcLang') || 'en'; } catch { /* storage blocked */ }
+function availableLanguages() {
+  const set = new Set(['en', ...Object.keys(catalog.translations || {})]);
+  return [...set].sort((a, b) => (a === 'en' ? -1 : b === 'en' ? 1 : a.localeCompare(b)));
+}
+function tr(ns, key, fallback) {
+  if (!key) return fallback;
+  const t = catalog.translations || {};
+  return t[currentLang]?.[ns]?.[key] ?? t.en?.[ns]?.[key] ?? fallback;
+}
+// Enum option labels live in NS_UGC_ENUM keyed by each row's `key`. Return a localized clone of
+// catalog.enums for the current language (cached), used by every enum dropdown.
+// englishLabel is preserved alongside label so selectedEnumHint can match description lines
+// (which are always English in the pak schema) regardless of the display language.
+let _locEnumsLang = null, _locEnums = null;
+function localizedEnums() {
+  if (_locEnumsLang === currentLang && _locEnums) return _locEnums;
+  const out = {};
+  for (const [name, rows] of Object.entries(catalog.enums || {})) {
+    out[name] = Array.isArray(rows)
+      ? rows.map(r => ({
+          ...r,
+          englishLabel: r.label || r.value,
+          label: tr('NS_UGC_ENUM', r.key, r.label || r.value),
+        }))
+      : rows;
+  }
+  _locEnumsLang = currentLang;
+  _locEnums = out;
+  return out;
+}
+// ASCII-only display names for the culture codes the game ships (per project ASCII-only rule).
+const LANG_NAMES = {
+  en: 'English', es: 'Spanish', 'es-MX': 'Spanish (Mexico)', fr: 'French', de: 'German', it: 'Italian',
+  pl: 'Polish', pt: 'Portuguese', 'pt-BR': 'Portuguese (Brazil)', ru: 'Russian', tr: 'Turkish',
+  ar: 'Arabic', ja: 'Japanese', ko: 'Korean', 'zh-CN': 'Chinese (Simplified)',
+  'zh-TW': 'Chinese (Traditional)', th: 'Thai', id: 'Indonesian', vi: 'Vietnamese',
+};
+function languageLabel(code) { return LANG_NAMES[code] || code; }
+function setupLanguageSelect() {
+  const sel = document.getElementById('langSelect');
+  if (!sel) return;
+  const langs = availableLanguages();
+  sel.innerHTML = langs.map(c => `<option value="${c}"${c === currentLang ? ' selected' : ''}>${languageLabel(c)}</option>`).join('');
+  sel.hidden = langs.length <= 1; // nothing to switch until translations.json ships >1 culture
+  trackEvent('language_loaded', {
+    language_code: currentLang
+  });
+  sel.addEventListener('change', () => {
+    currentLang = sel.value || 'en';
+    try { localStorage.setItem('pugcLang', currentLang); } catch { /* storage blocked */ }
+    trackEvent('language_change', { language_code: currentLang });
+    applyLanguageToUi();
+  });
+}
+
+// Re-render the language-dependent UI after a language change: the object outliner, placement preview,
+// the selected object's panel, and the Game Settings modal if open. (Device names localize; object names,
+// which PUBG doesn't translate, keep their derived English label.)
+function applyLanguageToUi() {
+  // Each scene item caches its display name in item.meta (frozen at the language when placed); recompute
+  // so the outliner rows and the selected object's name/type follow the language switch.
+  for (const item of ITEMS) item.meta = getObjectMeta(item.ueObj.objectId);
+  for (const item of referenceLogicItems) item.meta = { ...getObjectMeta(item.ueObj.objectId), isDevice: true };
+  try { renderList(); } catch { /* not ready */ }
+  try { updatePlacementPreview(); } catch { /* not ready */ }
+  // placementRows/labels are built once at startup; rebuild + re-render the placeObjectMenu grid and
+  // category list so device/object names and categories follow the language switch.
+  try { populatePlacementCatalog(); } catch { /* not ready */ }
+  try {
+    const btnText = document.getElementById('placeObjectButtonText');
+    const entry = placementCatalogEntry();
+    if (btnText) btnText.textContent = entry ? catalogLabel(entry) : 'Choose an object';
+  } catch { /* not ready */ }
+  if (selected) { try { updatePropsPanel(selected); } catch { /* not ready */ } }
+  // Logic graph node labels (device names, group labels) are baked at render time - redraw it
+  // (if it's the visible view) so they follow the language switch too.
+  try { refreshGraphIfActive(); } catch { /* not ready */ }
+  if (!document.getElementById('gameSettingsModal')?.hidden) gameSettings?.renderGameSettings();
+}
+let placementRows = [];
+let placementCategory = '';
+
+async function loadCatalog() {
+  const [d, o, b, enums, items, rules, stringTables, tags, tagCategories, translations, saveFormat] = await Promise.all([
+    fetch('data/catalog/devices.json').then(r => r.json()),
+    fetch('data/catalog/objects.json').then(r => r.json()),
+    fetch('data/catalog/placementBudget.json').then(r => r.ok ? r.json() : { rules: [] }).catch(() => ({ rules: [] })),
+    fetch('data/catalog/enums.json').then(r => r.json()).catch(() => ({})),
+    fetch('data/catalog/items.json').then(r => r.json()).catch(() => []),
+    fetch('data/catalog/rules.json').then(r => r.ok ? r.json() : {}).catch(() => ({})),
+    fetch('data/catalog/stringTables.json').then(r => r.ok ? r.json() : {}).catch(() => ({})),
+    fetch('data/catalog/tags.json').then(r => r.ok ? r.json() : []).catch(() => []),
+    fetch('data/catalog/tagCategories.json').then(r => r.ok ? r.json() : []).catch(() => []),
+    fetch('data/catalog/translations.json').then(r => r.ok ? r.json() : {}).catch(() => ({})),
+    // Optional: may not exist yet on older published sites until the next pak-server dump.
+    fetch('data/catalog/saveFormat.json').then(r => r.ok ? r.json() : {}).catch(() => ({})),
+  ]);
+  Object.assign(catalog.devices, d);
+  Object.assign(catalog.objects, o);
+  catalog.placementBudget = b && Array.isArray(b.rules) ? b : { rules: [] };
+  catalog.enums = enums || {};
+  catalog.items = Array.isArray(items) ? items : [];
+  catalog.rules = rules || {};
+  catalog.stringTables = stringTables || {};
+  catalog.tags = Array.isArray(tags) ? tags : [];
+  catalog.tagCategories = Array.isArray(tagCategories) ? tagCategories : [];
+  catalog.translations = translations && typeof translations === 'object' ? translations : {};
+  catalog.saveFormat = saveFormat && typeof saveFormat === 'object' ? saveFormat : {};
+  if (!availableLanguages().includes(currentLang)) currentLang = 'en';
+}
+
+function populatePlacementCatalog() {
+  placementRows = buildPlacementRows(catalog);
+  const categories = placementCategories(placementRows);
+  if (!placementCategory || !categories.includes(placementCategory)) placementCategory = categories[0] || '';
+  renderPlacementPicker();
+}
+
+function setPlacementObject(objectId, { close = true, apply = true, keepTemplates = false } = {}) {
+  if (!keepTemplates) {
+    placementTemplates = null;
+    placementTemplateVersion++;
+  }
+  const input = document.getElementById('placeObjectInput');
+  if (input) input.value = selectedCatalogValue(objectId);
+  const entry = catalog.objects[String(objectId)] || catalog.devices[String(objectId)] || null;
+  const buttonText = document.getElementById('placeObjectButtonText');
+  if (buttonText) buttonText.textContent = entry ? catalogLabel(entry) : 'Choose an object';
+  if (entry) placementCategory = placementCategoryKey({ ...entry, kind: catalog.devices[String(objectId)] ? 'Device' : 'Object' });
+  updatePlacementPreview();
+  renderPlacementPicker();
+  if (apply) applyPlacementInputsToSelected();
+  if (close) document.getElementById('placeObjectMenu')?.setAttribute('hidden', '');
+}
+
+function renderPlacementPicker() {
+  renderPlacementPickerView({
+    categoryList: document.getElementById('placeCategoryList'),
+    grid: document.getElementById('placeObjectGrid'),
+    placementRows,
+    placementCategory,
+    selectedId: parsePlacementObjectId(),
+    query: (document.getElementById('placeObjectSearch')?.value || '').trim().toLowerCase(),
+    onCategoryChange: category => {
+      placementCategory = category || placementCategory;
+      renderPlacementPicker();
+    },
+    onObjectSelect: objectId => setPlacementObject(objectId),
+  });
+}
+
+function placementCatalogEntry() {
+  const objectId = parsePlacementObjectId();
+  if (!Number.isFinite(objectId)) return null;
+  return catalog.objects[String(objectId)] || catalog.devices[String(objectId)] || null;
+}
+
+function updatePlacementPreview() {
+  const entry = placementCatalogEntry();
+  const img = document.getElementById('placePreviewImg');
+  const name = document.getElementById('placePreviewName');
+  const type = document.getElementById('placePreviewType');
+  if (!img || !name || !type) return;
+
+  if (!entry) {
+    img.removeAttribute('src');
+    img.style.display = 'none';
+    name.textContent = 'Choose an object';
+    type.textContent = '';
+    return;
+  }
+
+  name.textContent = catalogLabel(entry);
+  type.textContent = `${catalogKind(entry, catalog.devices)} ${entry.objectId}${entry.subCategory ? ` - ${entry.subCategory.replace(/^EModObjectSubCategory::/, '')}` : ''}`;
+  if (entry.iconTexture) {
+    img.onload = () => { img.style.display = 'block'; };
+    img.onerror = () => { img.style.display = 'none'; };
+    img.src = placementIconUrl(entry);
+  } else {
+    img.removeAttribute('src');
+    img.style.display = 'none';
+  }
+}
+
+function getObjectMeta(objectId) {
+  return getCatalogObjectMeta(catalog, objectId);
+}
+
+function getPlacedDevices(allowedObjectIds) {
+  const allowedSet = Array.isArray(allowedObjectIds) && allowedObjectIds.length
+    ? new Set(allowedObjectIds.map(Number))
+    : null;
+  return ITEMS
+    .filter(item =>
+      item.ueObj &&
+      item.ueObj.deviceIndex !== -1 &&
+      (!allowedSet || allowedSet.has(Number(item.ueObj.objectId)))
+    )
+    .map(item => {
+      const meta = getObjectMeta(item.ueObj.objectId);
+      const name = item.ueObj.userDeviceName || meta?.name || `Device ${item.ueObj.deviceIndex}`;
+      return {
+        objectId: Number(item.ueObj.objectId),
+        deviceIndex: item.ueObj.deviceIndex,
+        label: `#${item.ueObj.deviceIndex} ${name}`,
+      };
+    })
+    .sort((a, b) => (a.deviceIndex ?? 0) - (b.deviceIndex ?? 0));
+}
+
+function isDeviceTagPath(path) {
+  const leaf = String(path || '').split('.').pop().toLowerCase();
+  return leaf === 'tag' || leaf.endsWith('tag') || leaf.includes('playertag');
+}
+
+function collectTagStringsFromProps(value, path, tags) {
+  if (typeof value === 'string') {
+    if (isDeviceTagPath(path) && value.trim()) tags.add(value.trim());
+    return;
+  }
+  if (Array.isArray(value)) {
+    value.forEach((entry, idx) => collectTagStringsFromProps(entry, `${path}[${idx}]`, tags));
+    return;
+  }
+  if (!value || typeof value !== 'object') return;
+  for (const [key, child] of Object.entries(value)) {
+    collectTagStringsFromProps(child, path ? `${path}.${key}` : key, tags);
+  }
+}
+
+function deviceTagsForItem(item) {
+  const tags = new Set();
+  const ueObj = item?.ueObj || item;
+  const dev = catalog.devices[String(ueObj?.objectId)];
+  if (!ueObj?.devicePropertyData) return tags;
+  let props;
+  try { props = JSON.parse(ueObj.devicePropertyData); } catch { return tags; }
+  collectTagStringsFromProps(props, '', tags);
+  for (const field of dev?.fields || []) {
+    if (field.type !== 'String' || !isDeviceTagPath(field.path)) continue;
+    const value = getDevicePropPath(props, field.path);
+    if (typeof value === 'string' && value.trim()) tags.add(value.trim());
+  }
+  return tags;
+}
+
+function collectDeviceTagsFromItems(items) {
+  const tags = new Set();
+  for (const item of items || []) for (const t of deviceTagsForItem(item)) tags.add(t);
+  return [...tags].sort((a, b) => a.localeCompare(b));
+}
+
+function usedDeviceTags() {
+  return collectDeviceTagsFromItems(getPugcObjects() || []);
+}
+
+function referenceUsedDeviceTags() {
+  return collectDeviceTagsFromItems(referenceLogicItems);
+}
+
+function getDeviceFieldConnectionsForItems(items) {
+  return _getDeviceFieldConnectionsForItems(items, catalog);
+}
+
+function getDeviceFieldConnections() {
+  return getDeviceFieldConnectionsForItems(ITEMS);
+}
+
+function disposeDeviceLinkObjects() {
+  deviceLinks?.dispose();
+}
+
+function updateDeviceLinkLines() {
+  deviceLinks?.update();
+}
+
+function getObjectIconUrl(objectId) {
+  return _getObjectIconUrl(objectId, catalog);
+}
+
+// --- Coordinate conversion: UE4 (cm, left-hand Z-up) <-> Three.js (m, right-hand Y-up)
+// UE4 (x,y,z) -> Three.js (x/100, z/100, y/100)   det=-1: correct left->right handedness change
+// Quaternion: ue(qx,qy,qz,qw) -> three(qx, qz, qy, qw)
+// Scale: ue(sx,sy,sz) -> three(sx, sz, sy)   [only axis-swap, magnitudes unchanged]
+
+function renderPlacementBudget() {
+  const panel = document.getElementById('limitPanel');
+  if (!panel) return;
+  const objects = getPugcObjects() || [];
+  const rows = computePlacementBudgetRows(objects, catalog);
+  const summary = document.getElementById('budgetOverlaySummary');
+  const overCount = rows.filter(row => Number.isFinite(row.limit) && row.weighted > row.limit).length;
+  if (summary) {
+    summary.textContent = overCount
+      ? `${overCount} over limit`
+      : `${objects.length.toLocaleString()} object${objects.length === 1 ? '' : 's'}`;
+    summary.classList.toggle('over', overCount > 0);
+  }
+  const body = rows.map(row => {
+    const limit = Number.isFinite(row.limit) ? row.limit : null;
+    const over = limit !== null && row.weighted > limit;
+    const full = limit !== null && row.weighted === limit;
+    const cls = over ? ' over' : (full ? ' full' : '');
+    const value = Number.isInteger(row.weighted) ? row.weighted : row.weighted.toFixed(1);
+    const count = row.count !== row.weighted ? ` (${row.count})` : '';
+    const limitText = limit === null ? '?' : String(limit);
+    return `<div class="scene-limit-row${cls}">
+      <span>${escHtml(row.label)}</span>
+      <strong>${escHtml(value)}${escHtml(count)} / ${escHtml(limitText)}</strong>
+    </div>`;
+  }).join('');
+  panel.innerHTML = `<div class="scene-limit-title">
     <span>Placement Budget</span>
     <span>weighted</span>
-  </div>${i}`}function te(e){return(e.pivotOffset??new u.Vector3).clone().multiply(e.group.scale).applyQuaternion(e.group.quaternion)}function X(e){return e.group.position.clone().sub(te(e))}let w,P,Pe,R,D,Dt;const gt=new u.Vector3,S=[];let d=null,Re=!1;const b=new Set,z=[];let m=null,ht=1;const V=[];let p=null,bt=1;const q=[];let M=null,B=null,me=1,E=null,F=null,G=0;const Mt=new Set;let qe=null,$t=null,Ze=!0,Ue=!0;const no="pugc.viewerSettings";function _e(){try{localStorage.setItem(no,JSON.stringify({areas:$e,aiPaths:Ze,deviceIcons:Ue,textures:De,opacity:A,skyboxBrightness:Ee}))}catch{}}function Lc(){try{const e=JSON.parse(localStorage.getItem(no)||"null");if(!e)return;if(e.areas)for(const t in $e)t in e.areas&&($e[t]=!!e.areas[t]);typeof e.aiPaths=="boolean"&&(Ze=e.aiPaths),typeof e.deviceIcons=="boolean"&&(Ue=e.deviceIcons),typeof e.textures=="boolean"&&(De=e.textures),typeof e.opacity=="number"&&(A=e.opacity),typeof e.skyboxBrightness=="number"&&(Ee=Math.max(0,Math.min(e.skyboxBrightness,3)))}catch{}}function Pc(){for(const e of S)e.iconSprite&&(e.iconSprite.visible=Ue)}let yt=1,St=!1,an=0,sn=0;const Rc={lastTime:performance.now(),frameCount:0,displayValue:0};let A=1,De=!0,Ee=.5;const Dc=60;let Me=null,ln=null;const oo="cache/T_Sky_Desert_FoggyRain.hdr";function ro(){const e=document.getElementById("skyboxBrightnessValue");e&&(e.textContent=Math.round(Ee*100)+"%")}function kt(){w&&(w.backgroundIntensity=Ee,w.environmentIntensity=Ee),Pe&&(Pe.toneMappingExposure=Ee),ro()}const It=new Map;function Mc(e){It.has(e)||It.set(e,{rootPos:X(e).clone(),quaternion:e.group.quaternion.clone()})}function dn(e){e.group.quaternion.copy(wn(e.ueObj.spawnTransform.rotation)),e.group.position.copy(se(e.ueObj.spawnTransform.translation)).add(te(e))}function un(){const e=document.getElementById("precTransDecimals")?.value??"full",t=document.getElementById("precRotDecimals")?.value??"full",n=document.getElementById("precRoundMode")?.value||"round",o=document.getElementById("precRotFormat")?.value||"quat",c=Math.max(0,Number(document.getElementById("precRotSnap")?.value||0)),i=e==="full"?null:Number(e),r=t==="full"?null:Number(t);Ir({translation:i,rotation:r,mode:n,rotFormat:o,rotSnapDeg:c});const a=i!==null||r!==null||c>0;for(const f of S)if(a){Mc(f);const s=It.get(f);f.ueObj.spawnTransform.translation=N(s.rootPos),f.ueObj.spawnTransform.rotation=Be(s.quaternion),dn(f)}else{const s=It.get(f);s&&(f.group.quaternion.copy(s.quaternion),f.group.position.copy(s.rootPos).add(te(f)),f.ueObj.spawnTransform.translation=N(s.rootPos),f.ueObj.spawnTransform.rotation=Be(s.quaternion))}a||It.clear();for(const f of z)if(Oe(f),a)for(const s of f.items)dn(s);for(const f of V)if(we(f),a)for(const s of f.items)dn(s);const l=document.getElementById("precStatus");if(l)if(!a)l.textContent="Full precision (no rounding)";else{const f=[];i!==null&&f.push(`trans: ${i}dp`),c>0?f.push(`rot snap: ${c}deg`):r!==null&&f.push(`rot: ${r}dp ${o==="euler"?"euler":"quat"}`),!c&&(i!==null||r!==null)&&f.push(n),l.textContent=`Active - ${f.join(", ")}`}}async function $c(e){if(typeof DecompressionStream!="function")return null;const t=await fetch(e);if(!t.ok||!t.body)return null;const n=t.body.pipeThrough(new DecompressionStream("gzip"));return await new Response(n).arrayBuffer()}async function kc(){const e=new yr,t=o=>{o.mapping=u.EquirectangularReflectionMapping,w.background=o,w.environment=o,kt()},n=o=>new Promise((c,i)=>{e.load(o,r=>{t(r),c(r)},void 0,i)});try{const o=await $c(`${oo}.gz`);if(o){const c=URL.createObjectURL(new Blob([o],{type:"application/octet-stream"}));try{await n(c)}finally{URL.revokeObjectURL(c)}return}}catch(o){console.warn("HDR skybox gzip load failed, falling back to raw HDR.",o)}n(oo).catch(o=>{console.warn("HDR skybox load failed.",o)})}function Nc(){const e=document.getElementById("sceneCanvas");w=new u.Scene,w.background=new u.Color(856343),w.fog=new u.FogExp2(856343,25e-5),P=new u.PerspectiveCamera(55,1,.5,8e4),gt.copy(se({x:36867,y:55351,z:9632})),P.position.copy(gt).add(new u.Vector3(0,300,600)),Pe=new u.WebGLRenderer({canvas:e,antialias:!0}),Pe.setPixelRatio(Math.min(window.devicePixelRatio,2)),Pe.toneMapping=u.ACESFilmicToneMapping,kt(),kc(),w.add(new u.AmbientLight(16777215,.45));const t=new u.DirectionalLight(16774624,1);t.position.set(300,600,200),w.add(t);const n=new u.GridHelper(4e3,400,1977664,1713461);w.add(n),Dt=new u.Raycaster,R=new gr(P,e),R.enableDamping=!0,R.dampingFactor=.07,R.maxDistance=4e4,R.screenSpacePanning=!0,R.target.copy(gt),R.mouseButtons.RIGHT=-1,R.mouseButtons.LEFT=-1,R.mouseButtons.MIDDLE=u.MOUSE.ROTATE,D=new hr(P,e),D.setSize(1.4),D.addEventListener("dragging-changed",s=>{R.enabled=!s.value,s.value?(L("Transform"),ea()):(ln=null,x("Transform"))}),D.addEventListener("objectChange",or),D.addEventListener("mouseUp",()=>{m&&qt(m),p&&Zt(p);for(const s of b)At(s)}),w.add(D),new ResizeObserver(co).observe(document.getElementById("viewport")),co();let o={x:0,y:0},c=!1,i=null,r=!1;e.addEventListener("pointerdown",s=>{s.button===0&&(o={x:s.clientX,y:s.clientY},c=!0,!D.axis&&(i={x:s.clientX,y:s.clientY},r=!1))}),window.addEventListener("pointermove",s=>{i&&(!r&&Math.hypot(s.clientX-i.x,s.clientY-i.y)<5||(r=!0,Hi(i,{x:s.clientX,y:s.clientY})))}),window.addEventListener("pointerup",s=>{if(s.button!==0)return;const v=c;c=!1;const O=r,j=i;if(i=null,r=!1,Ji(),!!v){if(O&&j){Qi({x:Math.min(j.x,s.clientX),y:Math.min(j.y,s.clientY)},{x:Math.max(j.x,s.clientX),y:Math.max(j.y,s.clientY)},s.shiftKey||s.ctrlKey||s.metaKey);return}Math.hypot(s.clientX-o.x,s.clientY-o.y)<5&&Wi(s)}});const a=new u.Vector3(0,1,0),l=new u.Vector3(1,0,0),f=new u.Vector3;e.addEventListener("contextmenu",s=>{s.preventDefault(),xe()}),document.addEventListener("contextmenu",s=>{s.preventDefault(),xe()},{capture:!0}),window.addEventListener("blur",xe),document.addEventListener("pointerdown",s=>{s.button!==2||!s.shiftKey||(xe(),s.target.closest?.("#viewport")&&(s.preventDefault(),s.stopPropagation()))},{capture:!0}),e.addEventListener("pointerdown",s=>{s.button===2&&(St=!0,an=s.clientX,sn=s.clientY)}),window.addEventListener("pointermove",s=>{if(!St)return;const v=s.clientX-an,O=s.clientY-sn;if(an=s.clientX,sn=s.clientY,!v&&!O)return;const j=P.position.distanceTo(R.target);P.rotateOnWorldAxis(a,-v*.003),P.rotateOnAxis(l,-O*.003),P.getWorldDirection(f),R.target.copy(P.position).addScaledVector(f,j)}),window.addEventListener("pointerup",s=>{s.button===2&&(St=!1)}),window.addEventListener("pointercancel",xe),document.addEventListener("visibilitychange",()=>{document.hidden&&xe()}),e.addEventListener("wheel",s=>{St&&(s.preventDefault(),s.stopPropagation(),yt=Math.max(.01,Math.min(yt*(s.deltaY<0?1.2:1/1.2),200)),lo())},{passive:!1,capture:!0})}function co(){const e=document.getElementById("viewport"),t=e.clientWidth,n=e.clientHeight;P.aspect=t/Math.max(n,1),P.updateProjectionMatrix(),Pe.setSize(t,n,!1)}function Ac(){cc({camera:P,orbitControls:R,flyKeys:Mt,flySpeed:yt})}function io(){requestAnimationFrame(io),!ne&&(Ac(),R.update(),Pe.render(w,P),Fc())}function Fc(e=performance.now()){ac(Rc,document.getElementById("fpsValue"),e)}function ao(e,t){return uc(e,t,A)}async function Nt(e,t,{allowReplace:n=!1}={}){await mc(e,t,{isSelected:o=>b.has(o)||Gi(o),loadTextures:De,loadTexture:kn,normalOpacity:A,selectionColor:Rn,selectionOpacity:Tr,prepareEditorPivotGeo:Gr,rootPositionForItem:X,pivotOffsetForItem:te,positionToUe4:N,allowReplace:n}),e===d&&K(e)}function fn(e){const t=y.devices?.[String(e?.objectId)];if(!t||!Array.isArray(t.fields))return null;let n=null;for(const o of t.fields){if(o.type!=="String")continue;const c=o.validatorParam?.stringDataTable;if(!c||c==="None")continue;const i=y.stringTables?.[c];if(!Array.isArray(i))continue;if(!n)try{n=JSON.parse(e.devicePropertyData||"{}")}catch{n={}}const r=o.path.split(".").reduce((f,s)=>f==null?f:f[s],n);if(r==null||r==="")continue;const a=String(r);if(a.includes("/"))return a;const l=i.find(f=>String(f.value??f.asset??"")===a);if(l){const f=String(l.value??l.asset??"");if(f.includes("/"))return f}}return null}async function Gc(e){if(!e)return;const t=fn(e.ueObj);if(!t||e.currentMeshAsset===t)return;e.currentMeshAsset=t;const n=await Mn(t);if(e.currentMeshAsset===t){if(!n){e.hasRealMesh&&fc(e,A),e===d&&K(e);return}await Nt(e,n,{allowReplace:!0})}}async function so(){const e=[],t=[];for(const o of S)fn(o.ueObj)?e.push(o):mo.has(String(o.ueObj.objectId))||t.push(o);await hc(t,{getGeo:$n,applyRealMesh:Nt});const n=4;for(let o=0;o<e.length;o+=n)await Promise.all(e.slice(o,o+n).map(Fo));h(`${S.length} objects - meshes loaded`)}function lo(){const e=document.getElementById("flySpeedDisplay");e&&(e.textContent=ic(yt))}function xe(){Mt.clear(),St=!1}function Yc(){pc(S,{selected:d,normalOpacity:A});const e=m||p;e&&zt(e,!0)}async function zc(){await gc(S,{selected:d,loadTextures:De,loadTexture:kn,selectionColor:Rn});const e=m||p;e&&zt(e,!0)}const uo="cache/mod_main_level.glb";function Vc(e){Yr(e,{camera:P,orbitControls:R})}async function Xc(){const e=await fetch(uo);if(!e.ok)return!1;const t=await e.blob(),n=URL.createObjectURL(t);try{const o=await new br().loadAsync(n);return qe&&(w.remove(qe),ft(qe)),qe=zr(o.scene),w.add(qe),Vc(qe),h(`Baked level loaded - ${uo}`),!0}finally{URL.revokeObjectURL(n)}}async function qc(){const e=document.getElementById("btnLoadWorld");e&&(e.disabled=!0),h("Loading baked level...");try{await Xc()||h("Baked level not found - place mod_main_level.glb in web/cache/",!0)}catch(t){h(`Baked level error: ${t.message}`,!0)}finally{e&&(e.disabled=!1)}}function fo(e=!0){Z();for(const t of z)w.remove(t.group),ft(t.group);z.length=0,m=null;for(const t of V)w.remove(t.group),ft(t.group);V.length=0,p=null,q.length=0,M=null,me=1,b.clear();for(const t of S)qn(t,w);S.length=0,Cc(),e&&(Fr(),Dn())}function Zc(e){fo();for(const t of e)po(t);if(Ui(),T(),!S.length){h("No objects in project");return}h(`${S.length} objects loaded - fetching meshes...`),so(),Y(),ce?.resetView(),Kt()}function po(e){const t=ee(e.objectId),n=ao(e,t);return n.group.userData.itemRef=n,w.add(n.group),S.push(n),bo(n),n}const Uc={5:16742970,6:3526911,23:10216010,25:16765514,42:3842303,47:3855776},mo=new Set(["23"]);function _c(e){try{return e.devicePropertyData?JSON.parse(e.devicePropertyData):null}catch{return null}}function Kc(e){return Array.isArray(e)?{x:+e[0]||0,y:+e[1]||0,z:+e[2]||0}:e&&(e.x!=null||e.y!=null||e.z!=null)?{x:+e.x||0,y:+e.y||0,z:+e.z||0}:null}function go(e){return Uc[e]??10146047}function Hc(e){e.traverse(t=>{t.geometry?.dispose(),t.material?.dispose()})}const Jc={2:"enemyDetectionSize",24:"zoneRadius",26:"zoneRadius",33:"attenuationRadius"},Qc={2:5494633,24:16734794,26:16747066,33:16768890};function Wc(e){return Qc[e]??10146047}const ho=[{id:"5",name:"Area Blocking",on:!0},{id:"6",name:"Trigger Area",on:!0},{id:"23",name:"Conquest Area",on:!0},{id:"47",name:"Checkpoint",on:!0},{id:"25",name:"Vehicle Spawn",on:!1},{id:"42",name:"Blue Zone Gen",on:!1},{id:"24",name:"Red Zone",on:!1},{id:"26",name:"Special Zone",on:!1},{id:"33",name:"Light range",on:!1},{id:"2",name:"Spawn detect",on:!1}],$e={};for(const e of ho)$e[e.id]=e.on;function ei(e){return $e[e]!==!1}function ti(e){for(const t of S)String(t.ueObj.objectId)===e&&At(t)}function Ke(e,t){const n=Number(e);return e==null||e===""||Number.isNaN(n)?t:n}function At(e){e.volumeBox&&(e.group.remove(e.volumeBox),Hc(e.volumeBox),e.volumeBox=null);const t=String(e.ueObj.objectId),n=y.devices[t]?.fields||[],o=n.some(j=>["boxExtent","sphereRadius","cubeExtent"].includes(j.path)),c=n.some(j=>j.path==="shape"&&j.unrealType==="ECheckpointShape"),i=Jc[t];if(!o&&!c&&!i||!ei(t))return;const r=_c(e.ueObj),a=e.group.scale;let l,f;if(c)if(f=go(t,r),String(r?.shape||"Square")==="Circle"){const W=Ke(r?.radius,250)/100/(a.z||1);l=new u.CylinderGeometry(W,W,.5/(a.x||1),32),l.rotateZ(Math.PI/2)}else{const W=Ke(r?.width,300)/100/(a.z||1),U=Ke(r?.height,300)/100/(a.y||1);l=new u.BoxGeometry(.5/(a.x||1),U,W)}else if(o){const j=n.find(U=>U.path==="volumeShape")?.validatorParam?.selectEnums||[],W=String(r?.volumeShape||j[0]||"Box").toLowerCase();if(W==="sphere")l=new u.SphereGeometry(Ke(r?.sphereRadius,250)/100/(a.x||1),24,16);else if(W==="cube"){const U=Ke(r?.cubeExtent,250);l=new u.BoxGeometry(2*U/100/(a.x||1),2*U/100/(a.y||1),2*U/100/(a.z||1))}else{const U=Kc(r?.boxExtent)||{x:250,y:250,z:250};l=new u.BoxGeometry(2*U.x/100/(a.x||1),2*U.z/100/(a.y||1),2*U.y/100/(a.z||1))}f=go(t,r)}else l=new u.SphereGeometry(Ke(r?.[i],500)/100/(a.x||1),24,16),f=Wc(t,r);const s=new u.Group,v=new u.Mesh(l,new u.MeshBasicMaterial({color:f,transparent:!0,opacity:.14,depthWrite:!1,side:u.DoubleSide}));v.renderOrder=2;const O=new u.LineSegments(new u.EdgesGeometry(l),new u.LineBasicMaterial({color:f,transparent:!0,opacity:.85}));O.renderOrder=3,s.add(v,O),s.traverse(j=>{j.raycast=()=>{}}),e.group.add(s),e.volumeBox=s}const pn=new Map;function ni(e){if(pn.has(e))return pn.get(e);const t=new u.TextureLoader().load(e);return"colorSpace"in t&&(t.colorSpace=u.SRGBColorSpace),pn.set(e,t),t}function oi(e){if(!e.meta?.isDevice||e.iconSprite)return;const t=Rt(e.ueObj.objectId);if(!t)return;const n=new u.Sprite(new u.SpriteMaterial({map:ni(t),transparent:!0,depthTest:!1,depthWrite:!1}));n.scale.set(.6,.6,1),n.position.set(0,.9,0),n.renderOrder=5,n.raycast=()=>{},n.visible=Ue,e.group.add(n),e.iconSprite=n}function bo(e){At(e),oi(e)}function _(){return Zn($)}function ke(){const t=(document.getElementById("placeObjectInput")?.value||"").match(/\d+/);return t?Number(t[0]):NaN}function ge(e){return bc(y,e)}function yo(e){return yc(_()||[],e)}function ri(e){Sc(_(),e)}function ci(e){qn(e,w)}function Te(e,t=!0){if(!e)return;d===e&&(d=null),b.delete(e);for(const o of q){const c=o.items.indexOf(e);c>=0&&o.items.splice(c,1)}for(const o of z){const c=o.items.indexOf(e);c>=0&&o.items.splice(c,1)}for(const o of V){const c=o.items.indexOf(e);c>=0&&o.items.splice(c,1)}t&&ri(e.ueObj);const n=S.indexOf(e);n>=0&&S.splice(n,1),ci(e)}function So(){if(!$)return null;const e=_()||[],t=new Map(e.map((n,o)=>[n,o]));return{pugcJson:C($),pugcFileInfo:C(ct),circleToolSeq:ht,gridToolSeq:bt,collectionSeq:me,circles:z.map(n=>Bn(n,t,C)),grids:V.map(n=>Bn(n,t,C)),collections:q.map(n=>({id:n.id,name:n.name,itemIndexes:n.items.map(o=>t.get(o.ueObj)).filter(Number.isInteger)})),selection:B?{type:"base",toolType:B.type,toolId:B.tool.id,templateIndex:B.templateIndex}:m?{type:"circle",id:m.id}:p?{type:"grid",id:p.id}:M?{type:"collection",id:M.id}:{type:"items",primaryIndex:d?t.get(d.ueObj):null,indexes:[...b].map(n=>t.get(n.ueObj)).filter(Number.isInteger)}}}function ii(e){return e?JSON.stringify({pugcJson:e.pugcJson,circles:e.circles,grids:e.grids,collections:e.collections}):""}function L(e="Edit"){Me?.begin(e)}function x(e){Me?.commit(e),Kt()}function mn(){Me?.cancel()}function Io(e){if(!e)return;$=C(e.pugcJson),ct=C(e.pugcFileInfo||ct),fo(!1);const t=_()||[];for(const c of t)po(c);ht=e.circleToolSeq||1;for(const c of e.circles||[]){const i=Cn(c,S,{label:"Circle Tool",userDataKey:"circleToolRef",clonePlain:C});z.push(i),w.add(i.group),Vo(i),ht=Math.max(ht,i.id+1)}bt=e.gridToolSeq||1;for(const c of e.grids||[]){const i=Cn(c,S,{label:"Grid Tool",userDataKey:"gridToolRef",clonePlain:C});V.push(i),w.add(i.group),Wo(i),bt=Math.max(bt,i.id+1)}me=e.collectionSeq||1;const n=new Set;for(const c of e.collections||[]){const i=(c.itemIndexes||[]).map(a=>S[a]).filter(a=>a&&!n.has(a));for(const a of i)n.add(a);const r={id:c.id,name:c.name||`Collection ${c.id}`,items:i};q.push(r),me=Math.max(me,r.id+1)}const o=e.selection;if(o?.type==="items"){const c=o.indexes?.length?o.indexes:[];for(const i of c)S[i]&&ye(S[i],{add:!0});Number.isInteger(o.primaryIndex)&&S[o.primaryIndex]&&ye(S[o.primaryIndex],{add:!0})}else if(o?.type==="circle"){const c=z.find(i=>i.id===o.id);c?de(c):Z()}else if(o?.type==="grid"){const c=V.find(i=>i.id===o.id);c?ue(c):Z()}else if(o?.type==="base"){const i=(o.toolType==="grid"?V:z).find(r=>r.id===o.toolId);i&&i.items[o.templateIndex]?En(i,o.toolType,o.templateIndex):Z()}else if(o?.type==="collection"){const c=q.find(i=>i.id===o.id);c?rt(c):Z()}else Z();T(),We(),nt(),so(),Kt()}function ai(){Me?.undo()}function vo(){Me?.redo()}function Ft(e,t=100){return Wr(e,{offsetCm:t,isDeviceObjectId:ge,nextDeviceIndex:yo})}function Ne(){const e=!!(d||b.size||m||p||M);document.getElementById("btnCopy").disabled=!e,document.getElementById("btnPaste").disabled=!E||!_()}function si(e){for(const t of z)if(t.items.includes(e))return{tool:t,type:"circle"};for(const t of V)if(t.items.includes(e))return{tool:t,type:"grid"};return null}function jo(){const e=new Set;for(const t of z)for(const n of t.items)e.add(n);for(const t of V)for(const n of t.items)e.add(n);return e}function Eo(e,t){if(!e||!e.items.length)return;L("Release Tool Objects");const n=[...e.items];for(const a of n)delete a.circleToolId,delete a.gridToolId;const o=n.length;e.items.length=0,w.remove(e.group),ft(e.group);const c=t==="grid"?V:z,i=c.indexOf(e);i>=0&&c.splice(i,1),m===e&&(m=null),p===e&&(p=null),F=null;const r={id:me++,name:li(`${t==="grid"?"Grid":"Circle"} Tool ${e.id}`),items:n};q.push(r),rt(r),T(),x("Release Tool Objects"),h(`Released ${o} object${o===1?"":"s"} into ${r.name} - undo to restore the tool`)}function li(e){const t=new Set(q.map(o=>o.name));if(!t.has(e))return e;let n=2;for(;t.has(`${e} ${n}`);)n++;return`${e} ${n}`}function le(e){const t=jo();return[...new Set(e)].filter(n=>S.includes(n)&&!t.has(n))}function xo(e){if(e==null)return le([...b]);const t=S[e];return t?b.has(t)?le([...b]):le([t]):[]}function di(e,t){const n=t.filter(o=>!e.items.includes(o));return!e||!n.length?0:(L("Add to Collection"),pi(n,e),e.items.push(...n),rt(e),T(),x("Add to Collection"),n.length)}function To(e){return _o(e,0,1)}function Oo(e){return Ko(e,0)}function gn(e,t){const n=t.quat.clone().invert(),o=X(e).sub(t.root).applyQuaternion(n);t.scaleOffsets&&o.divide(new u.Vector3(t.scale.x||1,t.scale.z||1,t.scale.y||1));const c=n.clone().multiply(e.group.quaternion),i=dt(e.group.scale);return{objectId:e.ueObj.objectId,source:C(e.ueObj),offset:{x:o.x,y:o.y,z:o.z},quaternion:{x:c.x,y:c.y,z:c.z,w:c.w},scale3D:Ve({x:(i.x??1)/(t.scale.x||1),y:(i.y??1)/(t.scale.y||1),z:(i.z??1)/(t.scale.z||1)})}}function ui(e,t,n){if(!e||!n.length)return 0;L("Add to Tool Base"),e.templates?.length||(e.templates=C(Xe(e)));const o=t==="grid"?Oo(e):To(e);for(const c of n)e.templates.push(gn(c,o));for(const c of n)Te(c,!0);return e.templateVersion=(e.templateVersion||0)+1,F=C(e.templates),G++,t==="grid"?(p=null,we(e),ue(e)):(m=null,Oe(e),de(e)),T(),x("Add to Tool Base"),n.length}function fi(e,t){const n=xo(t);if(!n.length){h("Select object(s) first, then add them");return}const o=di(e,n);o&&h(`Added ${o} object${o===1?"":"s"} to ${e.name}`)}function wo(e,t,n){const o=xo(n);if(!o.length){h("Select object(s) first, then add them to the base");return}const c=ui(e,t,o);c&&h(`Added ${c} object${c===1?"":"s"} to ${t==="grid"?"Grid":"Circle"} Tool ${e.id} base`)}function pi(e,t=null){const n=new Set(e);for(const o of q)o!==t&&(o.items=o.items.filter(c=>!n.has(c)))}function mi(e){const t=`${e||"Collection"} Copy`,n=new Set(q.map(c=>c.name));if(!n.has(t))return t;let o=2;for(;n.has(`${t} ${o}`);)o++;return`${t} ${o}`}function Co(e){return q.some(t=>t.items.includes(e))}function gi(e){return vt(Ft(C(e.ueObj),0))}function hi(){const e=le([...b]);L("Create Collection");const t=e.map(o=>Co(o)&&gi(o)||o),n={id:me++,name:`Collection ${me-1}`,items:t};q.push(n),rt(n),T(),x("Create Collection"),h(t.length?`Created ${n.name} with ${t.length} object${t.length===1?"":"s"}`:`Created empty ${n.name}`)}function Bo(e){const t=le([...b]);if(!t.length){h("Select object(s) first, then create a tool",!0);return}const n=Go();if(!n?.templates?.length){h("Select object(s) first",!0);return}const o=X(n.anchor),c=n.anchor.group.quaternion.clone(),i=e==="grid"?Fe():Ae();G++,L(e==="grid"?"Create Grid Tool":"Create Circle Tool");for(const a of t)Co(a)||Te(a,!0);const r=e==="grid"?jn(n.templates[0].objectId,o,i,n.templates,{quaternion:c}):In(n.templates[0].objectId,o,i,n.templates,{quaternion:c});e==="grid"?ue(r):de(r),T(),x(e==="grid"?"Create Grid Tool":"Create Circle Tool"),h(`Created ${e==="grid"?"Grid":"Circle"} Tool ${r.id} from ${t.length} object${t.length===1?"":"s"}`)}function bi(e){if(!e)return;const t=q.indexOf(e);t>=0&&q.splice(t,1),M===e&&(M=null)}const Lo=39,yi=34;function Si(){const e=[...b],t=e.filter(c=>Number(c.ueObj?.objectId)===Lo).sort((c,i)=>Number(c.ueObj.objectId)-Number(i.ueObj.objectId)||(c.ueObj.deviceIndex??0)-(i.ueObj.deviceIndex??0));if(t.length<2){h("Select 2+ AI Navigation devices",!0);return}const n=e.find(c=>Number(c.ueObj?.objectId)===yi),o=(c,i)=>{let r;try{r=JSON.parse(c.ueObj.devicePropertyData||"{}")}catch{r={}}i(r),c.ueObj.devicePropertyData=JSON.stringify(r)};L("Chain AI Path");for(let c=0;c<t.length-1;c++){const i=t[c+1].ueObj;o(t[c],r=>{r.cadidateNavPointList=[{availAITeamId:100,nextPointNavDevice:{objectId:i.objectId,deviceIndex:i.deviceIndex},weight:1}]})}if(n){const c=t[0].ueObj;o(n,i=>{i.firstNavDevice={objectId:c.objectId,deviceIndex:c.deviceIndex}})}Y(),d&&(t.includes(d)||d===n)&&K(d),x("Chain AI Path"),h(`Chained ${t.length} AI nav points into a path${n?" (+ spawn)":""}`)}function hn(e){const t=le([...b]);if(t.length<2)return;const n=e.toLowerCase(),o=g("distSpacing"+e,5)*100;L("Distribute Selection");const c=[...t].sort((r,a)=>r.ueObj.spawnTransform.translation[n]-a.ueObj.spawnTransform.translation[n]),i=c[0].ueObj.spawnTransform.translation[n];for(let r=0;r<c.length;r++)c[r].ueObj.spawnTransform.translation[n]=i+r*o,c[r].group.position.copy(se(c[r].ueObj.spawnTransform.translation).add(te(c[r])));Y(),d&&K(d),x("Distribute Selection")}function Ii(e,t){const n=le([...b]);if(n.length<2)return;const o=e.toLowerCase(),c=n.map(r=>r.ueObj.spawnTransform.translation[o]),i=t==="min"?Math.min(...c):t==="max"?Math.max(...c):c.reduce((r,a)=>r+a,0)/c.length;L("Align Selection");for(const r of n)r.ueObj.spawnTransform.translation[o]=i,r.group.position.copy(se(r.ueObj.spawnTransform.translation).add(te(r)));Y(),d&&K(d),x("Align Selection")}function vi(e,t,n){const o=String(t).split(".").map(i=>i.replace(/\[\]$/,""));let c=e;for(let i=0;i<o.length-1;i++)(c[o[i]]==null||typeof c[o[i]]!="object")&&(c[o[i]]={}),c=c[o[i]];c[o[o.length-1]]=n}function Po(e){const t=new Set((e||[]).filter(o=>o?.ueObj&&ge(o.ueObj.objectId)&&o.ueObj.deviceIndex!==-1).map(o=>`${o.ueObj.objectId}:${o.ueObj.deviceIndex}`));if(!t.size||!Array.isArray($?.deviceEventList))return[];const n=[];for(const o of $.deviceEventList){const c=o?.eventId?.deviceInstanceId;if(!c)continue;const i=`${c.objectId}:${c.deviceIndex}`;for(const r of o.relationEventId||[]){const a=r?.deviceInstanceId;if(!a)continue;const l=`${a.objectId}:${a.deviceIndex}`;(t.has(i)||t.has(l))&&n.push({src:{objectId:c.objectId,deviceIndex:c.deviceIndex,eventName:o.eventId.eventName},tgt:{objectId:a.objectId,deviceIndex:a.deviceIndex,eventName:r.eventName}})}}return n}function ji(e){const t=new Map;for(const{source:n,item:o}of e)!n||!o||ge(n.objectId)&&n.deviceIndex!=null&&n.deviceIndex!==-1&&t.set(`${n.objectId}:${n.deviceIndex}`,{objectId:o.ueObj.objectId,deviceIndex:o.ueObj.deviceIndex});return t}function Ei(e,t){const n=y.devices[String(e.ueObj.objectId)];if(!n?.fields||!e.ueObj.devicePropertyData)return;let o;try{o=JSON.parse(e.ueObj.devicePropertyData)}catch{return}let c=!1;const i=r=>{if(r&&r.objectId!=null&&r.deviceIndex!=null){const a=t.get(`${r.objectId}:${r.deviceIndex}`);if(a)return{objectId:a.objectId,deviceIndex:a.deviceIndex}}return null};for(const r of n.fields)if(r.type==="Device"){const a=i(tn(o,r.path));a&&(vi(o,r.path,a),c=!0)}else if(r.type==="Array"){const a=tn(o,r.path);if(!Array.isArray(a))continue;const l=n.fields.filter(f=>f.path.startsWith(`${r.path}[].`)&&f.type==="Device").map(f=>f.path.split("[].")[1]);for(const f of a)for(const s of l){const v=i(f?.[s]);v&&(f[s]=v,c=!0)}}c&&(e.ueObj.devicePropertyData=JSON.stringify(o))}function xi(e,t){if(!Array.isArray(e)||!e.length||!$)return;Array.isArray($.deviceEventList)||($.deviceEventList=[]);const n=$.deviceEventList,o=i=>{const r=t.get(`${i.objectId}:${i.deviceIndex}`);return r?{objectId:r.objectId,deviceIndex:r.deviceIndex}:{objectId:i.objectId,deviceIndex:i.deviceIndex}},c=(i,r)=>Number(i?.objectId)===Number(r.objectId)&&Number(i?.deviceIndex)===Number(r.deviceIndex);for(const i of e){if(!t.has(`${i.src.objectId}:${i.src.deviceIndex}`)&&!t.has(`${i.tgt.objectId}:${i.tgt.deviceIndex}`))continue;const r=o(i.src),a=o(i.tgt);let l=n.find(s=>s?.eventId?.eventName===i.src.eventName&&c(s.eventId?.deviceInstanceId,r));l||(l={eventId:{deviceInstanceId:r,eventName:i.src.eventName},relationEventId:[]},n.push(l)),Array.isArray(l.relationEventId)||(l.relationEventId=[]),l.relationEventId.some(s=>s?.eventName===i.tgt.eventName&&c(s.deviceInstanceId,a))||l.relationEventId.push({deviceInstanceId:a,eventName:i.tgt.eventName})}}function Ro(e,t){const n=ji(e);if(n.size){for(const{item:o}of e)o&&Ei(o,n);xi(t,n),Y()}}function Do(){if(M){const o=le(M.items);if(!o.length)return;const c=d&&o.includes(d)?d:o[0];E={...zn(o,c,X),type:"collection",collectionName:M.name,wiring:Po(o)},Ne(),h(`Copied ${M.name}`);return}if(m){const o=m.templates?.length?m.templates:Xe(m);E=Vn("circleTool",m,o),Ne(),h(`Copied Circle Tool ${m.id}`);return}if(p){const o=p.templates?.length?p.templates:Xe(p);E=Vn("gridTool",p,o),Ne(),h(`Copied Grid Tool ${p.id}`);return}if(!b.size&&!d)return;const e=[...b].sort((o,c)=>S.indexOf(o)-S.indexOf(c)),t=e.length?e:[d],n=d&&t.includes(d)?d:t[0];E=zn(t,n,X),E.wiring=Po(t),Ne(),h(t.length===1?`Copied ${t[0].meta.name} (${t[0].ueObj.objectId})`:`Copied ${t.length} objects`)}function Mo(){if(!_()||!E)return;if(E.type==="circleTool"||E.type==="gridTool"){const i=E.type==="circleTool";L(i?"Paste Circle Tool":"Paste Grid Tool");const r=new u.Vector3(Number(E.position?.x||0),Number(E.position?.y||0),Number(E.position?.z||0)),a=new u.Quaternion(E.quaternion?.x||0,E.quaternion?.y||0,E.quaternion?.z||0,E.quaternion?.w??1),l=i?In(E.objectId,r,C(E.params),C(E.templates||[]),{quaternion:a}):jn(E.objectId,r,C(E.params),C(E.templates||[]),{quaternion:a});i?de(l):ue(l),T(),x(i?"Paste Circle Tool":"Paste Grid Tool"),h(`Pasted ${i?"Circle":"Grid"} Tool ${l.id}`);return}if(E.type==="collection"){const i=Xn(E);if(!i.length)return;L("Paste Collection");const r=Gn(E,i),a=[],l=[];for(const s of i){const v=Ft(s.source,0),O=Yn(s);v.spawnTransform.translation=N(r.clone().add(O));const j=vt(v);j&&(a.push(j),l.push({source:s.source,item:j}))}if(!a.length){mn();return}Ro(l,E.wiring);const f={id:me++,name:mi(E.collectionName),items:a};q.push(f),rt(f),T(),x("Paste Collection"),h(`Pasted ${f.name}`);return}const t=Xn(E);if(!t.length)return;L(t.length===1?"Paste Object":"Paste Objects");const n=Gn(E,t),o=[],c=[];for(const i of t){const r=Ft(i.source,0),a=Yn(i);r.spawnTransform.translation=N(n.clone().add(a));const l=vt(r);l&&(o.push(l),c.push({source:i.source,item:l}))}if(!o.length){mn();return}Ro(c,E.wiring),Z();for(const i of o)ye(i,{add:!0});T(),x(t.length===1?"Paste Object":"Paste Objects"),h(o.length===1?`Pasted ${o[0].meta.name} (${o[0].ueObj.objectId})`:`Pasted ${o.length} objects`)}async function Ti(e){if(/\.pugcedit$/i.test(e.name)){const t=lc(await e.text());return{json:t.snapshot.pugcJson,name:t.metadata?.pugcName||e.name}}if(/\.pugc$/i.test(e.name)){const t=new Uint8Array(await e.arrayBuffer()),n=await dc(),{json:o,name:c}=await n.decode(t,e.name);return{json:o,name:c||e.name}}throw new Error("Open a .pugc or .pugcedit file")}function Oi(e){return(Zn(e)||[]).filter(t=>ge(t?.objectId)&&t.deviceIndex!==-1).map(t=>({ueObj:t,meta:{...ee(t.objectId),isDevice:!0},group:{position:se(t.spawnTransform?.translation||{x:0,y:0,z:0}),quaternion:wn(t.spawnTransform?.rotation||{x:0,y:0,z:0,w:1}),scale:Ot(t.spawnTransform?.scale3D||{x:1,y:1,z:1})}}))}function $o(e){return e?.ueObj?`${e.ueObj.objectId}:${e.ueObj.deviceIndex}`:""}function wi(e){const t=Array.isArray(e)&&e.length?new Set(e.map(Number)):null;return Q.filter(n=>n.ueObj&&n.ueObj.deviceIndex!==-1&&(!t||t.has(Number(n.ueObj.objectId)))).map(n=>{const o=ee(n.ueObj.objectId),c=n.ueObj.userDeviceName||o?.name||`Device ${n.ueObj.deviceIndex}`;return{objectId:Number(n.ueObj.objectId),deviceIndex:n.ueObj.deviceIndex,label:`#${n.ueObj.deviceIndex} ${c}`}}).sort((n,o)=>(n.deviceIndex??0)-(o.deviceIndex??0))}function Ci(){const e=document.getElementById("propsDetailsContent");if(!e)return;e.querySelectorAll("input, select, textarea").forEach(o=>{o.disabled=!0}),e.querySelectorAll("button:not(.scene-dev-tab)").forEach(o=>{o.disabled=!0});const t=document.getElementById("devNameSection");t&&(t.style.display="none");const n=document.getElementById("meshDetailsSection");n&&(n.open=!1)}function He(e=fe){if(!e?.ueObj){ot();return}Tt=!0;try{xt?.updateObject(e)}finally{Tt=!1}Ci()}function Bi(e){const t=new Set((e||[]).filter(o=>o?.ueObj&&ge(o.ueObj.objectId)&&o.ueObj.deviceIndex!==-1).map(o=>`${o.ueObj.objectId}:${o.ueObj.deviceIndex}`));if(!t.size||!Array.isArray(ie?.deviceEventList))return[];const n=[];for(const o of ie.deviceEventList){const c=o?.eventId?.deviceInstanceId;if(!c)continue;const i=`${c.objectId}:${c.deviceIndex}`;for(const r of o.relationEventId||[]){const a=r?.deviceInstanceId;if(!a)continue;const l=`${a.objectId}:${a.deviceIndex}`;t.has(i)&&t.has(l)&&n.push({src:{objectId:c.objectId,deviceIndex:c.deviceIndex,eventName:o.eventId.eventName},tgt:{objectId:a.objectId,deviceIndex:a.deviceIndex,eventName:r.eventName}})}}return n}function Gt(){bn();const e=document.getElementById("referenceGraphPanel"),t=document.getElementById("referenceGraphCount"),n=document.getElementById("btnCopyReferenceLogic"),o=document.getElementById("btnClearReferenceSelection"),c=document.getElementById("btnSelectAllReferenceLogic"),i=document.getElementById("btnGraphReferenceTab"),r=J==="reference";e&&(e.hidden=J!=="reference"),i&&i.classList.toggle("has-reference",!!ie);const a=k.size;t&&(t.textContent=ie?`${xn||"Reference"} - ${Q.length} devices, ${a} selected`:"Load a second file to browse its device logic"),t&&(t.hidden=!r),c&&(c.hidden=!r,c.disabled=!Q.length),n&&(n.hidden=!r,n.disabled=!a||!_()),o&&(o.hidden=!r,o.disabled=!a),r&&He()}function bn(){const e=new Set(Q.map(t=>`${t.ueObj.objectId}:${t.ueObj.deviceIndex}`));for(const t of[...k])e.has(t)||k.delete(t);fe&&!e.has($o(fe))&&(fe=null)}function Je(e){J=e==="reference"?"reference":"current",document.getElementById("btnGraphCurrentTab")?.classList.toggle("active",J==="current"),document.getElementById("btnGraphReferenceTab")?.classList.toggle("active",J==="reference"),document.getElementById("liveGraphPanel")?.toggleAttribute("hidden",J!=="current"),document.getElementById("referenceGraphPanel")?.toggleAttribute("hidden",J!=="reference"),Gt(),ne&&(J==="reference"?(bn(),Ie?.render(),Ie?.setSelectedIds(k,{keepFocused:!0}),He()):(ce?.render(),ce?.setSelected(d),d?K(d):ot()))}function yn(e){fe=null,k.clear();for(const t of e||[])k.add(t);Ie?.setSelectedIds(k),He(),Gt()}function Li(e,t){fe=null,!t?.shiftKey&&!t?.ctrlKey&&!t?.metaKey&&k.clear();for(const n of e||[])k.add(n);Ie?.setSelectedIds(k),He(),Gt()}function Pi(e,t,n){!e||!t||(fe=e,n?.shiftKey||n?.ctrlKey||n?.metaKey?k.has(t)?k.delete(t):k.add(t):(k.clear(),k.add(t)),Ie?.setSelectedIds(k,{keepFocused:!0}),He(e),Gt())}async function Ri(e){if(e){h(`Loading reference logic from ${e.name}...`);try{const{json:t,name:n}=await Ti(e);ie=t,xn=e.name||n||"Reference logic",Q=Oi(t),fe=null,k.clear(),Ie?.resetView(),He(null),_t("graph"),Je("reference"),h(`Loaded ${Q.length} reference device${Q.length===1?"":"s"} from ${xn}`)}catch(t){h(`Reference load error: ${t.message}`,!0),console.error(t)}}}function Di(){yn(Q.map(e=>`${e.ueObj.objectId}:${e.ueObj.deviceIndex}`))}function ko(){bn();const e=Q.filter(n=>k.has(`${n.ueObj.objectId}:${n.ueObj.deviceIndex}`));if(!e.length)return;const t=e[0].ueObj.spawnTransform?.translation||{x:0,y:0,z:0};E={type:e.length===1?"object":"objects",objects:e.map(n=>{const o=n.ueObj.spawnTransform?.translation||{x:0,y:0,z:0};return{source:C(n.ueObj),relativeTranslation:{x:Number(o.x||0)-Number(t.x||0),y:Number(o.y||0)-Number(t.y||0),z:Number(o.z||0)-Number(t.z||0)}}}),wiring:Bi(e)},Ne(),h(`Copied ${e.length} reference device${e.length===1?"":"s"} - use Paste to transfer`)}function No(){return se({x:g("placeCenterX"),y:g("placeCenterY"),z:g("placeCenterZ")})}function Qe(e){const t=N(e),n=document.getElementById("placeCenterX"),o=document.getElementById("placeCenterY"),c=document.getElementById("placeCenterZ");!n||!o||!c||(n.value=Math.round(t.x),o.value=Math.round(t.y),c.value=Math.round(t.z),We(),nt())}function Mi(e){return kr(y,e)}function Ao(e,t,n,o={x:1,y:1,z:1}){return ec(e,t,n,{scale3D:o,catalog:y,isDeviceObjectId:ge,nextDeviceIndex:yo})}async function Fo(e){const t=fn(e.ueObj);if(t){const o=await Mn(t);if(o){e.currentMeshAsset=t,await Nt(e,o,{allowReplace:!0});return}}if(mo.has(String(e.ueObj.objectId)))return;const n=await $n(e.ueObj.objectId);n&&!e.hasRealMesh&&await Nt(e,n)}function vt(e,t={}){const n=_();if(!n)return h("Open a .pugc file before placing objects",!0),null;n.push(e);const o=ao(e,ee(e.objectId));return o.group.userData.itemRef=o,o.keepEditorPivotOnMeshLoad=t.keepEditorPivotOnMeshLoad??!1,o.circleToolId=t.circleToolId??null,o.gridToolId=t.gridToolId??null,w.add(o.group),S.push(o),bo(o),Fo(o),o}function Ae(){return{diameter:Math.max(0,g("circleDiameter",20)),count:Math.max(3,Math.min(1e3,Math.round(g("circleCount",3)))),offsetDeg:g("circleRotOffsetManual",0),objectPitchDeg:g("circleObjectPitch",0),objectRollDeg:g("circleObjectRoll",0),radialStep:g("circleRadialStep",0),heightStep:g("circleHeightStep",0),rotationStepDeg:g("circleRotationStep",0),scaleX:ze(g("circleScaleX",1)),scaleY:ze(g("circleScaleY",1)),scaleZ:ze(g("circleScaleZ",1)),scaleStepX:g("circleScaleStepX",0),scaleStepY:g("circleScaleStepY",0),scaleStepZ:g("circleScaleStepZ",0),scaleOffsets:!!document.getElementById("circleScaleOffsets")?.checked}}function Sn(e=Ae()){Pn("circleDiameterSlider",e.diameter),Pn("circleCountSlider",jt(e)),H("circleObjectPitchSlider",e.objectPitchDeg||0),H("circleRotOffsetSlider",e.offsetDeg||0),H("circleObjectRollSlider",e.objectRollDeg||0),H("circleRotationStepSlider",e.rotationStepDeg||0),H("circleRadialStepSlider",e.radialStep||0),H("circleHeightStepSlider",e.heightStep||0),H("circleScaleXSlider",e.scaleX||1),H("circleScaleYSlider",e.scaleY||1),H("circleScaleZSlider",e.scaleZ||1),H("circleScaleStepXSlider",e.scaleStepX||0),H("circleScaleStepYSlider",e.scaleStepY||0),H("circleScaleStepZSlider",e.scaleStepZ||0)}function $i(e){Pt(e.objectId,{close:!1,apply:!1,keepTemplates:!0}),document.getElementById("circleDiameter").value=e.params.diameter,document.getElementById("circleCount").value=jt(e.params),I("circleObjectPitch",e.params.objectPitchDeg||0),I("circleRotOffsetManual",e.params.offsetDeg||0),I("circleObjectRoll",e.params.objectRollDeg||0),I("circleRadialStep",e.params.radialStep||0),I("circleHeightStep",e.params.heightStep||0),I("circleRotationStep",e.params.rotationStepDeg||0),I("circleScaleX",e.params.scaleX||1,3),I("circleScaleY",e.params.scaleY||1,3),I("circleScaleZ",e.params.scaleZ||1,3),I("circleScaleStepX",e.params.scaleStepX||0,3),I("circleScaleStepY",e.params.scaleStepY||0,3),I("circleScaleStepZ",e.params.scaleStepZ||0,3);const t=document.getElementById("circleScaleOffsets");t&&(t.checked=!!e.params.scaleOffsets),Qe(e.group.position),Sn(e.params)}function Go(){const e=[...b].sort((c,i)=>S.indexOf(c)-S.indexOf(i));if(!e.length)return null;const t=d&&b.has(d)?d:e[0],n=X(t),o=t.group.quaternion.clone().invert();return{anchor:t,templates:e.map(c=>{const i=X(c).sub(n).applyQuaternion(o),r=o.clone().multiply(c.group.quaternion);return{objectId:c.ueObj.objectId,source:C(c.ueObj),offset:{x:i.x,y:i.y,z:i.z},quaternion:{x:r.x,y:r.y,z:r.z,w:r.w},scale3D:Ve(c.ueObj.spawnTransform.scale3D)}})}}function Yo(e){return vr(e)}function Ka(){if(!d)return;const e=Go();F=e?.templates?.length>1?e.templates:null,G++;const t=pt(d),n=Ve(d.ueObj.spawnTransform.scale3D);Pt(d.ueObj.objectId,{close:!1,apply:!1,keepTemplates:!0}),Qe(X(d)),Ai()==="grid"?(I("gridObjectPitch",t.p),I("gridObjectYaw",t.y),I("gridObjectRoll",t.r),I("gridScaleX",n.x,3),I("gridScaleY",n.y,3),I("gridScaleZ",n.z,3),vn(Fe())):(I("circleObjectPitch",t.p),I("circleRotOffsetManual",t.y),I("circleObjectRoll",t.r),I("circleScaleX",n.x,3),I("circleScaleY",n.y,3),I("circleScaleZ",n.z,3),Sn(Ae())),pe(),be(),F&&h(`Using ${F.length} selected objects as placement template`)}function jt(e=Ae()){return Number.isFinite(e.count)?Math.max(3,Math.min(1e3,Math.round(e.count))):Math.max(3,Math.min(1e3,Math.round(Math.PI*e.diameter/Math.max(.1,e.spacing||2))))}function We(){const e=document.getElementById("circlePreviewText");if(!e)return;const t=Ae();Sn(t);const n=jt(t),o=Math.PI*t.diameter/n,c=t.radialStep||0,i=t.heightStep||0,r=t.scaleStepX||t.scaleStepY||t.scaleStepZ,a=c||i||t.rotationStepDeg||r;e.textContent=`${n} objects, ${o.toFixed(2)} m spacing${a?`, step R ${je(c,2)} m H ${je(i,2)} m S ${je(t.scaleStepX||0,3)},${je(t.scaleStepY||0,3)},${je(t.scaleStepZ||0,3)}`:""}${t.scaleOffsets?", scaled offsets":""}`}function ki(){if(We(),!m)return;const e=ke();!Number.isFinite(e)||!y.objects[String(e)]&&!y.devices[String(e)]||(L("Edit Circle Tool"),Uo(m,e),m.params=Ae(),Oe(m),T(),x("Edit Circle Tool"))}function he(e){return jr(e)}function zo(e,t){return Ve({x:Number(e.scaleX??1)+Number(e.scaleStepX||0)*t,y:Number(e.scaleY??1)+Number(e.scaleStepY||0)*t,z:Number(e.scaleZ??1)+Number(e.scaleStepZ||0)*t})}function Ni(e,t,n){const o=e.offset||{x:0,y:0,z:0},c=new u.Vector3(o.x||0,o.y||0,o.z||0);return n?c.multiply(new u.Vector3(t.x??1,t.z??1,t.y??1)):c}function et(e){return Xe(e)}function Ai(){return document.getElementById("gridToolPanel")?.hasAttribute("hidden")?"circle":"grid"}function Fi(e,t,n){const o=new u.Euler(u.MathUtils.degToRad(Number(e.objectPitchDeg||0)),-t+u.MathUtils.degToRad(Number(e.offsetDeg||0)+Number(e.rotationStepDeg||0)*n),u.MathUtils.degToRad(Number(e.objectRollDeg||0)),"YXZ");return new u.Quaternion().setFromEuler(o)}function Vo(e){const t=e.params.diameter/2;if(e.helperRadius===t&&e.group.children.length){Yt(e);return}e.helperRadius=t,Zo(e.group);const n=new u.Mesh(new u.TorusGeometry(t,.15,8,128),new u.MeshBasicMaterial({color:3389183,transparent:!0,opacity:m===e?.95:.55}));n.rotation.x=Math.PI/2,n.userData.circleToolRef=e,e.group.add(n);const o=new u.Mesh(new u.SphereGeometry(.8,16,8),new u.MeshBasicMaterial({color:3389183,transparent:!0,opacity:m===e?.95:.65}));o.userData.circleToolRef=e,e.group.add(o)}function Yt(e){qo(e.group,m===e),zt(e,m===e)}function Xo(e){if(!e)return[];const t=Math.max(1,et(e).length);return e.items.slice(0,t).filter(Boolean)}function Gi(e){const t=m||p;return t&&Xo(t).includes(e)}function zt(e,t){Xo(e).forEach((n,o)=>{b.has(n)||(t?Cr(n,Or(o)):wr(n,A))})}function tt(){if(B=null,m){const e=m;m=null,Yt(e)}if(p){const e=p;p=null,Xt(e)}}function qo(e,t){for(const n of e.children){const o=Array.isArray(n.material)?n.material:[n.material];for(const c of o)c.opacity=t?.95:.55,c.needsUpdate=!0}}function Zo(e){for(const t of[...e.children]){e.remove(t),t.geometry?.dispose();const n=Array.isArray(t.material)?t.material:[t.material];for(const o of n)o?.dispose?.()}}function Uo(e,t){if(F?.length&&e.templateVersion!==G&&Yo(e.templates)!==Yo(F)){for(const n of[...e.items])Te(n,!0);e.items.length=0,e.templates=C(F),e.templateVersion=G,e.objectId=e.templates[0].objectId}else if(!e.templates?.length&&t!==e.objectId){for(const n of[...e.items])Te(n,!0);e.items.length=0,e.templates=null,F=null,G++,e.templateVersion=0,e.objectId=t}}function Yi(e,t,n,o){if(e.items.some((i,r)=>Number(i.ueObj.objectId)!==Number(n[r%n.length].objectId))){for(const i of[...e.items])Te(i,!0);e.items.length=0}for(;e.items.length>t;)Te(e.items.at(-1),!0);for(;e.items.length<t;){const i=n[e.items.length%n.length],r=i.quaternion||{x:0,y:0,z:0,w:1},a=i.source?Ft(i.source,0):Ao(i.objectId,e.group.position,new u.Quaternion(r.x||0,r.y||0,r.z||0,r.w??1),i.scale3D||{x:1,y:1,z:1}),l=vt(a,{keepEditorPivotOnMeshLoad:!1,[o]:e.id});l&&(l[o]=e.id,e.items.push(l))}}function zi(e,t){return t==="grid"?Math.max(1,Math.round(e.params.columns||1))*Math.max(1,Math.round(e.params.rows||1))*Math.max(1,Math.round(e.params.layers||1)):jt(e.params)}function _o(e,t,n){const o=e.params,c=t/n*Math.PI*2,i=o.diameter/2+Number(o.radialStep||0)*t,a=new u.Vector3(Math.cos(c)*i,Number(o.heightStep||0)*t,Math.sin(c)*i).applyQuaternion(e.group.quaternion).add(e.group.position),l=e.group.quaternion.clone().multiply(Fi(o,c,t));return{root:a,quat:l,scale:zo(o,t),scaleOffsets:!!o.scaleOffsets}}function Ko(e,t){const n=e.params,o=Math.max(1,Math.round(n.columns||1)),c=Math.max(1,Math.round(n.rows||1)),i=t%o,r=Math.floor(t/o%c),a=Math.floor(t/(o*c)),f=new u.Vector3((i-(o-1)/2)*Number(n.spacingX||0),Number(n.heightStep||0)*r+Number(n.spacingZ||0)*a,(r-(c-1)/2)*Number(n.spacingY||0)).applyQuaternion(e.group.quaternion).add(e.group.position),s=e.group.quaternion.clone().multiply(Zi(n,t));return{root:f,quat:s,scale:zo(n,t),scaleOffsets:!1}}function Vi(e,t,n,o){return t==="grid"?Ko(e,n):_o(e,n,o)}function Ho(e,t){const n=et(e),o=zi(e,t),c=o*n.length;Yi(e,c,n,t==="grid"?"gridToolId":"circleToolId");for(let i=0;i<o;i++){const r=Vi(e,t,i,o);for(let a=0;a<n.length;a++){const l=e.items[i*n.length+a],f=n[a],s=f.quaternion||{x:0,y:0,z:0,w:1},v=Ni(f,r.scale,r.scaleOffsets).applyQuaternion(r.quat).add(r.root),O=Sr(f.scale3D,r.scale);l.group.scale.copy(Ot(O)),l.group.quaternion.copy(r.quat).multiply(new u.Quaternion(s.x||0,s.y||0,s.z||0,s.w??1)),l.group.position.copy(v).add(te(l)),l.ueObj.spawnTransform.translation=N(v),l.ueObj.spawnTransform.rotation=Be(l.group.quaternion),l.ueObj.spawnTransform.scale3D=O}}t==="grid"?(Wo(e),nt(),p===e&&Zt(e)):(Vo(e),We(),m===e&&qt(e))}function Oe(e){Ho(e,"circle")}function In(e,t,n,o=null,c={}){const i={id:ht++,objectId:o?.[0]?.objectId??e,templates:o?.length?C(o):null,templateVersion:o?.length?G:0,params:{...n},group:new u.Group,items:[]};return i.group.position.copy(t),c.quaternion&&i.group.quaternion.copy(c.quaternion),i.group.name=`Circle Tool ${i.id}`,i.group.userData.circleToolRef=i,z.push(i),w.add(i.group),Oe(i),i}let Jo=!1;function Xi(){const e=ke();if(!Number.isFinite(e)){h("Choose an object/device to place",!0);return}if(!y.objects[String(e)]&&!y.devices[String(e)]){h(`Unknown objectId ${e}`,!0);return}L("Place Object");const t=vt(Ao(e,P.position.clone(),new u.Quaternion,{x:1,y:1,z:1}));if(!t){mn();return}ye(t),ve("translate"),pe(),T(),x("Place Object"),h(`Placed ${t.meta.name} (${e}) - drag to position`),Jo||(Jo=!0,Ct("first_place_object"))}function Ha(){const e=ke();if(!Number.isFinite(e)){h("Choose an object/device to place",!0);return}if(!y.objects[String(e)]&&!y.devices[String(e)]){h(`Unknown objectId ${e}`,!0);return}if(!_()){h("Open a .pugc file before placing objects",!0);return}const n=Ae(),o=F;L("Create Circle Tool");const c=In(e,No(),n,o);de(c),pe(),T(),x("Create Circle Tool"),h(`Created Circle Tool ${c.id}: ${c.items.length} object${c.items.length===1?"":"s"}`)}function Fe(){return{columns:Math.max(1,Math.min(250,Math.round(g("gridColumns",3)))),rows:Math.max(1,Math.min(250,Math.round(g("gridRows",3)))),layers:Math.max(1,Math.min(250,Math.round(g("gridLayers",1)))),spacingX:Math.max(0,g("gridSpacingX",5)),spacingY:Math.max(0,g("gridSpacingY",5)),spacingZ:g("gridSpacingZ",0),heightStep:g("gridHeightStep",0),yawStepDeg:g("gridYawStep",0),objectPitchDeg:g("gridObjectPitch",0),offsetDeg:g("gridObjectYaw",0),objectRollDeg:g("gridObjectRoll",0),scaleX:ze(g("gridScaleX",1)),scaleY:ze(g("gridScaleY",1)),scaleZ:ze(g("gridScaleZ",1)),scaleStepX:0,scaleStepY:0,scaleStepZ:0}}function Qo(e=Fe()){return Math.max(1,Math.min(250,Math.round(e.columns||1)))*Math.max(1,Math.min(250,Math.round(e.rows||1)))*Math.max(1,Math.min(250,Math.round(e.layers||1)))}function vn(e=Fe()){for(const[t,n]of[["gridColumnsSlider",e.columns||3],["gridRowsSlider",e.rows||3],["gridLayersSlider",e.layers||1],["gridSpacingXSlider",e.spacingX||0],["gridSpacingYSlider",e.spacingY||0],["gridSpacingZSlider",e.spacingZ||0],["gridHeightStepSlider",e.heightStep||0],["gridYawStepSlider",e.yawStepDeg||0],["gridObjectPitchSlider",e.objectPitchDeg||0],["gridObjectYawSlider",e.offsetDeg||0],["gridObjectRollSlider",e.objectRollDeg||0],["gridScaleXSlider",e.scaleX||1],["gridScaleYSlider",e.scaleY||1],["gridScaleZSlider",e.scaleZ||1]])H(t,n)}function nt(){const e=document.getElementById("gridPreviewText");if(!e)return;const t=Fe();vn(t);const n=F?.length||1,o=t.objectPitchDeg||t.offsetDeg||t.objectRollDeg||t.yawStepDeg,c=t.scaleX!==1||t.scaleY!==1||t.scaleZ!==1,i=Math.max(1,Math.round(t.layers||1)),r=i>1?`${t.columns} x ${t.rows} x ${i}L`:`${t.columns} x ${t.rows}`;e.textContent=`${r} grid, ${Qo(t)*n} object${Qo(t)*n===1?"":"s"}${o?", object rotation":""}${c?", scaled":""}`}function qi(e){Pt(e.objectId,{close:!1,apply:!1,keepTemplates:!0}),I("gridColumns",e.params.columns||3,0),I("gridRows",e.params.rows||3,0),I("gridLayers",e.params.layers||1,0),I("gridSpacingX",e.params.spacingX||0,2),I("gridSpacingY",e.params.spacingY||0,2),I("gridSpacingZ",e.params.spacingZ||0,2),I("gridHeightStep",e.params.heightStep||0,2),I("gridYawStep",e.params.yawStepDeg||0),I("gridObjectPitch",e.params.objectPitchDeg||0),I("gridObjectYaw",e.params.offsetDeg||0),I("gridObjectRoll",e.params.objectRollDeg||0),I("gridScaleX",e.params.scaleX||1,3),I("gridScaleY",e.params.scaleY||1,3),I("gridScaleZ",e.params.scaleZ||1,3),Qe(e.group.position),vn(e.params)}function Vt(){if(nt(),!p)return;const e=ke();!Number.isFinite(e)||!y.objects[String(e)]&&!y.devices[String(e)]||(L("Edit Grid Tool"),Uo(p,e),p.params=Fe(),we(p),T(),x("Edit Grid Tool"))}function be(){p?Vt():ki()}function Zi(e,t){return new u.Quaternion().setFromEuler(new u.Euler(u.MathUtils.degToRad(Number(e.objectPitchDeg||0)),u.MathUtils.degToRad(Number(e.offsetDeg||0)+Number(e.yawStepDeg||0)*t),u.MathUtils.degToRad(Number(e.objectRollDeg||0)),"YXZ"))}function Wo(e){const t=Math.max(1,Math.round(e.params.columns||1)),n=Math.max(1,Math.round(e.params.rows||1)),o=Math.max(1,Math.round(e.params.layers||1)),c=Number(e.params.spacingX||0),i=Number(e.params.spacingY||0),r=Number(e.params.spacingZ||0),a=Math.max(.5,(t-1)*c),l=Math.max(.5,(n-1)*i),f=`${t}:${n}:${o}:${c}:${i}:${r}`;if(e.helperKey===f&&e.group.children.length){Xt(e);return}e.helperKey=f,Zo(e.group);const s=new u.LineBasicMaterial({color:8115567,transparent:!0,opacity:p===e?.95:.55}),v=[],O=-a/2,j=a/2,W=-l/2,U=l/2;for(let at=0;at<o;at++){const Ce=r*at;for(let ae=0;ae<t;ae++){const st=(ae-(t-1)/2)*c;v.push(new u.Vector3(st,Ce,W),new u.Vector3(st,Ce,U))}for(let ae=0;ae<n;ae++){const st=(ae-(n-1)/2)*i;v.push(new u.Vector3(O,Ce,st),new u.Vector3(j,Ce,st))}}if(o>1){const at=r*(o-1);for(const Ce of[O,j])for(const ae of[W,U])v.push(new u.Vector3(Ce,0,ae),new u.Vector3(Ce,at,ae))}const mr=new u.BufferGeometry().setFromPoints(v),Tn=new u.LineSegments(mr,s);Tn.userData.gridToolRef=e,e.group.add(Tn);const On=new u.Mesh(new u.BoxGeometry(1.4,.25,1.4),new u.MeshBasicMaterial({color:8115567,transparent:!0,opacity:p===e?.95:.65}));On.userData.gridToolRef=e,e.group.add(On)}function Xt(e){qo(e.group,p===e),zt(e,p===e)}function we(e){Ho(e,"grid")}function jn(e,t,n,o=null,c={}){const i={id:bt++,objectId:o?.[0]?.objectId??e,templates:o?.length?C(o):null,templateVersion:o?.length?G:0,params:{...n},group:new u.Group,items:[]};return i.group.position.copy(t),c.quaternion&&i.group.quaternion.copy(c.quaternion),i.group.name=`Grid Tool ${i.id}`,i.group.userData.gridToolRef=i,V.push(i),w.add(i.group),we(i),i}function Ja(){const e=ke();if(!Number.isFinite(e)){h("Choose an object/device to place",!0);return}if(!y.objects[String(e)]&&!y.devices[String(e)]){h(`Unknown objectId ${e}`,!0);return}if(!_()){h("Open a .pugc file before placing objects",!0);return}const n=Fe(),o=F;L("Create Grid Tool");const c=jn(e,No(),n,o);ue(c),pe(),T(),x("Create Grid Tool"),h(`Created Grid Tool ${c.id}: ${c.items.length} object${c.items.length===1?"":"s"}`)}function Qa(){tc(S,{camera:P,orbitControls:R})}function Ui(){!P||!R||(R.target.copy(gt),P.position.copy(gt).add(new u.Vector3(0,300,600)),P.lookAt(R.target),R.update())}function Ge(){d=wt(b,A)}function er(){return new Set([...b].filter(e=>e?.ueObj&&ge(e.ueObj.objectId)&&e.ueObj.deviceIndex!==-1).map(e=>`${e.ueObj.objectId}:${e.ueObj.deviceIndex}`))}function _i(e,t){const n=new Set(e||[]),o=S.filter(i=>n.has(`${i.ueObj?.objectId}:${i.ueObj?.deviceIndex}`));if(!o.length)return;t?.shiftKey||t?.ctrlKey||t?.metaKey||Z();for(const i of o)ye(i,{add:!0});ce?.setSelectedIds(er()),h(`Selected ${o.length} graph node${o.length===1?"":"s"}`)}function Ye(){const t=b.size>0||!!m||!!p||!!M||!!B;document.getElementById("btnFocus").disabled=!t,document.getElementById("btnDelete").disabled=!t,document.getElementById("btnCreateCollection").disabled=!_();const n=le([...b]).length>0,o=document.getElementById("btnCreateCircleTool"),c=document.getElementById("btnCreateGridTool");o&&(o.disabled=!n),c&&(c.disabled=!n);const i=document.getElementById("btnChainAiPath");i&&(i.disabled=[...b].filter(W=>Number(W.ueObj?.objectId)===Lo).length<2);const r=document.getElementById("btnReleaseCircle");r&&(r.hidden=!m);const a=document.getElementById("btnReleaseGrid");a&&(a.hidden=!p);const l=document.getElementById("toolParamsSection");l&&(l.hidden=!(m||p));const f=le([...b]).length>=2,s=document.getElementById("btnSelectionTools");!f&&Re&&(Re=!1,s&&s.classList.remove("active")),s&&(s.disabled=!f);const v=document.getElementById("selectionToolSection");v&&(v.hidden=!Re);const O=fr()==="none",j=document.getElementById("btnScale");j&&(j.disabled=O),O&&D?.mode==="scale"&&ve("translate"),Ne()}function ot(){document.getElementById("propsEmpty").style.display="none",document.getElementById("propsContent").style.display="none",document.getElementById("propsDetailsEmpty").style.display="",document.getElementById("propsDetailsContent").style.display="none"}function ye(e,{add:t=!1,toggle:n=!1}={}){e&&(window.getSelection()?.removeAllRanges(),M=null,tt(),!t&&!n&&Ge(),d=ut({item:e,selectedItems:b,current:d,add:!0,toggle:n,normalOpacity:A}),d?(D.attach(d.group),K(d),Se(),ir()):(D.detach(),ot(),Se()),ce?.setSelected(d),Ye())}function de(e){m!==e&&(M=null,Ge(),F=e.templates?.length?C(e.templates):null,G=e.templateVersion||G+1,e.templates?.length&&!e.templateVersion&&(e.templateVersion=G),tt(),m=e,d=null,Yt(e),pr("circle"),$i(e),ve("translate"),D.attach(e.group),qt(e),Ye())}function ue(e){p!==e&&(M=null,Ge(),F=e.templates?.length?C(e.templates):null,G=e.templateVersion||G+1,e.templates?.length&&!e.templateVersion&&(e.templateVersion=G),tt(),p=e,d=null,Xt(e),pr("grid"),qi(e),ve("translate"),D.attach(e.group),Zt(e),Ye())}function rt(e){if(e){Ge(),tt(),M=e,d=null;for(const t of e.items)S.includes(t)&&(d=ut({item:t,selectedItems:b,current:d,add:!0,toggle:!1,normalOpacity:A}));d?(D.attach(d.group),K(d)):(D.detach(),ot()),Ye()}}function En(e,t,n,{add:o=!1}={}){e.templates?.length||(e.templates=C(Xe(e)));const c=e.items[n];if(!c)return;if(o&&B?.tool===e)if(d=ut({item:c,selectedItems:b,current:d,add:!0,toggle:!0,normalOpacity:A}),b.has(c))B={tool:e,type:t,templateIndex:n},D.attach(c.group);else if(d){const a=e.items.indexOf(d);a>=0&&(B={tool:e,type:t,templateIndex:a}),D.attach(d.group)}else{B=null,t==="circle"?de(e):ue(e);return}else Ge(),tt(),M=null,d=wt(b,A),d=ut({item:c,selectedItems:b,current:null,add:!0,toggle:!1,normalOpacity:A}),B={tool:e,type:t,templateIndex:n},D.attach(c.group),ve("translate");K(c),Ye();const i=ee(c.ueObj.objectId),r=b.size>1?` (${b.size} selected)`:"";h(`Editing ${t==="grid"?"Grid":"Circle"} Tool ${e.id} base object ${n+1} (${i.name})${r} - move to reshape the pattern, Delete button removes it from the base`)}function tr(e,t,n){if(e&&(e.templates?.length||(e.templates=C(Xe(e))),!(n<0||n>=e.templates.length))){if(e.templates.length<=1){h("A tool needs at least one base object",!0);return}L("Remove Base Object"),e.templates.splice(n,1),e.templateVersion=(e.templateVersion||0)+1,F=C(e.templates),G++,B=null,d=wt(b,A),t==="grid"?(p=null,we(e),ue(e)):(m=null,Oe(e),de(e)),T(),x("Remove Base Object"),h("Removed object from tool base")}}function Ki(){B&&tr(B.tool,B.type,B.templateIndex)}function Z(){if(Ge(),B=null,M=null,m){const e=m;m=null,Yt(e)}if(p){const e=p;p=null,Xt(e)}D.detach(),ot(),ce?.setSelected(null),Ye(),document.getElementById("hudCoords").textContent=""}let re=null;const Et=new u.Vector3;function Hi(e,t){re||(re=document.createElement("div"),re.style.cssText="position:fixed;border:1px solid #4ea3ff;background:rgba(78,163,255,0.12);pointer-events:none;z-index:9999;display:none;",document.body.appendChild(re)),re.style.left=Math.min(e.x,t.x)+"px",re.style.top=Math.min(e.y,t.y)+"px",re.style.width=Math.abs(e.x-t.x)+"px",re.style.height=Math.abs(e.y-t.y)+"px",re.style.display="block"}function Ji(){re&&(re.style.display="none")}function Qi(e,t,n){const o=document.getElementById("sceneCanvas").getBoundingClientRect();n||(Ge(),d=wt(b,A),M=null,tt());const c=jo();for(const i of S){if(!i.group.visible||c.has(i)||(i.group.getWorldPosition(Et),Et.project(P),Et.z>1))continue;const r=o.left+(Et.x*.5+.5)*o.width,a=o.top+(-Et.y*.5+.5)*o.height;r<e.x||r>t.x||a<e.y||a>t.y||(d=ut({item:i,selectedItems:b,current:d,add:!0,toggle:!1,normalOpacity:A}))}d?(D.attach(d.group),K(d),ir()):(D.detach(),ot()),Ye(),Se()}function Wi(e){const n=document.getElementById("sceneCanvas").getBoundingClientRect(),o=new u.Vector2((e.clientX-n.left)/n.width*2-1,(e.clientY-n.top)/n.height*-2+1);Dt.setFromCamera(o,P);const c=S.map(l=>l.mesh).filter(Boolean),i=Dt.intersectObjects(c,!0);if(i.length){let l=i[0].object;for(;l&&!l.userData?.itemRef;)l=l.parent;const f=l?.userData?.itemRef;if(f){const s=si(f);if(s){const v=s.tool.items.indexOf(f),O=et(s.tool).length;v>=0&&v<O?En(s.tool,s.type,v,{add:e.shiftKey||e.ctrlKey||e.metaKey}):s.type==="circle"?de(s.tool):ue(s.tool),Se();return}ye(f,{add:e.ctrlKey||e.metaKey||e.shiftKey,toggle:e.ctrlKey||e.metaKey||e.shiftKey}),Se();return}}const r=[...z,...V].flatMap(l=>l.group.children.filter(f=>f.isMesh||f.isLineSegments)),a=Dt.intersectObjects(r,!1);if(a.length){const l=a[0].object.userData;if(l.circleToolRef){de(l.circleToolRef),Se();return}if(l.gridToolRef){ue(l.gridToolRef),Se();return}}Z(),Se()}function ea(){ln=An(d,b,X)}function nr(){Nn(ln,d,b,{rootPositionForItem:X,pivotOffsetForItem:te,clampScale:lt,positionToUe4:N,quaternionToUe4:Be,scaleToUe4:dt})}function or(){if(B){const{tool:c,type:i,templateIndex:r}=B,a=c.items[r];if(!a||!c.templates?.[r])return;lt(a.group.scale),nr();const l=i==="grid"?Oo(c):To(c),f=et(c).length;for(const v of b){const O=c.items.indexOf(v);if(O<0||O>=f||!c.templates[O])continue;lt(v.group.scale);const j=gn(v,l);c.templates[O]={...c.templates[O],offset:j.offset,quaternion:j.quaternion,scale3D:j.scale3D}}c.templateVersion=(c.templateVersion||0)+1,F=C(c.templates),G++,i==="grid"?we(c):Oe(c),K(c.items[r]);const s=gn(a,l);document.getElementById("hudCoords").textContent=`Base ${r+1} - offset ${s.offset.x.toFixed(2)}, ${s.offset.y.toFixed(2)}, ${s.offset.z.toFixed(2)} m`;return}if(m){Oe(m),Y(),Qe(m.group.position);const c=N(m.group.position),i=he(m);document.getElementById("hudCoords").textContent=`Circle X ${c.x.toFixed(0)}  Y ${c.y.toFixed(0)}  Z ${c.z.toFixed(0)} cm  Rot P ${i.p.toFixed(1)} Y ${i.y.toFixed(1)} R ${i.r.toFixed(1)} deg`;return}if(p){we(p),Y(),Qe(p.group.position);const c=N(p.group.position),i=he(p);document.getElementById("hudCoords").textContent=`Grid X ${c.x.toFixed(0)}  Y ${c.y.toFixed(0)}  Z ${c.z.toFixed(0)} cm  Rot P ${i.p.toFixed(1)} Y ${i.y.toFixed(1)} R ${i.r.toFixed(1)} deg`;return}if(!d)return;const{group:e,ueObj:t}=d;lt(e.scale);const n=ur(d);if(n==="none")e.scale.set(1,1,1);else if(n==="uniform"){const c=e.scale.x;e.scale.set(c,c,c)}t.spawnTransform.translation=N(X(d)),t.spawnTransform.rotation=Be(e.quaternion),t.spawnTransform.scale3D=dt(e.scale),nr(),Y(),K(d);const o=t.spawnTransform.translation;document.getElementById("hudCoords").textContent=`X ${o.x.toFixed(0)}  Y ${o.y.toFixed(0)}  Z ${o.z.toFixed(0)} cm`}function ta(){if(!d)return;L("Transform");const e=An(d,b,X),t={x:g("propPosX",d.ueObj.spawnTransform.translation.x),y:g("propPosY",d.ueObj.spawnTransform.translation.y),z:g("propPosZ",d.ueObj.spawnTransform.translation.z)},n=Ve({x:g("propScaleX",d.ueObj.spawnTransform.scale3D.x),y:g("propScaleY",d.ueObj.spawnTransform.scale3D.y),z:g("propScaleZ",d.ueObj.spawnTransform.scale3D.z)}),o=new u.Euler(u.MathUtils.degToRad(g("propRotP",pt(d).p)),u.MathUtils.degToRad(g("propRotY",pt(d).y)),u.MathUtils.degToRad(g("propRotR",pt(d).r)),"YXZ"),c=d.ueObj.spawnTransform.translation,i=Math.abs(t.x-c.x)>.01||Math.abs(t.y-c.y)>.01||Math.abs(t.z-c.z)>.01,r=d.group.position.clone();if(d.group.scale.copy(Ot(n)),d.group.quaternion.setFromEuler(o),d.ueObj.spawnTransform.scale3D=n,d.ueObj.spawnTransform.rotation=Be(d.group.quaternion),i)d.ueObj.spawnTransform.translation=t,d.group.position.copy(se(t).add(te(d)));else{const a=N(r.clone().sub(te(d)));d.ueObj.spawnTransform.translation=a,d.group.position.copy(r)}Nn(e,d,b,{rootPositionForItem:X,pivotOffsetForItem:te,clampScale:lt,positionToUe4:N,quaternionToUe4:Be,scaleToUe4:dt}),K(d),en("propScaleX",n.x,6,!0),en("propScaleY",n.y,6,!0),en("propScaleZ",n.z,6,!0),T(),Y(),x("Transform")}function na(){m&&(L("Transform Circle Tool"),m.group.position.copy(se({x:g("propPosX",N(m.group.position).x),y:g("propPosY",N(m.group.position).y),z:g("propPosZ",N(m.group.position).z)})),m.group.quaternion.setFromEuler(new u.Euler(u.MathUtils.degToRad(g("propRotP",he(m).p)),u.MathUtils.degToRad(g("propRotY",he(m).y)),u.MathUtils.degToRad(g("propRotR",he(m).r)),"YXZ")),Oe(m),qt(m),T(),Y(),x("Transform Circle Tool"))}function oa(){p&&(L("Transform Grid Tool"),p.group.position.copy(se({x:g("propPosX",N(p.group.position).x),y:g("propPosY",N(p.group.position).y),z:g("propPosZ",N(p.group.position).z)})),p.group.quaternion.setFromEuler(new u.Euler(u.MathUtils.degToRad(g("propRotP",he(p).p)),u.MathUtils.degToRad(g("propRotY",he(p).y)),u.MathUtils.degToRad(g("propRotR",he(p).r)),"YXZ")),we(p),Zt(p),T(),Y(),x("Transform Grid Tool"))}function ra(){if(!B)return;const e=B.tool.items[B.templateIndex];if(!e)return;L("Transform");const t=N(X(e)),n={x:g("propPosX",t.x),y:g("propPosY",t.y),z:g("propPosZ",t.z)},o=dt(e.group.scale),c=Ve({x:g("propScaleX",o.x),y:g("propScaleY",o.y),z:g("propScaleZ",o.z)}),i=pt(e),r=new u.Euler(u.MathUtils.degToRad(g("propRotP",i.p)),u.MathUtils.degToRad(g("propRotY",i.y)),u.MathUtils.degToRad(g("propRotR",i.r)),"YXZ");e.group.scale.copy(Ot(c)),e.group.quaternion.setFromEuler(r),e.group.position.copy(se(n).add(te(e))),or(),T(),x("Transform")}function rr(){B?ra():d?ta():m?na():p&&oa()}function K(e){xt?.updateObject(e)}function qt(e){xt?.updateCircle(e)}function Zt(e){xt?.updateGrid(e)}let cr="";function T(){Hr({list:document.getElementById("objList"),countEl:document.getElementById("objCount"),filterText:cr,items:S,circleTools:z,gridTools:V,selectedItems:b,selectedCollection:M,collections:q,selectedCircle:m,selectedGrid:p,selectedBase:B,getObjectMeta:ee,getObjectIconUrl:Rt,getTemplates:et,renderPlacementBudget:Bc,updateClipboardButtons:Ne,onSelectCollection:rt,onDeleteCollection:sr,onSelectCircle:de,onSelectGrid:ue,onSelectItem:ye,onFocusSelected:Ut,onRenderRequested:T,onAddToCollection:fi,onAddToCircle:(e,t)=>wo(e,"circle",t),onAddToGrid:(e,t)=>wo(e,"grid",t),onSelectBase:(e,t,n,o)=>En(e,t,n,o),onRemoveBase:(e,t,n)=>tr(e,t,n)})}function ir(){Jr(document.getElementById("objList"))}function Se(){Kr(document.getElementById("objList"),{items:S,selectedItems:b,selectedCircle:m,selectedGrid:p,selectedCollection:M,selectedBase:B,circleTools:z,gridTools:V})}function ar(e,t){if(!e)return;for(const c of[...e.items])Te(c,!0);w.remove(e.group),ft(e.group);const n=t==="grid"?V:z,o=n.indexOf(e);o>=0&&n.splice(o,1),t==="grid"?p===e&&(p=null):m===e&&(m=null)}function sr(e){if(!e)return;L("Delete Collection");const t=e.name;bi(e),Z(),T(),Y(),x("Delete Collection"),h(`Deleted ${t}`)}function lr(){if(B){Ki();return}if(m){const n=m.id;L("Delete Circle Tool"),ar(m,"circle"),Z(),T(),Y(),x("Delete Circle Tool"),h(`Deleted Circle Tool ${n}`);return}if(p){const n=p.id;L("Delete Grid Tool"),ar(p,"grid"),Z(),T(),Y(),x("Delete Grid Tool"),h(`Deleted Grid Tool ${n}`);return}if(M){sr(M);return}if(!b.size)return;const e=[...b],t=e.length===1?e[0].meta.name:`${e.length} objects`;L(e.length===1?"Delete Object":"Delete Objects");for(const n of e)Te(n,!0);Z(),T(),Y(),x(e.length===1?"Delete Object":"Delete Objects"),h(`Deleted ${t}`)}function Ut(){if(ne){const e=d?.ueObj&&ge(d.ueObj.objectId)&&d.ueObj.deviceIndex!==-1?d:[...b].find(t=>t?.ueObj&&ge(t.ueObj.objectId)&&t.ueObj.deviceIndex!==-1);if(e&&(J!=="current"&&Je("current"),ce?.render(),ce?.setSelected(e),ce?.focusNode(e)))return;if(J==="reference"){const t=fe?$o(fe):[...k][0];if(t&&Ie?.focusNode(t))return}h("Select a graph node first",!0);return}if(m){nc(m,{camera:P,orbitControls:R});return}if(p){oc(p,{camera:P,orbitControls:R});return}rc({selected:d,selectedItems:b},{camera:P,orbitControls:R})}function _t(e){ne=e==="graph";const t=document.getElementById("sceneGraph"),n=document.getElementById("sceneCanvas");t&&(t.hidden=!ne),n&&(n.style.visibility=ne?"hidden":""),document.getElementById("viewport")?.classList.toggle("graph-mode",ne),document.getElementById("btnView3d")?.classList.toggle("active",!ne),document.getElementById("btnViewGraph")?.classList.toggle("active",ne),ne&&Je(J)}function Kt(){ne&&(J==="reference"?Ie?.render():ce?.render())}let $=null,dr=null,ct=null,it=null,Ht=null,xt=null,Tt=!1,ce=null,ne=!1,J="current",Ie=null,ie=null,xn="",Q=[],fe=null;const k=new Set;function h(e,t=!1){const n=document.getElementById("sceneStatus");n.textContent=e,n.style.color=t?"var(--danger)":"var(--muted)"}function ur(e){const t=e&&y.devices[String(e.ueObj.objectId)];return t?t.unscaleable?"none":t.uniformScaleOnly?"uniform":"free":"free"}function fr(){let e="free";const t=b.size?b:d?[d]:[];for(const n of t){const o=ur(n);if(o==="none")return"none";o==="uniform"&&(e="uniform")}return e}function ve(e){if(e==="scale"&&fr()==="none"){h("This device can't be scaled",!0);return}D.setMode(e),document.querySelectorAll(".mode-btn").forEach(n=>n.classList.remove("active"));const t={translate:"btnTranslate",rotate:"btnRotate",scale:"btnScale"};document.getElementById(t[e])?.classList.add("active")}function Jt(){const e=document.getElementById("snapToggle")?.checked,t=parseFloat(document.getElementById("snapMove")?.value),n=parseFloat(document.getElementById("snapRot")?.value);D.setTranslationSnap(e&&t>0?t/100:null),D.setRotationSnap(e&&n>0?n*Math.PI/180:null),D.setScaleSnap(e&&n>0?.1:null)}function pr(e){const t=e==="grid";document.getElementById("toolTabCircle")?.classList.toggle("active",!t),document.getElementById("toolTabGrid")?.classList.toggle("active",t),document.getElementById("circleToolPanel")?.toggleAttribute("hidden",t),document.getElementById("gridToolPanel")?.toggleAttribute("hidden",!t),We(),nt()}async function ca(){try{await xc(),Dr((r,a)=>Lt(r,a,"")),jc(),Nc(),Me=xr({canRecord:()=>!!$,makeSnapshot:So,restoreSnapshot:Io,snapshotKey:ii,setStatus:h,limit:Dc}),Ht=qr({catalog:y,getPugcJson:()=>$,getPugcFileInfo:()=>ct,getEnums:()=>Kn(),translateText:Lt,commitHistory:x,setStatus:h}),$t=_r({scene:w,getConnections:to,getShowAiPaths:()=>Ze}),xt=Vr({getObjectMeta:ee,getTemplates:et,toolPlacementCount:jt,toolEulerDegrees:he,catalog:y,translateText:Lt,getEnums:()=>Kn(),getPlacedDevices:r=>Tt?wi(r):Tc(r),getTagSuggestions:()=>Tt?wc():Oc(),getDeviceEventList(){return Tt?ie&&Array.isArray(ie.deviceEventList)?ie.deviceEventList:[]:$?(Array.isArray($.deviceEventList)||($.deviceEventList=[]),$.deviceEventList):[]},onWiringChange(){x("Edit Device Wiring")},onDeviceNameChange(r){T(),x("Rename Device")},onDevicePropertyChange(r){x("Edit Device Properties"),Y();const a=S.find(l=>l.ueObj===r);a&&(At(a),Gc(a))}}),ce=Fn({container:document.getElementById("liveGraph"),getItems:()=>S,getDeviceEventList:()=>$&&Array.isArray($.deviceEventList)?$.deviceEventList:[],getFieldConnections:to,getObjectMeta:ee,getObjectIconUrl:Rt,catalog:y,getSelectedNodeIds:er,onSelectNode:(r,a,l)=>{r&&ye(r,{add:!!(l?.shiftKey||l?.ctrlKey||l?.metaKey),toggle:!!(l?.shiftKey||l?.ctrlKey||l?.metaKey)})},onFocusNode:r=>{r&&(ye(r),_t("3d"),Ut())},onClearSelection:()=>{Z(),Se()},onSelectGroup:_i,getItemTags:cn}),Ie=Fn({container:document.getElementById("referenceGraph"),getItems:()=>Q,getDeviceEventList:()=>ie&&Array.isArray(ie.deviceEventList)?ie.deviceEventList:[],getFieldConnections:()=>eo(Q),getObjectMeta:ee,getObjectIconUrl:Rt,catalog:y,getSelectedNodeIds:()=>k,onSelectNode:Pi,onClearSelection:()=>yn([]),onSelectGroup:Li,getItemTags:cn}),it=sc({getPugcJson:()=>$,setPugcJson:r=>{$=r},getPugcName:()=>dr,setPugcName:r=>{dr=r},getPugcFileInfo:()=>ct,setPugcFileInfo:r=>{ct=r},resetHistory:()=>Me?.reset(),getPugcObjects:_,buildScene:Zc,makeSnapshot:So,restoreSnapshot:Io,setStatus:h,makeNewProjectData:()=>Ht.defaultRuleSections(),els:{projectName:document.getElementById("pugcName"),savePugc:document.getElementById("btnSave"),saveProject:document.getElementById("btnSaveProject")}}),Hn(),pe(),Qe(R.target),We(),nt(),Lc(),document.getElementById("chkTextures").checked=De,document.getElementById("opacitySlider").value=A,document.getElementById("opacityValue").textContent=Math.round(A*100)+"%",document.getElementById("skyboxBrightnessSlider").value=Ee,ro(),kt(),document.getElementById("chkAiPaths").checked=Ze,document.getElementById("chkDeviceIcons").checked=Ue,it.startDefaultProject(),document.getElementById("placeObjectButton")?.addEventListener("click",r=>{r.stopPropagation();const a=document.getElementById("placeObjectMenu");if(!a)return;const l=a.hasAttribute("hidden");a.toggleAttribute("hidden",!l),l&&(mt(),document.getElementById("placeObjectSearch")?.focus())}),document.getElementById("placeObjectSearch")?.addEventListener("input",mt),document.getElementById("placeObjectMenu")?.addEventListener("click",r=>r.stopPropagation()),document.addEventListener("click",r=>{r.target.closest?.(".place-picker")||document.getElementById("placeObjectMenu")?.setAttribute("hidden","")}),document.getElementById("fileInput").addEventListener("change",r=>{it.openSceneFile(r.target.files[0]),r.target.value=""}),document.getElementById("referenceFileInput")?.addEventListener("change",r=>{Ri(r.target.files[0]),r.target.value=""}),document.getElementById("btnSelectAllReferenceLogic")?.addEventListener("click",Di),document.getElementById("btnClearReferenceSelection")?.addEventListener("click",()=>yn([])),document.getElementById("btnCopyReferenceLogic")?.addEventListener("click",ko),document.getElementById("btnGraphCurrentTab")?.addEventListener("click",()=>Je("current")),document.getElementById("btnGraphReferenceTab")?.addEventListener("click",()=>Je("reference")),Je("current");const e=document.getElementById("viewport");e.addEventListener("dragover",r=>r.preventDefault()),e.addEventListener("drop",r=>{r.preventDefault();const a=r.dataTransfer.files[0];it.openSceneFile(a)}),document.getElementById("btnTranslate").addEventListener("click",()=>ve("translate")),document.getElementById("btnRotate").addEventListener("click",()=>ve("rotate")),document.getElementById("btnScale").addEventListener("click",()=>ve("scale")),document.getElementById("snapToggle")?.addEventListener("change",Jt),document.getElementById("snapMove")?.addEventListener("change",Jt),document.getElementById("snapRot")?.addEventListener("change",Jt),Jt(),document.getElementById("btnReleaseCircle")?.addEventListener("click",()=>{m&&Eo(m,"circle")}),document.getElementById("btnReleaseGrid")?.addEventListener("click",()=>{p&&Eo(p,"grid")});const t=document.getElementById("areaToggleList");if(t)for(const r of ho){const a=document.createElement("label"),l=document.createElement("input");l.type="checkbox",l.checked=$e[r.id],l.addEventListener("change",()=>{$e[r.id]=l.checked,ti(r.id),_e()}),a.append(l,` ${r.name}`),t.appendChild(a)}document.getElementById("chkAiPaths")?.addEventListener("change",r=>{Ze=r.target.checked,$t?.setVisible(Ze),_e()}),document.getElementById("chkDeviceIcons")?.addEventListener("change",r=>{Ue=r.target.checked,Pc(),_e()}),document.getElementById("btnView3d")?.addEventListener("click",()=>_t("3d")),document.getElementById("btnViewGraph")?.addEventListener("click",()=>_t("graph")),document.getElementById("btnFocus").addEventListener("click",Ut),document.getElementById("btnCopy").addEventListener("click",Do),document.getElementById("btnPaste").addEventListener("click",Mo),document.getElementById("btnDelete").addEventListener("click",lr),document.getElementById("btnCreateCollection").addEventListener("click",hi),document.getElementById("btnCreateCircleTool")?.addEventListener("click",()=>Bo("circle")),document.getElementById("btnCreateGridTool")?.addEventListener("click",()=>Bo("grid")),document.getElementById("btnChainAiPath")?.addEventListener("click",Si),document.getElementById("btnSelectionTools")?.addEventListener("click",r=>{Re=!Re,r.currentTarget.classList.toggle("active",Re);const a=document.getElementById("selectionToolSection");a&&(a.hidden=!Re)}),document.getElementById("btnDistX")?.addEventListener("click",()=>hn("X")),document.getElementById("btnDistY")?.addEventListener("click",()=>hn("Y")),document.getElementById("btnDistZ")?.addEventListener("click",()=>hn("Z"));for(const[r,a]of[["X","Min"],["X","Center"],["X","Max"],["Y","Min"],["Y","Center"],["Y","Max"],["Z","Min"],["Z","Center"],["Z","Max"]])document.getElementById(`btnAlign${r}${a}`)?.addEventListener("click",()=>Ii(r,a.toLowerCase()));document.getElementById("btnSaveProject").addEventListener("click",()=>it.saveEditorProject()),document.getElementById("btnSave").addEventListener("click",()=>it.savePugc()),document.getElementById("btnGameSettings")?.addEventListener("click",()=>Ht.openGameSettings()),document.getElementById("gsClose")?.addEventListener("click",()=>{document.getElementById("gameSettingsModal").hidden=!0}),document.getElementById("gameSettingsModal")?.addEventListener("click",r=>{r.target.id==="gameSettingsModal"&&(r.currentTarget.hidden=!0)});const n=document.getElementById("gsAllowOutOfRange");n&&(n.checked=localStorage.getItem("pugc_allow_oor")==="1",n.addEventListener("change",()=>{const r=n.checked;localStorage.setItem("pugc_allow_oor",r?"1":"0"),document.querySelectorAll(".devf-container").forEach(a=>Xr(a,r))}));const o=document.getElementById("btnTipJar"),c=document.getElementById("tipJarPanel");o?.addEventListener("click",r=>{r.stopPropagation(),c.hidden=!c.hidden}),document.addEventListener("click",()=>{c&&(c.hidden=!0)}),document.getElementById("btnHelp")?.addEventListener("click",()=>{document.getElementById("helpModal").hidden=!1}),document.getElementById("helpClose")?.addEventListener("click",()=>{document.getElementById("helpModal").hidden=!0}),document.getElementById("helpModal")?.addEventListener("click",r=>{r.target.id==="helpModal"&&(r.currentTarget.hidden=!0)}),document.getElementById("btnPlaceOne").addEventListener("click",Xi);for(const r of["circleDiameter","circleCount","circleObjectPitch","circleRotOffsetManual","circleObjectRoll","circleRotationStep","circleRadialStep","circleHeightStep","circleScaleX","circleScaleY","circleScaleZ","circleScaleStepX","circleScaleStepY","circleScaleStepZ","circleScaleOffsets"])document.getElementById(r)?.addEventListener("input",be),document.getElementById(r)?.addEventListener("change",be);for(const r of["gridColumns","gridRows","gridLayers","gridSpacingX","gridSpacingY","gridSpacingZ","gridObjectPitch","gridObjectYaw","gridObjectRoll","gridYawStep","gridHeightStep","gridScaleX","gridScaleY","gridScaleZ"])document.getElementById(r)?.addEventListener("input",Vt),document.getElementById(r)?.addEventListener("change",Vt);for(const[r,a]of[["circleDiameterSlider","circleDiameter"],["circleCountSlider","circleCount"]])Qt(r,a,()=>{const l=Er(r);return a==="circleCount"?String(Math.round(l)):je(l)},be);for(const[r,a]of[["circleObjectPitchSlider","circleObjectPitch"],["circleRotOffsetSlider","circleRotOffsetManual"],["circleObjectRollSlider","circleObjectRoll"],["circleRotationStepSlider","circleRotationStep"],["circleRadialStepSlider","circleRadialStep"],["circleHeightStepSlider","circleHeightStep"],["circleScaleXSlider","circleScaleX"],["circleScaleYSlider","circleScaleY"],["circleScaleZSlider","circleScaleZ"],["circleScaleStepXSlider","circleScaleStepX"],["circleScaleStepYSlider","circleScaleStepY"],["circleScaleStepZSlider","circleScaleStepZ"]]){const l=Ln(a);Qt(r,a,f=>je(Number(f.value),l),be)}for(const[r,a]of[["gridColumnsSlider","gridColumns"],["gridRowsSlider","gridRows"],["gridLayersSlider","gridLayers"],["gridSpacingXSlider","gridSpacingX"],["gridSpacingYSlider","gridSpacingY"],["gridSpacingZSlider","gridSpacingZ"],["gridObjectPitchSlider","gridObjectPitch"],["gridObjectYawSlider","gridObjectYaw"],["gridObjectRollSlider","gridObjectRoll"],["gridYawStepSlider","gridYawStep"],["gridHeightStepSlider","gridHeightStep"],["gridScaleXSlider","gridScaleX"],["gridScaleYSlider","gridScaleY"],["gridScaleZSlider","gridScaleZ"]]){const l=Ln(a);Qt(r,a,(f,s)=>s?.dataset.integer==="true"?String(Math.round(Number(f.value))):je(Number(f.value),l),Vt)}for(const r of["placeCenterX","placeCenterY","placeCenterZ"])document.getElementById(r)?.addEventListener("input",be);document.querySelectorAll(".numeric-input").forEach(Br),document.querySelectorAll(".transform-input").forEach(r=>{r.addEventListener("change",rr),r.addEventListener("keydown",a=>{a.key==="Enter"&&(a.preventDefault(),rr(),r.blur())})}),document.getElementById("placeObjectInput")?.addEventListener("input",()=>{pe(),be()}),document.getElementById("placeObjectInput")?.addEventListener("change",()=>{pe(),be()}),document.getElementById("opacitySlider").addEventListener("input",r=>{A=Number(r.target.value),document.getElementById("opacityValue").textContent=Math.round(A*100)+"%",Yc(),_e()}),document.getElementById("skyboxBrightnessSlider")?.addEventListener("input",r=>{Ee=Math.max(0,Math.min(Number(r.target.value),3)),kt(),_e()}),document.getElementById("flySpeedDisplay").addEventListener("dblclick",()=>{yt=1,lo()}),document.getElementById("chkTextures").addEventListener("change",r=>{De=r.target.checked,De&&Dn(),zc(),_e()});for(const r of["precTransDecimals","precRotDecimals","precRoundMode","precRotFormat"])document.getElementById(r)?.addEventListener("change",un);const i=document.getElementById("precRotSnap");i?.addEventListener("change",un),i?.addEventListener("input",un),document.getElementById("objFilter").addEventListener("input",r=>{cr=r.target.value,T()}),window.addEventListener("keydown",r=>{const a=["INPUT","TEXTAREA"].includes(r.target.tagName);if((r.ctrlKey||r.metaKey)&&!a&&r.key.toLowerCase()==="z"){r.preventDefault(),r.shiftKey?vo():ai();return}if((r.ctrlKey||r.metaKey)&&!a&&r.key.toLowerCase()==="y"){r.preventDefault(),vo();return}if((r.ctrlKey||r.metaKey)&&!a&&r.key.toLowerCase()==="c"&&ne&&J==="reference"){if(window.getSelection()?.toString())return;r.preventDefault(),k.size?ko():h("Select reference graph nodes first",!0);return}if((r.ctrlKey||r.metaKey)&&r.key.toLowerCase()==="c"&&(d||b.size||m||p)&&!a){if(window.getSelection()?.toString())return;r.preventDefault(),Do();return}if((r.ctrlKey||r.metaKey)&&r.key.toLowerCase()==="v"&&E&&!a){r.preventDefault(),Mo();return}if(a)return;const l=r.key.toLowerCase();if(["w","a","s","d","q","e","shift"].includes(l)){Mt.add(l);return}switch(l){case"r":ve("scale");break;case"f":Ut();break;case"delete":case"backspace":lr();break;case"escape":Z(),T();break}}),window.addEventListener("keyup",r=>{Mt.delete(r.key.toLowerCase())}),window.addEventListener("blur",xe),window.addEventListener("pagehide",xe),io(),qc()}catch(e){h(`Startup error: ${e.message}`,!0),console.error(e),Ct("app_error",{error_type:"startup",message:e.message})}}ca();
+  </div>${body}`;
+}
+
+// --- Blueprint mesh loading ---------------------------------------------------
+
+function transformedPivotOffset(item) {
+  const offset = item.pivotOffset ?? new THREE.Vector3();
+  return offset.clone().multiply(item.group.scale).applyQuaternion(item.group.quaternion);
+}
+
+function editorPivotToRootPosition(item) {
+  return item.group.position.clone().sub(transformedPivotOffset(item));
+}
+
+// --- Three.js scene globals ---------------------------------------------------
+
+let scene, camera, renderer, orbitControls, transformControls, raycaster;
+const WORLD_START_TARGET = new THREE.Vector3(); // default camera look-at (middle of the map)
+const ITEMS = [];   // { ueObj, group, mesh, mat, meta }
+let selected = null;
+let selAlignActive = false;
+const selectedItems = new Set();
+const CIRCLE_TOOLS = [];
+let selectedCircle = null;
+let circleToolSeq = 1;
+const GRID_TOOLS = [];
+let selectedGrid = null;
+let gridToolSeq = 1;
+const COLLECTIONS = [];
+let selectedCollection = null;
+let selectedBase = null; // { tool, type, templateIndex } - editing a tool's slot-0 source object
+let collectionSeq = 1;
+let copiedPayload = null;
+let placementTemplates = null;
+let placementTemplateVersion = 0;
+const flyKeys = new Set();
+let bakedLevelGroup = null;
+let deviceLinks = null;
+let showAiPaths = true; // device link traces (AI travel paths) visibility
+let showDeviceIcons = true; // floating device symbol sprites
+
+const VIEWER_SETTINGS_KEY = 'pugc.viewerSettings';
+function saveViewerSettings() {
+  try {
+    localStorage.setItem(VIEWER_SETTINGS_KEY, JSON.stringify({
+      areas: viewerAreaVisible, aiPaths: showAiPaths, deviceIcons: showDeviceIcons, textures: loadTextures, opacity: nrmOpacity,
+      skyboxBrightness,
+    }));
+  } catch {}
+}
+function loadViewerSettings() {
+  try {
+    const s = JSON.parse(localStorage.getItem(VIEWER_SETTINGS_KEY) || 'null');
+    if (!s) return;
+    if (s.areas) for (const id in viewerAreaVisible) if (id in s.areas) viewerAreaVisible[id] = !!s.areas[id];
+    if (typeof s.aiPaths === 'boolean') showAiPaths = s.aiPaths;
+    if (typeof s.deviceIcons === 'boolean') showDeviceIcons = s.deviceIcons;
+    if (typeof s.textures === 'boolean') loadTextures = s.textures;
+    if (typeof s.opacity === 'number') nrmOpacity = s.opacity;
+    if (typeof s.skyboxBrightness === 'number') skyboxBrightness = Math.max(0, Math.min(s.skyboxBrightness, 3));
+  } catch {}
+}
+function applyDeviceIconVisibility() {
+  for (const item of ITEMS) if (item.iconSprite) item.iconSprite.visible = showDeviceIcons;
+}
+let flySpeed = 1.0;
+let rightLookActive = false, rightLookLastX = 0, rightLookLastY = 0;
+const fpsState = { lastTime: performance.now(), frameCount: 0, displayValue: 0 };
+
+let nrmOpacity  = 1.0;
+let loadTextures = true;
+let skyboxBrightness = 0.5;
+const HISTORY_LIMIT = 60;
+let history = null;
+let multiTransformStart = null;
+const HDR_SKYBOX_PATH = 'cache/T_Sky_Desert_FoggyRain.hdr';
+
+function updateSkyboxBrightnessLabel() {
+  const value = document.getElementById('skyboxBrightnessValue');
+  if (value) value.textContent = Math.round(skyboxBrightness * 100) + '%';
+}
+
+function applySkyboxBrightness() {
+  if (scene) {
+    scene.backgroundIntensity = skyboxBrightness;
+    scene.environmentIntensity = skyboxBrightness;
+  }
+  if (renderer) renderer.toneMappingExposure = skyboxBrightness;
+  updateSkyboxBrightnessLabel();
+}
+
+const _precOriginals = new Map(); // item -> { rootPos: THREE.Vector3, quaternion: THREE.Quaternion }
+
+function capturePrecOriginal(item) {
+  if (!_precOriginals.has(item)) {
+    _precOriginals.set(item, {
+      rootPos: editorPivotToRootPosition(item).clone(),
+      quaternion: item.group.quaternion.clone(),
+    });
+  }
+}
+
+function snapItemToRoundedUe4(item) {
+  item.group.quaternion.copy(ue4QuatToThree(item.ueObj.spawnTransform.rotation));
+  item.group.position.copy(ue4PosToThree(item.ueObj.spawnTransform.translation)).add(transformedPivotOffset(item));
+}
+
+function applyPrecisionTest() {
+  const transVal = document.getElementById('precTransDecimals')?.value ?? 'full';
+  const rotVal = document.getElementById('precRotDecimals')?.value ?? 'full';
+  const mode = document.getElementById('precRoundMode')?.value || 'round';
+  const rotFormat = document.getElementById('precRotFormat')?.value || 'quat';
+  const rotSnapDeg = Math.max(0, Number(document.getElementById('precRotSnap')?.value || 0));
+  const transPrecision = transVal === 'full' ? null : Number(transVal);
+  const rotPrecision = rotVal === 'full' ? null : Number(rotVal);
+  setPrecisionTest({ translation: transPrecision, rotation: rotPrecision, mode, rotFormat, rotSnapDeg });
+
+  const active = transPrecision !== null || rotPrecision !== null || rotSnapDeg > 0;
+
+  for (const item of ITEMS) {
+    if (active) {
+      capturePrecOriginal(item);
+      const orig = _precOriginals.get(item);
+      item.ueObj.spawnTransform.translation = threePosToUe4(orig.rootPos);
+      item.ueObj.spawnTransform.rotation = threeQuatToUe4(orig.quaternion);
+      snapItemToRoundedUe4(item);
+    } else {
+      const orig = _precOriginals.get(item);
+      if (orig) {
+        item.group.quaternion.copy(orig.quaternion);
+        item.group.position.copy(orig.rootPos).add(transformedPivotOffset(item));
+        item.ueObj.spawnTransform.translation = threePosToUe4(orig.rootPos);
+        item.ueObj.spawnTransform.rotation = threeQuatToUe4(orig.quaternion);
+      }
+    }
+  }
+  if (!active) _precOriginals.clear();
+
+  for (const tool of CIRCLE_TOOLS) {
+    rebuildCircleTool(tool);
+    if (active) for (const item of tool.items) snapItemToRoundedUe4(item);
+  }
+  for (const tool of GRID_TOOLS) {
+    rebuildGridTool(tool);
+    if (active) for (const item of tool.items) snapItemToRoundedUe4(item);
+  }
+
+  const status = document.getElementById('precStatus');
+  if (!status) return;
+  if (!active) {
+    status.textContent = 'Full precision (no rounding)';
+  } else {
+    const parts = [];
+    if (transPrecision !== null) parts.push(`trans: ${transPrecision}dp`);
+    if (rotSnapDeg > 0) parts.push(`rot snap: ${rotSnapDeg}deg`);
+    else if (rotPrecision !== null) parts.push(`rot: ${rotPrecision}dp ${rotFormat === 'euler' ? 'euler' : 'quat'}`);
+    if (!rotSnapDeg && (transPrecision !== null || rotPrecision !== null)) parts.push(mode);
+    status.textContent = `Active - ${parts.join(', ')}`;
+  }
+}
+
+async function fetchGzipArrayBuffer(url) {
+  if (typeof DecompressionStream !== 'function') return null;
+  const res = await fetch(url);
+  if (!res.ok || !res.body) return null;
+  const inflated = res.body.pipeThrough(new DecompressionStream('gzip'));
+  return await new Response(inflated).arrayBuffer();
+}
+
+async function loadHdrSkybox() {
+  const loader = new RGBELoader();
+  const applySkyboxTexture = texture => {
+    texture.mapping = THREE.EquirectangularReflectionMapping;
+    scene.background = texture;
+    scene.environment = texture;
+    applySkyboxBrightness();
+  };
+  const loadTextureUrl = url => new Promise((resolve, reject) => {
+    loader.load(url, texture => { applySkyboxTexture(texture); resolve(texture); }, undefined, reject);
+  });
+
+  try {
+    const buffer = await fetchGzipArrayBuffer(`${HDR_SKYBOX_PATH}.gz`);
+    if (buffer) {
+      const blobUrl = URL.createObjectURL(new Blob([buffer], { type: 'application/octet-stream' }));
+      try {
+        await loadTextureUrl(blobUrl);
+      } finally {
+        URL.revokeObjectURL(blobUrl);
+      }
+      return;
+    }
+  } catch (error) {
+    console.warn('HDR skybox gzip load failed, falling back to raw HDR.', error);
+  }
+
+  loadTextureUrl(HDR_SKYBOX_PATH).catch(error => {
+    console.warn('HDR skybox load failed.', error);
+  });
+}
+
+function initThree() {
+  const canvas = document.getElementById('sceneCanvas');
+
+  scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x0d1117);
+  scene.fog = new THREE.FogExp2(0x0d1117, 0.00025);
+
+  camera = new THREE.PerspectiveCamera(55, 1, 0.5, 80000);
+  // Start near the middle of the map (UE ~36867, 55351, 9632) instead of world origin.
+  WORLD_START_TARGET.copy(ue4PosToThree({ x: 36867, y: 55351, z: 9632 }));
+  camera.position.copy(WORLD_START_TARGET).add(new THREE.Vector3(0, 300, 600));
+
+  renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  applySkyboxBrightness();
+  loadHdrSkybox();
+
+  scene.add(new THREE.AmbientLight(0xffffff, 0.45));
+  const sun = new THREE.DirectionalLight(0xfff5e0, 1.0);
+  sun.position.set(300, 600, 200);
+  scene.add(sun);
+
+  const grid = new THREE.GridHelper(4000, 400, 0x1e2d40, 0x1a2535);
+  scene.add(grid);
+
+  raycaster = new THREE.Raycaster();
+
+  orbitControls = new OrbitControls(camera, canvas);
+  orbitControls.enableDamping = true;
+  orbitControls.dampingFactor = 0.07;
+  orbitControls.maxDistance = 40000;
+  orbitControls.screenSpacePanning = true;
+  orbitControls.target.copy(WORLD_START_TARGET);
+  orbitControls.mouseButtons.RIGHT = -1; // right-drag handled as first-person look below
+  // Left-drag no longer orbits: a mis-drag while trying to grab an object used to fling the camera
+  // around a possibly-distant orbit target. Left is now select / box-select; orbit moves to the
+  // middle button (drag), and right-drag look + WASD fly + wheel-zoom remain the primary nav.
+  orbitControls.mouseButtons.LEFT = -1;
+  orbitControls.mouseButtons.MIDDLE = THREE.MOUSE.ROTATE;
+
+  transformControls = new TransformControls(camera, canvas);
+    transformControls.setSize(1.4);
+    transformControls.addEventListener('dragging-changed', (e) => {
+      orbitControls.enabled = !e.value;
+      if (e.value) {
+        beginHistory('Transform');
+        beginMultiTransform();
+      } else {
+        multiTransformStart = null;
+        commitHistory('Transform');
+      }
+    });
+    transformControls.addEventListener('objectChange', onTransformChange);
+    transformControls.addEventListener('mouseUp', () => {
+      if (selectedCircle) updateCirclePropsPanel(selectedCircle);
+      if (selectedGrid) updateGridPropsPanel(selectedGrid);
+      // A scale change alters the group scale the volume box counters; rebuild it.
+      for (const it of selectedItems) updateDeviceVolume(it);
+    });
+  scene.add(transformControls);
+
+  new ResizeObserver(onResize).observe(document.getElementById('viewport'));
+  onResize();
+
+  // Left button: a short press selects (onCanvasClick); a drag draws a marquee that box-selects every
+  // item whose centre falls inside it. Press/move/up live on window so a drag that leaves the canvas
+  // still finalises. Box-select is suppressed when the press lands on the transform gizmo.
+  let mouseDownAt = { x: 0, y: 0 };
+  let leftDownOnCanvas = false;
+  let boxSelStart = null;
+  let boxSelActive = false;
+  canvas.addEventListener('pointerdown', (e) => {
+    if (e.button !== 0) return;
+    mouseDownAt = { x: e.clientX, y: e.clientY };
+    leftDownOnCanvas = true;
+    if (transformControls.axis) return; // grabbing a gizmo axis - let it drag, no marquee
+    boxSelStart = { x: e.clientX, y: e.clientY };
+    boxSelActive = false;
+  });
+  window.addEventListener('pointermove', (e) => {
+    if (!boxSelStart) return;
+    if (!boxSelActive && Math.hypot(e.clientX - boxSelStart.x, e.clientY - boxSelStart.y) < 5) return;
+    boxSelActive = true;
+    drawBoxSelRect(boxSelStart, { x: e.clientX, y: e.clientY });
+  });
+  window.addEventListener('pointerup', (e) => {
+    if (e.button !== 0) return;
+    const onCanvas = leftDownOnCanvas;
+    leftDownOnCanvas = false;
+    const wasBox = boxSelActive;
+    const start = boxSelStart;
+    boxSelStart = null;
+    boxSelActive = false;
+    hideBoxSelRect();
+    if (!onCanvas) return; // press began on a panel/UI element, not the 3D canvas
+    if (wasBox && start) {
+      boxSelectItems(
+        { x: Math.min(start.x, e.clientX), y: Math.min(start.y, e.clientY) },
+        { x: Math.max(start.x, e.clientX), y: Math.max(start.y, e.clientY) },
+        e.shiftKey || e.ctrlKey || e.metaKey,
+      );
+      return;
+    }
+    if (Math.hypot(e.clientX - mouseDownAt.x, e.clientY - mouseDownAt.y) < 5) onCanvasClick(e);
+  });
+
+  // Right-click first-person look (yaw around world-Y, pitch around camera-X)
+  const _worldUp   = new THREE.Vector3(0, 1, 0);
+  const _localRight = new THREE.Vector3(1, 0, 0);
+  const _lookFwd   = new THREE.Vector3();
+
+  canvas.addEventListener('contextmenu', e => {
+    e.preventDefault();
+    clearFlyInput();
+  });
+  // Always swallow the context menu (and stop fly input) - during a right-drag look the pointer is
+  // captured to the window, so on release the contextmenu event's target may not be #viewport;
+  // checking the target there let the menu through when shift was held. Unconditional is correct
+  // for a fullscreen editor and prevents the "menu pops up on right-release" case.
+  document.addEventListener('contextmenu', e => {
+    e.preventDefault();
+    clearFlyInput();
+  }, { capture: true });
+  // If focus is stolen (e.g. a menu, alt-tab) the keyup for held movement keys never arrives, so
+  // the camera keeps drifting. Clear all input on blur so movement stops cleanly.
+  window.addEventListener('blur', clearFlyInput);
+  document.addEventListener('pointerdown', e => {
+    if (e.button !== 2 || !e.shiftKey) return;
+    clearFlyInput();
+    if (e.target.closest?.('#viewport')) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  }, { capture: true });
+
+  canvas.addEventListener('pointerdown', e => {
+    if (e.button !== 2) return;
+    rightLookActive = true;
+    rightLookLastX = e.clientX;
+    rightLookLastY = e.clientY;
+  });
+  window.addEventListener('pointermove', e => {
+    if (!rightLookActive) return;
+    const dx = e.clientX - rightLookLastX;
+    const dy = e.clientY - rightLookLastY;
+    rightLookLastX = e.clientX;
+    rightLookLastY = e.clientY;
+    if (!dx && !dy) return;
+    const camDist = camera.position.distanceTo(orbitControls.target);
+    camera.rotateOnWorldAxis(_worldUp, -dx * 0.003);
+    camera.rotateOnAxis(_localRight, -dy * 0.003);
+    camera.getWorldDirection(_lookFwd);
+    orbitControls.target.copy(camera.position).addScaledVector(_lookFwd, camDist);
+  });
+  window.addEventListener('pointerup', e => {
+    if (e.button === 2) rightLookActive = false;
+  });
+  window.addEventListener('pointercancel', clearFlyInput);
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) clearFlyInput();
+  });
+
+  // Scroll while right-look is active -> adjust fly speed instead of zooming
+  canvas.addEventListener('wheel', e => {
+    if (!rightLookActive) return;
+    e.preventDefault();
+    e.stopPropagation();
+    flySpeed = Math.max(0.01, Math.min(flySpeed * (e.deltaY < 0 ? 1.2 : 1 / 1.2), 200));
+    updateSpeedHud();
+  }, { passive: false, capture: true });
+}
+
+function onResize() {
+  const vp = document.getElementById('viewport');
+  const w = vp.clientWidth, h = vp.clientHeight;
+  camera.aspect = w / Math.max(h, 1);
+  camera.updateProjectionMatrix();
+  renderer.setSize(w, h, false);
+}
+
+function applyFlyMovement() {
+  applyFlyMovementStep({ camera, orbitControls, flyKeys, flySpeed });
+}
+
+function animate() {
+  requestAnimationFrame(animate);
+  if (graphActive) return; // graph overlay is shown; the 3D view is occluded, so skip rendering it
+  applyFlyMovement();
+  orbitControls.update();
+  renderer.render(scene, camera);
+  updateFpsHud();
+}
+
+function updateFpsHud(now = performance.now()) {
+  updateFpsHudState(fpsState, document.getElementById('fpsValue'), now);
+}
+
+// --- Placeholder geometry -----------------------------------------------------
+
+function createItem(ueObj, meta) {
+  return createEditorItem(ueObj, meta, nrmOpacity);
+}
+
+// Replace placeholder with real mesh geometry and textures (async).
+async function applyRealMesh(item, geoData, { allowReplace = false } = {}) {
+  await applyRealMeshToItem(item, geoData, {
+    isSelected: candidate => selectedItems.has(candidate) || isToolSourceItem(candidate),
+    loadTextures,
+    loadTexture,
+    normalOpacity: nrmOpacity,
+    selectionColor: SEL_COLOR,
+    selectionOpacity: SEL_OPACITY,
+    prepareEditorPivotGeo,
+    rootPositionForItem: editorPivotToRootPosition,
+    pivotOffsetForItem: transformedPivotOffset,
+    positionToUe4: threePosToUe4,
+    allowReplace,
+  });
+  if (item === selected) updatePropsPanel(item);
+}
+
+// Resolve a device's selected pick-list value (meshName / spawnVehicleName) to a game asset path via
+// stringTables.json. Returns null when the device has no DataTable-backed mesh field or none chosen.
+function deviceMeshAssetFor(ueObj) {
+  const dev = catalog.devices?.[String(ueObj?.objectId)];
+  if (!dev || !Array.isArray(dev.fields)) return null;
+  let props = null;
+  for (const f of dev.fields) {
+    if (f.type !== 'String') continue;
+    const t = f.validatorParam?.stringDataTable;
+    if (!t || t === 'None') continue;
+    const rows = catalog.stringTables?.[t];
+    if (!Array.isArray(rows)) continue;
+    if (!props) { try { props = JSON.parse(ueObj.devicePropertyData || '{}'); } catch { props = {}; } }
+    const val = f.path.split('.').reduce((o, k) => (o == null ? o : o[k]), props);
+    if (val == null || val === '') continue;
+    const sval = String(val);
+    // value IS the DataStr (asset path). Only return it if it's an actual asset path (contains '/').
+    // Non-path values (e.g. BGM sound names like "BGM_Landmark") have no mesh asset.
+    if (sval.includes('/')) return sval;
+    const row = rows.find(r => String(r.value ?? r.asset ?? '') === sval);
+    if (row) {
+      const asset = String(row.value ?? row.asset ?? '');
+      if (asset.includes('/')) return asset;
+    }
+  }
+  return null;
+}
+
+// Switch a device item's preview mesh to its currently-selected pick-list asset, if that changed.
+async function swapDeviceMeshIfNeeded(item) {
+  if (!item) return;
+  const asset = deviceMeshAssetFor(item.ueObj);
+  if (!asset || item.currentMeshAsset === asset) return;
+  item.currentMeshAsset = asset;
+  const geoData = await getAssetMeshGeo(asset);
+  // currentMeshAsset may have changed again while awaiting; don't clobber a newer selection.
+  if (item.currentMeshAsset !== asset) return;
+  if (!geoData) {
+    // Asset isn't available (404 - not dumped or unconvertible). Show the default placeholder rather
+    // than leaving the previously loaded mesh in place.
+    if (item.hasRealMesh) resetEditorItemToPlaceholder(item, nrmOpacity);
+    if (item === selected) updatePropsPanel(item);
+    return;
+  }
+  await applyRealMesh(item, geoData, { allowReplace: true });
+}
+
+// Staggered async loader: fetch unique objectIds a few at a time
+async function startMeshUpgrades() {
+  // Devices with a per-instance pick-list mesh (meshName / spawnVehicleName) resolve their own asset
+  // and can't be batched by objectId - two instances of the same device may select different meshes.
+  // Everything else shares one mesh per objectId.
+  const assetItems = [];
+  const rest = [];
+  for (const item of ITEMS) {
+    if (deviceMeshAssetFor(item.ueObj)) assetItems.push(item);
+    else if (!SUPPRESS_BP_MESH_IDS.has(String(item.ueObj.objectId))) rest.push(item);
+    // else: volume-only device (e.g. Conquest 23) - no mesh, keep the placeholder + volume.
+  }
+
+  await upgradeMeshesForItems(rest, { getGeo: getBpGeo, applyRealMesh });
+
+  // Per-instance asset meshes (getAssetMeshGeo is cached per asset, so duplicates share a fetch).
+  const CONCURRENCY = 4;
+  for (let i = 0; i < assetItems.length; i += CONCURRENCY)
+    await Promise.all(assetItems.slice(i, i + CONCURRENCY).map(upgradeItemMesh));
+
+  setStatus(`${ITEMS.length} objects - meshes loaded`);
+}
+
+// --- Viewport settings --------------------------------------------------------
+
+function updateSpeedHud() {
+  const el = document.getElementById('flySpeedDisplay');
+  if (el) el.textContent = formatFlySpeed(flySpeed);
+}
+
+function clearFlyInput() {
+  flyKeys.clear();
+  rightLookActive = false;
+}
+
+function applyOpacityToAll() {
+  applyOpacityToItems(ITEMS, { selected, normalOpacity: nrmOpacity });
+  const tool = selectedCircle || selectedGrid;
+  if (tool) updateToolSourceHighlight(tool, true);
+}
+
+async function applyTextureToggle() {
+  await applyTextureToggleToItems(ITEMS, {
+    selected,
+    loadTextures,
+    loadTexture,
+    selectionColor: SEL_COLOR,
+  });
+  const tool = selectedCircle || selectedGrid;
+  if (tool) updateToolSourceHighlight(tool, true);
+}
+
+// --- Terrain -----------------------------------------------------------------
+
+const BAKED_LEVEL_PATH = 'cache/mod_main_level.glb';
+
+function frameObject(root) {
+  frameThreeObject(root, { camera, orbitControls });
+}
+
+async function tryLoadBakedLevel() {
+  // Stable URL + default cache so the (large) baked level is reused from the browser cache. The server
+  // sends a validator/max-age; after re-baking the .glb, hard-refresh (Ctrl+F5) to pick it up.
+  const res = await fetch(BAKED_LEVEL_PATH);
+  if (!res.ok) return false;
+  const blob = await res.blob();
+  const objectUrl = URL.createObjectURL(blob);
+  try {
+    const gltf = await new GLTFLoader().loadAsync(objectUrl);
+    if (bakedLevelGroup) {
+      scene.remove(bakedLevelGroup);
+      disposeSceneObject(bakedLevelGroup);
+    }
+    bakedLevelGroup = prepareBakedLevelScene(gltf.scene);
+    scene.add(bakedLevelGroup);
+    frameObject(bakedLevelGroup);
+    setStatus(`Baked level loaded - ${BAKED_LEVEL_PATH}`);
+    return true;
+  } finally {
+    URL.revokeObjectURL(objectUrl);
+  }
+}
+
+async function loadBaseTerrain() {
+  const btn = document.getElementById('btnLoadWorld');
+  if (btn) btn.disabled = true;
+  setStatus('Loading baked level...');
+  try {
+    if (!await tryLoadBakedLevel())
+      setStatus(`Baked level not found - place mod_main_level.glb in web/cache/`, true);
+  } catch (err) {
+    setStatus(`Baked level error: ${err.message}`, true);
+  } finally {
+    if (btn) btn.disabled = false;
+  }
+}
+
+
+// --- Scene build / clear ------------------------------------------------------
+
+function clearScene(clearGeo = true) {
+  deselectObject();
+  for (const tool of CIRCLE_TOOLS) {
+    scene.remove(tool.group);
+    disposeSceneObject(tool.group);
+  }
+  CIRCLE_TOOLS.length = 0;
+  selectedCircle = null;
+  for (const tool of GRID_TOOLS) {
+    scene.remove(tool.group);
+    disposeSceneObject(tool.group);
+  }
+  GRID_TOOLS.length = 0;
+  selectedGrid = null;
+  COLLECTIONS.length = 0;
+  selectedCollection = null;
+  collectionSeq = 1;
+  selectedItems.clear();
+  for (const item of ITEMS) {
+    disposeEditorItem(item, scene);
+  }
+  ITEMS.length = 0;
+  disposeDeviceLinkObjects();
+  if (clearGeo) {
+    clearBpGeoCache();
+    clearTextureCache();
+  }
+}
+
+function buildScene(objects) {
+  clearScene();
+  for (const ueObj of objects) {
+    buildSceneItem(ueObj);
+  }
+  resetCameraToStart();
+  renderList();
+  if (!ITEMS.length) {
+    setStatus('No objects in project');
+    return;
+  }
+  setStatus(`${ITEMS.length} objects loaded - fetching meshes...`);
+  startMeshUpgrades();
+  updateDeviceLinkLines();
+  logicGraph?.resetView(); // re-fit the logic graph to the newly loaded scene
+  refreshGraphIfActive();
+}
+
+function buildSceneItem(ueObj) {
+  const meta = getObjectMeta(ueObj.objectId);
+  const item = createItem(ueObj, meta);
+  item.group.userData.itemRef = item;
+  scene.add(item.group);
+  ITEMS.push(item);
+  decorateDeviceItem(item);
+  return item;
+}
+
+// Visualize an area-volume device's configured shape so its coverage is visible in the scene.
+// volumeShape picks Box (boxExtent = UE cm half-extent vector), Cube (cubeExtent = half-size) or
+// Sphere (sphereRadius). Devices: Area Blocking 5 (Box), Trigger Area 6 (Box/Sphere), Conquest 23
+// (Box/Cube/Sphere), Vehicle Spawn 25 (Sphere), Blue Zone 42. Drawn as a translucent fill + wireframe.
+// Per-device-type default colours. (The visualizeColor/lightColor enums are not enumerated in the
+// catalog, so their stored values can't be reliably mapped to RGB - we use stable defaults instead.)
+const DEVICE_VOLUME_DEFAULT_COLOR = { '5': 0xff7a3a, '6': 0x35d0ff, '23': 0x9be24a, '25': 0xffd24a, '42': 0x3aa0ff, '47': 0x3ad5a0 };
+
+// Devices whose blueprint mesh is only a unit-size boundary placeholder (e.g. Conquest 23's two
+// overlapping capture-line cylinders). The translucent volume already represents the area, so the
+// mesh would just double-render at the wrong scale - skip it and keep the volume + icon.
+const SUPPRESS_BP_MESH_IDS = new Set(['23']);
+
+function deviceProps(ueObj) {
+  try { return ueObj.devicePropertyData ? JSON.parse(ueObj.devicePropertyData) : null; } catch { return null; }
+}
+function readVec3(b) {
+  if (Array.isArray(b)) return { x: +b[0] || 0, y: +b[1] || 0, z: +b[2] || 0 };
+  if (b && (b.x != null || b.y != null || b.z != null)) return { x: +b.x || 0, y: +b.y || 0, z: +b.z || 0 };
+  return null;
+}
+function deviceVolumeColor(id) {
+  return DEVICE_VOLUME_DEFAULT_COLOR[id] ?? 0x9ad0ff;
+}
+function disposeVolumeGroup(group) {
+  group.traverse(o => { o.geometry?.dispose(); o.material?.dispose(); });
+}
+
+// Devices whose spatial extent is a single radius (UE cm) rather than a volumeShape: drawn as a sphere.
+const DEVICE_RADIUS_FIELD = { '2': 'enemyDetectionSize', '24': 'zoneRadius', '26': 'zoneRadius', '33': 'attenuationRadius' };
+const DEVICE_RADIUS_COLOR = { '2': 0x53d769, '24': 0xff5a4a, '26': 0xff8a3a, '33': 0xffdf7a };
+function deviceRadiusColor(id) {
+  return DEVICE_RADIUS_COLOR[id] ?? 0x9ad0ff;
+}
+// Area/volume device types shown in the Viewer Settings toggle panel, with default visibility.
+const AREA_DEVICE_TYPES = [
+  { id: '5', name: 'Area Blocking', on: true }, { id: '6', name: 'Trigger Area', on: true }, { id: '23', name: 'Conquest Area', on: true },
+  { id: '47', name: 'Checkpoint', on: true },
+  { id: '25', name: 'Vehicle Spawn', on: false }, { id: '42', name: 'Blue Zone Gen', on: false }, { id: '24', name: 'Red Zone', on: false },
+  { id: '26', name: 'Special Zone', on: false }, { id: '33', name: 'Light range', on: false }, { id: '2', name: 'Spawn detect', on: false },
+];
+const viewerAreaVisible = {};
+for (const t of AREA_DEVICE_TYPES) viewerAreaVisible[t.id] = t.on;
+function areaVisible(id) { return viewerAreaVisible[id] !== false; }
+function reconcileAreaVolumes(id) {
+  for (const item of ITEMS) if (String(item.ueObj.objectId) === id) updateDeviceVolume(item);
+}
+// Parse a numeric prop, falling back to dflt only when unset/blank/NaN - a real 0 stays 0 (so a
+// 0 radius/size draws nothing instead of snapping to the default).
+function numOr(v, dflt) {
+  const n = Number(v);
+  return (v == null || v === '' || Number.isNaN(n)) ? dflt : n;
+}
+
+function updateDeviceVolume(item) {
+  if (item.volumeBox) { item.group.remove(item.volumeBox); disposeVolumeGroup(item.volumeBox); item.volumeBox = null; }
+  const id = String(item.ueObj.objectId);
+  const fields = catalog.devices[id]?.fields || [];
+  const hasVolume = fields.some(f => ['boxExtent', 'sphereRadius', 'cubeExtent'].includes(f.path));
+  const hasCheckpointShape = fields.some(f => f.path === 'shape' && f.unrealType === 'ECheckpointShape');
+  const radiusField = DEVICE_RADIUS_FIELD[id];
+  if (!hasVolume && !hasCheckpointShape && !radiusField) return; // nothing spatial to draw
+  if (!areaVisible(id)) return; // hidden via Viewer Settings toggle
+
+  const props = deviceProps(item.ueObj);
+  const s = item.group.scale; // counter-scale so the drawn volume is true world size
+  let geo, color;
+  if (hasCheckpointShape) {
+    // CheckPointDevice: ECheckpointShape Square (width x height gate) or Circle (cylinder).
+    color = deviceVolumeColor(id, props);
+    const shape = String(props?.shape || 'Square');
+    if (shape === 'Circle') {
+      const r = numOr(props?.radius, 250) / 100 / (s.z || 1);
+      geo = new THREE.CylinderGeometry(r, r, 0.5 / (s.x || 1), 32);
+      geo.rotateZ(Math.PI / 2);
+    } else {
+      const w = numOr(props?.width, 300) / 100 / (s.z || 1);
+      const h = numOr(props?.height, 300) / 100 / (s.y || 1);
+      geo = new THREE.BoxGeometry(0.5 / (s.x || 1), h, w);
+    }
+  } else if (hasVolume) {
+    // Shape: explicit volumeShape, else the device's only allowed shape, else Box.
+    const allowed = fields.find(f => f.path === 'volumeShape')?.validatorParam?.selectEnums || [];
+    const shape = String(props?.volumeShape || allowed[0] || 'Box').toLowerCase();
+    if (shape === 'sphere') {
+      geo = new THREE.SphereGeometry(numOr(props?.sphereRadius, 250) / 100 / (s.x || 1), 24, 16);
+    } else if (shape === 'cube') {
+      const c = numOr(props?.cubeExtent, 250);
+      geo = new THREE.BoxGeometry((2 * c / 100) / (s.x || 1), (2 * c / 100) / (s.y || 1), (2 * c / 100) / (s.z || 1));
+    } else {
+      const e = readVec3(props?.boxExtent) || { x: 250, y: 250, z: 250 };
+      geo = new THREE.BoxGeometry((2 * e.x / 100) / (s.x || 1), (2 * e.z / 100) / (s.y || 1), (2 * e.y / 100) / (s.z || 1));
+    }
+    color = deviceVolumeColor(id, props);
+  } else {
+    // Radius zone (Red/Special zone, Light reach, spawn detection) - a sphere of the given radius.
+    geo = new THREE.SphereGeometry(numOr(props?.[radiusField], 500) / 100 / (s.x || 1), 24, 16);
+    color = deviceRadiusColor(id, props);
+  }
+
+  const group = new THREE.Group();
+  const fill = new THREE.Mesh(geo, new THREE.MeshBasicMaterial({ color, transparent: true, opacity: 0.14, depthWrite: false, side: THREE.DoubleSide }));
+  fill.renderOrder = 2;
+  const edges = new THREE.LineSegments(new THREE.EdgesGeometry(geo), new THREE.LineBasicMaterial({ color, transparent: true, opacity: 0.85 }));
+  edges.renderOrder = 3;
+  group.add(fill, edges);
+  group.traverse(o => { o.raycast = () => {}; }); // never block picking the device itself
+  item.group.add(group);
+  item.volumeBox = group;
+}
+
+// Floating device symbol (the device's catalog icon) above each device, as a camera-facing sprite.
+const _deviceIconTex = new Map();
+function deviceIconTexture(url) {
+  if (_deviceIconTex.has(url)) return _deviceIconTex.get(url);
+  const tex = new THREE.TextureLoader().load(url);
+  if ('colorSpace' in tex) tex.colorSpace = THREE.SRGBColorSpace;
+  _deviceIconTex.set(url, tex);
+  return tex;
+}
+function updateDeviceIcon(item) {
+  if (!item.meta?.isDevice || item.iconSprite) return;
+  const url = getObjectIconUrl(item.ueObj.objectId);
+  if (!url) return;
+  const sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: deviceIconTexture(url), transparent: true, depthTest: false, depthWrite: false }));
+  sprite.scale.set(0.6, 0.6, 1);
+  sprite.position.set(0, 0.9, 0); // just above the device placeholder (local space)
+  sprite.renderOrder = 5;
+  sprite.raycast = () => {};
+  sprite.visible = showDeviceIcons;
+  item.group.add(sprite);
+  item.iconSprite = sprite;
+}
+
+function decorateDeviceItem(item) {
+  updateDeviceVolume(item);
+  updateDeviceIcon(item);
+}
+
+function getPugcObjects() {
+  return getPugcObjectsFromJson(pugcJson);
+}
+
+function parsePlacementObjectId() {
+  const raw = document.getElementById('placeObjectInput')?.value || '';
+  const match = raw.match(/\d+/);
+  return match ? Number(match[0]) : NaN;
+}
+
+function isDeviceObjectId(objectId) {
+  return isCatalogDeviceObjectId(catalog, objectId);
+}
+
+function nextSceneDeviceIndex(objectId) {
+  return nextDeviceIndexForObject(getPugcObjects() || [], objectId);
+}
+
+function removePugcObject(ueObj) {
+  removePugcObjectFromArray(getPugcObjects(), ueObj);
+}
+
+function disposeItem(item) {
+  disposeEditorItem(item, scene);
+}
+
+function deleteItem(item, removeFromPugc = true) {
+  if (!item) return;
+  if (selected === item) selected = null;
+  selectedItems.delete(item);
+  for (const collection of COLLECTIONS) {
+    const idx = collection.items.indexOf(item);
+    if (idx >= 0) collection.items.splice(idx, 1);
+  }
+  for (const tool of CIRCLE_TOOLS) {
+    const idx = tool.items.indexOf(item);
+    if (idx >= 0) tool.items.splice(idx, 1);
+  }
+  for (const tool of GRID_TOOLS) {
+    const idx = tool.items.indexOf(item);
+    if (idx >= 0) tool.items.splice(idx, 1);
+  }
+  if (removeFromPugc) removePugcObject(item.ueObj);
+  const idx = ITEMS.indexOf(item);
+  if (idx >= 0) ITEMS.splice(idx, 1);
+  disposeItem(item);
+}
+
+function sceneSnapshot() {
+  if (!pugcJson) return null;
+  const objects = getPugcObjects() || [];
+  const objectIndex = new Map(objects.map((obj, idx) => [obj, idx]));
+  return {
+    pugcJson: clonePlain(pugcJson),
+    pugcFileInfo: clonePlain(pugcFileInfo),
+    circleToolSeq,
+    gridToolSeq,
+    collectionSeq,
+    circles: CIRCLE_TOOLS.map(tool => serializePatternTool(tool, objectIndex, clonePlain)),
+    grids: GRID_TOOLS.map(tool => serializePatternTool(tool, objectIndex, clonePlain)),
+    collections: COLLECTIONS.map(collection => ({
+      id: collection.id,
+      name: collection.name,
+      itemIndexes: collection.items
+        .map(item => objectIndex.get(item.ueObj))
+        .filter(Number.isInteger),
+    })),
+    selection: selectedBase
+      ? { type: 'base', toolType: selectedBase.type, toolId: selectedBase.tool.id, templateIndex: selectedBase.templateIndex }
+      : selectedCircle
+      ? { type: 'circle', id: selectedCircle.id }
+      : selectedGrid
+        ? { type: 'grid', id: selectedGrid.id }
+        : selectedCollection
+          ? { type: 'collection', id: selectedCollection.id }
+          : {
+              type: 'items',
+              primaryIndex: selected ? objectIndex.get(selected.ueObj) : null,
+              indexes: [...selectedItems].map(item => objectIndex.get(item.ueObj)).filter(Number.isInteger),
+            },
+  };
+}
+
+function sceneSnapshotKey(snapshot) {
+  if (!snapshot) return '';
+  return JSON.stringify({
+    pugcJson: snapshot.pugcJson,
+    circles: snapshot.circles,
+    grids: snapshot.grids,
+    collections: snapshot.collections,
+  });
+}
+
+function beginHistory(label = 'Edit') {
+  history?.begin(label);
+}
+
+function commitHistory(label) {
+  history?.commit(label);
+  refreshGraphIfActive(); // any committed mutation (place/delete/paste/wire) may change the graph
+}
+
+function cancelHistory() {
+  history?.cancel();
+}
+
+function restoreSceneSnapshot(snapshot) {
+  if (!snapshot) return;
+  pugcJson = clonePlain(snapshot.pugcJson);
+  pugcFileInfo = clonePlain(snapshot.pugcFileInfo || pugcFileInfo);
+  clearScene(false);
+
+  const objects = getPugcObjects() || [];
+  for (const ueObj of objects) {
+    buildSceneItem(ueObj);
+  }
+
+  circleToolSeq = snapshot.circleToolSeq || 1;
+  for (const data of snapshot.circles || []) {
+    const tool = createPatternToolFromSnapshot(data, ITEMS, {
+      label: 'Circle Tool',
+      userDataKey: 'circleToolRef',
+      clonePlain,
+    });
+    CIRCLE_TOOLS.push(tool);
+    scene.add(tool.group);
+    setCircleHelperRadius(tool);
+    circleToolSeq = Math.max(circleToolSeq, tool.id + 1);
+  }
+
+  gridToolSeq = snapshot.gridToolSeq || 1;
+  for (const data of snapshot.grids || []) {
+    const tool = createPatternToolFromSnapshot(data, ITEMS, {
+      label: 'Grid Tool',
+      userDataKey: 'gridToolRef',
+      clonePlain,
+    });
+    GRID_TOOLS.push(tool);
+    scene.add(tool.group);
+    setGridHelperSize(tool);
+    gridToolSeq = Math.max(gridToolSeq, tool.id + 1);
+  }
+
+  collectionSeq = snapshot.collectionSeq || 1;
+  const assignedCollectionItems = new Set();
+  for (const data of snapshot.collections || []) {
+    const collectionItems = (data.itemIndexes || [])
+      .map(idx => ITEMS[idx])
+      .filter(item => item && !assignedCollectionItems.has(item));
+    for (const item of collectionItems) assignedCollectionItems.add(item);
+    const collection = {
+      id: data.id,
+      name: data.name || `Collection ${data.id}`,
+      items: collectionItems,
+    };
+    COLLECTIONS.push(collection);
+    collectionSeq = Math.max(collectionSeq, collection.id + 1);
+  }
+
+  const sel = snapshot.selection;
+  if (sel?.type === 'items') {
+    const indexes = sel.indexes?.length ? sel.indexes : [];
+    for (const idx of indexes) {
+      if (ITEMS[idx]) selectItem(ITEMS[idx], { add: true });
+    }
+    if (Number.isInteger(sel.primaryIndex) && ITEMS[sel.primaryIndex]) selectItem(ITEMS[sel.primaryIndex], { add: true });
+  } else if (sel?.type === 'circle') {
+    const tool = CIRCLE_TOOLS.find(t => t.id === sel.id);
+    if (tool) selectCircleTool(tool);
+    else deselectObject();
+  } else if (sel?.type === 'grid') {
+    const tool = GRID_TOOLS.find(t => t.id === sel.id);
+    if (tool) selectGridTool(tool);
+    else deselectObject();
+  } else if (sel?.type === 'base') {
+    const arr = sel.toolType === 'grid' ? GRID_TOOLS : CIRCLE_TOOLS;
+    const tool = arr.find(t => t.id === sel.toolId);
+    if (tool && tool.items[sel.templateIndex]) selectBaseObject(tool, sel.toolType, sel.templateIndex);
+    else deselectObject();
+  } else if (sel?.type === 'collection') {
+    const collection = COLLECTIONS.find(c => c.id === sel.id);
+    if (collection) selectCollection(collection);
+    else deselectObject();
+  } else {
+    deselectObject();
+  }
+
+  renderList();
+  updateCirclePreview();
+  updateGridPreview();
+  startMeshUpgrades();
+  refreshGraphIfActive(); // undo/redo may have added/removed devices; keep the user's pan/zoom
+}
+
+function undoSceneEdit() {
+  history?.undo();
+}
+
+function redoSceneEdit() {
+  history?.redo();
+}
+
+function makePastedObject(source, offsetCm = 100) {
+  return makePastedObjectFromSource(source, {
+    offsetCm,
+    isDeviceObjectId,
+    nextDeviceIndex: nextSceneDeviceIndex,
+  });
+}
+
+function updateClipboardButtons() {
+  const hasCopyable = Boolean(selected || selectedItems.size || selectedCircle || selectedGrid || selectedCollection);
+  document.getElementById('btnCopy').disabled = !hasCopyable;
+  document.getElementById('btnPaste').disabled = !copiedPayload || !getPugcObjects();
+}
+
+// A tool-owned object is driven by its circle/grid tool: it isn't individually selectable, can't
+// join a collection, and the tool overwrites its transform on every rebuild. Ownership is derived
+// from tool.items - the circleToolId/gridToolId tag isn't restored by snapshot/undo loads.
+function toolOwning(item) {
+  for (const tool of CIRCLE_TOOLS) if (tool.items.includes(item)) return { tool, type: 'circle' };
+  for (const tool of GRID_TOOLS) if (tool.items.includes(item)) return { tool, type: 'grid' };
+  return null;
+}
+
+function toolOwnedItemSet() {
+  const owned = new Set();
+  for (const tool of CIRCLE_TOOLS) for (const item of tool.items) owned.add(item);
+  for (const tool of GRID_TOOLS) for (const item of tool.items) owned.add(item);
+  return owned;
+}
+
+// Detach a tool's objects into free scene objects and drop the controller ("bake"). The objects stay
+// in pugcJson untouched; only tool ownership ends. Wrapped in history so undo restores the whole tool.
+function releaseToolObjects(tool, type) {
+  if (!tool || !tool.items.length) return;
+  beginHistory('Release Tool Objects');
+  const freed = [...tool.items];
+  for (const item of freed) { delete item.circleToolId; delete item.gridToolId; }
+  const count = freed.length;
+  tool.items.length = 0;
+  scene.remove(tool.group);
+  disposeSceneObject(tool.group);
+  const arr = type === 'grid' ? GRID_TOOLS : CIRCLE_TOOLS;
+  const idx = arr.indexOf(tool);
+  if (idx >= 0) arr.splice(idx, 1);
+  if (selectedCircle === tool) selectedCircle = null;
+  if (selectedGrid === tool) selectedGrid = null;
+  placementTemplates = null;
+  // Keep the baked objects grouped: drop them into a new collection so they stay movable together.
+  const collection = {
+    id: collectionSeq++,
+    name: uniqueCollectionName(`${type === 'grid' ? 'Grid' : 'Circle'} Tool ${tool.id}`),
+    items: freed,
+  };
+  COLLECTIONS.push(collection);
+  selectCollection(collection);
+  renderList();
+  commitHistory('Release Tool Objects');
+  setStatus(`Released ${count} object${count === 1 ? '' : 's'} into ${collection.name} - undo to restore the tool`);
+}
+
+function uniqueCollectionName(base) {
+  const names = new Set(COLLECTIONS.map(c => c.name));
+  if (!names.has(base)) return base;
+  let i = 2;
+  while (names.has(`${base} ${i}`)) i++;
+  return `${base} ${i}`;
+}
+
+function uniqueCollectionItems(items) {
+  const owned = toolOwnedItemSet();
+  return [...new Set(items)].filter(item => ITEMS.includes(item) && !owned.has(item));
+}
+
+// --- Unified "add selected objects to a group" (collection or tool base) ----------------------
+// Shared trigger/plumbing; each group type implements its own accept(). draggedIdx is set by a
+// drag-onto-node drop (the dragged row), null by the "+" button (uses the current selection).
+function resolveAddItems(draggedIdx) {
+  if (draggedIdx == null) return uniqueCollectionItems([...selectedItems]);
+  const item = ITEMS[draggedIdx];
+  if (!item) return [];
+  return selectedItems.has(item) ? uniqueCollectionItems([...selectedItems]) : uniqueCollectionItems([item]);
+}
+
+// Collection accept: the object stays put and gains membership (single-membership across collections).
+function addItemsToCollection(collection, items) {
+  const add = items.filter(it => !collection.items.includes(it));
+  if (!collection || !add.length) return 0;
+  beginHistory('Add to Collection');
+  removeItemsFromCollections(add, collection);
+  collection.items.push(...add);
+  selectCollection(collection);
+  renderList();
+  commitHistory('Add to Collection');
+  return add.length;
+}
+
+// Slot-0 stamping frame (template offsets/quats/scales are measured against it). Reuses the same
+// per-slot frame functions the rebuild uses, so inverting it yields a faithful template.
+function circleSlotZeroFrame(tool) { return circleSlotFrame(tool, 0, 1); }
+function gridSlotZeroFrame(tool) { return gridSlotFrame(tool, 0); }
+
+// Invert the slot-0 stamping math: a free object's world transform -> a template entry.
+function templateEntryFromItem(item, frame) {
+  const invQ = frame.quat.clone().invert();
+  const offset = editorPivotToRootPosition(item).sub(frame.root).applyQuaternion(invQ);
+  if (frame.scaleOffsets) offset.divide(new THREE.Vector3(frame.scale.x || 1, frame.scale.z || 1, frame.scale.y || 1));
+  const q = invQ.clone().multiply(item.group.quaternion);
+  const s = threeScaleToUe4(item.group.scale); // live group scale (mid-drag the ueObj value is stale)
+  return {
+    objectId: item.ueObj.objectId,
+    source: clonePlain(item.ueObj),
+    offset: { x: offset.x, y: offset.y, z: offset.z },
+    quaternion: { x: q.x, y: q.y, z: q.z, w: q.w },
+    scale3D: clampUeScale3D({
+      x: (s.x ?? 1) / (frame.scale.x || 1),
+      y: (s.y ?? 1) / (frame.scale.y || 1),
+      z: (s.z ?? 1) / (frame.scale.z || 1),
+    }),
+  };
+}
+
+// Tool-base accept: the object is absorbed into the template (relative to the tool frame) and stamped
+// across every slot, so one object becomes N. The original free object is consumed.
+function addItemsToToolBase(tool, type, items) {
+  if (!tool || !items.length) return 0;
+  beginHistory('Add to Tool Base');
+  if (!tool.templates?.length) tool.templates = clonePlain(getPatternTemplates(tool)); // keep the implicit base
+  const frame = type === 'grid' ? gridSlotZeroFrame(tool) : circleSlotZeroFrame(tool);
+  for (const item of items) tool.templates.push(templateEntryFromItem(item, frame));
+  for (const item of items) deleteItem(item, true);
+  tool.templateVersion = (tool.templateVersion || 0) + 1;
+  placementTemplates = clonePlain(tool.templates);
+  placementTemplateVersion++;
+  if (type === 'grid') { selectedGrid = null; rebuildGridTool(tool); selectGridTool(tool); }
+  else { selectedCircle = null; rebuildCircleTool(tool); selectCircleTool(tool); }
+  renderList();
+  commitHistory('Add to Tool Base');
+  return items.length;
+}
+
+function addToCollectionFromUi(collection, draggedIdx) {
+  const items = resolveAddItems(draggedIdx);
+  if (!items.length) { setStatus('Select object(s) first, then add them'); return; }
+  const n = addItemsToCollection(collection, items);
+  if (n) setStatus(`Added ${n} object${n === 1 ? '' : 's'} to ${collection.name}`);
+}
+
+function addToToolFromUi(tool, type, draggedIdx) {
+  const items = resolveAddItems(draggedIdx);
+  if (!items.length) { setStatus('Select object(s) first, then add them to the base'); return; }
+  const n = addItemsToToolBase(tool, type, items);
+  if (n) setStatus(`Added ${n} object${n === 1 ? '' : 's'} to ${type === 'grid' ? 'Grid' : 'Circle'} Tool ${tool.id} base`);
+}
+
+function removeItemsFromCollections(items, except = null) {
+  const removeSet = new Set(items);
+  for (const collection of COLLECTIONS) {
+    if (collection === except) continue;
+    collection.items = collection.items.filter(item => !removeSet.has(item));
+  }
+}
+
+function collectionNameCopy(baseName) {
+  const base = `${baseName || 'Collection'} Copy`;
+  const names = new Set(COLLECTIONS.map(collection => collection.name));
+  if (!names.has(base)) return base;
+  let index = 2;
+  while (names.has(`${base} ${index}`)) index++;
+  return `${base} ${index}`;
+}
+
+function itemInAnyCollection(item) {
+  return COLLECTIONS.some(c => c.items.includes(item));
+}
+
+// A duplicate of an object at the same transform (used when a selection drawn into a new group already
+// belongs to a collection - we copy rather than steal it from that collection).
+function duplicateItemAtSameSpot(item) {
+  return addSceneObject(makePastedObject(clonePlain(item.ueObj), 0));
+}
+
+function createCollectionFromSelection() {
+  const sel = uniqueCollectionItems([...selectedItems]);
+  beginHistory('Create Collection');
+  // Objects already in a collection are COPIED into the new one (the original stays in its collection);
+  // loose objects just move in.
+  const items = sel.map(item => (itemInAnyCollection(item) ? duplicateItemAtSameSpot(item) || item : item));
+  const collection = {
+    id: collectionSeq++,
+    name: `Collection ${collectionSeq - 1}`,
+    items,
+  };
+  COLLECTIONS.push(collection);
+  selectCollection(collection);
+  renderList();
+  commitHistory('Create Collection');
+  setStatus(items.length
+    ? `Created ${collection.name} with ${items.length} object${items.length === 1 ? '' : 's'}`
+    : `Created empty ${collection.name}`);
+}
+
+// Create a circle/grid pattern tool from the current selection (mirrors New Collection). The selected
+// objects become the tool's base; the tool spawns at the selection anchor and the originals are
+// consumed into the stamped pattern (slot 0 lands where they were).
+function createToolFromSelection(type) {
+  const items = uniqueCollectionItems([...selectedItems]);
+  if (!items.length) { setStatus('Select object(s) first, then create a tool', true); return; }
+  const built = makeCircleTemplatesFromSelection();
+  if (!built?.templates?.length) { setStatus('Select object(s) first', true); return; }
+  const anchorRoot = editorPivotToRootPosition(built.anchor);
+  const anchorQuat = built.anchor.group.quaternion.clone();
+  const params = type === 'grid' ? readGridParamsFromInputs() : readCircleParamsFromInputs();
+  placementTemplateVersion++;
+  beginHistory(type === 'grid' ? 'Create Grid Tool' : 'Create Circle Tool');
+  // Consume loose originals (the tool re-stamps them from the captured template). Objects that belong
+  // to a collection are left in place so that collection isn't emptied - the tool uses copies.
+  for (const item of items) {
+    if (!itemInAnyCollection(item)) deleteItem(item, true);
+  }
+  const tool = type === 'grid'
+    ? createGridTool(built.templates[0].objectId, anchorRoot, params, built.templates, { quaternion: anchorQuat })
+    : createCircleTool(built.templates[0].objectId, anchorRoot, params, built.templates, { quaternion: anchorQuat });
+  if (type === 'grid') selectGridTool(tool); else selectCircleTool(tool);
+  renderList();
+  commitHistory(type === 'grid' ? 'Create Grid Tool' : 'Create Circle Tool');
+  setStatus(`Created ${type === 'grid' ? 'Grid' : 'Circle'} Tool ${tool.id} from ${items.length} object${items.length === 1 ? '' : 's'}`);
+}
+
+function deleteCollection(collection) {
+  if (!collection) return;
+  const idx = COLLECTIONS.indexOf(collection);
+  if (idx >= 0) COLLECTIONS.splice(idx, 1);
+  if (selectedCollection === collection) selectedCollection = null;
+}
+
+// Chain the selected AI Navigation devices (objectId 39) into a linear travel path, ordered by
+// device {objectId, deviceIndex} (not selection order, which is ambiguous - box-select adds in list
+// order, ctrl-click in click order). Each one's cadidateNavPointList is set to point
+// nextPointNavDevice at the next nav; if an AI Player Spawn (34) is also selected, its firstNavDevice
+// points at the head. Defaults (availAITeamId 100 = all teams, weight 1) match the game's own
+// ai_example.pugc. This is the only place AI paths are connected - copy/paste only ever remaps
+// existing references onto the copies, it never invents new hops.
+const AI_NAV_OBJECT_ID = 39;
+const AI_PLAYER_SPAWN_OBJECT_ID = 34;
+function chainSelectedAiPath() {
+  const sel = [...selectedItems];
+  const navs = sel
+    .filter(it => Number(it.ueObj?.objectId) === AI_NAV_OBJECT_ID)
+    .sort((a, b) =>
+      (Number(a.ueObj.objectId) - Number(b.ueObj.objectId)) ||
+      ((a.ueObj.deviceIndex ?? 0) - (b.ueObj.deviceIndex ?? 0)));
+  if (navs.length < 2) { setStatus('Select 2+ AI Navigation devices', true); return; }
+  const spawn = sel.find(it => Number(it.ueObj?.objectId) === AI_PLAYER_SPAWN_OBJECT_ID);
+
+  const editProps = (item, mutate) => {
+    let props; try { props = JSON.parse(item.ueObj.devicePropertyData || '{}'); } catch { props = {}; }
+    mutate(props);
+    item.ueObj.devicePropertyData = JSON.stringify(props);
+  };
+
+  beginHistory('Chain AI Path');
+  // Non-terminal nav points become a single linear hop to the next; the last nav is left as-is.
+  for (let i = 0; i < navs.length - 1; i++) {
+    const next = navs[i + 1].ueObj;
+    editProps(navs[i], (p) => {
+      p.cadidateNavPointList = [{
+        availAITeamId: 100,
+        nextPointNavDevice: { objectId: next.objectId, deviceIndex: next.deviceIndex },
+        weight: 1,
+      }];
+    });
+  }
+  if (spawn) {
+    const head = navs[0].ueObj;
+    editProps(spawn, (p) => { p.firstNavDevice = { objectId: head.objectId, deviceIndex: head.deviceIndex }; });
+  }
+  updateDeviceLinkLines();
+  if (selected && (navs.includes(selected) || selected === spawn)) updatePropsPanel(selected);
+  commitHistory('Chain AI Path');
+  setStatus(`Chained ${navs.length} AI nav points into a path${spawn ? ' (+ spawn)' : ''}`);
+}
+
+// --- Selection distribute / align -------------------------------------------------
+
+function distributeSelection(axis) {
+  const items = uniqueCollectionItems([...selectedItems]);
+  if (items.length < 2) return;
+  const ax = axis.toLowerCase();
+  const spacing = numericInputValue('distSpacing' + axis, 5) * 100; // m -> cm
+  beginHistory('Distribute Selection');
+  const sorted = [...items].sort((a, b) =>
+    a.ueObj.spawnTransform.translation[ax] - b.ueObj.spawnTransform.translation[ax]
+  );
+  const anchor = sorted[0].ueObj.spawnTransform.translation[ax];
+  for (let i = 0; i < sorted.length; i++) {
+    sorted[i].ueObj.spawnTransform.translation[ax] = anchor + i * spacing;
+    sorted[i].group.position.copy(
+      ue4PosToThree(sorted[i].ueObj.spawnTransform.translation).add(transformedPivotOffset(sorted[i]))
+    );
+  }
+  updateDeviceLinkLines();
+  if (selected) updatePropsPanel(selected);
+  commitHistory('Distribute Selection');
+}
+
+function alignSelection(axis, edge) {
+  const items = uniqueCollectionItems([...selectedItems]);
+  if (items.length < 2) return;
+  const ax = axis.toLowerCase();
+  const vals = items.map(it => it.ueObj.spawnTransform.translation[ax]);
+  const target = edge === 'min' ? Math.min(...vals)
+    : edge === 'max' ? Math.max(...vals)
+    : vals.reduce((s, v) => s + v, 0) / vals.length;
+  beginHistory('Align Selection');
+  for (const item of items) {
+    item.ueObj.spawnTransform.translation[ax] = target;
+    item.group.position.copy(
+      ue4PosToThree(item.ueObj.spawnTransform.translation).add(transformedPivotOffset(item))
+    );
+  }
+  updateDeviceLinkLines();
+  if (selected) updatePropsPanel(selected);
+  commitHistory('Align Selection');
+}
+
+// --- Modular device copy: remap device->device references so a copied set rewires onto its copies ---
+// References use one identity {objectId, deviceIndex} in two channels: Device-type fields in
+// devicePropertyData (catalog-marked) and deviceEventList wiring. One rule covers both: a reference
+// pointing INTO the copied set repoints to the copy; a reference to a non-copied device is left as-is.
+
+function setDevicePropPath(root, path, value) {
+  const parts = String(path).split('.').map(p => p.replace(/\[\]$/, ''));
+  let cur = root;
+  for (let i = 0; i < parts.length - 1; i++) {
+    if (cur[parts[i]] == null || typeof cur[parts[i]] !== 'object') cur[parts[i]] = {};
+    cur = cur[parts[i]];
+  }
+  cur[parts[parts.length - 1]] = value;
+}
+
+// Flat {src,tgt} wiring edges touching any of `items`, so paste can replay them with remapped ends.
+function captureWiringForItems(items) {
+  const keys = new Set((items || [])
+    .filter(it => it?.ueObj && isDeviceObjectId(it.ueObj.objectId) && it.ueObj.deviceIndex !== -1)
+    .map(it => `${it.ueObj.objectId}:${it.ueObj.deviceIndex}`));
+  if (!keys.size || !Array.isArray(pugcJson?.deviceEventList)) return [];
+  const edges = [];
+  for (const g of pugcJson.deviceEventList) {
+    const s = g?.eventId?.deviceInstanceId;
+    if (!s) continue;
+    const sKey = `${s.objectId}:${s.deviceIndex}`;
+    for (const r of (g.relationEventId || [])) {
+      const t = r?.deviceInstanceId;
+      if (!t) continue;
+      const tKey = `${t.objectId}:${t.deviceIndex}`;
+      if (keys.has(sKey) || keys.has(tKey)) {
+        edges.push({
+          src: { objectId: s.objectId, deviceIndex: s.deviceIndex, eventName: g.eventId.eventName },
+          tgt: { objectId: t.objectId, deviceIndex: t.deviceIndex, eventName: r.eventName },
+        });
+      }
+    }
+  }
+  return edges;
+}
+
+// oldKey -> new {objectId,deviceIndex} for a freshly pasted device set.
+function buildPasteRemap(pairs) {
+  const remap = new Map();
+  for (const { source, item } of pairs) {
+    if (!source || !item) continue;
+    if (isDeviceObjectId(source.objectId) && source.deviceIndex != null && source.deviceIndex !== -1) {
+      remap.set(`${source.objectId}:${source.deviceIndex}`, { objectId: item.ueObj.objectId, deviceIndex: item.ueObj.deviceIndex });
+    }
+  }
+  return remap;
+}
+
+function remapDeviceRefsInItem(item, remap) {
+  const dev = catalog.devices[String(item.ueObj.objectId)];
+  if (!dev?.fields || !item.ueObj.devicePropertyData) return;
+  let props;
+  try { props = JSON.parse(item.ueObj.devicePropertyData); } catch { return; }
+  let changed = false;
+  const mapRef = (v) => {
+    if (v && v.objectId != null && v.deviceIndex != null) {
+      const n = remap.get(`${v.objectId}:${v.deviceIndex}`);
+      if (n) return { objectId: n.objectId, deviceIndex: n.deviceIndex };
+    }
+    return null;
+  };
+  for (const field of dev.fields) {
+    if (field.type === 'Device') {
+      const nv = mapRef(getDevicePropPath(props, field.path));
+      if (nv) { setDevicePropPath(props, field.path, nv); changed = true; }
+    } else if (field.type === 'Array') {
+      const arr = getDevicePropPath(props, field.path);
+      if (!Array.isArray(arr)) continue;
+      const childKeys = dev.fields
+        .filter(c => c.path.startsWith(`${field.path}[].`) && c.type === 'Device')
+        .map(c => c.path.split('[].')[1]);
+      for (const entry of arr) for (const k of childKeys) {
+        const nv = mapRef(entry?.[k]);
+        if (nv) { entry[k] = nv; changed = true; }
+      }
+    }
+  }
+  if (changed) item.ueObj.devicePropertyData = JSON.stringify(props);
+}
+
+function replayCopiedWiring(wiring, remap) {
+  if (!Array.isArray(wiring) || !wiring.length || !pugcJson) return;
+  if (!Array.isArray(pugcJson.deviceEventList)) pugcJson.deviceEventList = [];
+  const list = pugcJson.deviceEventList;
+  const mapInst = (e) => {
+    const n = remap.get(`${e.objectId}:${e.deviceIndex}`);
+    return n ? { objectId: n.objectId, deviceIndex: n.deviceIndex } : { objectId: e.objectId, deviceIndex: e.deviceIndex };
+  };
+  const sameInst = (a, b) => Number(a?.objectId) === Number(b.objectId) && Number(a?.deviceIndex) === Number(b.deviceIndex);
+  for (const edge of wiring) {
+    if (!remap.has(`${edge.src.objectId}:${edge.src.deviceIndex}`) &&
+        !remap.has(`${edge.tgt.objectId}:${edge.tgt.deviceIndex}`)) continue;
+    const srcInst = mapInst(edge.src), tgtInst = mapInst(edge.tgt);
+    let g = list.find(x => x?.eventId?.eventName === edge.src.eventName && sameInst(x.eventId?.deviceInstanceId, srcInst));
+    if (!g) { g = { eventId: { deviceInstanceId: srcInst, eventName: edge.src.eventName }, relationEventId: [] }; list.push(g); }
+    if (!Array.isArray(g.relationEventId)) g.relationEventId = [];
+    const dup = g.relationEventId.some(r => r?.eventName === edge.tgt.eventName && sameInst(r.deviceInstanceId, tgtInst));
+    if (!dup) g.relationEventId.push({ deviceInstanceId: tgtInst, eventName: edge.tgt.eventName });
+  }
+}
+
+// Apply field-reference remap + wiring replay for a just-pasted device set ({source,item} pairs).
+function applyPasteReferenceRemap(pairs, wiring) {
+  const remap = buildPasteRemap(pairs);
+  if (!remap.size) return;
+  for (const { item } of pairs) if (item) remapDeviceRefsInItem(item, remap);
+  replayCopiedWiring(wiring, remap);
+  updateDeviceLinkLines();
+}
+
+function copySelectedObject() {
+  if (selectedCollection) {
+    const items = uniqueCollectionItems(selectedCollection.items);
+    if (!items.length) return;
+    const anchorItem = selected && items.includes(selected) ? selected : items[0];
+    copiedPayload = {
+      ...makeObjectsClipboardPayload(items, anchorItem, editorPivotToRootPosition),
+      type: 'collection',
+      collectionName: selectedCollection.name,
+      wiring: captureWiringForItems(items),
+    };
+    updateClipboardButtons();
+    setStatus(`Copied ${selectedCollection.name}`);
+    return;
+  }
+  if (selectedCircle) {
+    const templates = selectedCircle.templates?.length ? selectedCircle.templates : getPatternTemplates(selectedCircle);
+    copiedPayload = makePatternClipboardPayload('circleTool', selectedCircle, templates);
+    updateClipboardButtons();
+    setStatus(`Copied Circle Tool ${selectedCircle.id}`);
+    return;
+  }
+  if (selectedGrid) {
+    const templates = selectedGrid.templates?.length ? selectedGrid.templates : getPatternTemplates(selectedGrid);
+    copiedPayload = makePatternClipboardPayload('gridTool', selectedGrid, templates);
+    updateClipboardButtons();
+    setStatus(`Copied Grid Tool ${selectedGrid.id}`);
+    return;
+  }
+  if (!selectedItems.size && !selected) return;
+  const items = [...selectedItems].sort((a, b) => ITEMS.indexOf(a) - ITEMS.indexOf(b));
+  const copyItems = items.length ? items : [selected];
+  const anchorItem = selected && copyItems.includes(selected) ? selected : copyItems[0];
+  copiedPayload = makeObjectsClipboardPayload(copyItems, anchorItem, editorPivotToRootPosition);
+  copiedPayload.wiring = captureWiringForItems(copyItems);
+  updateClipboardButtons();
+  setStatus(copyItems.length === 1
+    ? `Copied ${copyItems[0].meta.name} (${copyItems[0].ueObj.objectId})`
+    : `Copied ${copyItems.length} objects`);
+}
+
+function pasteCopiedObject() {
+  const objects = getPugcObjects();
+  if (!objects || !copiedPayload) return;
+
+  if (copiedPayload.type === 'circleTool' || copiedPayload.type === 'gridTool') {
+    const isCircle = copiedPayload.type === 'circleTool';
+    beginHistory(isCircle ? 'Paste Circle Tool' : 'Paste Grid Tool');
+    const center = new THREE.Vector3(
+      Number(copiedPayload.position?.x || 0),
+      Number(copiedPayload.position?.y || 0),
+      Number(copiedPayload.position?.z || 0)
+    );
+    const quaternion = new THREE.Quaternion(
+      copiedPayload.quaternion?.x || 0,
+      copiedPayload.quaternion?.y || 0,
+      copiedPayload.quaternion?.z || 0,
+      copiedPayload.quaternion?.w ?? 1
+    );
+    const tool = isCircle
+      ? createCircleTool(copiedPayload.objectId, center, clonePlain(copiedPayload.params), clonePlain(copiedPayload.templates || []), { quaternion })
+      : createGridTool(copiedPayload.objectId, center, clonePlain(copiedPayload.params), clonePlain(copiedPayload.templates || []), { quaternion });
+    if (isCircle) selectCircleTool(tool);
+    else selectGridTool(tool);
+    renderList();
+    commitHistory(isCircle ? 'Paste Circle Tool' : 'Paste Grid Tool');
+    setStatus(`Pasted ${isCircle ? 'Circle' : 'Grid'} Tool ${tool.id}`);
+    return;
+  }
+
+  if (copiedPayload.type === 'collection') {
+    const entries = objectClipboardEntries(copiedPayload);
+    if (!entries.length) return;
+    beginHistory('Paste Collection');
+    const pastedAnchor = clipboardAnchorToThree(copiedPayload, entries);
+    const pasted = [];
+    const pairs = [];
+    for (const entry of entries) {
+      const clone = makePastedObject(entry.source, 0);
+      const rel = clipboardEntryOffsetToThree(entry);
+      clone.spawnTransform.translation = threePosToUe4(pastedAnchor.clone().add(rel));
+      const item = addSceneObject(clone);
+      if (item) { pasted.push(item); pairs.push({ source: entry.source, item }); }
+    }
+    if (!pasted.length) { cancelHistory(); return; }
+    applyPasteReferenceRemap(pairs, copiedPayload.wiring);
+    const collection = {
+      id: collectionSeq++,
+      name: collectionNameCopy(copiedPayload.collectionName),
+      items: pasted,
+    };
+    COLLECTIONS.push(collection);
+    selectCollection(collection);
+    renderList();
+    commitHistory('Paste Collection');
+    setStatus(`Pasted ${collection.name}`);
+    return;
+  }
+
+  const entries = objectClipboardEntries(copiedPayload);
+  if (!entries.length) return;
+  beginHistory(entries.length === 1 ? 'Paste Object' : 'Paste Objects');
+  const pastedAnchor = clipboardAnchorToThree(copiedPayload, entries);
+  const pasted = [];
+  const pairs = [];
+  for (const entry of entries) {
+    const clone = makePastedObject(entry.source, 0);
+    const rel = clipboardEntryOffsetToThree(entry);
+    clone.spawnTransform.translation = threePosToUe4(pastedAnchor.clone().add(rel));
+    const item = addSceneObject(clone);
+    if (item) { pasted.push(item); pairs.push({ source: entry.source, item }); }
+  }
+  if (!pasted.length) { cancelHistory(); return; }
+  applyPasteReferenceRemap(pairs, copiedPayload.wiring);
+  deselectObject();
+  for (const item of pasted) selectItem(item, { add: true });
+  renderList();
+  commitHistory(entries.length === 1 ? 'Paste Object' : 'Paste Objects');
+  setStatus(pasted.length === 1
+    ? `Pasted ${pasted[0].meta.name} (${pasted[0].ueObj.objectId})`
+    : `Pasted ${pasted.length} objects`);
+}
+
+async function decodeReferenceLogicFile(file) {
+  if (/\.pugcedit$/i.test(file.name)) {
+    const session = parseEditorSession(await file.text());
+    return { json: session.snapshot.pugcJson, name: session.metadata?.pugcName || file.name };
+  }
+  if (/\.pugc$/i.test(file.name)) {
+    const bytes = new Uint8Array(await file.arrayBuffer());
+    const codec = await getPugcCodec();
+    const { json, name } = await codec.decode(bytes, file.name);
+    return { json, name: name || file.name };
+  }
+  throw new Error('Open a .pugc or .pugcedit file');
+}
+
+function makeReferenceLogicItems(json) {
+  return (getPugcObjectsFromJson(json) || [])
+    .filter(ueObj => isDeviceObjectId(ueObj?.objectId) && ueObj.deviceIndex !== -1)
+    .map(ueObj => ({
+      ueObj,
+      meta: { ...getObjectMeta(ueObj.objectId), isDevice: true },
+      group: {
+        position: ue4PosToThree(ueObj.spawnTransform?.translation || { x: 0, y: 0, z: 0 }),
+        quaternion: ue4QuatToThree(ueObj.spawnTransform?.rotation || { x: 0, y: 0, z: 0, w: 1 }),
+        scale: ue4ScaleToThree(ueObj.spawnTransform?.scale3D || { x: 1, y: 1, z: 1 }),
+      },
+    }));
+}
+
+function referenceNodeId(item) {
+  return item?.ueObj ? `${item.ueObj.objectId}:${item.ueObj.deviceIndex}` : '';
+}
+
+function referencePlacedDevices(allowedObjectIds) {
+  const allowedSet = Array.isArray(allowedObjectIds) && allowedObjectIds.length
+    ? new Set(allowedObjectIds.map(Number))
+    : null;
+  return referenceLogicItems
+    .filter(item =>
+      item.ueObj &&
+      item.ueObj.deviceIndex !== -1 &&
+      (!allowedSet || allowedSet.has(Number(item.ueObj.objectId)))
+    )
+    .map(item => {
+      const meta = getObjectMeta(item.ueObj.objectId);
+      const name = item.ueObj.userDeviceName || meta?.name || `Device ${item.ueObj.deviceIndex}`;
+      return {
+        objectId: Number(item.ueObj.objectId),
+        deviceIndex: item.ueObj.deviceIndex,
+        label: `#${item.ueObj.deviceIndex} ${name}`,
+      };
+    })
+    .sort((a, b) => (a.deviceIndex ?? 0) - (b.deviceIndex ?? 0));
+}
+
+function lockReferencePropsView() {
+  const root = document.getElementById('propsDetailsContent');
+  if (!root) return;
+  root.querySelectorAll('input, select, textarea').forEach(el => { el.disabled = true; });
+  root.querySelectorAll('button:not(.scene-dev-tab)').forEach(el => { el.disabled = true; });
+  const nameSection = document.getElementById('devNameSection');
+  if (nameSection) nameSection.style.display = 'none';
+  const meshDetails = document.getElementById('meshDetailsSection');
+  if (meshDetails) meshDetails.open = false;
+}
+
+function renderReferenceNodeDetails(item = referenceLogicFocusedItem) {
+  if (!item?.ueObj) {
+    hidePropsPanels();
+    return;
+  }
+  propsPanelReferenceMode = true;
+  try {
+    propsPanel?.updateObject(item);
+  } finally {
+    propsPanelReferenceMode = false;
+  }
+  lockReferencePropsView();
+}
+
+function captureInternalWiringForReference(items) {
+  const keys = new Set((items || [])
+    .filter(it => it?.ueObj && isDeviceObjectId(it.ueObj.objectId) && it.ueObj.deviceIndex !== -1)
+    .map(it => `${it.ueObj.objectId}:${it.ueObj.deviceIndex}`));
+  if (!keys.size || !Array.isArray(referenceLogicJson?.deviceEventList)) return [];
+  const edges = [];
+  for (const g of referenceLogicJson.deviceEventList) {
+    const s = g?.eventId?.deviceInstanceId;
+    if (!s) continue;
+    const sKey = `${s.objectId}:${s.deviceIndex}`;
+    for (const r of (g.relationEventId || [])) {
+      const t = r?.deviceInstanceId;
+      if (!t) continue;
+      const tKey = `${t.objectId}:${t.deviceIndex}`;
+      if (keys.has(sKey) && keys.has(tKey)) {
+        edges.push({
+          src: { objectId: s.objectId, deviceIndex: s.deviceIndex, eventName: g.eventId.eventName },
+          tgt: { objectId: t.objectId, deviceIndex: t.deviceIndex, eventName: r.eventName },
+        });
+      }
+    }
+  }
+  return edges;
+}
+
+function updateReferenceLogicUi() {
+  reconcileReferenceLogicSelection();
+  const panel = document.getElementById('referenceGraphPanel');
+  const count = document.getElementById('referenceGraphCount');
+  const copyBtn = document.getElementById('btnCopyReferenceLogic');
+  const clearBtn = document.getElementById('btnClearReferenceSelection');
+  const selectAllBtn = document.getElementById('btnSelectAllReferenceLogic');
+  const refTab = document.getElementById('btnGraphReferenceTab');
+  const showReferenceTools = graphActiveTab === 'reference';
+  if (panel) panel.hidden = graphActiveTab !== 'reference';
+  if (refTab) refTab.classList.toggle('has-reference', Boolean(referenceLogicJson));
+  const selectedCount = referenceLogicSelectedIds.size;
+  if (count) count.textContent = referenceLogicJson
+    ? `${referenceLogicName || 'Reference'} - ${referenceLogicItems.length} devices, ${selectedCount} selected`
+    : 'Load a second file to browse its device logic';
+  if (count) count.hidden = !showReferenceTools;
+  if (selectAllBtn) {
+    selectAllBtn.hidden = !showReferenceTools;
+    selectAllBtn.disabled = !referenceLogicItems.length;
+  }
+  if (copyBtn) {
+    copyBtn.hidden = !showReferenceTools;
+    copyBtn.disabled = !selectedCount || !getPugcObjects();
+  }
+  if (clearBtn) {
+    clearBtn.hidden = !showReferenceTools;
+    clearBtn.disabled = !selectedCount;
+  }
+  if (showReferenceTools) renderReferenceNodeDetails();
+}
+
+function reconcileReferenceLogicSelection() {
+  const liveIds = new Set(referenceLogicItems.map(item => `${item.ueObj.objectId}:${item.ueObj.deviceIndex}`));
+  for (const id of [...referenceLogicSelectedIds]) {
+    if (!liveIds.has(id)) referenceLogicSelectedIds.delete(id);
+  }
+  if (referenceLogicFocusedItem && !liveIds.has(referenceNodeId(referenceLogicFocusedItem))) {
+    referenceLogicFocusedItem = null;
+  }
+}
+
+function setGraphTab(tab) {
+  graphActiveTab = tab === 'reference' ? 'reference' : 'current';
+  document.getElementById('btnGraphCurrentTab')?.classList.toggle('active', graphActiveTab === 'current');
+  document.getElementById('btnGraphReferenceTab')?.classList.toggle('active', graphActiveTab === 'reference');
+  document.getElementById('liveGraphPanel')?.toggleAttribute('hidden', graphActiveTab !== 'current');
+  document.getElementById('referenceGraphPanel')?.toggleAttribute('hidden', graphActiveTab !== 'reference');
+  updateReferenceLogicUi();
+  if (!graphActive) return;
+  if (graphActiveTab === 'reference') {
+    reconcileReferenceLogicSelection();
+    referenceLogicGraph?.render();
+    referenceLogicGraph?.setSelectedIds(referenceLogicSelectedIds, { keepFocused: true });
+    renderReferenceNodeDetails();
+  } else {
+    logicGraph?.render();
+    logicGraph?.setSelected(selected);
+    if (selected) updatePropsPanel(selected);
+    else hidePropsPanels();
+  }
+}
+
+function setReferenceLogicSelection(nextIds) {
+  referenceLogicFocusedItem = null;
+  referenceLogicSelectedIds.clear();
+  for (const id of nextIds || []) referenceLogicSelectedIds.add(id);
+  referenceLogicGraph?.setSelectedIds(referenceLogicSelectedIds);
+  renderReferenceNodeDetails();
+  updateReferenceLogicUi();
+}
+
+function selectReferenceLogicGroup(ids, event) {
+  referenceLogicFocusedItem = null;
+  if (!event?.shiftKey && !event?.ctrlKey && !event?.metaKey) referenceLogicSelectedIds.clear();
+  for (const id of ids || []) referenceLogicSelectedIds.add(id);
+  referenceLogicGraph?.setSelectedIds(referenceLogicSelectedIds);
+  renderReferenceNodeDetails();
+  updateReferenceLogicUi();
+}
+
+function toggleReferenceLogicNode(item, id, event) {
+  if (!item || !id) return;
+  referenceLogicFocusedItem = item;
+  if (event?.shiftKey || event?.ctrlKey || event?.metaKey) {
+    if (referenceLogicSelectedIds.has(id)) referenceLogicSelectedIds.delete(id);
+    else referenceLogicSelectedIds.add(id);
+  } else {
+    referenceLogicSelectedIds.clear();
+    referenceLogicSelectedIds.add(id);
+  }
+  referenceLogicGraph?.setSelectedIds(referenceLogicSelectedIds, { keepFocused: true });
+  renderReferenceNodeDetails(item);
+  updateReferenceLogicUi();
+}
+
+async function loadReferenceLogicFile(file) {
+  if (!file) return;
+  setStatus(`Loading reference logic from ${file.name}...`);
+  try {
+    const { json, name } = await decodeReferenceLogicFile(file);
+    referenceLogicJson = json;
+    referenceLogicName = file.name || name || 'Reference logic';
+    referenceLogicItems = makeReferenceLogicItems(json);
+    referenceLogicFocusedItem = null;
+    referenceLogicSelectedIds.clear();
+    referenceLogicGraph?.resetView();
+    renderReferenceNodeDetails(null);
+    setSceneView('graph');
+    setGraphTab('reference');
+    setStatus(`Loaded ${referenceLogicItems.length} reference device${referenceLogicItems.length === 1 ? '' : 's'} from ${referenceLogicName}`);
+  } catch (err) {
+    setStatus(`Reference load error: ${err.message}`, true);
+    console.error(err);
+  }
+}
+
+function selectAllReferenceLogic() {
+  setReferenceLogicSelection(referenceLogicItems.map(item => `${item.ueObj.objectId}:${item.ueObj.deviceIndex}`));
+}
+
+function copyReferenceLogicSelection() {
+  reconcileReferenceLogicSelection();
+  const selectedRefItems = referenceLogicItems.filter(item => referenceLogicSelectedIds.has(`${item.ueObj.objectId}:${item.ueObj.deviceIndex}`));
+  if (!selectedRefItems.length) return;
+  const anchor = selectedRefItems[0].ueObj.spawnTransform?.translation || { x: 0, y: 0, z: 0 };
+  copiedPayload = {
+    type: selectedRefItems.length === 1 ? 'object' : 'objects',
+    objects: selectedRefItems.map(item => {
+      const t = item.ueObj.spawnTransform?.translation || { x: 0, y: 0, z: 0 };
+      return {
+        source: clonePlain(item.ueObj),
+        relativeTranslation: {
+          x: Number(t.x || 0) - Number(anchor.x || 0),
+          y: Number(t.y || 0) - Number(anchor.y || 0),
+          z: Number(t.z || 0) - Number(anchor.z || 0),
+        },
+      };
+    }),
+    wiring: captureInternalWiringForReference(selectedRefItems),
+  };
+  updateClipboardButtons();
+  setStatus(`Copied ${selectedRefItems.length} reference device${selectedRefItems.length === 1 ? '' : 's'} - use Paste to transfer`);
+}
+
+function placementCenterThree() {
+  return ue4PosToThree({
+    x: numericInputValue('placeCenterX'),
+    y: numericInputValue('placeCenterY'),
+    z: numericInputValue('placeCenterZ'),
+  });
+}
+
+function setPlacementCenterFromThree(v) {
+  const ue = threePosToUe4(v);
+  const x = document.getElementById('placeCenterX');
+  const y = document.getElementById('placeCenterY');
+  const z = document.getElementById('placeCenterZ');
+  if (!x || !y || !z) return; // spawn-centre inputs were removed (tools are created from selection)
+  x.value = Math.round(ue.x);
+  y.value = Math.round(ue.y);
+  z.value = Math.round(ue.z);
+  updateCirclePreview();
+  updateGridPreview();
+}
+
+function selectedCatalogValue(objectId) {
+  return formatSelectedCatalogValue(catalog, objectId);
+}
+
+function newSceneObject(objectId, posThree, quatThree, scale3D = { x: 1, y: 1, z: 1 }) {
+  return createSceneObjectData(objectId, posThree, quatThree, {
+    scale3D,
+    catalog,
+    isDeviceObjectId,
+    nextDeviceIndex: nextSceneDeviceIndex,
+  });
+}
+
+async function upgradeItemMesh(item) {
+  // Devices with a DataTable-backed mesh pick-list render the selected asset rather than the
+  // (empty) generic-actor blueprint mesh.
+  const asset = deviceMeshAssetFor(item.ueObj);
+  if (asset) {
+    const geoData = await getAssetMeshGeo(asset);
+    if (geoData) { item.currentMeshAsset = asset; await applyRealMesh(item, geoData, { allowReplace: true }); return; }
+  }
+  if (SUPPRESS_BP_MESH_IDS.has(String(item.ueObj.objectId))) return; // volume-only device; keep placeholder
+  const geoData = await getBpGeo(item.ueObj.objectId);
+  if (geoData && !item.hasRealMesh) await applyRealMesh(item, geoData);
+}
+
+function addSceneObject(ueObj, options = {}) {
+  const objects = getPugcObjects();
+  if (!objects) {
+    setStatus('Open a .pugc file before placing objects', true);
+    return null;
+  }
+  objects.push(ueObj);
+  const item = createItem(ueObj, getObjectMeta(ueObj.objectId));
+  item.group.userData.itemRef = item;
+  item.keepEditorPivotOnMeshLoad = options.keepEditorPivotOnMeshLoad ?? false;
+  item.circleToolId = options.circleToolId ?? null;
+  item.gridToolId = options.gridToolId ?? null;
+  scene.add(item.group);
+  ITEMS.push(item);
+  decorateDeviceItem(item);
+  upgradeItemMesh(item);
+  return item;
+}
+
+function readCircleParamsFromInputs() {
+  return {
+    diameter: Math.max(0, numericInputValue('circleDiameter', 20)),
+    count: Math.max(3, Math.min(1000, Math.round(numericInputValue('circleCount', 3)))),
+    offsetDeg: numericInputValue('circleRotOffsetManual', 0),
+    objectPitchDeg: numericInputValue('circleObjectPitch', 0),
+    objectRollDeg: numericInputValue('circleObjectRoll', 0),
+    radialStep: numericInputValue('circleRadialStep', 0),
+    heightStep: numericInputValue('circleHeightStep', 0),
+    rotationStepDeg: numericInputValue('circleRotationStep', 0),
+    scaleX: clampObjectScaleValue(numericInputValue('circleScaleX', 1)),
+    scaleY: clampObjectScaleValue(numericInputValue('circleScaleY', 1)),
+    scaleZ: clampObjectScaleValue(numericInputValue('circleScaleZ', 1)),
+    scaleStepX: numericInputValue('circleScaleStepX', 0),
+    scaleStepY: numericInputValue('circleScaleStepY', 0),
+    scaleStepZ: numericInputValue('circleScaleStepZ', 0),
+    scaleOffsets: Boolean(document.getElementById('circleScaleOffsets')?.checked),
+  };
+}
+
+function updateCircleSliderLabels(params = readCircleParamsFromInputs()) {
+  syncCircleRange('circleDiameterSlider', params.diameter);
+  syncCircleRange('circleCountSlider', circlePlacementCount(params));
+  syncLinearRange('circleObjectPitchSlider', params.objectPitchDeg || 0);
+  syncLinearRange('circleRotOffsetSlider', params.offsetDeg || 0);
+  syncLinearRange('circleObjectRollSlider', params.objectRollDeg || 0);
+  syncLinearRange('circleRotationStepSlider', params.rotationStepDeg || 0);
+  syncLinearRange('circleRadialStepSlider', params.radialStep || 0);
+  syncLinearRange('circleHeightStepSlider', params.heightStep || 0);
+  syncLinearRange('circleScaleXSlider', params.scaleX || 1);
+  syncLinearRange('circleScaleYSlider', params.scaleY || 1);
+  syncLinearRange('circleScaleZSlider', params.scaleZ || 1);
+  syncLinearRange('circleScaleStepXSlider', params.scaleStepX || 0);
+  syncLinearRange('circleScaleStepYSlider', params.scaleStepY || 0);
+  syncLinearRange('circleScaleStepZSlider', params.scaleStepZ || 0);
+}
+
+function writeCircleParamsToInputs(tool) {
+  setPlacementObject(tool.objectId, { close: false, apply: false, keepTemplates: true });
+  document.getElementById('circleDiameter').value = tool.params.diameter;
+  document.getElementById('circleCount').value = circlePlacementCount(tool.params);
+  setInputValue('circleObjectPitch', tool.params.objectPitchDeg || 0);
+  setInputValue('circleRotOffsetManual', tool.params.offsetDeg || 0);
+  setInputValue('circleObjectRoll', tool.params.objectRollDeg || 0);
+  setInputValue('circleRadialStep', tool.params.radialStep || 0);
+  setInputValue('circleHeightStep', tool.params.heightStep || 0);
+  setInputValue('circleRotationStep', tool.params.rotationStepDeg || 0);
+  setInputValue('circleScaleX', tool.params.scaleX || 1, 3);
+  setInputValue('circleScaleY', tool.params.scaleY || 1, 3);
+  setInputValue('circleScaleZ', tool.params.scaleZ || 1, 3);
+  setInputValue('circleScaleStepX', tool.params.scaleStepX || 0, 3);
+  setInputValue('circleScaleStepY', tool.params.scaleStepY || 0, 3);
+  setInputValue('circleScaleStepZ', tool.params.scaleStepZ || 0, 3);
+  const scaleOffsets = document.getElementById('circleScaleOffsets');
+  if (scaleOffsets) scaleOffsets.checked = Boolean(tool.params.scaleOffsets);
+  setPlacementCenterFromThree(tool.group.position);
+  updateCircleSliderLabels(tool.params);
+}
+
+function makeCircleTemplatesFromSelection() {
+  const items = [...selectedItems].sort((a, b) => ITEMS.indexOf(a) - ITEMS.indexOf(b));
+  if (!items.length) return null;
+  const anchor = selected && selectedItems.has(selected) ? selected : items[0];
+  const anchorRoot = editorPivotToRootPosition(anchor);
+  const anchorInv = anchor.group.quaternion.clone().invert();
+  return {
+    anchor,
+    templates: items.map(item => {
+      const localOffset = editorPivotToRootPosition(item).sub(anchorRoot).applyQuaternion(anchorInv);
+      const localQuat = anchorInv.clone().multiply(item.group.quaternion);
+      return {
+        objectId: item.ueObj.objectId,
+        source: clonePlain(item.ueObj),
+        offset: { x: localOffset.x, y: localOffset.y, z: localOffset.z },
+        quaternion: { x: localQuat.x, y: localQuat.y, z: localQuat.z, w: localQuat.w },
+        scale3D: clampUeScale3D(item.ueObj.spawnTransform.scale3D),
+      };
+    }),
+  };
+}
+
+function circleTemplatesKey(templates) {
+  return patternTemplatesKey(templates);
+}
+
+function useSelectedPlacementTemplate() {
+  if (!selected) return;
+  const multi = makeCircleTemplatesFromSelection();
+  placementTemplates = multi?.templates?.length > 1 ? multi.templates : null;
+  placementTemplateVersion++;
+  const r = objectEulerDegrees(selected);
+  const s = clampUeScale3D(selected.ueObj.spawnTransform.scale3D);
+  setPlacementObject(selected.ueObj.objectId, { close: false, apply: false, keepTemplates: true });
+  setPlacementCenterFromThree(editorPivotToRootPosition(selected));
+  if (activeToolMode() === 'grid') {
+    setInputValue('gridObjectPitch', r.p);
+    setInputValue('gridObjectYaw', r.y);
+    setInputValue('gridObjectRoll', r.r);
+    setInputValue('gridScaleX', s.x, 3);
+    setInputValue('gridScaleY', s.y, 3);
+    setInputValue('gridScaleZ', s.z, 3);
+    updateGridSliderLabels(readGridParamsFromInputs());
+  } else {
+    setInputValue('circleObjectPitch', r.p);
+    setInputValue('circleRotOffsetManual', r.y);
+    setInputValue('circleObjectRoll', r.r);
+    setInputValue('circleScaleX', s.x, 3);
+    setInputValue('circleScaleY', s.y, 3);
+    setInputValue('circleScaleZ', s.z, 3);
+    updateCircleSliderLabels(readCircleParamsFromInputs());
+  }
+  updatePlacementPreview();
+  applyPlacementInputsToSelected();
+  if (placementTemplates) setStatus(`Using ${placementTemplates.length} selected objects as placement template`);
+}
+
+function circlePlacementCount(params = readCircleParamsFromInputs()) {
+  if (Number.isFinite(params.count)) {
+    return Math.max(3, Math.min(1000, Math.round(params.count)));
+  }
+  return Math.max(3, Math.min(1000, Math.round(Math.PI * params.diameter / Math.max(0.1, params.spacing || 2))));
+}
+
+function updateCirclePreview() {
+  const el = document.getElementById('circlePreviewText');
+  if (!el) return;
+  const params = readCircleParamsFromInputs();
+  updateCircleSliderLabels(params);
+  const count = circlePlacementCount(params);
+  const actualSpacing = Math.PI * params.diameter / count;
+  const radialStep = params.radialStep || 0;
+  const heightStep = params.heightStep || 0;
+  const scaleStep = params.scaleStepX || params.scaleStepY || params.scaleStepZ;
+  const spiral = radialStep || heightStep || params.rotationStepDeg || scaleStep;
+  el.textContent = `${count} objects, ${actualSpacing.toFixed(2)} m spacing${spiral ? `, step R ${formatCircleNumber(radialStep, 2)} m H ${formatCircleNumber(heightStep, 2)} m S ${formatCircleNumber(params.scaleStepX || 0, 3)},${formatCircleNumber(params.scaleStepY || 0, 3)},${formatCircleNumber(params.scaleStepZ || 0, 3)}` : ''}${params.scaleOffsets ? ', scaled offsets' : ''}`;
+}
+
+function applyCircleInputsToSelected() {
+  updateCirclePreview();
+  if (!selectedCircle) return;
+  const objectId = parsePlacementObjectId();
+  if (!Number.isFinite(objectId) || (!catalog.objects[String(objectId)] && !catalog.devices[String(objectId)])) return;
+  beginHistory('Edit Circle Tool');
+  syncToolTemplates(selectedCircle, objectId);
+  selectedCircle.params = readCircleParamsFromInputs();
+  rebuildCircleTool(selectedCircle);
+  renderList();
+  commitHistory('Edit Circle Tool');
+}
+
+
+function circleToolEulerDegrees(tool) {
+  return patternToolEulerDegrees(tool);
+}
+
+function circleObjectScale(params, index) {
+  return clampUeScale3D({
+    x: Number(params.scaleX ?? 1) + Number(params.scaleStepX || 0) * index,
+    y: Number(params.scaleY ?? 1) + Number(params.scaleStepY || 0) * index,
+    z: Number(params.scaleZ ?? 1) + Number(params.scaleStepZ || 0) * index,
+  });
+}
+
+function circleTemplateOffsetVector(template, slotScale, scaleOffsets) {
+  const offset = template.offset || { x: 0, y: 0, z: 0 };
+  const v = new THREE.Vector3(offset.x || 0, offset.y || 0, offset.z || 0);
+  return scaleOffsets
+    ? v.multiply(new THREE.Vector3(slotScale.x ?? 1, slotScale.z ?? 1, slotScale.y ?? 1))
+    : v;
+}
+
+function getCircleTemplates(tool) {
+  return getPatternTemplates(tool);
+}
+
+function activeToolMode() {
+  return document.getElementById('gridToolPanel')?.hasAttribute('hidden') ? 'circle' : 'grid';
+}
+
+function circleObjectLocalQuaternion(params, angle, index) {
+  const euler = new THREE.Euler(
+    THREE.MathUtils.degToRad(Number(params.objectPitchDeg || 0)),
+    -angle + THREE.MathUtils.degToRad(Number(params.offsetDeg || 0) + Number(params.rotationStepDeg || 0) * index),
+    THREE.MathUtils.degToRad(Number(params.objectRollDeg || 0)),
+    'YXZ'
+  );
+  return new THREE.Quaternion().setFromEuler(euler);
+}
+
+function setCircleHelperRadius(tool) {
+  const radius = tool.params.diameter / 2;
+  if (tool.helperRadius === radius && tool.group.children.length) {
+    updateCircleHelperSelection(tool);
+    return;
+  }
+  tool.helperRadius = radius;
+  disposeHelperChildren(tool.group);
+
+  const ring = new THREE.Mesh(
+    new THREE.TorusGeometry(radius, 0.15, 8, 128),
+    new THREE.MeshBasicMaterial({ color: 0x33b6ff, transparent: true, opacity: selectedCircle === tool ? 0.95 : 0.55 })
+  );
+  ring.rotation.x = Math.PI / 2;
+  ring.userData.circleToolRef = tool;
+  tool.group.add(ring);
+
+  const center = new THREE.Mesh(
+    new THREE.SphereGeometry(0.8, 16, 8),
+    new THREE.MeshBasicMaterial({ color: 0x33b6ff, transparent: true, opacity: selectedCircle === tool ? 0.95 : 0.65 })
+  );
+  center.userData.circleToolRef = tool;
+  tool.group.add(center);
+}
+
+function updateCircleHelperSelection(tool) {
+  setHelperChildrenOpacity(tool.group, selectedCircle === tool);
+  updateToolSourceHighlight(tool, selectedCircle === tool);
+}
+
+// The slot-0 instances (items[0..templateCount-1]) are the editable base; highlight them while the
+// tool is selected. Shared by circle and grid.
+function toolSourceItems(tool) {
+  if (!tool) return [];
+  const templateCount = Math.max(1, getCircleTemplates(tool).length);
+  return tool.items.slice(0, templateCount).filter(Boolean);
+}
+
+function isToolSourceItem(item) {
+  const tool = selectedCircle || selectedGrid;
+  return tool && toolSourceItems(tool).includes(item);
+}
+
+function updateToolSourceHighlight(tool, highlight) {
+  toolSourceItems(tool).forEach((item, i) => {
+    if (selectedItems.has(item)) return;
+    if (highlight) setItemSelectedMaterials(item, selectionColorForIndex(i)); // distinct hue per base object
+    else setItemNormalMaterials(item, nrmOpacity);
+  });
+}
+
+function deselectAllTools() {
+  selectedBase = null;
+  if (selectedCircle) {
+    const old = selectedCircle;
+    selectedCircle = null;
+    updateCircleHelperSelection(old);
+  }
+  if (selectedGrid) {
+    const old = selectedGrid;
+    selectedGrid = null;
+    updateGridHelperSelection(old);
+  }
+}
+
+function setHelperChildrenOpacity(group, isSelected) {
+  for (const child of group.children) {
+    const mats = Array.isArray(child.material) ? child.material : [child.material];
+    for (const m of mats) { m.opacity = isSelected ? 0.95 : 0.55; m.needsUpdate = true; }
+  }
+}
+
+function disposeHelperChildren(group) {
+  for (const child of [...group.children]) {
+    group.remove(child);
+    child.geometry?.dispose();
+    const mats = Array.isArray(child.material) ? child.material : [child.material];
+    for (const m of mats) m?.dispose?.();
+  }
+}
+
+function syncToolTemplates(tool, objectId) {
+  if (
+    placementTemplates?.length &&
+    tool.templateVersion !== placementTemplateVersion &&
+    circleTemplatesKey(tool.templates) !== circleTemplatesKey(placementTemplates)
+  ) {
+    for (const item of [...tool.items]) deleteItem(item, true);
+    tool.items.length = 0;
+    tool.templates = clonePlain(placementTemplates);
+    tool.templateVersion = placementTemplateVersion;
+    tool.objectId = tool.templates[0].objectId;
+  } else if (!tool.templates?.length && objectId !== tool.objectId) {
+    for (const item of [...tool.items]) deleteItem(item, true);
+    tool.items.length = 0;
+    tool.templates = null;
+    placementTemplates = null;
+    placementTemplateVersion++;
+    tool.templateVersion = 0;
+    tool.objectId = objectId;
+  }
+}
+
+function syncToolItemPool(tool, totalItems, templates, toolKey) {
+  const needsRebuild = tool.items.some((item, idx) => Number(item.ueObj.objectId) !== Number(templates[idx % templates.length].objectId));
+  if (needsRebuild) {
+    for (const item of [...tool.items]) deleteItem(item, true);
+    tool.items.length = 0;
+  }
+  while (tool.items.length > totalItems) deleteItem(tool.items.at(-1), true);
+  while (tool.items.length < totalItems) {
+    const template = templates[tool.items.length % templates.length];
+    const tq = template.quaternion || { x: 0, y: 0, z: 0, w: 1 };
+    const ueObj = template.source
+      ? makePastedObject(template.source, 0)
+      : newSceneObject(
+          template.objectId,
+          tool.group.position,
+          new THREE.Quaternion(tq.x || 0, tq.y || 0, tq.z || 0, tq.w ?? 1),
+          template.scale3D || { x: 1, y: 1, z: 1 }
+        );
+    const item = addSceneObject(ueObj, { keepEditorPivotOnMeshLoad: false, [toolKey]: tool.id });
+    if (item) {
+      item[toolKey] = tool.id;
+      tool.items.push(item);
+    }
+  }
+}
+
+// --- One pattern-tool system: circle and grid differ only in slot count + per-slot frame ----------
+function toolSlotCount(tool, type) {
+  return type === 'grid'
+    ? Math.max(1, Math.round(tool.params.columns || 1)) * Math.max(1, Math.round(tool.params.rows || 1)) * Math.max(1, Math.round(tool.params.layers || 1))
+    : circlePlacementCount(tool.params);
+}
+
+// A slot frame = where one slot's objects are stamped: { root, quat, scale, scaleOffsets }.
+function circleSlotFrame(tool, slot, count) {
+  const params = tool.params;
+  const angle = (slot / count) * Math.PI * 2;
+  const radialAmount = params.diameter / 2 + Number(params.radialStep || 0) * slot;
+  const local = new THREE.Vector3(Math.cos(angle) * radialAmount, Number(params.heightStep || 0) * slot, Math.sin(angle) * radialAmount);
+  const root = local.applyQuaternion(tool.group.quaternion).add(tool.group.position);
+  const quat = tool.group.quaternion.clone().multiply(circleObjectLocalQuaternion(params, angle, slot));
+  return { root, quat, scale: circleObjectScale(params, slot), scaleOffsets: Boolean(params.scaleOffsets) };
+}
+
+function gridSlotFrame(tool, slot) {
+  const params = tool.params;
+  const columns = Math.max(1, Math.round(params.columns || 1));
+  const rows = Math.max(1, Math.round(params.rows || 1));
+  const col = slot % columns;
+  const row = Math.floor((slot / columns) % rows);
+  const layer = Math.floor(slot / (columns * rows));
+  const local = new THREE.Vector3(
+    (col - (columns - 1) / 2) * Number(params.spacingX || 0),
+    Number(params.heightStep || 0) * row + Number(params.spacingZ || 0) * layer,
+    (row - (rows - 1) / 2) * Number(params.spacingY || 0),
+  );
+  const root = local.applyQuaternion(tool.group.quaternion).add(tool.group.position);
+  const quat = tool.group.quaternion.clone().multiply(gridObjectLocalQuaternion(params, slot));
+  return { root, quat, scale: circleObjectScale(params, slot), scaleOffsets: false };
+}
+
+function toolSlotFrame(tool, type, slot, count) {
+  return type === 'grid' ? gridSlotFrame(tool, slot) : circleSlotFrame(tool, slot, count);
+}
+
+function rebuildPatternTool(tool, type) {
+  const templates = getCircleTemplates(tool);
+  const count = toolSlotCount(tool, type);
+  const totalItems = count * templates.length;
+  syncToolItemPool(tool, totalItems, templates, type === 'grid' ? 'gridToolId' : 'circleToolId');
+
+  for (let slot = 0; slot < count; slot++) {
+    const frame = toolSlotFrame(tool, type, slot, count);
+    for (let t = 0; t < templates.length; t++) {
+      const item = tool.items[slot * templates.length + t];
+      const template = templates[t];
+      const tq = template.quaternion || { x: 0, y: 0, z: 0, w: 1 };
+      const rootPosition = circleTemplateOffsetVector(template, frame.scale, frame.scaleOffsets)
+        .applyQuaternion(frame.quat)
+        .add(frame.root);
+      const scale = multiplyScale3D(template.scale3D, frame.scale);
+      item.group.scale.copy(ue4ScaleToThree(scale));
+      item.group.quaternion.copy(frame.quat).multiply(new THREE.Quaternion(tq.x || 0, tq.y || 0, tq.z || 0, tq.w ?? 1));
+      item.group.position.copy(rootPosition).add(transformedPivotOffset(item));
+      item.ueObj.spawnTransform.translation = threePosToUe4(rootPosition);
+      item.ueObj.spawnTransform.rotation = threeQuatToUe4(item.group.quaternion);
+      item.ueObj.spawnTransform.scale3D = scale;
+    }
+  }
+
+  if (type === 'grid') {
+    setGridHelperSize(tool);
+    updateGridPreview();
+    if (selectedGrid === tool) updateGridPropsPanel(tool);
+  } else {
+    setCircleHelperRadius(tool);
+    updateCirclePreview();
+    if (selectedCircle === tool) updateCirclePropsPanel(tool);
+  }
+}
+
+function rebuildCircleTool(tool) { rebuildPatternTool(tool, 'circle'); }
+
+function createCircleTool(objectId, center, params, templates = null, options = {}) {
+  const tool = {
+    id: circleToolSeq++,
+    objectId: templates?.[0]?.objectId ?? objectId,
+    templates: templates?.length ? clonePlain(templates) : null,
+    templateVersion: templates?.length ? placementTemplateVersion : 0,
+    params: { ...params },
+    group: new THREE.Group(),
+    items: [],
+  };
+  tool.group.position.copy(center);
+  if (options.quaternion) tool.group.quaternion.copy(options.quaternion);
+  tool.group.name = `Circle Tool ${tool.id}`;
+  tool.group.userData.circleToolRef = tool;
+  CIRCLE_TOOLS.push(tool);
+  scene.add(tool.group);
+  rebuildCircleTool(tool);
+  return tool;
+}
+
+let placeOneTracked = false;
+
+function placeOneObject() {
+  const objectId = parsePlacementObjectId();
+  if (!Number.isFinite(objectId)) { setStatus('Choose an object/device to place', true); return; }
+  if (!catalog.objects[String(objectId)] && !catalog.devices[String(objectId)]) { setStatus(`Unknown objectId ${objectId}`, true); return; }
+  beginHistory('Place Object');
+  // Spawn at the camera position, then select it so the gizmo is ready to drag it into place.
+  const item = addSceneObject(newSceneObject(
+    objectId,
+    camera.position.clone(),
+    new THREE.Quaternion(),
+    { x: 1, y: 1, z: 1 }
+  ));
+  if (!item) { cancelHistory(); return; }
+  selectItem(item);
+  setMode('translate');
+  updatePlacementPreview();
+  renderList();
+  commitHistory('Place Object');
+  setStatus(`Placed ${item.meta.name} (${objectId}) - drag to position`);
+  if (!placeOneTracked) {
+    placeOneTracked = true;
+    trackEvent('first_place_object');
+  }
+}
+
+function placeCircleObjects() {
+  const objectId = parsePlacementObjectId();
+  if (!Number.isFinite(objectId)) { setStatus('Choose an object/device to place', true); return; }
+  if (!catalog.objects[String(objectId)] && !catalog.devices[String(objectId)]) { setStatus(`Unknown objectId ${objectId}`, true); return; }
+  const objects = getPugcObjects();
+  if (!objects) { setStatus('Open a .pugc file before placing objects', true); return; }
+
+  const params = readCircleParamsFromInputs();
+  const templates = placementTemplates;
+  beginHistory('Create Circle Tool');
+  const tool = createCircleTool(objectId, placementCenterThree(), params, templates);
+  selectCircleTool(tool);
+  updatePlacementPreview();
+  renderList();
+  commitHistory('Create Circle Tool');
+  setStatus(`Created Circle Tool ${tool.id}: ${tool.items.length} object${tool.items.length === 1 ? '' : 's'}`);
+}
+
+function readGridParamsFromInputs() {
+  return {
+    columns: Math.max(1, Math.min(250, Math.round(numericInputValue('gridColumns', 3)))),
+    rows: Math.max(1, Math.min(250, Math.round(numericInputValue('gridRows', 3)))),
+    layers: Math.max(1, Math.min(250, Math.round(numericInputValue('gridLayers', 1)))),
+    spacingX: Math.max(0, numericInputValue('gridSpacingX', 5)),
+    spacingY: Math.max(0, numericInputValue('gridSpacingY', 5)),
+    spacingZ: numericInputValue('gridSpacingZ', 0),
+    heightStep: numericInputValue('gridHeightStep', 0),
+    yawStepDeg: numericInputValue('gridYawStep', 0),
+    objectPitchDeg: numericInputValue('gridObjectPitch', 0),
+    offsetDeg: numericInputValue('gridObjectYaw', 0),
+    objectRollDeg: numericInputValue('gridObjectRoll', 0),
+    scaleX: clampObjectScaleValue(numericInputValue('gridScaleX', 1)),
+    scaleY: clampObjectScaleValue(numericInputValue('gridScaleY', 1)),
+    scaleZ: clampObjectScaleValue(numericInputValue('gridScaleZ', 1)),
+    scaleStepX: 0,
+    scaleStepY: 0,
+    scaleStepZ: 0,
+  };
+}
+
+function gridPlacementCount(params = readGridParamsFromInputs()) {
+  return Math.max(1, Math.min(250, Math.round(params.columns || 1))) *
+    Math.max(1, Math.min(250, Math.round(params.rows || 1))) *
+    Math.max(1, Math.min(250, Math.round(params.layers || 1)));
+}
+
+function updateGridSliderLabels(params = readGridParamsFromInputs()) {
+  for (const [sliderId, value] of [
+    ['gridColumnsSlider', params.columns || 3],
+    ['gridRowsSlider', params.rows || 3],
+    ['gridLayersSlider', params.layers || 1],
+    ['gridSpacingXSlider', params.spacingX || 0],
+    ['gridSpacingYSlider', params.spacingY || 0],
+    ['gridSpacingZSlider', params.spacingZ || 0],
+    ['gridHeightStepSlider', params.heightStep || 0],
+    ['gridYawStepSlider', params.yawStepDeg || 0],
+    ['gridObjectPitchSlider', params.objectPitchDeg || 0],
+    ['gridObjectYawSlider', params.offsetDeg || 0],
+    ['gridObjectRollSlider', params.objectRollDeg || 0],
+    ['gridScaleXSlider', params.scaleX || 1],
+    ['gridScaleYSlider', params.scaleY || 1],
+    ['gridScaleZSlider', params.scaleZ || 1],
+  ]) syncLinearRange(sliderId, value);
+}
+
+function updateGridPreview() {
+  const el = document.getElementById('gridPreviewText');
+  if (!el) return;
+  const params = readGridParamsFromInputs();
+  updateGridSliderLabels(params);
+  const templates = placementTemplates?.length || 1;
+  const rotated = params.objectPitchDeg || params.offsetDeg || params.objectRollDeg || params.yawStepDeg;
+  const scaled = params.scaleX !== 1 || params.scaleY !== 1 || params.scaleZ !== 1;
+  const layers = Math.max(1, Math.round(params.layers || 1));
+  const gridDesc = layers > 1 ? `${params.columns} x ${params.rows} x ${layers}L` : `${params.columns} x ${params.rows}`;
+  el.textContent = `${gridDesc} grid, ${gridPlacementCount(params) * templates} object${gridPlacementCount(params) * templates === 1 ? '' : 's'}${rotated ? ', object rotation' : ''}${scaled ? ', scaled' : ''}`;
+}
+
+function writeGridParamsToInputs(tool) {
+  setPlacementObject(tool.objectId, { close: false, apply: false, keepTemplates: true });
+  setInputValue('gridColumns', tool.params.columns || 3, 0);
+  setInputValue('gridRows', tool.params.rows || 3, 0);
+  setInputValue('gridLayers', tool.params.layers || 1, 0);
+  setInputValue('gridSpacingX', tool.params.spacingX || 0, 2);
+  setInputValue('gridSpacingY', tool.params.spacingY || 0, 2);
+  setInputValue('gridSpacingZ', tool.params.spacingZ || 0, 2);
+  setInputValue('gridHeightStep', tool.params.heightStep || 0, 2);
+  setInputValue('gridYawStep', tool.params.yawStepDeg || 0);
+  setInputValue('gridObjectPitch', tool.params.objectPitchDeg || 0);
+  setInputValue('gridObjectYaw', tool.params.offsetDeg || 0);
+  setInputValue('gridObjectRoll', tool.params.objectRollDeg || 0);
+  setInputValue('gridScaleX', tool.params.scaleX || 1, 3);
+  setInputValue('gridScaleY', tool.params.scaleY || 1, 3);
+  setInputValue('gridScaleZ', tool.params.scaleZ || 1, 3);
+  setPlacementCenterFromThree(tool.group.position);
+  updateGridSliderLabels(tool.params);
+}
+
+function applyGridInputsToSelected() {
+  updateGridPreview();
+  if (!selectedGrid) return;
+  const objectId = parsePlacementObjectId();
+  if (!Number.isFinite(objectId) || (!catalog.objects[String(objectId)] && !catalog.devices[String(objectId)])) return;
+  beginHistory('Edit Grid Tool');
+  syncToolTemplates(selectedGrid, objectId);
+  selectedGrid.params = readGridParamsFromInputs();
+  rebuildGridTool(selectedGrid);
+  renderList();
+  commitHistory('Edit Grid Tool');
+}
+
+function applyPlacementInputsToSelected() {
+  if (selectedGrid) applyGridInputsToSelected();
+  else applyCircleInputsToSelected();
+}
+
+function gridObjectLocalQuaternion(params, index) {
+  return new THREE.Quaternion().setFromEuler(new THREE.Euler(
+    THREE.MathUtils.degToRad(Number(params.objectPitchDeg || 0)),
+    THREE.MathUtils.degToRad(Number(params.offsetDeg || 0) + Number(params.yawStepDeg || 0) * index),
+    THREE.MathUtils.degToRad(Number(params.objectRollDeg || 0)),
+    'YXZ'
+  ));
+}
+
+function setGridHelperSize(tool) {
+  const columns = Math.max(1, Math.round(tool.params.columns || 1));
+  const rows = Math.max(1, Math.round(tool.params.rows || 1));
+  const layers = Math.max(1, Math.round(tool.params.layers || 1));
+  const spacingX = Number(tool.params.spacingX || 0);
+  const spacingY = Number(tool.params.spacingY || 0);
+  const spacingZ = Number(tool.params.spacingZ || 0);
+  const width = Math.max(0.5, (columns - 1) * spacingX);
+  const depth = Math.max(0.5, (rows - 1) * spacingY);
+  const key = `${columns}:${rows}:${layers}:${spacingX}:${spacingY}:${spacingZ}`;
+  if (tool.helperKey === key && tool.group.children.length) {
+    updateGridHelperSelection(tool);
+    return;
+  }
+  tool.helperKey = key;
+  disposeHelperChildren(tool.group);
+
+  const lineMat = new THREE.LineBasicMaterial({ color: 0x7bd56f, transparent: true, opacity: selectedGrid === tool ? 0.95 : 0.55 });
+  const points = [];
+  const left = -width / 2;
+  const right = width / 2;
+  const top = -depth / 2;
+  const bottom = depth / 2;
+  for (let l = 0; l < layers; l++) {
+    const y = spacingZ * l;
+    for (let c = 0; c < columns; c++) {
+      const x = (c - (columns - 1) / 2) * spacingX;
+      points.push(new THREE.Vector3(x, y, top), new THREE.Vector3(x, y, bottom));
+    }
+    for (let r = 0; r < rows; r++) {
+      const z = (r - (rows - 1) / 2) * spacingY;
+      points.push(new THREE.Vector3(left, y, z), new THREE.Vector3(right, y, z));
+    }
+  }
+  if (layers > 1) {
+    const topY = spacingZ * (layers - 1);
+    for (const cx of [left, right]) {
+      for (const cz of [top, bottom]) {
+        points.push(new THREE.Vector3(cx, 0, cz), new THREE.Vector3(cx, topY, cz));
+      }
+    }
+  }
+  const geo = new THREE.BufferGeometry().setFromPoints(points);
+  const lines = new THREE.LineSegments(geo, lineMat);
+  lines.userData.gridToolRef = tool;
+  tool.group.add(lines);
+
+  const center = new THREE.Mesh(
+    new THREE.BoxGeometry(1.4, 0.25, 1.4),
+    new THREE.MeshBasicMaterial({ color: 0x7bd56f, transparent: true, opacity: selectedGrid === tool ? 0.95 : 0.65 })
+  );
+  center.userData.gridToolRef = tool;
+  tool.group.add(center);
+}
+
+function updateGridHelperSelection(tool) {
+  setHelperChildrenOpacity(tool.group, selectedGrid === tool);
+  updateToolSourceHighlight(tool, selectedGrid === tool);
+}
+
+function rebuildGridTool(tool) { rebuildPatternTool(tool, 'grid'); }
+
+function createGridTool(objectId, center, params, templates = null, options = {}) {
+  const tool = {
+    id: gridToolSeq++,
+    objectId: templates?.[0]?.objectId ?? objectId,
+    templates: templates?.length ? clonePlain(templates) : null,
+    templateVersion: templates?.length ? placementTemplateVersion : 0,
+    params: { ...params },
+    group: new THREE.Group(),
+    items: [],
+  };
+  tool.group.position.copy(center);
+  if (options.quaternion) tool.group.quaternion.copy(options.quaternion);
+  tool.group.name = `Grid Tool ${tool.id}`;
+  tool.group.userData.gridToolRef = tool;
+  GRID_TOOLS.push(tool);
+  scene.add(tool.group);
+  rebuildGridTool(tool);
+  return tool;
+}
+
+function placeGridObjects() {
+  const objectId = parsePlacementObjectId();
+  if (!Number.isFinite(objectId)) { setStatus('Choose an object/device to place', true); return; }
+  if (!catalog.objects[String(objectId)] && !catalog.devices[String(objectId)]) { setStatus(`Unknown objectId ${objectId}`, true); return; }
+  const objects = getPugcObjects();
+  if (!objects) { setStatus('Open a .pugc file before placing objects', true); return; }
+
+  const params = readGridParamsFromInputs();
+  const templates = placementTemplates;
+  beginHistory('Create Grid Tool');
+  const tool = createGridTool(objectId, placementCenterThree(), params, templates);
+  selectGridTool(tool);
+  updatePlacementPreview();
+  renderList();
+  commitHistory('Create Grid Tool');
+  setStatus(`Created Grid Tool ${tool.id}: ${tool.items.length} object${tool.items.length === 1 ? '' : 's'}`);
+}
+
+function fitCamera() {
+  fitCameraToItems(ITEMS, { camera, orbitControls });
+}
+
+// Park the camera near the middle of the map (used on scene load / refresh) rather than framing the
+// whole level, which puts you very far out.
+function resetCameraToStart() {
+  if (!camera || !orbitControls) return;
+  orbitControls.target.copy(WORLD_START_TARGET);
+  camera.position.copy(WORLD_START_TARGET).add(new THREE.Vector3(0, 300, 600));
+  camera.lookAt(orbitControls.target);
+  orbitControls.update();
+}
+
+// --- Selection ----------------------------------------------------------------
+
+function restoreSelectedItemColor() {
+  selected = clearItemSelection(selectedItems, nrmOpacity);
+}
+
+function selectedDeviceNodeIds() {
+  return new Set([...selectedItems]
+    .filter(item => item?.ueObj && isDeviceObjectId(item.ueObj.objectId) && item.ueObj.deviceIndex !== -1)
+    .map(item => `${item.ueObj.objectId}:${item.ueObj.deviceIndex}`));
+}
+
+function selectCurrentGraphGroup(ids, event) {
+  const idSet = new Set(ids || []);
+  const items = ITEMS.filter(item => idSet.has(`${item.ueObj?.objectId}:${item.ueObj?.deviceIndex}`));
+  if (!items.length) return;
+  const additive = Boolean(event?.shiftKey || event?.ctrlKey || event?.metaKey);
+  if (!additive) deselectObject();
+  for (const item of items) selectItem(item, { add: true });
+  logicGraph?.setSelectedIds(selectedDeviceNodeIds());
+  setStatus(`Selected ${items.length} graph node${items.length === 1 ? '' : 's'}`);
+}
+
+function updateSelectionButtons() {
+  const hasItem = selectedItems.size > 0;
+  const hasSelection = hasItem || Boolean(selectedCircle) || Boolean(selectedGrid) || Boolean(selectedCollection) || Boolean(selectedBase);
+  document.getElementById('btnFocus').disabled = !hasSelection;
+  document.getElementById('btnDelete').disabled = !hasSelection;
+  document.getElementById('btnCreateCollection').disabled = !getPugcObjects();
+  // Tool creation works on a free-object selection (like New Collection).
+  const hasFreeSel = uniqueCollectionItems([...selectedItems]).length > 0;
+  const btnCircle = document.getElementById('btnCreateCircleTool');
+  const btnGrid = document.getElementById('btnCreateGridTool');
+  if (btnCircle) btnCircle.disabled = !hasFreeSel;
+  if (btnGrid) btnGrid.disabled = !hasFreeSel;
+  const btnAiPath = document.getElementById('btnChainAiPath');
+  if (btnAiPath) btnAiPath.disabled = [...selectedItems].filter(it => Number(it.ueObj?.objectId) === AI_NAV_OBJECT_ID).length < 2;
+  const relC = document.getElementById('btnReleaseCircle');
+  if (relC) relC.hidden = !selectedCircle;
+  const relG = document.getElementById('btnReleaseGrid');
+  if (relG) relG.hidden = !selectedGrid;
+  // The tool params/menu only appears while a tool is selected.
+  const toolSection = document.getElementById('toolParamsSection');
+  if (toolSection) toolSection.hidden = !(selectedCircle || selectedGrid);
+  // Align button: enabled when 2+ free items selected; collapse if selection drops below that.
+  const hasDist = uniqueCollectionItems([...selectedItems]).length >= 2;
+  const btnSelTools = document.getElementById('btnSelectionTools');
+  if (!hasDist && selAlignActive) {
+    selAlignActive = false;
+    if (btnSelTools) btnSelTools.classList.remove('active');
+  }
+  if (btnSelTools) btnSelTools.disabled = !hasDist;
+  const selToolSection = document.getElementById('selectionToolSection');
+  if (selToolSection) selToolSection.hidden = !selAlignActive;
+  // Disable Scale for devices the catalog marks unscaleable (and leave scale mode if active).
+  const noScale = selectionScaleMode() === 'none';
+  const scaleBtn = document.getElementById('btnScale');
+  if (scaleBtn) scaleBtn.disabled = noScale;
+  if (noScale && transformControls?.mode === 'scale') setMode('translate');
+  updateClipboardButtons();
+}
+
+function hidePropsPanels() {
+  document.getElementById('propsEmpty').style.display = 'none';
+  document.getElementById('propsContent').style.display = 'none';
+  document.getElementById('propsDetailsEmpty').style.display = '';
+  document.getElementById('propsDetailsContent').style.display = 'none';
+}
+
+function selectItem(item, { add = false, toggle = false } = {}) {
+  if (!item) return;
+  window.getSelection()?.removeAllRanges(); // selecting a scene object clears any page text selection
+  selectedCollection = null;
+  deselectAllTools();
+  if (!add && !toggle) restoreSelectedItemColor();
+  selected = applyItemSelection({
+    item,
+    selectedItems,
+    current: selected,
+    add: true,
+    toggle,
+    normalOpacity: nrmOpacity,
+  });
+  if (selected) {
+    transformControls.attach(selected.group);
+    updatePropsPanel(selected);
+    refreshListSelection();
+    scrollListToSelected();
+  } else {
+    transformControls.detach();
+    hidePropsPanels();
+    refreshListSelection();
+  }
+  logicGraph?.setSelected(selected);
+  updateSelectionButtons();
+}
+
+function selectCircleTool(tool) {
+  if (selectedCircle === tool) return;
+  selectedCollection = null;
+  restoreSelectedItemColor();
+  placementTemplates = tool.templates?.length ? clonePlain(tool.templates) : null;
+  placementTemplateVersion = tool.templateVersion || placementTemplateVersion + 1;
+  if (tool.templates?.length && !tool.templateVersion) tool.templateVersion = placementTemplateVersion;
+  deselectAllTools();
+  selectedCircle = tool;
+  selected = null;
+  updateCircleHelperSelection(tool);
+  setToolTab('circle');
+  writeCircleParamsToInputs(tool);
+  setMode('translate');
+  transformControls.attach(tool.group);
+  updateCirclePropsPanel(tool);
+  updateSelectionButtons();
+}
+
+function selectGridTool(tool) {
+  if (selectedGrid === tool) return;
+  selectedCollection = null;
+  restoreSelectedItemColor();
+  placementTemplates = tool.templates?.length ? clonePlain(tool.templates) : null;
+  placementTemplateVersion = tool.templateVersion || placementTemplateVersion + 1;
+  if (tool.templates?.length && !tool.templateVersion) tool.templateVersion = placementTemplateVersion;
+  deselectAllTools();
+  selectedGrid = tool;
+  selected = null;
+  updateGridHelperSelection(tool);
+  setToolTab('grid');
+  writeGridParamsToInputs(tool);
+  setMode('translate');
+  transformControls.attach(tool.group);
+  updateGridPropsPanel(tool);
+  updateSelectionButtons();
+}
+
+function selectCollection(collection) {
+  if (!collection) return;
+  restoreSelectedItemColor();
+  deselectAllTools();
+  selectedCollection = collection;
+  selected = null;
+  for (const item of collection.items) {
+    if (!ITEMS.includes(item)) continue;
+    selected = applyItemSelection({
+      item,
+      selectedItems,
+      current: selected,
+      add: true,
+      toggle: false,
+      normalOpacity: nrmOpacity,
+    });
+  }
+  if (selected) {
+    transformControls.attach(selected.group);
+    updatePropsPanel(selected);
+  } else {
+    transformControls.detach();
+    hidePropsPanels();
+  }
+  updateSelectionButtons();
+}
+
+// Slot-0 of a tool is its editable "source" (Blender array/collection-instance model): selecting one
+// of those objects edits the template entry and re-stamps every slot; all other slots stay locked.
+function selectBaseObject(tool, type, templateIndex, { add = false } = {}) {
+  if (!tool.templates?.length) tool.templates = clonePlain(getPatternTemplates(tool));
+  const item = tool.items[templateIndex];
+  if (!item) return;
+
+  if (add && selectedBase?.tool === tool) {
+    selected = applyItemSelection({ item, selectedItems, current: selected, add: true, toggle: true, normalOpacity: nrmOpacity });
+    if (selectedItems.has(item)) {
+      selectedBase = { tool, type, templateIndex };
+      transformControls.attach(item.group);
+    } else if (selected) {
+      const newIdx = tool.items.indexOf(selected);
+      if (newIdx >= 0) selectedBase = { tool, type, templateIndex: newIdx };
+      transformControls.attach(selected.group);
+    } else {
+      selectedBase = null;
+      if (type === 'circle') selectCircleTool(tool); else selectGridTool(tool);
+      return;
+    }
+  } else {
+    restoreSelectedItemColor();
+    deselectAllTools();
+    selectedCollection = null;
+    selected = clearItemSelection(selectedItems, nrmOpacity);
+    selected = applyItemSelection({ item, selectedItems, current: null, add: true, toggle: false, normalOpacity: nrmOpacity });
+    selectedBase = { tool, type, templateIndex };
+    transformControls.attach(item.group);
+    setMode('translate');
+  }
+
+  updatePropsPanel(item);
+  updateSelectionButtons();
+  const meta = getObjectMeta(item.ueObj.objectId);
+  const multi = selectedItems.size > 1 ? ` (${selectedItems.size} selected)` : '';
+  setStatus(`Editing ${type === 'grid' ? 'Grid' : 'Circle'} Tool ${tool.id} base object ${templateIndex + 1} (${meta.name})${multi} - move to reshape the pattern, Delete button removes it from the base`);
+}
+
+function removeBaseObjectByIndex(tool, type, templateIndex) {
+  if (!tool) return;
+  if (!tool.templates?.length) tool.templates = clonePlain(getPatternTemplates(tool));
+  if (templateIndex < 0 || templateIndex >= tool.templates.length) return;
+  if (tool.templates.length <= 1) { setStatus('A tool needs at least one base object', true); return; }
+  beginHistory('Remove Base Object');
+  tool.templates.splice(templateIndex, 1);
+  tool.templateVersion = (tool.templateVersion || 0) + 1;
+  placementTemplates = clonePlain(tool.templates);
+  placementTemplateVersion++;
+  selectedBase = null;
+  selected = clearItemSelection(selectedItems, nrmOpacity);
+  if (type === 'grid') { selectedGrid = null; rebuildGridTool(tool); selectGridTool(tool); }
+  else { selectedCircle = null; rebuildCircleTool(tool); selectCircleTool(tool); }
+  renderList();
+  commitHistory('Remove Base Object');
+  setStatus('Removed object from tool base');
+}
+
+function removeBaseObject() {
+  if (selectedBase) removeBaseObjectByIndex(selectedBase.tool, selectedBase.type, selectedBase.templateIndex);
+}
+
+function deselectObject() {
+  restoreSelectedItemColor();
+  selectedBase = null;
+  selectedCollection = null;
+  if (selectedCircle) {
+    const old = selectedCircle;
+    selectedCircle = null;
+    updateCircleHelperSelection(old);
+  }
+  if (selectedGrid) {
+    const old = selectedGrid;
+    selectedGrid = null;
+    updateGridHelperSelection(old);
+  }
+  transformControls.detach();
+  hidePropsPanels();
+  logicGraph?.setSelected(null);
+  updateSelectionButtons();
+  document.getElementById('hudCoords').textContent = '';
+}
+
+// --- Box (marquee) selection --------------------------------------------------
+let boxSelEl = null;
+const _boxSelVec = new THREE.Vector3();
+
+function drawBoxSelRect(a, b) {
+  if (!boxSelEl) {
+    boxSelEl = document.createElement('div');
+    boxSelEl.style.cssText =
+      'position:fixed;border:1px solid #4ea3ff;background:rgba(78,163,255,0.12);' +
+      'pointer-events:none;z-index:9999;display:none;';
+    document.body.appendChild(boxSelEl);
+  }
+  boxSelEl.style.left   = Math.min(a.x, b.x) + 'px';
+  boxSelEl.style.top    = Math.min(a.y, b.y) + 'px';
+  boxSelEl.style.width  = Math.abs(a.x - b.x) + 'px';
+  boxSelEl.style.height = Math.abs(a.y - b.y) + 'px';
+  boxSelEl.style.display = 'block';
+}
+
+function hideBoxSelRect() {
+  if (boxSelEl) boxSelEl.style.display = 'none';
+}
+
+function boxSelectItems(min, max, additive) {
+  const rect = document.getElementById('sceneCanvas').getBoundingClientRect();
+  if (!additive) {
+    restoreSelectedItemColor();
+    selected = clearItemSelection(selectedItems, nrmOpacity);
+    selectedCollection = null;
+    deselectAllTools();
+  }
+  const owned = toolOwnedItemSet();
+  for (const item of ITEMS) {
+    if (!item.group.visible || owned.has(item)) continue; // tool objects are locked to their tool
+    item.group.getWorldPosition(_boxSelVec);
+    _boxSelVec.project(camera);
+    if (_boxSelVec.z > 1) continue; // behind the camera
+    const sx = rect.left + ( _boxSelVec.x * 0.5 + 0.5) * rect.width;
+    const sy = rect.top  + (-_boxSelVec.y * 0.5 + 0.5) * rect.height;
+    if (sx < min.x || sx > max.x || sy < min.y || sy > max.y) continue;
+    selected = applyItemSelection({
+      item,
+      selectedItems,
+      current: selected,
+      add: true,
+      toggle: false,
+      normalOpacity: nrmOpacity,
+    });
+  }
+  if (selected) {
+    transformControls.attach(selected.group);
+    updatePropsPanel(selected);
+    scrollListToSelected();
+  } else {
+    transformControls.detach();
+    hidePropsPanels();
+  }
+  updateSelectionButtons();
+  refreshListSelection();
+}
+
+function onCanvasClick(event) {
+  const canvas = document.getElementById('sceneCanvas');
+  const rect = canvas.getBoundingClientRect();
+  const ndc = new THREE.Vector2(
+    ((event.clientX - rect.left) / rect.width)  *  2 - 1,
+    ((event.clientY - rect.top)  / rect.height) * -2 + 1,
+  );
+  raycaster.setFromCamera(ndc, camera);
+
+  // Objects first, then tool helpers. The grid helper's line-grid spans the whole pattern and would
+  // otherwise intercept clicks on grid objects (so the grid base was never selectable in the viewport).
+  // item.mesh may be a Group of InstancedMeshes; walk up to the group tagged with itemRef.
+  const meshes = ITEMS.map(i => i.mesh).filter(Boolean);
+  const hits = raycaster.intersectObjects(meshes, true);
+  if (hits.length) {
+    let o = hits[0].object;
+    while (o && !o.userData?.itemRef) o = o.parent;
+    const hit = o?.userData?.itemRef;
+    if (hit) {
+      const owner = toolOwning(hit);
+      if (owner) {
+        // Slot 0 (the first instance of each template) is the editable source; clicking it edits the
+        // base. Any other slot is a locked projection and selects the tool controller.
+        const tIdx = owner.tool.items.indexOf(hit);
+        const templateCount = getCircleTemplates(owner.tool).length;
+        if (tIdx >= 0 && tIdx < templateCount) {
+          selectBaseObject(owner.tool, owner.type, tIdx, { add: event.shiftKey || event.ctrlKey || event.metaKey });
+        } else if (owner.type === 'circle') {
+          selectCircleTool(owner.tool);
+        } else {
+          selectGridTool(owner.tool);
+        }
+        refreshListSelection();
+        return;
+      }
+      selectItem(hit, { add: event.ctrlKey || event.metaKey || event.shiftKey, toggle: event.ctrlKey || event.metaKey || event.shiftKey });
+      refreshListSelection();
+      return;
+    }
+  }
+
+  // Tool helpers (ring / grid lines / centre marker) - select the tool when no object was hit.
+  const toolMeshes = [...CIRCLE_TOOLS, ...GRID_TOOLS]
+    .flatMap(tool => tool.group.children.filter(child => child.isMesh || child.isLineSegments));
+  const toolHits = raycaster.intersectObjects(toolMeshes, false);
+  if (toolHits.length) {
+    const ref = toolHits[0].object.userData;
+    if (ref.circleToolRef) { selectCircleTool(ref.circleToolRef); refreshListSelection(); return; }
+    if (ref.gridToolRef) { selectGridTool(ref.gridToolRef); refreshListSelection(); return; }
+  }
+
+  deselectObject();
+  refreshListSelection();
+}
+
+// --- Transform change -> write back to pugcJson --------------------------------
+
+function beginMultiTransform() {
+  multiTransformStart = createMultiTransformStart(selected, selectedItems, editorPivotToRootPosition);
+}
+
+function applyMultiTransformDelta() {
+  applyMultiSelectionTransform(multiTransformStart, selected, selectedItems, {
+    rootPositionForItem: editorPivotToRootPosition,
+    pivotOffsetForItem: transformedPivotOffset,
+    clampScale: clampThreeScale,
+    positionToUe4: threePosToUe4,
+    quaternionToUe4: threeQuatToUe4,
+    scaleToUe4: threeScaleToUe4,
+  });
+}
+
+function onTransformChange() {
+  if (selectedBase) {
+    const { tool, type, templateIndex } = selectedBase;
+    const item = tool.items[templateIndex];
+    if (!item || !tool.templates?.[templateIndex]) return;
+    clampThreeScale(item.group.scale);
+    applyMultiTransformDelta();
+    const frame = type === 'grid' ? gridSlotZeroFrame(tool) : circleSlotZeroFrame(tool);
+    const templateCount = getCircleTemplates(tool).length;
+    for (const baseItem of selectedItems) {
+      const tIdx = tool.items.indexOf(baseItem);
+      if (tIdx < 0 || tIdx >= templateCount || !tool.templates[tIdx]) continue;
+      clampThreeScale(baseItem.group.scale);
+      const e = templateEntryFromItem(baseItem, frame);
+      tool.templates[tIdx] = { ...tool.templates[tIdx], offset: e.offset, quaternion: e.quaternion, scale3D: e.scale3D };
+    }
+    tool.templateVersion = (tool.templateVersion || 0) + 1;
+    placementTemplates = clonePlain(tool.templates);
+    placementTemplateVersion++;
+    if (type === 'grid') rebuildGridTool(tool); else rebuildCircleTool(tool);
+    updatePropsPanel(tool.items[templateIndex]);
+    const entry = templateEntryFromItem(item, frame);
+    document.getElementById('hudCoords').textContent =
+      `Base ${templateIndex + 1} - offset ${entry.offset.x.toFixed(2)}, ${entry.offset.y.toFixed(2)}, ${entry.offset.z.toFixed(2)} m`;
+    return;
+  }
+  if (selectedCircle) {
+    rebuildCircleTool(selectedCircle);
+    updateDeviceLinkLines();
+    setPlacementCenterFromThree(selectedCircle.group.position);
+    const t = threePosToUe4(selectedCircle.group.position);
+    const r = circleToolEulerDegrees(selectedCircle);
+    document.getElementById('hudCoords').textContent =
+      `Circle X ${t.x.toFixed(0)}  Y ${t.y.toFixed(0)}  Z ${t.z.toFixed(0)} cm  Rot P ${r.p.toFixed(1)} Y ${r.y.toFixed(1)} R ${r.r.toFixed(1)} deg`;
+    return;
+  }
+  if (selectedGrid) {
+    rebuildGridTool(selectedGrid);
+    updateDeviceLinkLines();
+    setPlacementCenterFromThree(selectedGrid.group.position);
+    const t = threePosToUe4(selectedGrid.group.position);
+    const r = circleToolEulerDegrees(selectedGrid);
+    document.getElementById('hudCoords').textContent =
+      `Grid X ${t.x.toFixed(0)}  Y ${t.y.toFixed(0)}  Z ${t.z.toFixed(0)} cm  Rot P ${r.p.toFixed(1)} Y ${r.y.toFixed(1)} R ${r.r.toFixed(1)} deg`;
+    return;
+  }
+  if (!selected) return;
+  const { group, ueObj } = selected;
+  clampThreeScale(group.scale);
+  const sMode = itemScaleMode(selected);
+  if (sMode === 'none') group.scale.set(1, 1, 1); // catalog says this device can't be scaled
+  else if (sMode === 'uniform') { const u = group.scale.x; group.scale.set(u, u, u); }
+  ueObj.spawnTransform.translation = threePosToUe4(editorPivotToRootPosition(selected));
+  ueObj.spawnTransform.rotation    = threeQuatToUe4(group.quaternion);
+  ueObj.spawnTransform.scale3D     = threeScaleToUe4(group.scale);
+  applyMultiTransformDelta();
+  updateDeviceLinkLines();
+  updatePropsPanel(selected);
+  const t = ueObj.spawnTransform.translation;
+  document.getElementById('hudCoords').textContent =
+    `X ${t.x.toFixed(0)}  Y ${t.y.toFixed(0)}  Z ${t.z.toFixed(0)} cm`;
+}
+
+// --- Properties panel ---------------------------------------------------------
+
+function applyObjectTransformInputs() {
+  if (!selected) return;
+  beginHistory('Transform');
+  const multiStart = createMultiTransformStart(selected, selectedItems, editorPivotToRootPosition);
+  const root = {
+    x: numericInputValue('propPosX', selected.ueObj.spawnTransform.translation.x),
+    y: numericInputValue('propPosY', selected.ueObj.spawnTransform.translation.y),
+    z: numericInputValue('propPosZ', selected.ueObj.spawnTransform.translation.z),
+  };
+  const scale = clampUeScale3D({
+    x: numericInputValue('propScaleX', selected.ueObj.spawnTransform.scale3D.x),
+    y: numericInputValue('propScaleY', selected.ueObj.spawnTransform.scale3D.y),
+    z: numericInputValue('propScaleZ', selected.ueObj.spawnTransform.scale3D.z),
+  });
+  const euler = new THREE.Euler(
+    THREE.MathUtils.degToRad(numericInputValue('propRotP', objectEulerDegrees(selected).p)),
+    THREE.MathUtils.degToRad(numericInputValue('propRotY', objectEulerDegrees(selected).y)),
+    THREE.MathUtils.degToRad(numericInputValue('propRotR', objectEulerDegrees(selected).r)),
+    'YXZ'
+  );
+  const cur = selected.ueObj.spawnTransform.translation;
+  const posChanged = Math.abs(root.x - cur.x) > 0.01 || Math.abs(root.y - cur.y) > 0.01 || Math.abs(root.z - cur.z) > 0.01;
+  const visualCenter = selected.group.position.clone();
+  selected.group.scale.copy(ue4ScaleToThree(scale));
+  selected.group.quaternion.setFromEuler(euler);
+  selected.ueObj.spawnTransform.scale3D = scale;
+  selected.ueObj.spawnTransform.rotation = threeQuatToUe4(selected.group.quaternion);
+  if (posChanged) {
+    // User explicitly moved actor root: use typed position, visual center follows
+    selected.ueObj.spawnTransform.translation = root;
+    selected.group.position.copy(ue4PosToThree(root).add(transformedPivotOffset(selected)));
+  } else {
+    // Only rotation/scale changed: keep visual center fixed to match game behavior
+    const newRoot = threePosToUe4(visualCenter.clone().sub(transformedPivotOffset(selected)));
+    selected.ueObj.spawnTransform.translation = newRoot;
+    selected.group.position.copy(visualCenter);
+  }
+  applyMultiSelectionTransform(multiStart, selected, selectedItems, {
+    rootPositionForItem: editorPivotToRootPosition,
+    pivotOffsetForItem: transformedPivotOffset,
+    clampScale: clampThreeScale,
+    positionToUe4: threePosToUe4,
+    quaternionToUe4: threeQuatToUe4,
+    scaleToUe4: threeScaleToUe4,
+  });
+  updatePropsPanel(selected);
+  setNumericInputValue('propScaleX', scale.x, 6, true);
+  setNumericInputValue('propScaleY', scale.y, 6, true);
+  setNumericInputValue('propScaleZ', scale.z, 6, true);
+  renderList();
+  updateDeviceLinkLines();
+  commitHistory('Transform');
+}
+
+function applyCircleTransformInputs() {
+  if (!selectedCircle) return;
+  beginHistory('Transform Circle Tool');
+  selectedCircle.group.position.copy(ue4PosToThree({
+    x: numericInputValue('propPosX', threePosToUe4(selectedCircle.group.position).x),
+    y: numericInputValue('propPosY', threePosToUe4(selectedCircle.group.position).y),
+    z: numericInputValue('propPosZ', threePosToUe4(selectedCircle.group.position).z),
+  }));
+  selectedCircle.group.quaternion.setFromEuler(
+    new THREE.Euler(
+      THREE.MathUtils.degToRad(numericInputValue('propRotP', circleToolEulerDegrees(selectedCircle).p)),
+      THREE.MathUtils.degToRad(numericInputValue('propRotY', circleToolEulerDegrees(selectedCircle).y)),
+      THREE.MathUtils.degToRad(numericInputValue('propRotR', circleToolEulerDegrees(selectedCircle).r)),
+      'YXZ'
+    )
+  );
+  rebuildCircleTool(selectedCircle);
+  updateCirclePropsPanel(selectedCircle);
+  renderList();
+  updateDeviceLinkLines();
+  commitHistory('Transform Circle Tool');
+}
+
+function applyGridTransformInputs() {
+  if (!selectedGrid) return;
+  beginHistory('Transform Grid Tool');
+  selectedGrid.group.position.copy(ue4PosToThree({
+    x: numericInputValue('propPosX', threePosToUe4(selectedGrid.group.position).x),
+    y: numericInputValue('propPosY', threePosToUe4(selectedGrid.group.position).y),
+    z: numericInputValue('propPosZ', threePosToUe4(selectedGrid.group.position).z),
+  }));
+  selectedGrid.group.quaternion.setFromEuler(
+    new THREE.Euler(
+      THREE.MathUtils.degToRad(numericInputValue('propRotP', circleToolEulerDegrees(selectedGrid).p)),
+      THREE.MathUtils.degToRad(numericInputValue('propRotY', circleToolEulerDegrees(selectedGrid).y)),
+      THREE.MathUtils.degToRad(numericInputValue('propRotR', circleToolEulerDegrees(selectedGrid).r)),
+      'YXZ'
+    )
+  );
+  rebuildGridTool(selectedGrid);
+  updateGridPropsPanel(selectedGrid);
+  renderList();
+  updateDeviceLinkLines();
+  commitHistory('Transform Grid Tool');
+}
+
+// Numeric panel edits for a selected slot-0 base object: apply to the item's group then route through
+// the same template write-back as the gizmo (onTransformChange's selectedBase branch).
+function applyBaseTransformInputs() {
+  if (!selectedBase) return;
+  const item = selectedBase.tool.items[selectedBase.templateIndex];
+  if (!item) return;
+  beginHistory('Transform');
+  const curRoot = threePosToUe4(editorPivotToRootPosition(item));
+  const root = {
+    x: numericInputValue('propPosX', curRoot.x),
+    y: numericInputValue('propPosY', curRoot.y),
+    z: numericInputValue('propPosZ', curRoot.z),
+  };
+  const curScale = threeScaleToUe4(item.group.scale);
+  const scale = clampUeScale3D({
+    x: numericInputValue('propScaleX', curScale.x),
+    y: numericInputValue('propScaleY', curScale.y),
+    z: numericInputValue('propScaleZ', curScale.z),
+  });
+  const cur = objectEulerDegrees(item);
+  const euler = new THREE.Euler(
+    THREE.MathUtils.degToRad(numericInputValue('propRotP', cur.p)),
+    THREE.MathUtils.degToRad(numericInputValue('propRotY', cur.y)),
+    THREE.MathUtils.degToRad(numericInputValue('propRotR', cur.r)),
+    'YXZ'
+  );
+  item.group.scale.copy(ue4ScaleToThree(scale));
+  item.group.quaternion.setFromEuler(euler);
+  item.group.position.copy(ue4PosToThree(root).add(transformedPivotOffset(item)));
+  onTransformChange(); // writes the template + re-stamps
+  renderList();
+  commitHistory('Transform');
+}
+
+function applyTransformInputs() {
+  if (selectedBase) applyBaseTransformInputs();
+  else if (selected) applyObjectTransformInputs();
+  else if (selectedCircle) applyCircleTransformInputs();
+  else if (selectedGrid) applyGridTransformInputs();
+}
+
+function updatePropsPanel(item) {
+  propsPanel?.updateObject(item);
+}
+
+// --- Object list sidebar ------------------------------------------------------
+
+function updateCirclePropsPanel(tool) {
+  propsPanel?.updateCircle(tool);
+}
+
+function updateGridPropsPanel(tool) {
+  propsPanel?.updateGrid(tool);
+}
+
+let filterText = '';
+
+function renderList() {
+  renderObjectList({
+    list: document.getElementById('objList'),
+    countEl: document.getElementById('objCount'),
+    filterText,
+    items: ITEMS,
+    circleTools: CIRCLE_TOOLS,
+    gridTools: GRID_TOOLS,
+    selectedItems,
+    selectedCollection,
+    collections: COLLECTIONS,
+    selectedCircle,
+    selectedGrid,
+    selectedBase,
+    getObjectMeta,
+    getObjectIconUrl,
+    getTemplates: getCircleTemplates,
+    renderPlacementBudget,
+    updateClipboardButtons,
+    onSelectCollection: selectCollection,
+    onDeleteCollection: deleteCollectionFromUi,
+    onSelectCircle: selectCircleTool,
+    onSelectGrid: selectGridTool,
+    onSelectItem: selectItem,
+    onFocusSelected: focusSelected,
+    onRenderRequested: renderList,
+    onAddToCollection: addToCollectionFromUi,
+    onAddToCircle: (tool, idx) => addToToolFromUi(tool, 'circle', idx),
+    onAddToGrid: (tool, idx) => addToToolFromUi(tool, 'grid', idx),
+    onSelectBase: (tool, type, idx, opts) => selectBaseObject(tool, type, idx, opts),
+    onRemoveBase: (tool, type, idx) => removeBaseObjectByIndex(tool, type, idx),
+  });
+}
+
+function scrollListToSelected() {
+  scrollListToActiveItem(document.getElementById('objList'));
+}
+
+// Update only the list's active highlight (cheap), for selection changes that don't alter list
+// structure - avoids a full renderList DOM rebuild on every click/deselect.
+function refreshListSelection() {
+  applySelectionClasses(document.getElementById('objList'), {
+    items: ITEMS, selectedItems, selectedCircle, selectedGrid, selectedCollection, selectedBase,
+    circleTools: CIRCLE_TOOLS, gridTools: GRID_TOOLS,
+  });
+}
+
+function deletePatternTool(tool, type) {
+  if (!tool) return;
+  for (const item of [...tool.items]) deleteItem(item, true);
+  scene.remove(tool.group);
+  disposeSceneObject(tool.group);
+  const list = type === 'grid' ? GRID_TOOLS : CIRCLE_TOOLS;
+  const idx = list.indexOf(tool);
+  if (idx >= 0) list.splice(idx, 1);
+  if (type === 'grid') {
+    if (selectedGrid === tool) selectedGrid = null;
+  } else {
+    if (selectedCircle === tool) selectedCircle = null;
+  }
+}
+
+function deleteCollectionFromUi(collection) {
+  if (!collection) return;
+  beginHistory('Delete Collection');
+  const name = collection.name;
+  deleteCollection(collection);
+  deselectObject();
+  renderList();
+  updateDeviceLinkLines();
+  commitHistory('Delete Collection');
+  setStatus(`Deleted ${name}`);
+}
+
+function deleteSelected() {
+  if (selectedBase) {
+    removeBaseObject();
+    return;
+  }
+  if (selectedCircle) {
+    const id = selectedCircle.id;
+    beginHistory('Delete Circle Tool');
+    deletePatternTool(selectedCircle, 'circle');
+    deselectObject();
+    renderList();
+    updateDeviceLinkLines();
+    commitHistory('Delete Circle Tool');
+    setStatus(`Deleted Circle Tool ${id}`);
+    return;
+  }
+  if (selectedGrid) {
+    const id = selectedGrid.id;
+    beginHistory('Delete Grid Tool');
+    deletePatternTool(selectedGrid, 'grid');
+    deselectObject();
+    renderList();
+    updateDeviceLinkLines();
+    commitHistory('Delete Grid Tool');
+    setStatus(`Deleted Grid Tool ${id}`);
+    return;
+  }
+  if (selectedCollection) {
+    deleteCollectionFromUi(selectedCollection);
+    return;
+  }
+  if (!selectedItems.size) return;
+  const items = [...selectedItems];
+  const name = items.length === 1 ? items[0].meta.name : `${items.length} objects`;
+  beginHistory(items.length === 1 ? 'Delete Object' : 'Delete Objects');
+  for (const item of items) deleteItem(item, true);
+  deselectObject();
+  renderList();
+  updateDeviceLinkLines();
+  commitHistory(items.length === 1 ? 'Delete Object' : 'Delete Objects');
+  setStatus(`Deleted ${name}`);
+}
+
+function focusSelected() {
+  if (graphActive) {
+    const currentGraphItem = (selected?.ueObj && isDeviceObjectId(selected.ueObj.objectId) && selected.ueObj.deviceIndex !== -1)
+      ? selected
+      : [...selectedItems].find(it =>
+        it?.ueObj && isDeviceObjectId(it.ueObj.objectId) && it.ueObj.deviceIndex !== -1
+      );
+    if (currentGraphItem) {
+      if (graphActiveTab !== 'current') setGraphTab('current');
+      logicGraph?.render();
+      logicGraph?.setSelected(currentGraphItem);
+      if (logicGraph?.focusNode(currentGraphItem)) return;
+    }
+    if (graphActiveTab === 'reference') {
+      const id = referenceLogicFocusedItem
+        ? referenceNodeId(referenceLogicFocusedItem)
+        : [...referenceLogicSelectedIds][0];
+      if (id && referenceLogicGraph?.focusNode(id)) return;
+    }
+    setStatus('Select a graph node first', true);
+    return;
+  }
+  if (selectedCircle) {
+    focusCircleTool(selectedCircle, { camera, orbitControls });
+    return;
+  }
+  if (selectedGrid) {
+    focusGridTool(selectedGrid, { camera, orbitControls });
+    return;
+  }
+  focusSelectedItems({ selected, selectedItems }, { camera, orbitControls });
+}
+
+// --- 3D <-> Logic graph view switch -------------------------------------------
+// The graph is a read-only overlay; the 3D render loop is paused while it's shown (it's occluded).
+function setSceneView(mode) {
+  graphActive = mode === 'graph';
+  const graphEl = document.getElementById('sceneGraph');
+  const canvas = document.getElementById('sceneCanvas');
+  if (graphEl) graphEl.hidden = !graphActive;
+  if (canvas) canvas.style.visibility = graphActive ? 'hidden' : '';
+  // Hide the 3D viewport overlays (budget/settings, transform gizmo panel, HUD) - they don't apply
+  // to and would sit on top of the graph. CSS does the hiding via this class.
+  document.getElementById('viewport')?.classList.toggle('graph-mode', graphActive);
+  document.getElementById('btnView3d')?.classList.toggle('active', !graphActive);
+  document.getElementById('btnViewGraph')?.classList.toggle('active', graphActive);
+  if (graphActive) {
+    setGraphTab(graphActiveTab);
+  }
+}
+
+// Rebuild the graph only when it's the visible view, so edits in 3D stay cheap.
+function refreshGraphIfActive() {
+  if (!graphActive) return;
+  if (graphActiveTab === 'reference') referenceLogicGraph?.render();
+  else logicGraph?.render();
+}
+
+// --- PUGC load / save ---------------------------------------------------------
+
+let pugcJson = null;
+let pugcName = null;
+let pugcFileInfo = null;
+let projectFiles = null;
+let gameSettings = null;
+let propsPanel = null;
+let propsPanelReferenceMode = false;
+let logicGraph = null;
+let graphActive = false;
+let graphActiveTab = 'current';
+let referenceLogicGraph = null;
+let referenceLogicJson = null;
+let referenceLogicName = '';
+let referenceLogicItems = [];
+let referenceLogicFocusedItem = null;
+const referenceLogicSelectedIds = new Set();
+
+// --- Status bar ---------------------------------------------------------------
+
+function setStatus(msg, isError = false) {
+  const el = document.getElementById('sceneStatus');
+  el.textContent = msg;
+  el.style.color = isError ? 'var(--danger)' : 'var(--muted)';
+}
+
+// --- Mode buttons -------------------------------------------------------------
+
+// Device scaling capability from the catalog (bUnScaleable / bUniformScaleOnly). Non-devices scale freely.
+function itemScaleMode(item) {
+  const dev = item && catalog.devices[String(item.ueObj.objectId)];
+  if (!dev) return 'free';
+  if (dev.unscaleable) return 'none';
+  if (dev.uniformScaleOnly) return 'uniform';
+  return 'free';
+}
+function selectionScaleMode() {
+  let mode = 'free';
+  const items = selectedItems.size ? selectedItems : (selected ? [selected] : []);
+  for (const it of items) {
+    const m = itemScaleMode(it);
+    if (m === 'none') return 'none';
+    if (m === 'uniform') mode = 'uniform';
+  }
+  return mode;
+}
+
+function setMode(mode) {
+  if (mode === 'scale' && selectionScaleMode() === 'none') {
+    setStatus("This device can't be scaled", true);
+    return;
+  }
+  transformControls.setMode(mode);
+  document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+  const map = { translate: 'btnTranslate', rotate: 'btnRotate', scale: 'btnScale' };
+  document.getElementById(map[mode])?.classList.add('active');
+}
+
+// Snap move/rotate to fixed increments. Move snap is entered in UE4 cm (gizmo space is metres, 1m=100cm);
+// rotate snap is entered in degrees. Disabled -> null (free transform).
+function applySnap() {
+  const on = document.getElementById('snapToggle')?.checked;
+  const cm = parseFloat(document.getElementById('snapMove')?.value);
+  const deg = parseFloat(document.getElementById('snapRot')?.value);
+  transformControls.setTranslationSnap(on && cm > 0 ? cm / 100 : null);
+  transformControls.setRotationSnap(on && deg > 0 ? deg * Math.PI / 180 : null);
+  transformControls.setScaleSnap(on && deg > 0 ? 0.1 : null);
+}
+
+function setToolTab(tab) {
+  const isGrid = tab === 'grid';
+  document.getElementById('toolTabCircle')?.classList.toggle('active', !isGrid);
+  document.getElementById('toolTabGrid')?.classList.toggle('active', isGrid);
+  document.getElementById('circleToolPanel')?.toggleAttribute('hidden', isGrid);
+  document.getElementById('gridToolPanel')?.toggleAttribute('hidden', !isGrid);
+  updateCirclePreview();
+  updateGridPreview();
+}
+
+// --- Init ---------------------------------------------------------------------
+
+async function main() {
+  try {
+    await loadCatalog();
+    setNameTranslator((ns, key) => tr(ns, key, ''));
+    setupLanguageSelect();
+    initThree();
+    history = createHistoryController({
+      canRecord: () => Boolean(pugcJson),
+      makeSnapshot: sceneSnapshot,
+      restoreSnapshot: restoreSceneSnapshot,
+      snapshotKey: sceneSnapshotKey,
+      setStatus,
+      limit: HISTORY_LIMIT,
+    });
+    gameSettings = createGameSettingsController({
+      catalog,
+      getPugcJson: () => pugcJson,
+      getPugcFileInfo: () => pugcFileInfo,
+      getEnums: () => localizedEnums(),
+      translateText: tr,
+      commitHistory,
+      setStatus,
+    });
+    deviceLinks = createDeviceLinkController({
+      scene,
+      getConnections: getDeviceFieldConnections,
+      getShowAiPaths: () => showAiPaths,
+    });
+    propsPanel = createPropsPanelController({
+      getObjectMeta,
+      getTemplates: getCircleTemplates,
+      toolPlacementCount: circlePlacementCount,
+      toolEulerDegrees: circleToolEulerDegrees,
+      catalog,
+      translateText: tr,
+      getEnums: () => localizedEnums(),
+      getPlacedDevices: (allowedObjectIds) => propsPanelReferenceMode
+        ? referencePlacedDevices(allowedObjectIds)
+        : getPlacedDevices(allowedObjectIds),
+      getTagSuggestions: () => propsPanelReferenceMode
+        ? referenceUsedDeviceTags()
+        : usedDeviceTags(),
+      getDeviceEventList() {
+        if (propsPanelReferenceMode) {
+          return referenceLogicJson && Array.isArray(referenceLogicJson.deviceEventList) ? referenceLogicJson.deviceEventList : [];
+        }
+        if (!pugcJson) return [];
+        if (!Array.isArray(pugcJson.deviceEventList)) pugcJson.deviceEventList = [];
+        return pugcJson.deviceEventList;
+      },
+      onWiringChange() {
+        commitHistory('Edit Device Wiring'); // commitHistory refreshes the graph if it's active
+      },
+      onDeviceNameChange(ueObj) {
+        renderList();
+        commitHistory('Rename Device');
+      },
+      onDevicePropertyChange(ueObj) {
+        commitHistory('Edit Device Properties');
+        updateDeviceLinkLines();
+        const it = ITEMS.find(i => i.ueObj === ueObj);
+        if (it) {
+          updateDeviceVolume(it); // reflect a new Block Area / Area Size immediately
+          swapDeviceMeshIfNeeded(it); // switch the preview mesh if meshName/vehicle changed
+        }
+      },
+    });
+    logicGraph = createLogicGraph({
+      container: document.getElementById('liveGraph'),
+      getItems: () => ITEMS,
+      getDeviceEventList: () => (pugcJson && Array.isArray(pugcJson.deviceEventList) ? pugcJson.deviceEventList : []),
+      getFieldConnections: getDeviceFieldConnections,
+      getObjectMeta,
+      getObjectIconUrl,
+      catalog,
+      getSelectedNodeIds: selectedDeviceNodeIds,
+      onSelectNode: (item, id, event) => {
+        if (item) selectItem(item, { add: Boolean(event?.shiftKey || event?.ctrlKey || event?.metaKey), toggle: Boolean(event?.shiftKey || event?.ctrlKey || event?.metaKey) });
+      }, // drives props panel + 3D selection
+      onFocusNode: (item) => { if (item) { selectItem(item); setSceneView('3d'); focusSelected(); } },
+      onClearSelection: () => { deselectObject(); refreshListSelection(); },
+      onSelectGroup: selectCurrentGraphGroup,
+      getItemTags: deviceTagsForItem,
+    });
+    referenceLogicGraph = createLogicGraph({
+      container: document.getElementById('referenceGraph'),
+      getItems: () => referenceLogicItems,
+      getDeviceEventList: () => (referenceLogicJson && Array.isArray(referenceLogicJson.deviceEventList) ? referenceLogicJson.deviceEventList : []),
+      getFieldConnections: () => getDeviceFieldConnectionsForItems(referenceLogicItems),
+      getObjectMeta,
+      getObjectIconUrl,
+      catalog,
+      getSelectedNodeIds: () => referenceLogicSelectedIds,
+      onSelectNode: toggleReferenceLogicNode,
+      onClearSelection: () => setReferenceLogicSelection([]),
+      onSelectGroup: selectReferenceLogicGroup,
+      getItemTags: deviceTagsForItem,
+    });
+    projectFiles = createProjectFileController({
+      getPugcJson: () => pugcJson,
+      setPugcJson: value => { pugcJson = value; },
+      getPugcName: () => pugcName,
+      setPugcName: value => { pugcName = value; },
+      getPugcFileInfo: () => pugcFileInfo,
+      setPugcFileInfo: value => { pugcFileInfo = value; },
+      resetHistory: () => history?.reset(),
+      getPugcObjects,
+      buildScene,
+      makeSnapshot: sceneSnapshot,
+      restoreSnapshot: restoreSceneSnapshot,
+      setStatus,
+      makeNewProjectData: () => gameSettings.defaultRuleSections(),
+      getSaveFormatDefaults: () => catalog.saveFormat,
+      els: {
+        projectName: document.getElementById('pugcName'),
+        savePugc: document.getElementById('btnSave'),
+        saveProject: document.getElementById('btnSaveProject'),
+      },
+    });
+    populatePlacementCatalog();
+    updatePlacementPreview();
+    setPlacementCenterFromThree(orbitControls.target);
+    updateCirclePreview();
+    updateGridPreview();
+    // Restore persisted viewer settings, then reflect them into the controls, before the first build.
+    loadViewerSettings();
+    document.getElementById('chkTextures').checked = loadTextures;
+    document.getElementById('opacitySlider').value = nrmOpacity;
+    document.getElementById('opacityValue').textContent = Math.round(nrmOpacity * 100) + '%';
+    document.getElementById('skyboxBrightnessSlider').value = skyboxBrightness;
+    updateSkyboxBrightnessLabel();
+    applySkyboxBrightness();
+    document.getElementById('chkAiPaths').checked = showAiPaths;
+    document.getElementById('chkDeviceIcons').checked = showDeviceIcons;
+    projectFiles.startDefaultProject();
+    document.getElementById('placeObjectButton')?.addEventListener('click', e => {
+      e.stopPropagation();
+      const menu = document.getElementById('placeObjectMenu');
+      if (!menu) return;
+      const willOpen = menu.hasAttribute('hidden');
+      menu.toggleAttribute('hidden', !willOpen);
+      if (willOpen) {
+        renderPlacementPicker();
+        document.getElementById('placeObjectSearch')?.focus();
+      }
+    });
+    document.getElementById('placeObjectSearch')?.addEventListener('input', renderPlacementPicker);
+    document.getElementById('placeObjectMenu')?.addEventListener('click', e => e.stopPropagation());
+    document.addEventListener('click', e => {
+      if (!e.target.closest?.('.place-picker')) document.getElementById('placeObjectMenu')?.setAttribute('hidden', '');
+    });
+
+    // File input
+    document.getElementById('fileInput').addEventListener('change', e => {
+      projectFiles.openSceneFile(e.target.files[0]);
+      e.target.value = '';
+    });
+    document.getElementById('referenceFileInput')?.addEventListener('change', e => {
+      loadReferenceLogicFile(e.target.files[0]);
+      e.target.value = '';
+    });
+    document.getElementById('btnSelectAllReferenceLogic')?.addEventListener('click', selectAllReferenceLogic);
+    document.getElementById('btnClearReferenceSelection')?.addEventListener('click', () => setReferenceLogicSelection([]));
+    document.getElementById('btnCopyReferenceLogic')?.addEventListener('click', copyReferenceLogicSelection);
+    document.getElementById('btnGraphCurrentTab')?.addEventListener('click', () => setGraphTab('current'));
+    document.getElementById('btnGraphReferenceTab')?.addEventListener('click', () => setGraphTab('reference'));
+    setGraphTab('current');
+
+    // Drag-and-drop on viewport
+    const vp = document.getElementById('viewport');
+    vp.addEventListener('dragover', e => e.preventDefault());
+    vp.addEventListener('drop', e => {
+      e.preventDefault();
+      const f = e.dataTransfer.files[0];
+      projectFiles.openSceneFile(f);
+    });
+
+    // Transform mode
+    document.getElementById('btnTranslate').addEventListener('click', () => setMode('translate'));
+    document.getElementById('btnRotate').addEventListener('click',    () => setMode('rotate'));
+    document.getElementById('btnScale').addEventListener('click',     () => setMode('scale'));
+    document.getElementById('snapToggle')?.addEventListener('change', applySnap);
+    document.getElementById('snapMove')?.addEventListener('change', applySnap);
+    document.getElementById('snapRot')?.addEventListener('change', applySnap);
+    applySnap();
+
+    document.getElementById('btnReleaseCircle')?.addEventListener('click', () => { if (selectedCircle) releaseToolObjects(selectedCircle, 'circle'); });
+    document.getElementById('btnReleaseGrid')?.addEventListener('click', () => { if (selectedGrid) releaseToolObjects(selectedGrid, 'grid'); });
+
+    const areaList = document.getElementById('areaToggleList');
+    if (areaList) {
+      for (const t of AREA_DEVICE_TYPES) {
+        const label = document.createElement('label');
+        const cb = document.createElement('input');
+        cb.type = 'checkbox';
+        cb.checked = viewerAreaVisible[t.id];
+        cb.addEventListener('change', () => { viewerAreaVisible[t.id] = cb.checked; reconcileAreaVolumes(t.id); saveViewerSettings(); });
+        label.append(cb, ` ${t.name}`);
+        areaList.appendChild(label);
+      }
+    }
+    document.getElementById('chkAiPaths')?.addEventListener('change', e => {
+      showAiPaths = e.target.checked;
+      deviceLinks?.setVisible(showAiPaths);
+      saveViewerSettings();
+    });
+    document.getElementById('chkDeviceIcons')?.addEventListener('change', e => {
+      showDeviceIcons = e.target.checked;
+      applyDeviceIconVisibility();
+      saveViewerSettings();
+    });
+    document.getElementById('btnView3d')?.addEventListener('click', () => setSceneView('3d'));
+    document.getElementById('btnViewGraph')?.addEventListener('click', () => setSceneView('graph'));
+    document.getElementById('btnFocus').addEventListener('click',     focusSelected);
+    document.getElementById('btnCopy').addEventListener('click',      copySelectedObject);
+    document.getElementById('btnPaste').addEventListener('click',     pasteCopiedObject);
+    document.getElementById('btnDelete').addEventListener('click',    deleteSelected);
+    document.getElementById('btnCreateCollection').addEventListener('click', createCollectionFromSelection);
+    document.getElementById('btnCreateCircleTool')?.addEventListener('click', () => createToolFromSelection('circle'));
+    document.getElementById('btnCreateGridTool')?.addEventListener('click', () => createToolFromSelection('grid'));
+    document.getElementById('btnChainAiPath')?.addEventListener('click', chainSelectedAiPath);
+    document.getElementById('btnSelectionTools')?.addEventListener('click', (e) => {
+      selAlignActive = !selAlignActive;
+      e.currentTarget.classList.toggle('active', selAlignActive);
+      const sec = document.getElementById('selectionToolSection');
+      if (sec) sec.hidden = !selAlignActive;
+    });
+    document.getElementById('btnDistX')?.addEventListener('click', () => distributeSelection('X'));
+    document.getElementById('btnDistY')?.addEventListener('click', () => distributeSelection('Y'));
+    document.getElementById('btnDistZ')?.addEventListener('click', () => distributeSelection('Z'));
+    for (const [axis, edge] of [['X','Min'],['X','Center'],['X','Max'],['Y','Min'],['Y','Center'],['Y','Max'],['Z','Min'],['Z','Center'],['Z','Max']]) {
+      document.getElementById(`btnAlign${axis}${edge}`)?.addEventListener('click', () => alignSelection(axis, edge.toLowerCase()));
+    }
+    document.getElementById('btnSaveProject').addEventListener('click', () => projectFiles.saveEditorProject());
+    document.getElementById('btnSave').addEventListener('click',      () => projectFiles.savePugc());
+    document.getElementById('btnGameSettings')?.addEventListener('click', () => gameSettings.openGameSettings());
+    document.getElementById('gsClose')?.addEventListener('click', () => { document.getElementById('gameSettingsModal').hidden = true; });
+    document.getElementById('gameSettingsModal')?.addEventListener('click', e => { if (e.target.id === 'gameSettingsModal') e.currentTarget.hidden = true; });
+    // Out-of-range toggle — persist state across reloads via localStorage.
+    const gsAllowOutOfRange = document.getElementById('gsAllowOutOfRange');
+    if (gsAllowOutOfRange) {
+      gsAllowOutOfRange.checked = localStorage.getItem('pugc_allow_oor') === '1';
+      gsAllowOutOfRange.addEventListener('change', () => {
+        const allow = gsAllowOutOfRange.checked;
+        localStorage.setItem('pugc_allow_oor', allow ? '1' : '0');
+        document.querySelectorAll('.devf-container').forEach(c => applyOutOfRangeMode(c, allow));
+      });
+    }
+    const tipBtn = document.getElementById('btnTipJar');
+    const tipPanel = document.getElementById('tipJarPanel');
+    tipBtn?.addEventListener('click', e => { e.stopPropagation(); tipPanel.hidden = !tipPanel.hidden; });
+    document.addEventListener('click', () => { if (tipPanel) tipPanel.hidden = true; });
+    document.getElementById('btnHelp')?.addEventListener('click', () => { document.getElementById('helpModal').hidden = false; });
+    document.getElementById('helpClose')?.addEventListener('click', () => { document.getElementById('helpModal').hidden = true; });
+    document.getElementById('helpModal')?.addEventListener('click', e => { if (e.target.id === 'helpModal') e.currentTarget.hidden = true; });
+    document.getElementById('btnPlaceOne').addEventListener('click',  placeOneObject);
+    for (const id of [
+      'circleDiameter', 'circleCount',
+      'circleObjectPitch', 'circleRotOffsetManual', 'circleObjectRoll', 'circleRotationStep',
+      'circleRadialStep', 'circleHeightStep',
+      'circleScaleX', 'circleScaleY', 'circleScaleZ',
+      'circleScaleStepX', 'circleScaleStepY', 'circleScaleStepZ',
+      'circleScaleOffsets',
+    ]) {
+      document.getElementById(id)?.addEventListener('input', applyPlacementInputsToSelected);
+      document.getElementById(id)?.addEventListener('change', applyPlacementInputsToSelected);
+    }
+    for (const id of [
+      'gridColumns', 'gridRows', 'gridLayers', 'gridSpacingX', 'gridSpacingY', 'gridSpacingZ',
+      'gridObjectPitch', 'gridObjectYaw', 'gridObjectRoll',
+      'gridYawStep', 'gridHeightStep',
+      'gridScaleX', 'gridScaleY', 'gridScaleZ',
+    ]) {
+      document.getElementById(id)?.addEventListener('input', applyGridInputsToSelected);
+      document.getElementById(id)?.addEventListener('change', applyGridInputsToSelected);
+    }
+    for (const [sliderId, inputId] of [['circleDiameterSlider', 'circleDiameter'], ['circleCountSlider', 'circleCount']]) {
+      bindSliderInputPair(sliderId, inputId, () => {
+        const value = circleSliderToNumber(sliderId);
+        return inputId === 'circleCount' ? String(Math.round(value)) : formatCircleNumber(value);
+      }, applyPlacementInputsToSelected);
+    }
+    for (const [sliderId, inputId] of [
+      ['circleObjectPitchSlider', 'circleObjectPitch'],
+      ['circleRotOffsetSlider', 'circleRotOffsetManual'],
+      ['circleObjectRollSlider', 'circleObjectRoll'],
+      ['circleRotationStepSlider', 'circleRotationStep'],
+      ['circleRadialStepSlider', 'circleRadialStep'],
+      ['circleHeightStepSlider', 'circleHeightStep'],
+      ['circleScaleXSlider', 'circleScaleX'],
+      ['circleScaleYSlider', 'circleScaleY'],
+      ['circleScaleZSlider', 'circleScaleZ'],
+      ['circleScaleStepXSlider', 'circleScaleStepX'],
+      ['circleScaleStepYSlider', 'circleScaleStepY'],
+      ['circleScaleStepZSlider', 'circleScaleStepZ'],
+    ]) {
+      const precision = circleInputPrecision(inputId);
+      bindSliderInputPair(sliderId, inputId, slider => formatCircleNumber(Number(slider.value), precision), applyPlacementInputsToSelected);
+    }
+    for (const [sliderId, inputId] of [
+      ['gridColumnsSlider', 'gridColumns'],
+      ['gridRowsSlider', 'gridRows'],
+      ['gridLayersSlider', 'gridLayers'],
+      ['gridSpacingXSlider', 'gridSpacingX'],
+      ['gridSpacingYSlider', 'gridSpacingY'],
+      ['gridSpacingZSlider', 'gridSpacingZ'],
+      ['gridObjectPitchSlider', 'gridObjectPitch'],
+      ['gridObjectYawSlider', 'gridObjectYaw'],
+      ['gridObjectRollSlider', 'gridObjectRoll'],
+      ['gridYawStepSlider', 'gridYawStep'],
+      ['gridHeightStepSlider', 'gridHeightStep'],
+      ['gridScaleXSlider', 'gridScaleX'],
+      ['gridScaleYSlider', 'gridScaleY'],
+      ['gridScaleZSlider', 'gridScaleZ'],
+    ]) {
+      const precision = circleInputPrecision(inputId);
+      bindSliderInputPair(sliderId, inputId, (slider, input) =>
+        input?.dataset.integer === 'true'
+          ? String(Math.round(Number(slider.value)))
+          : formatCircleNumber(Number(slider.value), precision),
+        applyGridInputsToSelected);
+    }
+    for (const id of ['placeCenterX', 'placeCenterY', 'placeCenterZ']) {
+      document.getElementById(id)?.addEventListener('input', applyPlacementInputsToSelected);
+    }
+    document.querySelectorAll('.numeric-input').forEach(bindNumericInput);
+    document.querySelectorAll('.transform-input').forEach(input => {
+      input.addEventListener('change', applyTransformInputs);
+      input.addEventListener('keydown', e => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          applyTransformInputs();
+          input.blur();
+        }
+      });
+    });
+    document.getElementById('placeObjectInput')?.addEventListener('input', () => {
+      updatePlacementPreview();
+      applyPlacementInputsToSelected();
+    });
+    document.getElementById('placeObjectInput')?.addEventListener('change', () => {
+      updatePlacementPreview();
+      applyPlacementInputsToSelected();
+    });
+
+    // Opacity slider
+    document.getElementById('opacitySlider').addEventListener('input', e => {
+      nrmOpacity = Number(e.target.value);
+      document.getElementById('opacityValue').textContent = Math.round(nrmOpacity * 100) + '%';
+      applyOpacityToAll();
+      saveViewerSettings();
+    });
+    document.getElementById('skyboxBrightnessSlider')?.addEventListener('input', e => {
+      skyboxBrightness = Math.max(0, Math.min(Number(e.target.value), 3));
+      applySkyboxBrightness();
+      saveViewerSettings();
+    });
+
+
+    // Fly speed reset on double-click
+    document.getElementById('flySpeedDisplay').addEventListener('dblclick', () => {
+      flySpeed = 1.0;
+      updateSpeedHud();
+    });
+
+    // Texture toggle
+    document.getElementById('chkTextures').addEventListener('change', e => {
+      loadTextures = e.target.checked;
+      if (loadTextures) clearTextureCache();
+      applyTextureToggle();
+      saveViewerSettings();
+    });
+
+    for (const id of ['precTransDecimals', 'precRotDecimals', 'precRoundMode', 'precRotFormat']) {
+      document.getElementById(id)?.addEventListener('change', applyPrecisionTest);
+    }
+    const precSnapEl = document.getElementById('precRotSnap');
+    precSnapEl?.addEventListener('change', applyPrecisionTest);
+    precSnapEl?.addEventListener('input', applyPrecisionTest);
+
+    // Filter
+    document.getElementById('objFilter').addEventListener('input', e => {
+      filterText = e.target.value;
+      renderList();
+    });
+
+    // Keyboard shortcuts (skip when typing in inputs)
+    window.addEventListener('keydown', e => {
+      const typing = ['INPUT', 'TEXTAREA'].includes(e.target.tagName);
+      if ((e.ctrlKey || e.metaKey) && !typing && e.key.toLowerCase() === 'z') {
+        e.preventDefault();
+        if (e.shiftKey) redoSceneEdit();
+        else undoSceneEdit();
+        return;
+      }
+      if ((e.ctrlKey || e.metaKey) && !typing && e.key.toLowerCase() === 'y') {
+        e.preventDefault();
+        redoSceneEdit();
+        return;
+      }
+      if ((e.ctrlKey || e.metaKey) && !typing && e.key.toLowerCase() === 'c' && graphActive && graphActiveTab === 'reference') {
+        if (window.getSelection()?.toString()) return; // let browser copy selected text
+        e.preventDefault();
+        if (referenceLogicSelectedIds.size) copyReferenceLogicSelection();
+        else setStatus('Select reference graph nodes first', true);
+        return;
+      }
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'c' && (selected || selectedItems.size || selectedCircle || selectedGrid) && !typing) {
+        if (window.getSelection()?.toString()) return; // let browser copy selected text
+        e.preventDefault();
+        copySelectedObject();
+        return;
+      }
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'v' && copiedPayload && !typing) {
+        e.preventDefault();
+        pasteCopiedObject();
+        return;
+      }
+      if (typing) return;
+      const k = e.key.toLowerCase();
+      if (['w','a','s','d','q','e','shift'].includes(k)) { flyKeys.add(k); return; }
+      switch (k) {
+        case 'r':      setMode('scale');     break;
+        case 'f':      focusSelected();      break;
+        case 'delete':
+        case 'backspace': deleteSelected(); break;
+        case 'escape': deselectObject(); renderList(); break;
+      }
+    });
+    window.addEventListener('keyup', e => {
+      flyKeys.delete(e.key.toLowerCase());
+    });
+    window.addEventListener('blur', clearFlyInput);
+    window.addEventListener('pagehide', clearFlyInput);
+
+    animate();
+    loadBaseTerrain();
+  } catch (err) {
+    setStatus(`Startup error: ${err.message}`, true);
+    console.error(err);
+    trackEvent('app_error', { error_type: 'startup', message: err.message });
+  }
+}
+
+main();

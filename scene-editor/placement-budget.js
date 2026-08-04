@@ -1,1 +1,44 @@
-import{cleanCategoryKey as i}from"./catalog-utils.js";function c(e){const t=Array.isArray(e?.rules)?e.rules:[];return t.length?t:[{key:"total",label:"Total",match:"all"}]}function s(e,t){return t.objects[String(e)]||t.devices[String(e)]||null}function b(e,t){const n=s(e,t),r=!!t.devices[String(e)],o=Number(n?.spawnWeight??n?.SpawnWeight??1);return{objectId:Number(e),entry:n,objectType:r?"Device":i(n?.objectType),subCategory:i(n?.subCategory),weight:Number.isFinite(o)&&o>0?o:1}}function a(e,t){return e.match==="all"?!0:!(e.objectType&&e.objectType!==t.objectType||e.subCategory&&e.subCategory!==t.subCategory||Number.isFinite(e.objectId)&&Number(e.objectId)!==t.objectId)}function f(e,t){const n=c(t.placementBudget).map(r=>({...r,count:0,weighted:0}));for(const r of e||[]){const o=b(r.objectId,t);for(const u of n)a(u,o)&&(u.count++,u.weighted+=o.weight)}return n}export{f as computePlacementBudgetRows};
+import { cleanCategoryKey } from './catalog-utils.js';
+
+function placementBudgetRules(placementBudget) {
+  const rules = Array.isArray(placementBudget?.rules) ? placementBudget.rules : [];
+  return rules.length ? rules : [{ key: 'total', label: 'Total', match: 'all' }];
+}
+
+function budgetCatalogEntry(objectId, catalog) {
+  return catalog.objects[String(objectId)] || catalog.devices[String(objectId)] || null;
+}
+
+function objectBudgetMeta(objectId, catalog) {
+  const entry = budgetCatalogEntry(objectId, catalog);
+  const isDevice = Boolean(catalog.devices[String(objectId)]);
+  const weight = Number(entry?.spawnWeight ?? entry?.SpawnWeight ?? 1);
+  return {
+    objectId: Number(objectId),
+    entry,
+    objectType: isDevice ? 'Device' : cleanCategoryKey(entry?.objectType),
+    subCategory: cleanCategoryKey(entry?.subCategory),
+    weight: Number.isFinite(weight) && weight > 0 ? weight : 1,
+  };
+}
+
+function budgetRuleMatches(rule, meta) {
+  if (rule.match === 'all') return true;
+  if (rule.objectType && rule.objectType !== meta.objectType) return false;
+  if (rule.subCategory && rule.subCategory !== meta.subCategory) return false;
+  if (Number.isFinite(rule.objectId) && Number(rule.objectId) !== meta.objectId) return false;
+  return true;
+}
+
+export function computePlacementBudgetRows(objects, catalog) {
+  const rows = placementBudgetRules(catalog.placementBudget).map(rule => ({ ...rule, count: 0, weighted: 0 }));
+  for (const obj of objects || []) {
+    const meta = objectBudgetMeta(obj.objectId, catalog);
+    for (const row of rows) {
+      if (!budgetRuleMatches(row, meta)) continue;
+      row.count++;
+      row.weighted += meta.weight;
+    }
+  }
+  return rows;
+}

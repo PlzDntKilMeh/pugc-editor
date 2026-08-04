@@ -1,1 +1,50 @@
-const c={circleDiameterSlider:{min:.5,max:2e3},circleCountSlider:{min:3,max:1e3}};function a(e,t=1){if(!Number.isFinite(e))return"";const n=e.toFixed(t);return n.includes(".")?n.replace(/\.?0+$/,""):n}function l(e){const t=document.getElementById(e),n=c[e];if(!t||!n)return 0;const i=Number(t.min||0),r=Number(t.max||1e4),m=Math.max(0,Math.min(1,(Number(t.value)-i)/(r-i)));return n.min*Math.pow(n.max/n.min,m)}function x(e,t){const n=document.getElementById(e),i=c[e];if(!n||!i||!Number.isFinite(t))return;const r=Number(n.min||0),m=Number(n.max||1e4),o=Math.max(i.min,Math.min(i.max,t)),u=Math.log(o/i.min)/Math.log(i.max/i.min);n.value=String(Math.round(r+u*(m-r)))}function s(e){return String(e).includes("Scale")?3:String(e).includes("RadialStep")||String(e).includes("HeightStep")?2:1}function d(e,t,n=s(e)){const i=document.getElementById(e);i&&(i.value=a(t,n))}function g(e,t){const n=document.getElementById(e);if(!n||!Number.isFinite(t))return;const i=Number(n.min||0),r=Number(n.max||100);n.value=String(Math.max(i,Math.min(r,t)))}export{s as circleInputPrecision,l as circleSliderToNumber,a as formatCircleNumber,d as setInputValue,x as syncCircleRange,g as syncLinearRange};
+const CIRCLE_RANGE_LIMITS = {
+  circleDiameterSlider: { min: 0.5, max: 2000 },
+  circleCountSlider: { min: 3, max: 1000 },
+};
+
+export function formatCircleNumber(value, precision = 1) {
+  if (!Number.isFinite(value)) return '';
+  const s = value.toFixed(precision);
+  return s.includes('.') ? s.replace(/\.?0+$/, '') : s;
+}
+
+export function circleSliderToNumber(rangeId) {
+  const range = document.getElementById(rangeId);
+  const limits = CIRCLE_RANGE_LIMITS[rangeId];
+  if (!range || !limits) return 0;
+  const sliderMin = Number(range.min || 0);
+  const sliderMax = Number(range.max || 10000);
+  const t = Math.max(0, Math.min(1, (Number(range.value) - sliderMin) / (sliderMax - sliderMin)));
+  return limits.min * Math.pow(limits.max / limits.min, t);
+}
+
+export function syncCircleRange(rangeId, value) {
+  const range = document.getElementById(rangeId);
+  const limits = CIRCLE_RANGE_LIMITS[rangeId];
+  if (!range || !limits || !Number.isFinite(value)) return;
+  const sliderMin = Number(range.min || 0);
+  const sliderMax = Number(range.max || 10000);
+  const clamped = Math.max(limits.min, Math.min(limits.max, value));
+  const t = Math.log(clamped / limits.min) / Math.log(limits.max / limits.min);
+  range.value = String(Math.round(sliderMin + t * (sliderMax - sliderMin)));
+}
+
+export function circleInputPrecision(id) {
+  if (String(id).includes('Scale')) return 3;
+  if (String(id).includes('RadialStep') || String(id).includes('HeightStep')) return 2;
+  return 1;
+}
+
+export function setInputValue(id, value, precision = circleInputPrecision(id)) {
+  const el = document.getElementById(id);
+  if (el) el.value = formatCircleNumber(value, precision);
+}
+
+export function syncLinearRange(rangeId, value) {
+  const range = document.getElementById(rangeId);
+  if (!range || !Number.isFinite(value)) return;
+  const min = Number(range.min || 0);
+  const max = Number(range.max || 100);
+  range.value = String(Math.max(min, Math.min(max, value)));
+}

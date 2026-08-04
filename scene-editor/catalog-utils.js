@@ -1,1 +1,87 @@
-import{iconTextureUrl as l}from"./asset-source.js";let r=null;function p(e){r=typeof e=="function"?e:null}const i=["LargeHouse","MediumHouse","SmallHouse","Wall","Floor","Stair","Foliage","Prop","Destructible","Devices"];function s(e){if(!e)return"";const t=n(e),o=e.name||e.displayKey||e.rowName||`Object ${e.objectId??""}`;return t&&t!==o?`${t} (${o})`:o}function n(e){if(!e)return"";if(r&&e.namespace&&e.displayKey){const a=r(e.namespace,e.displayKey);if(a)return a}if(e.name&&!/^LargeHouse\d+|MediumHouse\d+|SmallHouse\d+|Prop\d+|StaticMesh\d+$/i.test(e.name))return e.name;const t=e.iconTexture||e.objectClass||e.previewActorClass||e.rowName||e.displayKey||"";let o=String(t).split("/").pop()||"";return o=o.split(".").pop()||o,o=o.replace(/^T_/,"").replace(/^BP_/,"").replace(/_C$/,"").replace(/_Mod(House|Object|Prop|StaticMesh)?$/i,"").replace(/_Thumbnail$/i,"").replace(/_on$/i,"").replace(/_/g," ").replace(/\s+/g," ").trim(),o||e.displayKey||e.rowName||`Object ${e.objectId??""}`}function d(e,t={}){return e?.kind||(t[String(e?.objectId)]?"Device":"Object")}function c(e){return String(e||"").replace(/^EModObjectSubCategory::/,"").replace(/^EModObjectType::/,"").trim()}function m(e){return e==="Devices"?"Devices":e==="Stair"?"Stairs":String(e||"Other").replace(/([a-z])([A-Z])/g,"$1 $2").replace(/\s+/g," ").trim()}function f(e,t={}){return e?.kind==="Device"||t[String(e?.objectId)]?"Devices":c(e?.subCategory)||c(e?.objectType)||"Other"}function g(e){const t=i.indexOf(e);return t>=0?t:i.length-(e==="Devices"?0:1)}function b(e){return e?.iconTexture?l(e.iconTexture):""}export{d as catalogKind,s as catalogLabel,m as categoryLabel,c as cleanCategoryKey,n as friendlyCatalogName,f as placementCategoryKey,g as placementCategoryRank,b as placementIconUrl,p as setNameTranslator};
+import { iconTextureUrl } from './asset-source.js';
+
+// Optional (namespace, key) -> localized text hook, injected by the editor so catalog labels follow the
+// chosen language. Entries that carry a namespace + displayKey (devices) get localized; the rest (objects,
+// which PUBG does not localize) fall through to the derived English name.
+let _nameTranslator = null;
+export function setNameTranslator(fn) { _nameTranslator = typeof fn === 'function' ? fn : null; }
+
+const PLACEMENT_CATEGORY_ORDER = [
+  'LargeHouse',
+  'MediumHouse',
+  'SmallHouse',
+  'Wall',
+  'Floor',
+  'Stair',
+  'Foliage',
+  'Prop',
+  'Destructible',
+  'Devices',
+];
+
+export function catalogLabel(entry) {
+  if (!entry) return '';
+  const friendly = friendlyCatalogName(entry);
+  const raw = entry.name || entry.displayKey || entry.rowName || `Object ${entry.objectId ?? ''}`;
+  return friendly && friendly !== raw ? `${friendly} (${raw})` : raw;
+}
+
+export function friendlyCatalogName(entry) {
+  if (!entry) return '';
+  if (_nameTranslator && entry.namespace && entry.displayKey) {
+    const localized = _nameTranslator(entry.namespace, entry.displayKey);
+    if (localized) return localized;
+  }
+  if (entry.name && !/^LargeHouse\d+|MediumHouse\d+|SmallHouse\d+|Prop\d+|StaticMesh\d+$/i.test(entry.name)) {
+    return entry.name;
+  }
+  const source = entry.iconTexture || entry.objectClass || entry.previewActorClass || entry.rowName || entry.displayKey || '';
+  let name = String(source).split('/').pop() || '';
+  name = name.split('.').pop() || name;
+  name = name
+    .replace(/^T_/, '')
+    .replace(/^BP_/, '')
+    .replace(/_C$/, '')
+    .replace(/_Mod(House|Object|Prop|StaticMesh)?$/i, '')
+    .replace(/_Thumbnail$/i, '')
+    .replace(/_on$/i, '')
+    .replace(/_/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+  return name || entry.displayKey || entry.rowName || `Object ${entry.objectId ?? ''}`;
+}
+
+export function catalogKind(entry, devices = {}) {
+  return entry?.kind || (devices[String(entry?.objectId)] ? 'Device' : 'Object');
+}
+
+export function cleanCategoryKey(value) {
+  return String(value || '')
+    .replace(/^EModObjectSubCategory::/, '')
+    .replace(/^EModObjectType::/, '')
+    .trim();
+}
+
+export function categoryLabel(key) {
+  if (key === 'Devices') return 'Devices';
+  if (key === 'Stair') return 'Stairs';
+  return String(key || 'Other')
+    .replace(/([a-z])([A-Z])/g, '$1 $2')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+export function placementCategoryKey(entry, devices = {}) {
+  if (entry?.kind === 'Device' || devices[String(entry?.objectId)]) return 'Devices';
+  return cleanCategoryKey(entry?.subCategory) || cleanCategoryKey(entry?.objectType) || 'Other';
+}
+
+export function placementCategoryRank(key) {
+  const index = PLACEMENT_CATEGORY_ORDER.indexOf(key);
+  if (index >= 0) return index;
+  return PLACEMENT_CATEGORY_ORDER.length - (key === 'Devices' ? 0 : 1);
+}
+
+export function placementIconUrl(entry) {
+  return entry?.iconTexture ? iconTextureUrl(entry.iconTexture) : '';
+}

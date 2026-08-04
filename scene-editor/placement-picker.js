@@ -1,7 +1,57 @@
-import{categoryLabel as n,placementCategoryRank as b,placementIconUrl as f}from"./catalog-utils.js";import{escHtml as e}from"./text-utils.js";function h({categoryList:s,grid:l,placementRows:c,placementCategory:o,selectedId:d,query:r,onCategoryChange:m,onObjectSelect:u}){if(!s||!l)return;const j=[...new Set(c.map(t=>t.category))].sort((t,a)=>b(t)-b(a)||n(t).localeCompare(n(a)));s.innerHTML=j.map(t=>{const a=c.filter($=>$.category===t).length;return`<button class="place-category${t===o?" active":""}" type="button" data-category="${e(t)}">${e(n(t))}<span>${a}</span></button>`}).join("");const p=r?c.filter(t=>t.searchText.includes(r)):c.filter(t=>t.category===o);l.innerHTML=p.length?p.map(t=>{const a=Number(t.objectId)===d?" active":"",i=f(t);return`<button class="place-object-card${a}" type="button" data-object-id="${t.objectId}">
-      <span class="place-object-thumb">${i?`<img src="${e(i)}" loading="lazy" alt="">`:`<span>${e(String(t.label||"?").slice(0,1))}</span>`}</span>
+import {
+  categoryLabel,
+  placementCategoryRank,
+  placementIconUrl,
+} from './catalog-utils.js';
+import { escHtml } from './text-utils.js';
+
+export function renderPlacementPicker({
+  categoryList,
+  grid,
+  placementRows,
+  placementCategory,
+  selectedId,
+  query,
+  onCategoryChange,
+  onObjectSelect,
+}) {
+  if (!categoryList || !grid) return;
+
+  const categories = [...new Set(placementRows.map(r => r.category))]
+    .sort((a, b) => placementCategoryRank(a) - placementCategoryRank(b) || categoryLabel(a).localeCompare(categoryLabel(b)));
+
+  categoryList.innerHTML = categories.map(category => {
+    const count = placementRows.filter(r => r.category === category).length;
+    const active = category === placementCategory ? ' active' : '';
+    return `<button class="place-category${active}" type="button" data-category="${escHtml(category)}">${escHtml(categoryLabel(category))}<span>${count}</span></button>`;
+  }).join('');
+
+  const rows = query
+    ? placementRows.filter(entry => entry.searchText.includes(query))
+    : placementRows.filter(entry => entry.category === placementCategory);
+
+  grid.innerHTML = rows.length ? rows.map(entry => {
+    const active = Number(entry.objectId) === selectedId ? ' active' : '';
+    const img = placementIconUrl(entry);
+    return `<button class="place-object-card${active}" type="button" data-object-id="${entry.objectId}">
+      <span class="place-object-thumb">${img ? `<img src="${escHtml(img)}" loading="lazy" alt="">` : `<span>${escHtml(String(entry.label || '?').slice(0, 1))}</span>`}</span>
       <span class="place-object-text">
-        <span class="place-object-name">${e(t.label)}</span>
-        <span class="place-object-meta">${e(t.kind)} ${t.objectId}</span>
+        <span class="place-object-name">${escHtml(entry.label)}</span>
+        <span class="place-object-meta">${escHtml(entry.kind)} ${entry.objectId}</span>
       </span>
-    </button>`}).join(""):`<div class="place-object-empty">No matches${r?"":` in ${e(n(o))}`}</div>`,s.querySelectorAll(".place-category").forEach(t=>{t.addEventListener("click",a=>{a.stopPropagation(),m(t.dataset.category||o)})}),l.querySelectorAll(".place-object-card").forEach(t=>{t.addEventListener("click",a=>{a.stopPropagation(),u(Number(t.dataset.objectId))})})}export{h as renderPlacementPicker};
+    </button>`;
+  }).join('') : `<div class="place-object-empty">No matches${query ? '' : ` in ${escHtml(categoryLabel(placementCategory))}`}</div>`;
+
+  categoryList.querySelectorAll('.place-category').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      onCategoryChange(btn.dataset.category || placementCategory);
+    });
+  });
+  grid.querySelectorAll('.place-object-card').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      onObjectSelect(Number(btn.dataset.objectId));
+    });
+  });
+}

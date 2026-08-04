@@ -1,1 +1,22 @@
-function o(e){return String(e||"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;")}function c(e){return typeof e=="number"?e.toFixed(1):String(e)}function u(e,t=3){return Number.isFinite(e)?e.toFixed(t).replace(/\.?0+$/,""):""}function i(e,t,n=3,l=!1){const r=document.getElementById(e);!r||!l&&document.activeElement===r||(r.value=u(Number(t),n))}export{o as escHtml,c as fmt1,u as formatTransformNumber,i as setNumericInputValue};
+export function escHtml(s) {
+  return String(s || '')
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;');
+}
+
+export function fmt1(n) {
+  return typeof n === 'number' ? n.toFixed(1) : String(n);
+}
+
+export function formatTransformNumber(value, precision = 3) {
+  if (!Number.isFinite(value)) return '';
+  return value.toFixed(precision).replace(/\.?0+$/, '');
+}
+
+export function setNumericInputValue(id, value, precision = 3, force = false) {
+  const el = document.getElementById(id);
+  if (!el || (!force && document.activeElement === el)) return;
+  el.value = formatTransformNumber(Number(value), precision);
+}

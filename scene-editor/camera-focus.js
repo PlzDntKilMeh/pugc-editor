@@ -1,1 +1,56 @@
-import*as i from"three";function c(t,e,{camera:r,orbitControls:o}){o.target.copy(t),r.position.set(t.x,t.y+e*.5,t.z+e),o.update()}function m(t,e){if(!t.length)return;const r=new i.Box3;for(const{group:a}of t)r.expandByPoint(a.position);const o=r.getCenter(new i.Vector3),s=r.getSize(new i.Vector3),n=Math.max(s.x,s.y,s.z)*.6+100;e.orbitControls.target.copy(o),e.camera.position.set(o.x,o.y+n*.45,o.z+n),e.orbitControls.update()}function x(t,e){const r=t.group.position.clone(),o=t.params.diameter*1.2+20;c(r,o,e)}function u(t,e){const r=t.group.position.clone(),o=(Math.max(1,t.params.columns||1)-1)*Number(t.params.spacingX||0),s=(Math.max(1,t.params.rows||1)-1)*Number(t.params.spacingY||0),n=Math.max(o,s,20)*1.2+20;c(r,n,e)}function f({selected:t,selectedItems:e},r){if(!t)return;let o,s;if(e.size>1){const n=new i.Box3;for(const p of e)n.expandByObject(p.group);o=n.getCenter(new i.Vector3);const a=n.getSize(new i.Vector3);s=Math.max(a.x,a.y,a.z)*1.5+20}else if(t.hasRealMesh){const n=new i.Box3().setFromObject(t.mesh);o=n.getCenter(new i.Vector3);const a=n.getSize(new i.Vector3);s=Math.max(a.x,a.y,a.z)*1.5+20}else{o=t.group.position.clone();const[,n]=t.meta.boxSize;s=Math.max(n*3,30)}c(o,s,r)}export{m as fitCameraToItems,x as focusCircleTool,u as focusGridTool,f as focusSelectedItems};
+import * as THREE from 'three';
+
+function moveCameraTo(center, dist, { camera, orbitControls }) {
+  orbitControls.target.copy(center);
+  camera.position.set(center.x, center.y + dist * 0.5, center.z + dist);
+  orbitControls.update();
+}
+
+export function fitCameraToItems(items, controls) {
+  if (!items.length) return;
+  const box = new THREE.Box3();
+  for (const { group } of items) box.expandByPoint(group.position);
+  const center = box.getCenter(new THREE.Vector3());
+  const size = box.getSize(new THREE.Vector3());
+  const radius = Math.max(size.x, size.y, size.z) * 0.6 + 100;
+  controls.orbitControls.target.copy(center);
+  controls.camera.position.set(center.x, center.y + radius * 0.45, center.z + radius);
+  controls.orbitControls.update();
+}
+
+export function focusCircleTool(tool, controls) {
+  const center = tool.group.position.clone();
+  const dist = tool.params.diameter * 1.2 + 20;
+  moveCameraTo(center, dist, controls);
+}
+
+export function focusGridTool(tool, controls) {
+  const center = tool.group.position.clone();
+  const width = (Math.max(1, tool.params.columns || 1) - 1) * Number(tool.params.spacingX || 0);
+  const depth = (Math.max(1, tool.params.rows || 1) - 1) * Number(tool.params.spacingY || 0);
+  const dist = Math.max(width, depth, 20) * 1.2 + 20;
+  moveCameraTo(center, dist, controls);
+}
+
+export function focusSelectedItems({ selected, selectedItems }, controls) {
+  if (!selected) return;
+  let center;
+  let dist;
+  if (selectedItems.size > 1) {
+    const box = new THREE.Box3();
+    for (const item of selectedItems) box.expandByObject(item.group);
+    center = box.getCenter(new THREE.Vector3());
+    const size = box.getSize(new THREE.Vector3());
+    dist = Math.max(size.x, size.y, size.z) * 1.5 + 20;
+  } else if (selected.hasRealMesh) {
+    const box = new THREE.Box3().setFromObject(selected.mesh);
+    center = box.getCenter(new THREE.Vector3());
+    const size = box.getSize(new THREE.Vector3());
+    dist = Math.max(size.x, size.y, size.z) * 1.5 + 20;
+  } else {
+    center = selected.group.position.clone();
+    const [, h] = selected.meta.boxSize;
+    dist = Math.max(h * 3, 30);
+  }
+  moveCameraTo(center, dist, controls);
+}

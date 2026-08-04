@@ -1,1 +1,28 @@
-import{clampUeScale3D as f,threePosToUe4 as p,threeQuatToUe4 as v}from"./coords.js";import{defaultDeviceProperties as u}from"./device-defaults.js";function y(e,n,o,{scale3D:s={x:1,y:1,z:1},catalog:r,isDeviceObjectId:c,nextDeviceIndex:a}={}){const t=c(e),m=r.devices[String(e)],i={objectId:e,deviceIndex:t?a(e):-1,userDeviceName:"",spawnTransform:{rotation:v(o),translation:p(n),scale3D:f(s)}};return t&&(i.devicePropertyData=JSON.stringify(u(m,r.enums))),i}export{y as newSceneObject};
+import {
+  clampUeScale3D,
+  threePosToUe4,
+  threeQuatToUe4,
+} from './coords.js';
+import { defaultDeviceProperties } from './device-defaults.js';
+
+export function newSceneObject(objectId, posThree, quatThree, {
+  scale3D = { x: 1, y: 1, z: 1 },
+  catalog,
+  isDeviceObjectId,
+  nextDeviceIndex,
+} = {}) {
+  const isDevice = isDeviceObjectId(objectId);
+  const deviceEntry = catalog.devices[String(objectId)];
+  const obj = {
+    objectId,
+    deviceIndex: isDevice ? nextDeviceIndex(objectId) : -1,
+    userDeviceName: '',
+    spawnTransform: {
+      rotation: threeQuatToUe4(quatThree),
+      translation: threePosToUe4(posThree),
+      scale3D: clampUeScale3D(scale3D),
+    },
+  };
+  if (isDevice) obj.devicePropertyData = JSON.stringify(defaultDeviceProperties(deviceEntry, catalog.enums));
+  return obj;
+}

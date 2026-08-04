@@ -1,40 +1,444 @@
-import{escHtml as S}from"./text-utils.js";function ie(t,s,l){const o=s(t),c=o.map(i=>`${l(i.objectId).name} (${i.objectId})`);return{templates:o,label:c.length<=2?c.join(", "):`${c.slice(0,2).join(", ")} +${c.length-2}`}}function z(t,s,l=""){const o=s?.(t),c=l||String(t||"?");return`<span class="scene-obj-thumb">${o?`<img src="${S(o)}" loading="lazy" alt="">`:`<span>${S(c.slice(0,1)||"?")}</span>`}</span>`}function T(t){return t?" open":""}function B(t,s){return`<button class="scene-list-toggle" type="button" title="${s?"Collapse":"Expand"}" data-toggle-node="${t}">${s?"v":">"}</button>`}function de(t){const s=new Map;return t.querySelectorAll("details[data-node-key]").forEach(l=>{s.set(l.dataset.nodeKey,l.open)}),s}function O(t,s,l=!0){return t.has(s)?t.get(s):l}function C({tool:t,type:s,color:l,selected:o,getTemplates:c,getObjectMeta:i,getObjectIconUrl:d,selectedItems:$,items:f,selectedBase:r}){const{templates:p,label:b}=ie(t,c,i),h=s==="Circle"?Math.max(1,Math.round(t.params?.count||0)):Math.max(1,Math.round(t.params?.columns||1))*Math.max(1,Math.round(t.params?.rows||1)),y=s==="Circle"?`data-circle-id="${t.id}"`:`data-grid-id="${t.id}"`,w=p[0],q=s==="Circle"?"circle":"grid",K=p.map((A,E)=>{const k=i(A.objectId),x=t.items[E];return`<div class="scene-obj-row child scene-tool-base-row${r?.tool===t&&r?.templateIndex===E||x!=null&&$.has(x)?" active":""}" data-base-tool="${t.id}" data-base-type="${q}" data-base-index="${E}" title="Select to edit this base object. Shift-click to add to selection">
-      ${z(A.objectId,d,k.name)}
+import { escHtml } from './text-utils.js';
+
+function templateNames(tool, getTemplates, getObjectMeta) {
+  const templates = getTemplates(tool);
+  const names = templates.map(template => {
+    const meta = getObjectMeta(template.objectId);
+    return `${meta.name} (${template.objectId})`;
+  });
+  return {
+    templates,
+    label: names.length <= 2 ? names.join(', ') : `${names.slice(0, 2).join(', ')} +${names.length - 2}`,
+  };
+}
+
+function thumbHtml(objectId, getObjectIconUrl, fallback = '') {
+  const url = getObjectIconUrl?.(objectId);
+  const label = fallback || String(objectId || '?');
+  return `<span class="scene-obj-thumb">${url
+    ? `<img src="${escHtml(url)}" loading="lazy" alt="">`
+    : `<span>${escHtml(label.slice(0, 1) || '?')}</span>`}</span>`;
+}
+
+function openAttr(open) {
+  return open ? ' open' : '';
+}
+
+// Standard disclosure triangle used by every collapsible node (sections, collections, tools).
+function toggleBtn(key, open) {
+  return `<button class="scene-list-toggle" type="button" title="${open ? 'Collapse' : 'Expand'}" data-toggle-node="${key}">${open ? 'v' : '>'}</button>`;
+}
+
+function readOpenState(list) {
+  const state = new Map();
+  list.querySelectorAll('details[data-node-key]').forEach(details => {
+    state.set(details.dataset.nodeKey, details.open);
+  });
+  return state;
+}
+
+function isOpen(openState, key, defaultOpen = true) {
+  return openState.has(key) ? openState.get(key) : defaultOpen;
+}
+
+function renderToolNode({ tool, type, color, selected, getTemplates, getObjectMeta, getObjectIconUrl, selectedItems, items, selectedBase }) {
+  const { templates, label } = templateNames(tool, getTemplates, getObjectMeta);
+  const slots = type === 'Circle'
+    ? Math.max(1, Math.round(tool.params?.count || 0))
+    : Math.max(1, Math.round(tool.params?.columns || 1)) * Math.max(1, Math.round(tool.params?.rows || 1));
+  const idAttr = type === 'Circle' ? `data-circle-id="${tool.id}"` : `data-grid-id="${tool.id}"`;
+  const firstTemplate = templates[0];
+  // The stamped copies are locked, but the BASE template objects are listed here as selectable rows
+  // (each selects/edits the tool's slot-0 source) with a remove button.
+  const baseType = type === 'Circle' ? 'circle' : 'grid';
+  const baseRows = templates.map((t, i) => {
+    const meta = getObjectMeta(t.objectId);
+    const baseItem = tool.items[i];
+    const isSel = (selectedBase?.tool === tool && selectedBase?.templateIndex === i)
+      || (baseItem != null && selectedItems.has(baseItem));
+    return `<div class="scene-obj-row child scene-tool-base-row${isSel ? ' active' : ''}" data-base-tool="${tool.id}" data-base-type="${baseType}" data-base-index="${i}" title="Select to edit this base object. Shift-click to add to selection">
+      ${thumbHtml(t.objectId, getObjectIconUrl, meta.name)}
       <span class="scene-obj-text">
-        <span class="scene-obj-name">${S(k.name)}</span>
-        <span class="scene-obj-sub">base object ${E+1}</span>
+        <span class="scene-obj-name">${escHtml(meta.name)}</span>
+        <span class="scene-obj-sub">base object ${i + 1}</span>
       </span>
       <button class="scene-list-delete scene-tool-base-remove" type="button" title="Remove from base" data-base-remove>x</button>
-    </div>`}).join(""),v=s==="Circle"?`circle:${t.id}`:`grid:${t.id}`,L=O(C.openState,v,!1);return`<details class="scene-list-node scene-tool-node" data-node-key="${v}"${T(L)}>
-    <summary class="scene-obj-row scene-tool-list-row${o?" active":""}" ${y}>
-      ${B(v,L)}
-      ${z(w?.objectId,d,s)}
+    </div>`;
+  }).join('');
+  const key = type === 'Circle' ? `circle:${tool.id}` : `grid:${tool.id}`;
+  const open = isOpen(renderToolNode.openState, key, false);
+  return `<details class="scene-list-node scene-tool-node" data-node-key="${key}"${openAttr(open)}>
+    <summary class="scene-obj-row scene-tool-list-row${selected ? ' active' : ''}" ${idAttr}>
+      ${toggleBtn(key, open)}
+      ${thumbHtml(firstTemplate?.objectId, getObjectIconUrl, type)}
       <span class="scene-obj-text">
-        <span class="scene-obj-name">${s} Tool ${t.id}</span>
-        <span class="scene-obj-sub">${S(b||`${h} slots`)}</span>
+        <span class="scene-obj-name">${type} Tool ${tool.id}</span>
+        <span class="scene-obj-sub">${escHtml(label || `${slots} slots`)}</span>
       </span>
-      <button class="scene-list-add" type="button" title="Add selected object(s) to this tool's base" ${s==="Circle"?`data-add-circle="${t.id}"`:`data-add-grid="${t.id}"`}>+</button>
-      <span class="scene-obj-badge" style="border-color:${l}">${t.items.length}</span>
+      <button class="scene-list-add" type="button" title="Add selected object(s) to this tool's base" ${type === 'Circle' ? `data-add-circle="${tool.id}"` : `data-add-grid="${tool.id}"`}>+</button>
+      <span class="scene-obj-badge" style="border-color:${color}">${tool.items.length}</span>
     </summary>
-    <div class="scene-list-empty">Base: ${p.length} object${p.length===1?"":"s"} x ${h} slots = ${t.items.length} stamped</div>
-    ${K}
-  </details>`}function R(t,s,l,o,{child:c=!1}={}){const i=l.has(t),d=S(t.ueObj.userDeviceName||t.meta.name),$=s.indexOf(t);return`<button class="scene-obj-row${c?" child":""}${i?" active":""}" data-idx="${$}" draggable="true">
-    ${z(t.ueObj.objectId,o,t.meta.name)}
+    <div class="scene-list-empty">Base: ${templates.length} object${templates.length === 1 ? '' : 's'} x ${slots} slots = ${tool.items.length} stamped</div>
+    ${baseRows}
+  </details>`;
+}
+
+function renderItemRow(item, items, selectedItems, getObjectIconUrl, { child = false } = {}) {
+  const isSel = selectedItems.has(item);
+  const label = escHtml(item.ueObj.userDeviceName || item.meta.name);
+  const idx = items.indexOf(item);
+  return `<button class="scene-obj-row${child ? ' child' : ''}${isSel ? ' active' : ''}" data-idx="${idx}" draggable="true">
+    ${thumbHtml(item.ueObj.objectId, getObjectIconUrl, item.meta.name)}
     <span class="scene-obj-text">
-      <span class="scene-obj-name">${d}</span>
-      <span class="scene-obj-sub">${S(t.meta.name)}</span>
+      <span class="scene-obj-name">${label}</span>
+      <span class="scene-obj-sub">${escHtml(item.meta.name)}</span>
     </span>
-  </button>`}function V(t){const s=t.meta||{},l=s.catalog||{},o=String(l.rowName||l.displayKey||"").replace(/([a-z0-9])([A-Z])/g,"$1 $2");return[t.ueObj.userDeviceName,s.name,l.name,l.rowName,l.displayKey,o,t.ueObj.objectId].filter(c=>c!=null&&c!=="").join(" ")}function H(t,s,l,o,c,i=null){const d=t.items.filter(b=>s.includes(b)&&(!i||i.has(b))),$=t===o,f=d.map(b=>R(b,s,l,c,{child:!0})).join(""),r=`collection:${t.id}`,p=O(H.openState,r,!1);return`<details class="scene-list-group scene-collection-group" data-node-key="${r}" data-collection-id="${t.id}"${T(p)}>
-    <summary class="${$?"active":""}" data-collection-summary="${t.id}">
-      ${B(r,p)}
+  </button>`;
+}
+
+function searchableItemText(item) {
+  const meta = item.meta || {};
+  const catalog = meta.catalog || {};
+  const spacedRowName = String(catalog.rowName || catalog.displayKey || '')
+    .replace(/([a-z0-9])([A-Z])/g, '$1 $2');
+  return [
+    item.ueObj.userDeviceName,
+    meta.name,
+    catalog.name,
+    catalog.rowName,
+    catalog.displayKey,
+    spacedRowName,
+    item.ueObj.objectId,
+  ].filter(v => v != null && v !== '').join(' ');
+}
+
+function renderCollection(collection, items, selectedItems, selectedCollection, getObjectIconUrl, visibleItems = null) {
+  const collectionItems = collection.items.filter(item => items.includes(item) && (!visibleItems || visibleItems.has(item)));
+  const selected = collection === selectedCollection;
+  const rows = collectionItems.map(item => renderItemRow(item, items, selectedItems, getObjectIconUrl, { child: true })).join('');
+  const key = `collection:${collection.id}`;
+  const open = isOpen(renderCollection.openState, key, false);
+  return `<details class="scene-list-group scene-collection-group" data-node-key="${key}" data-collection-id="${collection.id}"${openAttr(open)}>
+    <summary class="${selected ? 'active' : ''}" data-collection-summary="${collection.id}">
+      ${toggleBtn(key, open)}
       <span class="scene-collection-icon"></span>
-      <span class="scene-list-group-title">${S(t.name)}</span>
-      <span class="scene-list-group-count">${d.length}</span>
-      <button class="scene-list-add" type="button" title="Add selected object(s) to this collection" data-add-collection="${t.id}">+</button>
-      <button class="scene-list-delete" type="button" title="Delete collection" data-delete-collection="${t.id}">x</button>
+      <span class="scene-list-group-title">${escHtml(collection.name)}</span>
+      <span class="scene-list-group-count">${collectionItems.length}</span>
+      <button class="scene-list-add" type="button" title="Add selected object(s) to this collection" data-add-collection="${collection.id}">+</button>
+      <button class="scene-list-delete" type="button" title="Delete collection" data-delete-collection="${collection.id}">x</button>
     </summary>
-    ${f||'<div class="scene-list-empty">Empty collection</div>'}
-  </details>`}function pe({list:t,countEl:s,filterText:l,items:o,circleTools:c,gridTools:i,selectedItems:d,selectedCollection:$,collections:f=[],selectedCircle:r,selectedGrid:p,selectedBase:b,getObjectMeta:h,getObjectIconUrl:y,getTemplates:w,renderPlacementBudget:q,updateClipboardButtons:K,onSelectCollection:v,onDeleteCollection:L,onSelectCircle:A,onSelectGrid:E,onSelectItem:k,onFocusSelected:x,onRenderRequested:g,onAddToCollection:Z,onAddToCircle:G,onAddToGrid:J,onSelectBase:ee,onRemoveBase:te}){q(),K();const M=de(t);C.openState=M,H.openState=M;const j=l.trim().toLowerCase(),I=c.filter(e=>{const n=e.items.map(V).join(" "),a=`circle tool ${e.id} ${h(e.objectId).name} ${e.objectId} ${n}`.toLowerCase();return!j||a.includes(j)}),D=i.filter(e=>{const n=e.items.map(V).join(" "),a=`grid tool ${e.id} ${h(e.objectId).name} ${e.objectId} ${n}`.toLowerCase();return!j||a.includes(j)}),N=j?o.filter(e=>V(e).toLowerCase().includes(j)):o;if(s.textContent=N.length===o.length&&I.length===c.length&&D.length===i.length?`${o.length} objects, ${c.length} circle tools, ${i.length} grid tools`:`${N.length} / ${o.length} objects, ${I.length} / ${c.length} circles, ${D.length} / ${i.length} grids`,!N.length&&!I.length&&!D.length){t.innerHTML='<div style="padding:14px;color:var(--muted);font-size:13px">No matches</div>';return}const Q=I.map(e=>C({tool:e,type:"Circle",color:"#33b6ff",selected:e===r,getTemplates:w,getObjectMeta:h,getObjectIconUrl:y,selectedItems:d,items:o,selectedBase:b})).join(""),W=D.map(e=>C({tool:e,type:"Grid",color:"#7bd56f",selected:e===p,getTemplates:w,getObjectMeta:h,getObjectIconUrl:y,selectedItems:d,items:o,selectedBase:b})).join(""),ae=new Set(f.flatMap(e=>e.items)),ne=new Set([...c.flatMap(e=>e.items),...i.flatMap(e=>e.items)]),X=f.filter(e=>!j||e.items.some(n=>N.includes(n))),Y=N.filter(e=>!ae.has(e)&&!ne.has(e)),_=X.map(e=>H(e,o,d,$,y,j?new Set(N):null)).join(""),F=Y.map(e=>R(e,o,d,y)).join(""),P=(e,n,a,m,u)=>{const U=O(M,e,m);return`<details class="scene-list-group" data-node-key="${e}"${T(U)}>
-      <summary>${B(e,U)}<span class="scene-list-group-title">${n}</span><span class="scene-list-group-count">${a}</span></summary>
-      ${u}
-    </details>`},se=I.length+D.length,oe=Q||W?P("section:tools","Tools",se,!1,Q+W):"",ce=F?P("section:objects",f.length?"Loose Objects":"Objects",Y.length,!0,F):"",le=_?P("section:collections","Collections",X.length,!1,_):"";t.innerHTML=oe+le+ce,C.openState=null,H.openState=null,t.querySelectorAll("[data-toggle-node]").forEach(e=>{e.addEventListener("click",n=>{n.preventDefault(),n.stopPropagation();const a=e.closest("details[data-node-key]");a&&(a.open=!a.open)})}),t.querySelectorAll("[data-collection-summary]").forEach(e=>{const n=f.find(a=>a.id===Number(e.dataset.collectionSummary));e.addEventListener("click",a=>{a.preventDefault(),n&&v(n),g()}),e.addEventListener("dblclick",a=>{a.preventDefault(),n&&(v(n),x()),g()})}),t.querySelectorAll("[data-delete-collection]").forEach(e=>{const n=f.find(a=>a.id===Number(e.dataset.deleteCollection));e.addEventListener("click",a=>{a.preventDefault(),a.stopPropagation(),n&&L(n),g()})}),t.querySelectorAll(".scene-obj-row[data-circle-id]").forEach(e=>{const n=c.find(a=>a.id===Number(e.dataset.circleId));e.addEventListener("click",a=>{a.preventDefault(),n&&A(n),window.setTimeout(g,0)}),e.addEventListener("dblclick",a=>{a.preventDefault(),n&&(A(n),x()),window.setTimeout(g,0)})}),t.querySelectorAll(".scene-obj-row[data-grid-id]").forEach(e=>{const n=i.find(a=>a.id===Number(e.dataset.gridId));e.addEventListener("click",a=>{a.preventDefault(),n&&E(n),window.setTimeout(g,0)}),e.addEventListener("dblclick",a=>{a.preventDefault(),n&&(E(n),x()),window.setTimeout(g,0)})}),t.querySelectorAll(".scene-obj-row").forEach(e=>{if(!e.dataset.idx)return;const n=Number(e.dataset.idx);e.addEventListener("click",a=>{k(o[n],{add:a.ctrlKey||a.metaKey||a.shiftKey,toggle:a.ctrlKey||a.metaKey||a.shiftKey}),g()}),e.addEventListener("dblclick",()=>{k(o[n]),x(),g()})}),t.querySelectorAll("[data-add-collection]").forEach(e=>{const n=f.find(a=>a.id===Number(e.dataset.addCollection));e.addEventListener("click",a=>{a.preventDefault(),a.stopPropagation(),n&&Z?.(n,null)})}),t.querySelectorAll("[data-add-circle]").forEach(e=>{const n=c.find(a=>a.id===Number(e.dataset.addCircle));e.addEventListener("click",a=>{a.preventDefault(),a.stopPropagation(),n&&G?.(n,null)})}),t.querySelectorAll("[data-add-grid]").forEach(e=>{const n=i.find(a=>a.id===Number(e.dataset.addGrid));e.addEventListener("click",a=>{a.preventDefault(),a.stopPropagation(),n&&J?.(n,null)})}),t.querySelectorAll(".scene-obj-row[data-idx]").forEach(e=>{e.addEventListener("dragstart",n=>{n.dataTransfer.setData("text/plain",e.dataset.idx),n.dataTransfer.effectAllowed="copy"})}),t.querySelectorAll(".scene-tool-base-row").forEach(e=>{const n=e.dataset.baseType,a=Number(e.dataset.baseIndex),m=(n==="grid"?i:c).find(u=>u.id===Number(e.dataset.baseTool));e.addEventListener("click",u=>{u.target.closest("[data-base-remove]")||(m&&ee?.(m,n,a,{add:u.shiftKey||u.ctrlKey||u.metaKey}),g())}),e.querySelector("[data-base-remove]")?.addEventListener("click",u=>{u.preventDefault(),u.stopPropagation(),m&&te?.(m,n,a)})});const re=(e,n)=>{n.preventDefault(),e.classList.remove("drop-target");const a=Number(n.dataTransfer.getData("text/plain"));if(Number.isInteger(a)){if(e.dataset.collectionSummary!=null){const m=f.find(u=>u.id===Number(e.dataset.collectionSummary));m&&Z?.(m,a)}else if(e.dataset.circleId!=null){const m=c.find(u=>u.id===Number(e.dataset.circleId));m&&G?.(m,a)}else if(e.dataset.gridId!=null){const m=i.find(u=>u.id===Number(e.dataset.gridId));m&&J?.(m,a)}}};[...t.querySelectorAll("[data-collection-summary]"),...t.querySelectorAll(".scene-obj-row[data-circle-id]"),...t.querySelectorAll(".scene-obj-row[data-grid-id]")].forEach(e=>{e.addEventListener("dragover",n=>{n.preventDefault(),n.dataTransfer.dropEffect="copy",e.classList.add("drop-target")}),e.addEventListener("dragleave",()=>e.classList.remove("drop-target")),e.addEventListener("drop",n=>re(e,n))})}function me(t,{items:s,selectedItems:l,selectedCircle:o,selectedGrid:c,selectedCollection:i,selectedBase:d,circleTools:$,gridTools:f}){t&&(t.querySelectorAll(".scene-obj-row[data-idx]").forEach(r=>{const p=s[Number(r.dataset.idx)];r.classList.toggle("active",!!p&&l.has(p))}),t.querySelectorAll("[data-circle-id]").forEach(r=>{r.classList.toggle("active",!!o&&Number(r.dataset.circleId)===o.id)}),t.querySelectorAll("[data-grid-id]").forEach(r=>{r.classList.toggle("active",!!c&&Number(r.dataset.gridId)===c.id)}),t.querySelectorAll("[data-collection-summary]").forEach(r=>{r.classList.toggle("active",!!i&&Number(r.dataset.collectionSummary)===i.id)}),t.querySelectorAll(".scene-tool-base-row").forEach(r=>{const p=Number(r.dataset.baseTool),b=r.dataset.baseType,h=Number(r.dataset.baseIndex),y=!!d&&d.tool.id===p&&d.type===b&&d.templateIndex===h;let w=!1;if(!y&&l.size>0){const v=(b==="circle"?$:f)?.find(L=>L.id===p)?.items[h];w=!!v&&l.has(v)}r.classList.toggle("active",y||w)}))}function fe(t){const s=t.querySelector(".scene-obj-row.active");s&&s.scrollIntoView({block:"nearest"})}export{me as applySelectionClasses,pe as renderObjectList,fe as scrollListToActiveItem};
+    ${rows || '<div class="scene-list-empty">Empty collection</div>'}
+  </details>`;
+}
+
+export function renderObjectList({
+  list,
+  countEl,
+  filterText,
+  items,
+  circleTools,
+  gridTools,
+  selectedItems,
+  selectedCollection,
+  collections = [],
+  selectedCircle,
+  selectedGrid,
+  selectedBase,
+  getObjectMeta,
+  getObjectIconUrl,
+  getTemplates,
+  renderPlacementBudget,
+  updateClipboardButtons,
+  onSelectCollection,
+  onDeleteCollection,
+  onSelectCircle,
+  onSelectGrid,
+  onSelectItem,
+  onFocusSelected,
+  onRenderRequested,
+  onAddToCollection,
+  onAddToCircle,
+  onAddToGrid,
+  onSelectBase,
+  onRemoveBase,
+}) {
+  renderPlacementBudget();
+  updateClipboardButtons();
+  const openState = readOpenState(list);
+  renderToolNode.openState = openState;
+  renderCollection.openState = openState;
+
+  const q = filterText.trim().toLowerCase();
+  const shownCircles = circleTools.filter(tool => {
+    const childText = tool.items.map(searchableItemText).join(' ');
+    const haystack = `circle tool ${tool.id} ${getObjectMeta(tool.objectId).name} ${tool.objectId} ${childText}`.toLowerCase();
+    return !q || haystack.includes(q);
+  });
+  const shownGrids = gridTools.filter(tool => {
+    const childText = tool.items.map(searchableItemText).join(' ');
+    const haystack = `grid tool ${tool.id} ${getObjectMeta(tool.objectId).name} ${tool.objectId} ${childText}`.toLowerCase();
+    return !q || haystack.includes(q);
+  });
+  const shown = q
+    ? items.filter(item => searchableItemText(item).toLowerCase().includes(q))
+    : items;
+
+  countEl.textContent =
+    shown.length === items.length && shownCircles.length === circleTools.length && shownGrids.length === gridTools.length
+      ? `${items.length} objects, ${circleTools.length} circle tools, ${gridTools.length} grid tools`
+      : `${shown.length} / ${items.length} objects, ${shownCircles.length} / ${circleTools.length} circles, ${shownGrids.length} / ${gridTools.length} grids`;
+
+  if (!shown.length && !shownCircles.length && !shownGrids.length) {
+    list.innerHTML = '<div style="padding:14px;color:var(--muted);font-size:13px">No matches</div>';
+    return;
+  }
+
+  const circleHtml = shownCircles.map(tool => {
+    return renderToolNode({
+      tool,
+      type: 'Circle',
+      color: '#33b6ff',
+      selected: tool === selectedCircle,
+      getTemplates,
+      getObjectMeta,
+      getObjectIconUrl,
+      selectedItems,
+      items,
+      selectedBase,
+    });
+  }).join('');
+
+  const gridHtml = shownGrids.map(tool => {
+    return renderToolNode({
+      tool,
+      type: 'Grid',
+      color: '#7bd56f',
+      selected: tool === selectedGrid,
+      getTemplates,
+      getObjectMeta,
+      getObjectIconUrl,
+      selectedItems,
+      items,
+      selectedBase,
+    });
+  }).join('');
+
+  const collectionSet = new Set(collections.flatMap(collection => collection.items));
+  const toolItemSet = new Set([
+    ...circleTools.flatMap(tool => tool.items),
+    ...gridTools.flatMap(tool => tool.items),
+  ]);
+  const shownCollections = collections
+    .filter(collection => !q || collection.items.some(item => shown.includes(item)));
+  const looseItems = shown.filter(item => !collectionSet.has(item) && !toolItemSet.has(item));
+
+  const collectionHtml = shownCollections.map(collection =>
+    renderCollection(collection, items, selectedItems, selectedCollection, getObjectIconUrl, q ? new Set(shown) : null)
+  ).join('');
+  const itemHtml = looseItems.map(item => renderItemRow(item, items, selectedItems, getObjectIconUrl)).join('');
+
+  const sectionNode = (key, title, count, defaultOpen, body) => {
+    const open = isOpen(openState, key, defaultOpen);
+    return `<details class="scene-list-group" data-node-key="${key}"${openAttr(open)}>
+      <summary>${toggleBtn(key, open)}<span class="scene-list-group-title">${title}</span><span class="scene-list-group-count">${count}</span></summary>
+      ${body}
+    </details>`;
+  };
+  const toolCount = shownCircles.length + shownGrids.length;
+  const toolHtml = circleHtml || gridHtml ? sectionNode('section:tools', 'Tools', toolCount, false, circleHtml + gridHtml) : '';
+  const objectsHtml = itemHtml ? sectionNode('section:objects', collections.length ? 'Loose Objects' : 'Objects', looseItems.length, true, itemHtml) : '';
+  const collectionsHtml = collectionHtml ? sectionNode('section:collections', 'Collections', shownCollections.length, false, collectionHtml) : '';
+  list.innerHTML = toolHtml + collectionsHtml + objectsHtml;
+  renderToolNode.openState = null;
+  renderCollection.openState = null;
+
+  list.querySelectorAll('[data-toggle-node]').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      e.stopPropagation();
+      const details = btn.closest('details[data-node-key]');
+      if (details) details.open = !details.open;
+    });
+  });
+
+  list.querySelectorAll('[data-collection-summary]').forEach(summary => {
+    const collection = collections.find(c => c.id === Number(summary.dataset.collectionSummary));
+    summary.addEventListener('click', e => {
+      e.preventDefault();
+      if (collection) onSelectCollection(collection);
+      onRenderRequested();
+    });
+    summary.addEventListener('dblclick', e => {
+      e.preventDefault();
+      if (collection) {
+        onSelectCollection(collection);
+        onFocusSelected();
+      }
+      onRenderRequested();
+    });
+  });
+
+  list.querySelectorAll('[data-delete-collection]').forEach(btn => {
+    const collection = collections.find(c => c.id === Number(btn.dataset.deleteCollection));
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      e.stopPropagation();
+      if (collection) onDeleteCollection(collection);
+      onRenderRequested();
+    });
+  });
+
+  list.querySelectorAll('.scene-obj-row[data-circle-id]').forEach(btn => {
+    const tool = circleTools.find(t => t.id === Number(btn.dataset.circleId));
+    btn.addEventListener('click', e => {
+      e.preventDefault(); // select without toggling the <details> (expand only via the arrow)
+      if (tool) onSelectCircle(tool);
+      window.setTimeout(onRenderRequested, 0);
+    });
+    btn.addEventListener('dblclick', e => {
+      e.preventDefault();
+      if (tool) {
+        onSelectCircle(tool);
+        onFocusSelected();
+      }
+      window.setTimeout(onRenderRequested, 0);
+    });
+  });
+
+  list.querySelectorAll('.scene-obj-row[data-grid-id]').forEach(btn => {
+    const tool = gridTools.find(t => t.id === Number(btn.dataset.gridId));
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      if (tool) onSelectGrid(tool);
+      window.setTimeout(onRenderRequested, 0);
+    });
+    btn.addEventListener('dblclick', e => {
+      e.preventDefault();
+      if (tool) {
+        onSelectGrid(tool);
+        onFocusSelected();
+      }
+      window.setTimeout(onRenderRequested, 0);
+    });
+  });
+
+  list.querySelectorAll('.scene-obj-row').forEach(btn => {
+    if (!btn.dataset.idx) return;
+    const idx = Number(btn.dataset.idx);
+    btn.addEventListener('click', e => {
+      onSelectItem(items[idx], { add: e.ctrlKey || e.metaKey || e.shiftKey, toggle: e.ctrlKey || e.metaKey || e.shiftKey });
+      onRenderRequested();
+    });
+    btn.addEventListener('dblclick', () => {
+      onSelectItem(items[idx]);
+      onFocusSelected();
+      onRenderRequested();
+    });
+  });
+
+  // "+" add buttons (use current selection) and drag-onto-node (use the dragged row) - both routed
+  // through the same onAddTo* callbacks so collections and tool bases share one path.
+  list.querySelectorAll('[data-add-collection]').forEach(btn => {
+    const collection = collections.find(c => c.id === Number(btn.dataset.addCollection));
+    btn.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); if (collection) onAddToCollection?.(collection, null); });
+  });
+  list.querySelectorAll('[data-add-circle]').forEach(btn => {
+    const tool = circleTools.find(t => t.id === Number(btn.dataset.addCircle));
+    btn.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); if (tool) onAddToCircle?.(tool, null); });
+  });
+  list.querySelectorAll('[data-add-grid]').forEach(btn => {
+    const tool = gridTools.find(t => t.id === Number(btn.dataset.addGrid));
+    btn.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); if (tool) onAddToGrid?.(tool, null); });
+  });
+
+  list.querySelectorAll('.scene-obj-row[data-idx]').forEach(btn => {
+    btn.addEventListener('dragstart', e => {
+      e.dataTransfer.setData('text/plain', btn.dataset.idx);
+      e.dataTransfer.effectAllowed = 'copy';
+    });
+  });
+
+  // Tool base-object rows: click selects/edits the base object, the x removes it from the template.
+  list.querySelectorAll('.scene-tool-base-row').forEach(row => {
+    const type = row.dataset.baseType;
+    const idx = Number(row.dataset.baseIndex);
+    const tool = (type === 'grid' ? gridTools : circleTools).find(t => t.id === Number(row.dataset.baseTool));
+    row.addEventListener('click', e => {
+      if (e.target.closest('[data-base-remove]')) return;
+      if (tool) onSelectBase?.(tool, type, idx, { add: e.shiftKey || e.ctrlKey || e.metaKey });
+      onRenderRequested();
+    });
+    row.querySelector('[data-base-remove]')?.addEventListener('click', e => {
+      e.preventDefault();
+      e.stopPropagation();
+      if (tool) onRemoveBase?.(tool, type, idx);
+    });
+  });
+
+  const onDrop = (el, e) => {
+    e.preventDefault();
+    el.classList.remove('drop-target');
+    const idx = Number(e.dataTransfer.getData('text/plain'));
+    if (!Number.isInteger(idx)) return;
+    if (el.dataset.collectionSummary != null) {
+      const c = collections.find(x => x.id === Number(el.dataset.collectionSummary));
+      if (c) onAddToCollection?.(c, idx);
+    } else if (el.dataset.circleId != null) {
+      const t = circleTools.find(x => x.id === Number(el.dataset.circleId));
+      if (t) onAddToCircle?.(t, idx);
+    } else if (el.dataset.gridId != null) {
+      const t = gridTools.find(x => x.id === Number(el.dataset.gridId));
+      if (t) onAddToGrid?.(t, idx);
+    }
+  };
+  [
+    ...list.querySelectorAll('[data-collection-summary]'),
+    ...list.querySelectorAll('.scene-obj-row[data-circle-id]'),
+    ...list.querySelectorAll('.scene-obj-row[data-grid-id]'),
+  ].forEach(el => {
+    el.addEventListener('dragover', e => { e.preventDefault(); e.dataTransfer.dropEffect = 'copy'; el.classList.add('drop-target'); });
+    el.addEventListener('dragleave', () => el.classList.remove('drop-target'));
+    el.addEventListener('drop', e => onDrop(el, e));
+  });
+}
+
+// Update only the .active highlight in-place (no DOM rebuild). Selection changes don't alter the list
+// structure, so this avoids the full renderObjectList rebuild + listener rebind on every click.
+export function applySelectionClasses(list, { items, selectedItems, selectedCircle, selectedGrid, selectedCollection, selectedBase, circleTools, gridTools }) {
+  if (!list) return;
+  list.querySelectorAll('.scene-obj-row[data-idx]').forEach(el => {
+    const it = items[Number(el.dataset.idx)];
+    el.classList.toggle('active', Boolean(it) && selectedItems.has(it));
+  });
+  list.querySelectorAll('[data-circle-id]').forEach(el => {
+    el.classList.toggle('active', Boolean(selectedCircle) && Number(el.dataset.circleId) === selectedCircle.id);
+  });
+  list.querySelectorAll('[data-grid-id]').forEach(el => {
+    el.classList.toggle('active', Boolean(selectedGrid) && Number(el.dataset.gridId) === selectedGrid.id);
+  });
+  list.querySelectorAll('[data-collection-summary]').forEach(el => {
+    el.classList.toggle('active', Boolean(selectedCollection) && Number(el.dataset.collectionSummary) === selectedCollection.id);
+  });
+  list.querySelectorAll('.scene-tool-base-row').forEach(el => {
+    const toolId = Number(el.dataset.baseTool);
+    const baseType = el.dataset.baseType;
+    const idx = Number(el.dataset.baseIndex);
+    const isPrimary = Boolean(selectedBase)
+      && selectedBase.tool.id === toolId
+      && selectedBase.type === baseType
+      && selectedBase.templateIndex === idx;
+    let isMulti = false;
+    if (!isPrimary && selectedItems.size > 0) {
+      const tools = baseType === 'circle' ? circleTools : gridTools;
+      const tool = tools?.find(t => t.id === toolId);
+      const baseItem = tool?.items[idx];
+      isMulti = Boolean(baseItem) && selectedItems.has(baseItem);
+    }
+    el.classList.toggle('active', isPrimary || isMulti);
+  });
+}
+
+export function scrollListToActiveItem(list) {
+  const btn = list.querySelector('.scene-obj-row.active');
+  if (btn) btn.scrollIntoView({ block: 'nearest' });
+}

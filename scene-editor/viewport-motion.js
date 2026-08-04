@@ -1,1 +1,41 @@
-import*as i from"three";function p({camera:t,orbitControls:d,flyKeys:o,flySpeed:n}){if(!o.size)return;const u=t.position.distanceTo(d.target),e=Math.max(u*.02,.5)*n*(o.has("shift")?5:1),r=new i.Vector3;t.getWorldDirection(r);const c=new i.Vector3().crossVectors(r,t.up).normalize(),s=new i.Vector3(0,1,0),a=new i.Vector3;o.has("w")&&a.addScaledVector(r,e),o.has("s")&&a.addScaledVector(r,-e),o.has("a")&&a.addScaledVector(c,-e),o.has("d")&&a.addScaledVector(c,e),o.has("q")&&a.addScaledVector(s,-e),o.has("e")&&a.addScaledVector(s,e),t.position.add(a),d.target.add(a)}function V(t){return`${t<1?t.toFixed(2):t<10?t.toFixed(1):Math.round(t)}x`}function h(t,d,o=performance.now()){t.frameCount++;const n=o-t.lastTime;n<500||(t.displayValue=Math.round(t.frameCount*1e3/n),t.frameCount=0,t.lastTime=o,d&&(d.textContent=String(t.displayValue)))}export{p as applyFlyMovement,V as formatFlySpeed,h as updateFpsHud};
+import * as THREE from 'three';
+
+export function applyFlyMovement({ camera, orbitControls, flyKeys, flySpeed }) {
+  if (!flyKeys.size) return;
+  const dist = camera.position.distanceTo(orbitControls.target);
+  const speed = Math.max(dist * 0.02, 0.5) * flySpeed * (flyKeys.has('shift') ? 5 : 1);
+
+  const forward = new THREE.Vector3();
+  camera.getWorldDirection(forward);
+
+  const right = new THREE.Vector3().crossVectors(forward, camera.up).normalize();
+  const up = new THREE.Vector3(0, 1, 0);
+
+  const delta = new THREE.Vector3();
+  if (flyKeys.has('w')) delta.addScaledVector(forward, speed);
+  if (flyKeys.has('s')) delta.addScaledVector(forward, -speed);
+  if (flyKeys.has('a')) delta.addScaledVector(right, -speed);
+  if (flyKeys.has('d')) delta.addScaledVector(right, speed);
+  if (flyKeys.has('q')) delta.addScaledVector(up, -speed);
+  if (flyKeys.has('e')) delta.addScaledVector(up, speed);
+
+  camera.position.add(delta);
+  orbitControls.target.add(delta);
+}
+
+export function formatFlySpeed(flySpeed) {
+  const value = flySpeed < 1
+    ? flySpeed.toFixed(2)
+    : (flySpeed < 10 ? flySpeed.toFixed(1) : Math.round(flySpeed));
+  return `${value}x`;
+}
+
+export function updateFpsHud(state, el, now = performance.now()) {
+  state.frameCount++;
+  const elapsed = now - state.lastTime;
+  if (elapsed < 500) return;
+  state.displayValue = Math.round((state.frameCount * 1000) / elapsed);
+  state.frameCount = 0;
+  state.lastTime = now;
+  if (el) el.textContent = String(state.displayValue);
+}

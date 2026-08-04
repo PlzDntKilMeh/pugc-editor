@@ -1,1 +1,88 @@
-import*as r from"three";import{clampUeScale3D as d,ue4PosToThree as f,ue4QuatToThree as h,ue4ScaleToThree as w}from"./coords.js";import{disposeItemRenderObject as m}from"./mesh-items.js";function y(e,s,o){e.spawnTransform.scale3D=d(e.spawnTransform.scale3D);const a=new r.Group;a.position.copy(f(e.spawnTransform.translation)),a.quaternion.copy(h(e.spawnTransform.rotation)),a.scale.copy(w(e.spawnTransform.scale3D));const[c,l,i]=s.boxSize,n=s.isDevice?new r.SphereGeometry(.6,8,6):new r.BoxGeometry(c,l,i),t=new r.MeshLambertMaterial({color:s.color,wireframe:!0,transparent:!0,opacity:o,depthWrite:!1}),p=new r.Mesh(n,t);return a.add(p),a.userData.itemRef=null,{ueObj:e,group:a,mesh:p,mat:t,materials:[t],meta:s,ownedGeo:!0,hasRealMesh:!1,pivotOffset:new r.Vector3}}function v(e,s){e.group.remove(e.mesh),m(e);for(const p of e.materials??[e.mat])p.dispose();const o=e.meta,[a,c,l]=o.boxSize,i=o.isDevice?new r.SphereGeometry(.6,8,6):new r.BoxGeometry(a,c,l),n=new r.MeshLambertMaterial({color:o.color,wireframe:!0,transparent:!0,opacity:s,depthWrite:!1}),t=new r.Mesh(i,n);e.group.add(t),e.mesh=t,e.mat=n,e.materials=[n],e.sections=[],e.ownedGeo=!0,e.hasRealMesh=!1,e.pivotOffset.set(0,0,0),e.group.position.copy(f(e.ueObj.spawnTransform.translation))}function x(e,s){s.remove(e.group),m(e);for(const o of e.materials??[e.mat])o.dispose();e.volumeBox&&e.volumeBox.traverse(o=>{o.geometry?.dispose(),o.material?.dispose()}),e.iconSprite&&e.iconSprite.material.dispose()}export{y as createEditorItem,x as disposeEditorItem,v as resetEditorItemToPlaceholder};
+import * as THREE from 'three';
+import {
+  clampUeScale3D,
+  ue4PosToThree,
+  ue4QuatToThree,
+  ue4ScaleToThree,
+} from './coords.js';
+import { disposeItemRenderObject } from './mesh-items.js';
+
+export function createEditorItem(ueObj, meta, normalOpacity) {
+  ueObj.spawnTransform.scale3D = clampUeScale3D(ueObj.spawnTransform.scale3D);
+  const group = new THREE.Group();
+  group.position.copy(ue4PosToThree(ueObj.spawnTransform.translation));
+  group.quaternion.copy(ue4QuatToThree(ueObj.spawnTransform.rotation));
+  group.scale.copy(ue4ScaleToThree(ueObj.spawnTransform.scale3D));
+
+  const [w, h, d] = meta.boxSize;
+  const geo = meta.isDevice
+    ? new THREE.SphereGeometry(0.6, 8, 6)
+    : new THREE.BoxGeometry(w, h, d);
+
+  const mat = new THREE.MeshLambertMaterial({
+    color: meta.color,
+    wireframe: true,
+    transparent: true,
+    opacity: normalOpacity,
+    depthWrite: false,
+  });
+
+  const mesh = new THREE.Mesh(geo, mat);
+  group.add(mesh);
+  group.userData.itemRef = null;
+
+  return {
+    ueObj,
+    group,
+    mesh,
+    mat,
+    materials: [mat],
+    meta,
+    ownedGeo: true,
+    hasRealMesh: false,
+    pivotOffset: new THREE.Vector3(),
+  };
+}
+
+// Revert an item that had a real mesh back to its default placeholder (wireframe sphere for devices,
+// box otherwise) - used when a device's selected pick-list mesh can't be loaded, so it shows the
+// default primitive instead of the previously loaded mesh.
+export function resetEditorItemToPlaceholder(item, normalOpacity) {
+  item.group.remove(item.mesh);
+  disposeItemRenderObject(item);
+  for (const m of item.materials ?? [item.mat]) m.dispose();
+
+  const meta = item.meta;
+  const [w, h, d] = meta.boxSize;
+  const geo = meta.isDevice
+    ? new THREE.SphereGeometry(0.6, 8, 6)
+    : new THREE.BoxGeometry(w, h, d);
+  const mat = new THREE.MeshLambertMaterial({
+    color: meta.color,
+    wireframe: true,
+    transparent: true,
+    opacity: normalOpacity,
+    depthWrite: false,
+  });
+  const mesh = new THREE.Mesh(geo, mat);
+  item.group.add(mesh);
+  item.mesh = mesh;
+  item.mat = mat;
+  item.materials = [mat];
+  item.sections = [];
+  item.ownedGeo = true;
+  item.hasRealMesh = false;
+  // Drop the mesh pivot offset and restore the group to the device's own transform position.
+  item.pivotOffset.set(0, 0, 0);
+  item.group.position.copy(ue4PosToThree(item.ueObj.spawnTransform.translation));
+}
+
+export function disposeEditorItem(item, scene) {
+  scene.remove(item.group);
+  disposeItemRenderObject(item);
+  for (const m of item.materials ?? [item.mat]) m.dispose();
+  // Device volume is a group (fill + wireframe) with its own per-volume geometries/materials.
+  if (item.volumeBox) item.volumeBox.traverse(o => { o.geometry?.dispose(); o.material?.dispose(); });
+  // Icon sprite material is disposed; its texture is shared/cached, so leave it.
+  if (item.iconSprite) item.iconSprite.material.dispose();
+}

@@ -1,1 +1,134 @@
-import*as u from"three";import{threePosToUe4 as p,threeQuatToUe4 as m,threeScaleToUe4 as b,ue4PosToThree as c}from"./coords.js";function s(r){return typeof structuredClone=="function"?structuredClone(r):JSON.parse(JSON.stringify(r))}function l(r,{offsetCm:e=100,isDeviceObjectId:n,nextDeviceIndex:t}={}){const o=s(r);return o.spawnTransform??={rotation:{x:0,y:0,z:0,w:1},translation:{x:0,y:0,z:0},scale3D:{x:1,y:1,z:1}},o.spawnTransform.translation??={x:0,y:0,z:0},o.spawnTransform.rotation??={x:0,y:0,z:0,w:1},o.spawnTransform.scale3D??={x:1,y:1,z:1},o.spawnTransform.translation.x=Number(o.spawnTransform.translation.x||0)+e,n?.(o.objectId)?(o.deviceIndex=t?.(o.objectId)??0,o.userDeviceName&&(o.userDeviceName=`${o.userDeviceName} Copy`)):o.deviceIndex=-1,o}function z(r,e,n){return{type:r,objectId:e.objectId,templates:s(n),params:s(e.params||{}),position:{x:e.group.position.x,y:e.group.position.y,z:e.group.position.z},quaternion:{x:e.group.quaternion.x,y:e.group.quaternion.y,z:e.group.quaternion.z,w:e.group.quaternion.w}}}function x(r,e){const n=s(r.ueObj);return n.spawnTransform??={},n.spawnTransform.translation=p(e||r.group.position),n.spawnTransform.rotation=m(r.group.quaternion),n.spawnTransform.scale3D=b(r.group.scale),n}function T(r,e,n=t=>t.group.position){const t=n(e),o={x:t.x,y:t.y,z:t.z};return{type:r.length===1?"object":"objects",anchorSpace:"three",anchor:o,objects:r.map(i=>{const a=n(i);return{source:x(i,a),relativePosition:{x:Number(a.x||0)-Number(o.x||0),y:Number(a.y||0)-Number(o.y||0),z:Number(a.z||0)-Number(o.z||0)}}})}}function N(r){if(r.objects?.length){const e=r.objects[0]?.spawnTransform?.translation||{x:0,y:0,z:0};return r.objects.map(n=>{if(n.source)return n;const t=n.spawnTransform?.translation||{x:0,y:0,z:0};return{source:n,relativeTranslation:{x:Number(t.x||0)-Number(e.x||0),y:Number(t.y||0)-Number(e.y||0),z:Number(t.z||0)-Number(e.z||0)}}})}return r.object?[{source:r.object,relativePosition:{x:0,y:0,z:0}}]:[]}function h(r,e){const n=e[0]?.source?.spawnTransform?.translation||{x:0,y:0,z:0};return r.anchorSpace==="three"?new u.Vector3(Number(r.anchor.x||0),Number(r.anchor.y||0),Number(r.anchor.z||0)):c(r.anchor??n)}function w(r){return r.relativePosition?new u.Vector3(Number(r.relativePosition.x||0),Number(r.relativePosition.y||0),Number(r.relativePosition.z||0)):c(r.relativeTranslation||{x:0,y:0,z:0})}export{h as clipboardAnchorToThree,w as clipboardEntryOffsetToThree,s as clonePlain,x as makeObjectClipboardSource,T as makeObjectsClipboardPayload,l as makePastedObject,z as makePatternClipboardPayload,N as objectClipboardEntries};
+import * as THREE from 'three';
+import {
+  threePosToUe4,
+  threeQuatToUe4,
+  threeScaleToUe4,
+  ue4PosToThree,
+} from './coords.js';
+
+export function clonePlain(value) {
+  return typeof structuredClone === 'function'
+    ? structuredClone(value)
+    : JSON.parse(JSON.stringify(value));
+}
+
+export function makePastedObject(source, {
+  offsetCm = 100,
+  isDeviceObjectId,
+  nextDeviceIndex,
+} = {}) {
+  const clone = clonePlain(source);
+  clone.spawnTransform ??= {
+    rotation: { x: 0, y: 0, z: 0, w: 1 },
+    translation: { x: 0, y: 0, z: 0 },
+    scale3D: { x: 1, y: 1, z: 1 },
+  };
+  clone.spawnTransform.translation ??= { x: 0, y: 0, z: 0 };
+  clone.spawnTransform.rotation ??= { x: 0, y: 0, z: 0, w: 1 };
+  clone.spawnTransform.scale3D ??= { x: 1, y: 1, z: 1 };
+  clone.spawnTransform.translation.x = Number(clone.spawnTransform.translation.x || 0) + offsetCm;
+  if (isDeviceObjectId?.(clone.objectId)) {
+    clone.deviceIndex = nextDeviceIndex?.(clone.objectId) ?? 0;
+    if (clone.userDeviceName) clone.userDeviceName = `${clone.userDeviceName} Copy`;
+  } else {
+    clone.deviceIndex = -1;
+  }
+  return clone;
+}
+
+export function makePatternClipboardPayload(type, tool, templates) {
+  return {
+    type,
+    objectId: tool.objectId,
+    templates: clonePlain(templates),
+    params: clonePlain(tool.params || {}),
+    position: { x: tool.group.position.x, y: tool.group.position.y, z: tool.group.position.z },
+    quaternion: {
+      x: tool.group.quaternion.x,
+      y: tool.group.quaternion.y,
+      z: tool.group.quaternion.z,
+      w: tool.group.quaternion.w,
+    },
+  };
+}
+
+// rootPos is the object's true root position in Three space (item.group.position is the editor PIVOT
+// for mesh items, which differs from the root by the mesh-centre offset). Anchor/relative/translation
+// must all be root-based or pasted mesh objects scatter by their per-object pivot offset.
+export function makeObjectClipboardSource(item, rootPos) {
+  const source = clonePlain(item.ueObj);
+  source.spawnTransform ??= {};
+  source.spawnTransform.translation = threePosToUe4(rootPos || item.group.position);
+  source.spawnTransform.rotation = threeQuatToUe4(item.group.quaternion);
+  source.spawnTransform.scale3D = threeScaleToUe4(item.group.scale);
+  return source;
+}
+
+export function makeObjectsClipboardPayload(copyItems, anchorItem, positionForItem = item => item.group.position) {
+  const anchorV = positionForItem(anchorItem);
+  const anchor = { x: anchorV.x, y: anchorV.y, z: anchorV.z };
+  return {
+    type: copyItems.length === 1 ? 'object' : 'objects',
+    anchorSpace: 'three',
+    anchor,
+    objects: copyItems.map(item => {
+      const t = positionForItem(item);
+      return {
+        source: makeObjectClipboardSource(item, t),
+        relativePosition: {
+          x: Number(t.x || 0) - Number(anchor.x || 0),
+          y: Number(t.y || 0) - Number(anchor.y || 0),
+          z: Number(t.z || 0) - Number(anchor.z || 0),
+        },
+      };
+    }),
+  };
+}
+
+export function objectClipboardEntries(payload) {
+  if (payload.objects?.length) {
+    const rawAnchor = payload.objects[0]?.spawnTransform?.translation || { x: 0, y: 0, z: 0 };
+    return payload.objects.map(obj => {
+      if (obj.source) return obj;
+      const t = obj.spawnTransform?.translation || { x: 0, y: 0, z: 0 };
+      return {
+        source: obj,
+        relativeTranslation: {
+          x: Number(t.x || 0) - Number(rawAnchor.x || 0),
+          y: Number(t.y || 0) - Number(rawAnchor.y || 0),
+          z: Number(t.z || 0) - Number(rawAnchor.z || 0),
+        },
+      };
+    });
+  }
+  if (payload.object) {
+    return [{
+      source: payload.object,
+      relativePosition: { x: 0, y: 0, z: 0 },
+    }];
+  }
+  return [];
+}
+
+export function clipboardAnchorToThree(payload, entries) {
+  const fallbackAnchor = entries[0]?.source?.spawnTransform?.translation || { x: 0, y: 0, z: 0 };
+  if (payload.anchorSpace === 'three') {
+    return new THREE.Vector3(
+      Number(payload.anchor.x || 0),
+      Number(payload.anchor.y || 0),
+      Number(payload.anchor.z || 0)
+    );
+  }
+  return ue4PosToThree(payload.anchor ?? fallbackAnchor);
+}
+
+export function clipboardEntryOffsetToThree(entry) {
+  if (entry.relativePosition) {
+    return new THREE.Vector3(
+      Number(entry.relativePosition.x || 0),
+      Number(entry.relativePosition.y || 0),
+      Number(entry.relativePosition.z || 0)
+    );
+  }
+  return ue4PosToThree(entry.relativeTranslation || { x: 0, y: 0, z: 0 });
+}

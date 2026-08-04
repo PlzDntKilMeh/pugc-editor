@@ -1,1 +1,23 @@
-function i(e){if(!e)return null;const t=e.objects||e.modObjects;return Array.isArray(t)?t:null}function c(e,t){return!!e.devices[String(t)]}function o(e,t){const r=(e||[]).filter(n=>Number(n.objectId)===Number(t)&&Number(n.deviceIndex)!==-1).map(n=>Number(n.deviceIndex)).filter(Number.isFinite);return r.length?Math.max(...r)+1:0}function u(e,t){if(!e)return;const r=e.indexOf(t);r>=0&&e.splice(r,1)}export{i as getPugcObjectsFromJson,c as isCatalogDeviceObjectId,o as nextDeviceIndexForObject,u as removePugcObject};
+export function getPugcObjectsFromJson(pugcJson) {
+  if (!pugcJson) return null;
+  const objects = pugcJson.objects || pugcJson.modObjects;
+  return Array.isArray(objects) ? objects : null;
+}
+
+export function isCatalogDeviceObjectId(catalog, objectId) {
+  return Boolean(catalog.devices[String(objectId)]);
+}
+
+export function nextDeviceIndexForObject(objects, objectId) {
+  const indexes = (objects || [])
+    .filter(obj => Number(obj.objectId) === Number(objectId) && Number(obj.deviceIndex) !== -1)
+    .map(obj => Number(obj.deviceIndex))
+    .filter(Number.isFinite);
+  return indexes.length ? Math.max(...indexes) + 1 : 0;
+}
+
+export function removePugcObject(objects, ueObj) {
+  if (!objects) return;
+  const idx = objects.indexOf(ueObj);
+  if (idx >= 0) objects.splice(idx, 1);
+}

@@ -1,27 +1,613 @@
-const _t=310,Gt=86,Nt=410,Pt=116,Rt=28,Dt=26,jt=82,St=18,Lt=60,kt=4,Ct=1.35;function E(u){return String(u??"").replace(/[&<>"]/g,at=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"})[at])}function Et(u,at,pt,lt){const j=[];for(const I of u)for(const x of I)j.push(x);function tt(I,x){const O=u.map(n=>x?n.slice():n.slice().reverse()),q=I?O:O.slice().reverse(),D=new Map,g=new Map;q.forEach((n,M)=>n.forEach(($,N)=>{D.set($,N),g.set($,M)}));const y=I?at:pt,it=n=>(y.get(n)||[]).filter(M=>D.has(M)).sort((M,$)=>D.get(M)-D.get($)),_=new Map(j.map(n=>[n,n])),z=new Map(j.map(n=>[n,n]));for(let n=1;n<q.length;n++){let M=-1;for(const $ of q[n]){const N=it($);if(!N.length)continue;const S=[Math.floor((N.length-1)/2),Math.ceil((N.length-1)/2)];for(const ht of S){if(z.get($)!==$)continue;const P=N[ht];D.get(P)>M&&(z.set(P,$),_.set($,_.get(P)),z.set($,_.get($)),M=D.get(P))}}}const G=new Map(j.map(n=>[n,n])),Y=new Map(j.map(n=>[n,1/0])),U=new Map,dt=n=>{if(U.has(n))return;U.set(n,0);let M=n;do{const $=D.get(M);if($>0){const N=q[g.get(M)][$-1],S=_.get(N);dt(S),G.get(n)===n&&G.set(n,G.get(S)),G.get(n)!==G.get(S)?Y.set(G.get(S),Math.min(Y.get(G.get(S)),U.get(n)-U.get(S)-lt)):U.set(n,Math.max(U.get(n),U.get(S)+lt))}M=z.get(M)}while(M!==n)};for(const n of j)_.get(n)===n&&dt(n);const gt=new Map;for(const n of j){let M=U.get(_.get(n));const $=Y.get(G.get(_.get(n)));$<1/0&&(M+=$),gt.set(n,x?M:-M)}return gt}const ft=[tt(!0,!0),tt(!0,!1),tt(!1,!0),tt(!1,!1)];for(const I of ft){let x=1/0;for(const O of I.values())x=Math.min(x,O);for(const O of I.keys())I.set(O,I.get(O)-x)}const V=new Map;for(const I of j){const x=ft.map(O=>O.get(I)).sort((O,q)=>O-q);V.set(I,(x[1]+x[2])/2)}for(const I of u)for(let x=1;x<I.length;x++){const O=V.get(I[x-1])+lt;V.get(I[x])<O&&V.set(I[x],O)}return V}function Ht({container:u,getItems:at,getDeviceEventList:pt,getFieldConnections:lt,getObjectMeta:j,getObjectIconUrl:tt,catalog:ft,onSelectNode:V,onFocusNode:I,getSelectedNodeIds:x,onClearSelection:O,onSelectGroup:q,getItemTags:D}){const g={scale:1,tx:0,ty:0};let y="",it=!1,_=null,z=new Map;const G=new Map,Y=e=>`${e.objectId}:${e.deviceIndex}`;function U(){return(at()||[]).filter(e=>e?.ueObj&&e.meta?.isDevice&&e.ueObj.deviceIndex!==-1)}function dt(){G.clear();const e=new Map;for(const o of U()){const i=Y(o.ueObj);e.set(i,o),G.set(i,o)}const l=[];for(const o of pt()||[]){const i=o?.eventId?.deviceInstanceId;if(!i)continue;const p=`${i.objectId}:${i.deviceIndex}`;for(const b of o.relationEventId||[]){const v=b?.deviceInstanceId;if(!v)continue;const R=`${v.objectId}:${v.deviceIndex}`;e.has(p)&&e.has(R)&&l.push({sId:p,tId:R,label:`${o.eventId.eventName||""} -> ${b.eventName||""}`})}}const d=[];for(const{from:o,to:i}of lt()||[]){if(!o?.ueObj||!i?.ueObj)continue;const p=Y(o.ueObj),b=Y(i.ueObj);e.has(p)&&e.has(b)&&d.push({sId:p,tId:b,label:"device reference"})}return{nodeMap:e,eventEdges:l,fieldEdges:d}}function gt(e,l){const d=new Map,o=new Map,i=new Map;for(const t of e.keys())o.set(t,0),i.set(t,new Set);for(const{sId:t,tId:f}of l)d.has(t)||d.set(t,new Set),d.get(t).add(f),o.set(f,(o.get(f)||0)+1),o.has(t)||o.set(t,0),i.get(t)?.add(f),i.get(f)?.add(t);const p=new Set,b=[];for(const t of e.keys()){if(p.has(t))continue;const f=[],h=[t];for(p.add(t);h.length;){const r=h.pop();f.push(r);for(const m of i.get(r)||[])p.has(m)||(p.add(m),h.push(m))}b.push(f)}function v(t){const f=new Set(t),h=new Map(t.map(s=>[s,[]]));for(const{sId:s,tId:a}of l)f.has(s)&&f.has(a)&&s!==a&&h.get(s).push(a);const r=new Map,m=new Set,C=s=>{const a=[{id:s,i:0}];for(r.set(s,1);a.length;){const H=a[a.length-1],T=h.get(H.id);if(H.i<T.length){const A=T[H.i++],W=r.get(A)||0;W===1?m.add(`${H.id}\0${A}`):W===0&&(r.set(A,1),a.push({id:A,i:0}))}else r.set(H.id,2),a.pop()}};for(const s of t)(r.get(s)||0)===0&&C(s);const st=new Map(t.map(s=>[s,[]])),ot=new Map(t.map(s=>[s,0]));for(const s of t)for(const a of h.get(s))m.has(`${s}\0${a}`)||(st.get(s).push(a),ot.set(a,ot.get(a)+1));const B=new Map(t.map(s=>[s,0])),nt=new Map(ot),Z=t.filter(s=>nt.get(s)===0);for(;Z.length;){const s=Z.shift();for(const a of st.get(s))B.get(a)<B.get(s)+1&&B.set(a,B.get(s)+1),nt.set(a,nt.get(a)-1),nt.get(a)===0&&Z.push(a)}const X=Math.max(0,...t.map(s=>B.get(s)||0)),ct=Array.from({length:X+1},()=>[]);for(const s of t)ct[B.get(s)||0].push(s);const wt=new Map(t.map(s=>[s,[]]));for(const{sId:s,tId:a}of l)!f.has(s)||!f.has(a)||(wt.get(s).push(a),wt.get(a).push(s));const Mt=(s,a)=>{const H=new Map(ct[a].map((A,W)=>[A,W])),T=new Map(ct[s].map((A,W)=>{const xt=wt.get(A).filter(yt=>H.has(yt));return[A,xt.length?xt.reduce((yt,At)=>yt+H.get(At),0)/xt.length:W]}));ct[s]=[...ct[s]].sort((A,W)=>T.get(A)-T.get(W))};for(let s=0;s<4;s++)if(s%2===0)for(let a=1;a<=X;a++)Mt(a,a-1);else for(let a=X-1;a>=0;a--)Mt(a,a+1);const mt=new Map(t.map(s=>[s,[]])),It=new Map(t.map(s=>[s,[]]));for(const{sId:s,tId:a}of l){if(!f.has(s)||!f.has(a))continue;const H=B.get(s)||0,T=B.get(a)||0;if(Math.abs(H-T)!==1)continue;const[A,W]=H<T?[s,a]:[a,s];It.get(A).push(W),mt.get(W).push(A)}const bt=Et(ct,mt,It,116);let ut=1/0,$t=-1/0;for(const s of bt.values())ut=Math.min(ut,s),$t=Math.max($t,s);const Ot=new Map;for(const s of t)Ot.set(s,{x:(B.get(s)||0)*410,y:bt.get(s)-ut});return{local:Ot,w:X*410+310,h:$t-ut+86}}const R=t=>{if(!D)return[];const f=new Set;for(const h of t){const r=e.get(h);if(r)for(const m of D(r)||[])f.add(m)}return[...f].sort((h,r)=>h.localeCompare(r))},L=new Map,J=[],et=b.filter(t=>t.length>1).sort((t,f)=>f.length-t.length),K=b.filter(t=>t.length===1).map(t=>t[0]);let k=28,Q=338;for(const t of et){const{local:f,w:h,h:r}=v(t);for(const[m,C]of f)L.set(m,{x:28+C.x,y:k+C.y});J.push({x:10,y:k-60,w:h+36,h:r+60+18,kind:"cluster",ids:t.slice(),tags:R(t)}),Q=Math.max(Q,28+h),k+=r+82}if(K.length){const t=new Map;for(const h of K){const r=Number(e.get(h)?.ueObj?.objectId)||0;t.has(r)||t.set(r,[]),t.get(r).push(h)}const f=[...t.entries()].sort(([h,r],[m,C])=>C.length-r.length||h-m);for(const[h,r]of f){r.sort((Z,X)=>Z.localeCompare(X));const m=Math.max(1,Math.min(4,Math.ceil(Math.sqrt(r.length)))),C=Math.ceil(r.length/m);r.forEach((Z,X)=>{L.set(Z,{x:28+X%m*410,y:k+Math.floor(X/m)*116})});const st=(m-1)*410+310,ot=(C-1)*116+86,nt=`${j(h)?.name||`Device ${h}`} (${r.length})`;J.push({x:10,y:k-60,w:st+36,h:ot+60+18,kind:"loose",label:nt,ids:r.slice(),tags:R(r)}),Q=Math.max(Q,28+st),k+=ot+82}}const c=Q+28,w=k-82+28;return{positions:L,width:c,height:w,outgoing:d,incoming:o,groups:J}}function n(e,l,d=0){const o=e.x+310,i=e.y+86/2+d,p=l.x,b=l.y+86/2+d,v=Math.max(32,Math.abs(p-o)/2);return`M ${o} ${i} C ${o+v} ${i}, ${p-v} ${b}, ${p} ${b}`}function M(e,l,d,o,i){const p=x?.(),b=e===y||p?.has?.(e),v=j(l.ueObj.objectId),R=ft?.devices?.[String(l.ueObj.objectId)],L=l.ueObj.userDeviceName||v.name,J=`${v.name} - id ${l.ueObj.objectId} idx ${l.ueObj.deviceIndex}`,et=tt?.(l.ueObj.objectId)||"",K=E((v.name||L||"?").slice(0,1).toUpperCase()),k=et?`<span class="flow-node-icon"><img src="${E(et)}" loading="lazy" alt=""></span>`:`<span class="flow-node-icon flow-node-icon-fallback">${K}</span>`;return`<button class="flow-node${b?" selected":""}" data-node-id="${E(e)}"
-        style="left:${d.x}px;top:${d.y}px;width:310px;height:86px">
-      ${k}
+// Read-only, pan/zoom logic-flow graph for the scene editor. Device nodes are laid out by a layered
+// BFS (the same approach the logic editor uses) and connected by two edge kinds drawn as SVG beziers:
+//   - event wiring (deviceEventList): trigger -> action
+//   - device-field references (Device-type fields, e.g. AI nav / firstNavDevice links), dashed
+// Clicking a node selects that device (driving the existing props panel + 3D selection); double-click
+// focuses it in 3D. This view never mutates the mod - all editing stays in the props panel.
+
+const NODE_W = 310;
+const NODE_H = 86;
+const COL_GAP = 410;
+const ROW_GAP = 116;
+const MARGIN = 28;
+const TAG_ROW_H = 26;    // extra header height reserved for a row of clickable group-tag chips
+const BAND_GAP = 56 + TAG_ROW_H; // vertical gap between connected clusters / the unconnected grid
+const GROUP_PAD = 18;    // padding of a group's background box around its nodes
+const GROUP_HEADER = 34 + TAG_ROW_H; // top band reserved for group title/select controls + tag chips
+const SINGLE_COLS_MIN = 4; // min columns in the unconnected-devices grid
+const FOCUS_SCALE = 1.35;
+
+function esc(s) {
+  return String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+}
+
+// Brandes-Koepf coordinate assignment. Given the per-layer node order (`order` = array of layers, each
+// an array of node keys top->bottom) and adjacent-layer neighbour lists (`above`/`below`: key ->
+// neighbour keys in the layer immediately before/after it), assign each node a cross-axis coordinate so
+// that connected nodes line up (straight edges) without overlapping or breaking the given order. Runs
+// the four alignments (align to upper/lower neighbours x leftmost/rightmost bias) and takes the median
+// of the four, which balances the result. `sep` is the minimum gap between nodes in a layer.
+// Exported for unit testing.
+export function bkCoords(order, above, below, sep) {
+  const keys = [];
+  for (const layer of order) for (const id of layer) keys.push(id);
+
+  // One alignment+compaction. vertDown: process layers front->back aligning to the previous layer's
+  // neighbours (`above`); else back->front using `below`. horizLeft: keep layer order (top bias); else
+  // reverse it (bottom bias) and flip the result back so all four share one orientation.
+  function oneDir(vertDown, horizLeft) {
+    const oriented = order.map(layer => (horizLeft ? layer.slice() : layer.slice().reverse()));
+    const layers = vertDown ? oriented : oriented.slice().reverse();
+    const pos = new Map();
+    const layerIdx = new Map();
+    layers.forEach((layer, l) => layer.forEach((id, i) => { pos.set(id, i); layerIdx.set(id, l); }));
+    const upperOf = vertDown ? above : below;
+    const uppers = (v) => (upperOf.get(v) || []).filter(u => pos.has(u)).sort((a, b) => pos.get(a) - pos.get(b));
+
+    const root = new Map(keys.map(k => [k, k]));
+    const align = new Map(keys.map(k => [k, k]));
+    for (let l = 1; l < layers.length; l++) {
+      let r = -1; // last upper position consumed, keeps alignments non-crossing
+      for (const v of layers[l]) {
+        const us = uppers(v);
+        if (!us.length) continue;
+        const mids = [Math.floor((us.length - 1) / 2), Math.ceil((us.length - 1) / 2)];
+        for (const m of mids) {
+          if (align.get(v) !== v) continue;
+          const u = us[m];
+          if (pos.get(u) > r) {
+            align.set(u, v);
+            root.set(v, root.get(u));
+            align.set(v, root.get(v));
+            r = pos.get(u);
+          }
+        }
+      }
+    }
+
+    const sink = new Map(keys.map(k => [k, k]));
+    const shift = new Map(keys.map(k => [k, Infinity]));
+    const x = new Map();
+    const placeBlock = (v) => {
+      if (x.has(v)) return;
+      x.set(v, 0);
+      let w = v;
+      do {
+        const p = pos.get(w);
+        if (p > 0) {
+          const pred = layers[layerIdx.get(w)][p - 1];
+          const u = root.get(pred);
+          placeBlock(u);
+          if (sink.get(v) === v) sink.set(v, sink.get(u));
+          if (sink.get(v) !== sink.get(u)) {
+            shift.set(sink.get(u), Math.min(shift.get(sink.get(u)), x.get(v) - x.get(u) - sep));
+          } else {
+            x.set(v, Math.max(x.get(v), x.get(u) + sep));
+          }
+        }
+        w = align.get(w);
+      } while (w !== v);
+    };
+    for (const v of keys) if (root.get(v) === v) placeBlock(v);
+
+    const coord = new Map();
+    for (const v of keys) {
+      let c = x.get(root.get(v));
+      const s = shift.get(sink.get(root.get(v)));
+      if (s < Infinity) c += s;
+      coord.set(v, horizLeft ? c : -c); // un-flip the reversed-orientation runs
+    }
+    return coord;
+  }
+
+  const runs = [oneDir(true, true), oneDir(true, false), oneDir(false, true), oneDir(false, false)];
+  for (const c of runs) { // zero-base each run so the four are comparable
+    let mn = Infinity;
+    for (const v of c.values()) mn = Math.min(mn, v);
+    for (const k of c.keys()) c.set(k, c.get(k) - mn);
+  }
+  const result = new Map();
+  for (const id of keys) {
+    const vals = runs.map(c => c.get(id)).sort((a, b) => a - b);
+    result.set(id, (vals[1] + vals[2]) / 2); // median of the four
+  }
+  // Safety: the averaged result can in rare cases violate the min gap; enforce it per layer in order.
+  for (const layer of order) {
+    for (let i = 1; i < layer.length; i++) {
+      const need = result.get(layer[i - 1]) + sep;
+      if (result.get(layer[i]) < need) result.set(layer[i], need);
+    }
+  }
+  return result;
+}
+
+export function createLogicGraph({
+  container,
+  getItems,
+  getDeviceEventList,
+  getFieldConnections,
+  getObjectMeta,
+  getObjectIconUrl,
+  catalog,
+  onSelectNode,
+  onFocusNode,
+  getSelectedNodeIds,
+  onClearSelection,
+  onSelectGroup,
+  getItemTags,
+}) {
+  const view = { scale: 1, tx: 0, ty: 0 };
+  let selectedId = '';
+  let fitted = false;
+  let inner = null;
+  let nodePositions = new Map();
+  const itemById = new Map();
+
+  const idOf = (ueObj) => `${ueObj.objectId}:${ueObj.deviceIndex}`;
+
+  function deviceItems() {
+    return (getItems() || []).filter(it => it?.ueObj && it.meta?.isDevice && it.ueObj.deviceIndex !== -1);
+  }
+
+  // Build the node set plus the two edge lists, keyed by "objectId:deviceIndex".
+  function collectGraph() {
+    itemById.clear();
+    const nodeMap = new Map();
+    for (const it of deviceItems()) {
+      const id = idOf(it.ueObj);
+      nodeMap.set(id, it);
+      itemById.set(id, it);
+    }
+
+    const eventEdges = [];
+    for (const g of (getDeviceEventList() || [])) {
+      const s = g?.eventId?.deviceInstanceId;
+      if (!s) continue;
+      const sId = `${s.objectId}:${s.deviceIndex}`;
+      for (const r of (g.relationEventId || [])) {
+        const t = r?.deviceInstanceId;
+        if (!t) continue;
+        const tId = `${t.objectId}:${t.deviceIndex}`;
+        if (nodeMap.has(sId) && nodeMap.has(tId)) {
+          eventEdges.push({ sId, tId, label: `${g.eventId.eventName || ''} -> ${r.eventName || ''}` });
+        }
+      }
+    }
+
+    const fieldEdges = [];
+    for (const { from, to } of (getFieldConnections() || [])) {
+      if (!from?.ueObj || !to?.ueObj) continue;
+      const sId = idOf(from.ueObj), tId = idOf(to.ueObj);
+      if (nodeMap.has(sId) && nodeMap.has(tId)) fieldEdges.push({ sId, tId, label: 'device reference' });
+    }
+    return { nodeMap, eventEdges, fieldEdges };
+  }
+
+  // Group-based layout: split the devices into connected clusters (components over both edge kinds),
+  // lay out each cluster on its own with a layered BFS, stack the clusters vertically inside a faint
+  // group box, and drop the unconnected devices into a compact grid at the end. Edges only ever live
+  // inside one cluster, so each box cleanly contains its own wiring.
+  function layout(nodeMap, edges) {
+    const outgoing = new Map(); // global degree maps (for the per-node in/out counts)
+    const incoming = new Map();
+    const adj = new Map();      // undirected adjacency, for component detection
+    for (const id of nodeMap.keys()) { incoming.set(id, 0); adj.set(id, new Set()); }
+    for (const { sId, tId } of edges) {
+      if (!outgoing.has(sId)) outgoing.set(sId, new Set());
+      outgoing.get(sId).add(tId);
+      incoming.set(tId, (incoming.get(tId) || 0) + 1);
+      if (!incoming.has(sId)) incoming.set(sId, 0);
+      adj.get(sId)?.add(tId); adj.get(tId)?.add(sId);
+    }
+
+    // Connected components (undirected flood fill).
+    const seen = new Set();
+    const comps = [];
+    for (const id of nodeMap.keys()) {
+      if (seen.has(id)) continue;
+      const comp = []; const stack = [id]; seen.add(id);
+      while (stack.length) {
+        const n = stack.pop(); comp.push(n);
+        for (const m of adj.get(n) || []) if (!seen.has(m)) { seen.add(m); stack.push(m); }
+      }
+      comps.push(comp);
+    }
+
+    // Layered layout within one cluster, returning local positions (relative to 0,0) + size.
+    function layoutComponent(comp) {
+      const set = new Set(comp);
+      // Directed adjacency within the cluster (event + field edges all point source -> target).
+      const out = new Map(comp.map(id => [id, []]));
+      for (const { sId, tId } of edges) {
+        if (set.has(sId) && set.has(tId) && sId !== tId) out.get(sId).push(tId);
+      }
+      // Phase 1 - cycle removal: a DFS marks any edge to a node still on the stack as a "back" edge;
+      // dropping those from layering makes a DAG so every other edge can point forward (left -> right).
+      const state = new Map(); // 0 unseen, 1 on-stack, 2 done
+      const back = new Set();
+      const startDfs = (root) => {
+        const st = [{ id: root, i: 0 }];
+        state.set(root, 1);
+        while (st.length) {
+          const top = st[st.length - 1];
+          const nbrs = out.get(top.id);
+          if (top.i < nbrs.length) {
+            const v = nbrs[top.i++];
+            const s = state.get(v) || 0;
+            if (s === 1) back.add(`${top.id} ${v}`);
+            else if (s === 0) { state.set(v, 1); st.push({ id: v, i: 0 }); }
+          } else { state.set(top.id, 2); st.pop(); }
+        }
+      };
+      for (const id of comp) if ((state.get(id) || 0) === 0) startDfs(id);
+      // Phase 2 - longest-path layering on the DAG: level(v) = max(level(pred) + 1), so edges run
+      // forward and never backward (the few removed cycle edges are the only ones that curve back).
+      const fout = new Map(comp.map(id => [id, []]));
+      const indeg = new Map(comp.map(id => [id, 0]));
+      for (const u of comp) for (const v of out.get(u)) {
+        if (back.has(`${u} ${v}`)) continue;
+        fout.get(u).push(v); indeg.set(v, indeg.get(v) + 1);
+      }
+      const levels = new Map(comp.map(id => [id, 0]));
+      const ind = new Map(indeg);
+      const queue = comp.filter(id => ind.get(id) === 0);
+      while (queue.length) {
+        const u = queue.shift();
+        for (const v of fout.get(u)) {
+          if (levels.get(v) < levels.get(u) + 1) levels.set(v, levels.get(u) + 1);
+          ind.set(v, ind.get(v) - 1);
+          if (ind.get(v) === 0) queue.push(v);
+        }
+      }
+      const maxCol = Math.max(0, ...comp.map(id => levels.get(id) || 0));
+      const columns = Array.from({ length: maxCol + 1 }, () => []);
+      for (const id of comp) columns[levels.get(id) || 0].push(id); // initial order = BFS discovery order
+
+      // Undirected neighbours, used to order rows so connected nodes sit close (crossing reduction).
+      const nbr = new Map(comp.map(id => [id, []]));
+      for (const { sId, tId } of edges) {
+        if (!set.has(sId) || !set.has(tId)) continue;
+        nbr.get(sId).push(tId);
+        nbr.get(tId).push(sId);
+      }
+      // Barycenter heuristic: sweep down then up a few times, ordering each column by the average row
+      // index of each node's neighbours in the adjacent column. Nodes with no neighbour there hold place.
+      const reorder = (col, refCol) => {
+        const refIdx = new Map(columns[refCol].map((id, i) => [id, i]));
+        const bary = new Map(columns[col].map((id, i) => {
+          const ns = nbr.get(id).filter(n => refIdx.has(n));
+          return [id, ns.length ? ns.reduce((s, n) => s + refIdx.get(n), 0) / ns.length : i];
+        }));
+        columns[col] = [...columns[col]].sort((a, b) => bary.get(a) - bary.get(b));
+      };
+      for (let iter = 0; iter < 4; iter++) {
+        if (iter % 2 === 0) for (let l = 1; l <= maxCol; l++) reorder(l, l - 1);
+        else for (let l = maxCol - 1; l >= 0; l--) reorder(l, l + 1);
+      }
+
+      // Coordinate assignment via Brandes-Koepf: align nodes with their median adjacent-layer neighbour
+      // (forming straight runs) while respecting the column order and the min row gap. Only edges between
+      // adjacent columns can be straightened; longer/flat edges are left to curve.
+      const above = new Map(comp.map(id => [id, []]));
+      const below = new Map(comp.map(id => [id, []]));
+      for (const { sId, tId } of edges) {
+        if (!set.has(sId) || !set.has(tId)) continue;
+        const ls = levels.get(sId) || 0, lt = levels.get(tId) || 0;
+        if (Math.abs(ls - lt) !== 1) continue;
+        const [lo, hi] = ls < lt ? [sId, tId] : [tId, sId];
+        below.get(lo).push(hi);
+        above.get(hi).push(lo);
+      }
+      const y = bkCoords(columns, above, below, ROW_GAP);
+
+      let minY = Infinity, maxY = -Infinity;
+      for (const v of y.values()) { minY = Math.min(minY, v); maxY = Math.max(maxY, v); }
+      const local = new Map();
+      for (const id of comp) local.set(id, { x: (levels.get(id) || 0) * COL_GAP, y: y.get(id) - minY });
+      return { local, w: maxCol * COL_GAP + NODE_W, h: (maxY - minY) + NODE_H };
+    }
+
+    // Unique device tags (e.g. trigger/player tags) used anywhere within a group's devices, for display
+    // in the group header.
+    const tagsForIds = (ids) => {
+      if (!getItemTags) return [];
+      const set = new Set();
+      for (const id of ids) {
+        const item = nodeMap.get(id);
+        if (!item) continue;
+        for (const t of (getItemTags(item) || [])) set.add(t);
+      }
+      return [...set].sort((a, b) => a.localeCompare(b));
+    };
+
+    const positions = new Map();
+    const groups = [];
+    const multi = comps.filter(c => c.length > 1).sort((a, b) => b.length - a.length); // big clusters first
+    const singles = comps.filter(c => c.length === 1).map(c => c[0]);
+
+    let y = MARGIN;
+    let maxRight = MARGIN + NODE_W;
+    for (const comp of multi) {
+      const { local, w, h } = layoutComponent(comp);
+      for (const [id, p] of local) positions.set(id, { x: MARGIN + p.x, y: y + p.y });
+      groups.push({ x: MARGIN - GROUP_PAD, y: y - GROUP_HEADER, w: w + GROUP_PAD * 2, h: h + GROUP_HEADER + GROUP_PAD, kind: 'cluster', ids: comp.slice(), tags: tagsForIds(comp) });
+      maxRight = Math.max(maxRight, MARGIN + w);
+      y += h + BAND_GAP;
+    }
+
+    if (singles.length) {
+      const byObjectId = new Map();
+      for (const id of singles) {
+        const objectId = Number(nodeMap.get(id)?.ueObj?.objectId) || 0;
+        if (!byObjectId.has(objectId)) byObjectId.set(objectId, []);
+        byObjectId.get(objectId).push(id);
+      }
+      const looseGroups = [...byObjectId.entries()]
+        .sort(([aId, aIds], [bId, bIds]) => bIds.length - aIds.length || aId - bId);
+      for (const [objectId, ids] of looseGroups) {
+        ids.sort((a, b) => a.localeCompare(b));
+        const cols = Math.max(1, Math.min(SINGLE_COLS_MIN, Math.ceil(Math.sqrt(ids.length))));
+        const rows = Math.ceil(ids.length / cols);
+        ids.forEach((id, i) => {
+          positions.set(id, { x: MARGIN + (i % cols) * COL_GAP, y: y + Math.floor(i / cols) * ROW_GAP });
+        });
+        const w = (cols - 1) * COL_GAP + NODE_W;
+        const h = (rows - 1) * ROW_GAP + NODE_H;
+        const meta = getObjectMeta(objectId);
+        const label = `${meta?.name || `Device ${objectId}`} (${ids.length})`;
+        groups.push({ x: MARGIN - GROUP_PAD, y: y - GROUP_HEADER, w: w + GROUP_PAD * 2, h: h + GROUP_HEADER + GROUP_PAD, kind: 'loose', label, ids: ids.slice(), tags: tagsForIds(ids) });
+        maxRight = Math.max(maxRight, MARGIN + w);
+        y += h + BAND_GAP;
+      }
+    }
+
+    const width = maxRight + MARGIN;
+    const height = (y - BAND_GAP) + MARGIN;
+    return { positions, width, height, outgoing, incoming, groups };
+  }
+
+  function edgePath(a, b, yOffset = 0) {
+    const x1 = a.x + NODE_W, y1 = a.y + NODE_H / 2 + yOffset;
+    const x2 = b.x, y2 = b.y + NODE_H / 2 + yOffset;
+    const mid = Math.max(32, Math.abs(x2 - x1) / 2);
+    return `M ${x1} ${y1} C ${x1 + mid} ${y1}, ${x2 - mid} ${y2}, ${x2} ${y2}`;
+  }
+
+  function nodeCard(id, item, pos, outCount, inCount) {
+    const selectedIds = getSelectedNodeIds?.();
+    const isSelected = id === selectedId || selectedIds?.has?.(id);
+    const meta = getObjectMeta(item.ueObj.objectId);
+    const dev = catalog?.devices?.[String(item.ueObj.objectId)];
+    const name = item.ueObj.userDeviceName || meta.name;
+    const sub = `${meta.name} - id ${item.ueObj.objectId} idx ${item.ueObj.deviceIndex}`;
+    const iconUrl = getObjectIconUrl?.(item.ueObj.objectId) || '';
+    const fallback = esc((meta.name || name || '?').slice(0, 1).toUpperCase());
+    const icon = iconUrl
+      ? `<span class="flow-node-icon"><img src="${esc(iconUrl)}" loading="lazy" alt=""></span>`
+      : `<span class="flow-node-icon flow-node-icon-fallback">${fallback}</span>`;
+    return `<button class="flow-node${isSelected ? ' selected' : ''}" data-node-id="${esc(id)}"
+        style="left:${pos.x}px;top:${pos.y}px;width:${NODE_W}px;height:${NODE_H}px">
+      ${icon}
       <span class="flow-node-main">
-        <strong>${E(L)}</strong>
-        <span>${E(J)}</span>
+        <strong>${esc(name)}</strong>
+        <span>${esc(sub)}</span>
         <span class="node-ports muted">
-          <span>${R?.triggers?.length||0} triggers . ${R?.actions?.length||0} actions</span>
-          <span>${i} in . ${o} out</span>
+          <span>${(dev?.triggers?.length || 0)} triggers . ${(dev?.actions?.length || 0)} actions</span>
+          <span>${inCount} in . ${outCount} out</span>
         </span>
       </span>
-    </button>`}function $(){if(!u)return;const{nodeMap:e,eventEdges:l,fieldEdges:d}=dt();if(!e.size){u.innerHTML='<div class="empty-card" style="margin:24px"><strong>No devices placed</strong><div class="subtle">Place devices to see their logic graph.</div></div>',_=null;return}const{positions:o,width:i,height:p,outgoing:b,incoming:v,groups:R}=gt(e,[...l,...d]);z=o;const L=new Map;if(D)for(const[c,w]of e)for(const t of D(w)||[])L.has(t)||L.set(t,new Set),L.get(t).add(c);const J=R.map(c=>{const w=c.kind==="loose"?"flow-group flow-group-loose":"flow-group",t=c.label?`<text class="flow-group-label" x="${c.x+88}" y="${c.y+22}">${E(c.label)}</text>`:"";return`<rect class="${w}" x="${c.x}" y="${c.y}" width="${c.w}" height="${c.h}" rx="14"></rect>${t}`}).join(""),et=R.map(c=>{if(!c.tags?.length)return"";const w=c.tags.map(t=>`<button class="flow-group-select flow-group-tag" type="button" data-tag="${E(t)}"
-            title="Select every node tagged '${E(t)}'">${E(t)}</button>`).join("");return`<div class="flow-group-tag-row" style="left:${c.x+10}px;top:${c.y+38}px;width:${c.w-20}px">${w}</div>`}).join(""),K=(c,w,t)=>c.map(({sId:f,tId:h,label:r})=>{const m=o.get(f),C=o.get(h);return!m||!C?"":`<path class="flow-edge ${w}${f===y?" sg-out":h===y?" sg-in":""}" data-src="${E(f)}" data-tgt="${E(h)}" d="${n(m,C,t)}"><title>${E(r)}</title></path>`}).join(""),k=[...e.keys()].map(c=>M(c,e.get(c),o.get(c),b.get(c)?.size||0,v.get(c)||0)).join(""),Q=R.map((c,w)=>{const t=c.ids?.length||0,f=c.kind==="loose"?"Select":"Group";return`<button class="flow-group-select" type="button" data-group-idx="${w}"
-          style="left:${c.x+10}px;top:${c.y+8}px"
-          title="Select ${E(f.toLowerCase())} (${t})">${E(f)} <span>${t}</span></button>`}).join("");u.innerHTML=`
-      <div class="flow-inner" style="width:${i}px;height:${p}px">
-        <svg class="flow-svg" viewBox="0 0 ${i} ${p}" width="${i}" height="${p}" aria-hidden="true">
+    </button>`;
+  }
+
+  function render() {
+    if (!container) return;
+    const { nodeMap, eventEdges, fieldEdges } = collectGraph();
+    if (!nodeMap.size) {
+      container.innerHTML = `<div class="empty-card" style="margin:24px"><strong>No devices placed</strong><div class="subtle">Place devices to see their logic graph.</div></div>`;
+      inner = null;
+      return;
+    }
+    const { positions, width, height, outgoing, incoming, groups } = layout(nodeMap, [...eventEdges, ...fieldEdges]);
+    nodePositions = positions;
+
+    // Map each device tag to every node (graph-wide, not just within one group) that uses it, so
+    // clicking a tag in a group header can highlight/select all of its occurrences.
+    const tagIndex = new Map();
+    if (getItemTags) {
+      for (const [id, item] of nodeMap) {
+        for (const t of (getItemTags(item) || [])) {
+          if (!tagIndex.has(t)) tagIndex.set(t, new Set());
+          tagIndex.get(t).add(id);
+        }
+      }
+    }
+
+    const groupRects = groups.map(g => {
+      const cls = g.kind === 'loose' ? 'flow-group flow-group-loose' : 'flow-group';
+      const label = g.label ? `<text class="flow-group-label" x="${g.x + 88}" y="${g.y + 22}">${esc(g.label)}</text>` : '';
+      return `<rect class="${cls}" x="${g.x}" y="${g.y}" width="${g.w}" height="${g.h}" rx="14"></rect>${label}`;
+    }).join('');
+
+    // SVG has pointer-events disabled (so panning works through it), so the per-tag controls are
+    // plain HTML buttons overlaid on a second header row, like the existing group-select buttons.
+    const groupTagRows = groups.map(g => {
+      if (!g.tags?.length) return '';
+      const chips = g.tags.map(t =>
+        `<button class="flow-group-select flow-group-tag" type="button" data-tag="${esc(t)}"
+            title="Select every node tagged '${esc(t)}'">${esc(t)}</button>`).join('');
+      return `<div class="flow-group-tag-row" style="left:${g.x + 10}px;top:${g.y + 38}px;width:${g.w - 20}px">${chips}</div>`;
+    }).join('');
+
+    const drawEdges = (edges, cls, yOff) => edges.map(({ sId, tId, label }) => {
+      const a = positions.get(sId), b = positions.get(tId);
+      if (!a || !b) return '';
+      // Relative to the selected node: outgoing (it is the source) vs incoming (it is the target).
+      const dir = sId === selectedId ? ' sg-out' : (tId === selectedId ? ' sg-in' : '');
+      return `<path class="flow-edge ${cls}${dir}" data-src="${esc(sId)}" data-tgt="${esc(tId)}" d="${edgePath(a, b, yOff)}"><title>${esc(label)}</title></path>`;
+    }).join('');
+
+    const nodes = [...nodeMap.keys()].map(id =>
+      nodeCard(id, nodeMap.get(id), positions.get(id), outgoing.get(id)?.size || 0, incoming.get(id) || 0)
+    ).join('');
+    const groupButtons = groups.map((g, i) => {
+      const count = g.ids?.length || 0;
+      const label = g.kind === 'loose' ? 'Select' : 'Group';
+      return `<button class="flow-group-select" type="button" data-group-idx="${i}"
+          style="left:${g.x + 10}px;top:${g.y + 8}px"
+          title="Select ${esc(label.toLowerCase())} (${count})">${esc(label)} <span>${count}</span></button>`;
+    }).join('');
+
+    container.innerHTML = `
+      <div class="flow-inner" style="width:${width}px;height:${height}px">
+        <svg class="flow-svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" aria-hidden="true">
           <defs>
             <marker id="sgArrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M 0 0 L 8 4 L 0 8 z" fill="context-stroke"></path></marker>
             <marker id="sgArrowDev" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M 0 0 L 7 3.5 L 0 7 z" fill="context-stroke"></path></marker>
           </defs>
-          ${J}${K(l,"sg-event",0)}${K(d,"device-link",8)}
+          ${groupRects}${drawEdges(eventEdges, 'sg-event', 0)}${drawEdges(fieldEdges, 'device-link', 8)}
         </svg>
-        ${Q}
-        ${et}
-        ${k}
-      </div>`,_=u.querySelector(".flow-inner"),u.querySelectorAll(".flow-node").forEach(c=>{const w=c.dataset.nodeId;c.addEventListener("click",t=>{t.stopPropagation(),y=w,P(),V?.(G.get(w),w,t)}),c.addEventListener("dblclick",t=>{t.stopPropagation(),I?.(G.get(w))})}),u.querySelectorAll(".flow-group-select:not(.flow-group-tag)").forEach(c=>{c.addEventListener("click",w=>{w.stopPropagation();const t=R[Number(c.dataset.groupIdx)]?.ids||[];y="",P(),q?.(t,w)})}),u.querySelectorAll(".flow-group-tag").forEach(c=>{c.addEventListener("click",w=>{w.stopPropagation();const t=[...L.get(c.dataset.tag)||[]];t.length&&(y="",P(),q?.(t,w))})}),P(),it||(ht(i,p),it=!0),N()}function N(){_&&(_.style.transform=`translate(${g.tx}px, ${g.ty}px) scale(${g.scale})`)}function S(e){if(!e)return!1;(!_||!z.has(e))&&$();const l=z.get(e);if(!l)return!1;const d=u.clientWidth||1,o=u.clientHeight||1;return g.scale=Math.max(g.scale,1.35),g.tx=d/2-(l.x+310/2)*g.scale,g.ty=o/2-(l.y+86/2)*g.scale,N(),!0}function ht(e,l){const d=u.clientWidth||1,o=u.clientHeight||1;g.scale=Math.min(1,Math.max(.2,Math.min(d/e,o/l)*.92)),g.tx=Math.max(0,(d-e*g.scale)/2),g.ty=Math.max(28,(o-l*g.scale)/2)}function P(){const e=new Set,l=new Set,d=x?.();u.querySelectorAll(".flow-edge").forEach(o=>{const i=!!y&&o.dataset.src===y,p=!!y&&o.dataset.tgt===y;o.classList.toggle("sg-out",i),o.classList.toggle("sg-in",p),i&&l.add(o.dataset.tgt),p&&e.add(o.dataset.src)}),u.querySelectorAll(".flow-node").forEach(o=>{const i=o.dataset.nodeId;o.classList.toggle("selected",i===y||d?.has?.(i)),o.classList.toggle("sg-in-node",i!==y&&e.has(i)),o.classList.toggle("sg-out-node",i!==y&&l.has(i))})}let rt=!1,F=null;u.addEventListener("pointerdown",e=>{e.button!==0||e.target.closest(".flow-node, .flow-group-select, .flow-group-tag")||(rt=!0,F={x:e.clientX,y:e.clientY,tx:g.tx,ty:g.ty},u.setPointerCapture(e.pointerId))}),u.addEventListener("pointermove",e=>{rt&&(g.tx=F.tx+(e.clientX-F.x),g.ty=F.ty+(e.clientY-F.y),N())}),u.addEventListener("pointerup",e=>{if(rt&&F){const l=e.clientX-F.x,d=e.clientY-F.y;Math.hypot(l,d)<4&&!e.target.closest(".flow-node, .flow-group-select, .flow-group-tag")&&(y="",P(),O?.(e))}rt=!1});const vt=()=>{rt=!1};return u.addEventListener("pointercancel",vt),u.addEventListener("wheel",e=>{e.preventDefault();const l=u.getBoundingClientRect(),d=e.clientX-l.left,o=e.clientY-l.top,i=e.deltaY<0?1.1:1/1.1,p=Math.min(3,Math.max(.1,g.scale*i)),b=p/g.scale;g.tx=d-(d-g.tx)*b,g.ty=o-(o-g.ty)*b,g.scale=p,N()},{passive:!1}),{render:$,setSelected(e){y=e?.ueObj?Y(e.ueObj):"",P()},focusNode(e){const l=typeof e=="string"?e:e?.ueObj?Y(e.ueObj):y;return l&&(y=l),P(),S(l)},resetView(){it=!1},setSelectedIds(e,l={}){l.keepFocused||(y="");const d=e instanceof Set?e:new Set(e||[]);u.querySelectorAll(".flow-node").forEach(o=>o.classList.toggle("selected",d.has(o.dataset.nodeId))),P()}}}export{Et as bkCoords,Ht as createLogicGraph};
+        ${groupButtons}
+        ${groupTagRows}
+        ${nodes}
+      </div>`;
+    inner = container.querySelector('.flow-inner');
+
+    container.querySelectorAll('.flow-node').forEach(btn => {
+      const id = btn.dataset.nodeId;
+      btn.addEventListener('click', (e) => { e.stopPropagation(); selectedId = id; applySelection(); onSelectNode?.(itemById.get(id), id, e); });
+      btn.addEventListener('dblclick', (e) => { e.stopPropagation(); onFocusNode?.(itemById.get(id)); });
+    });
+    container.querySelectorAll('.flow-group-select:not(.flow-group-tag)').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const ids = groups[Number(btn.dataset.groupIdx)]?.ids || [];
+        selectedId = '';
+        applySelection();
+        onSelectGroup?.(ids, e);
+      });
+    });
+    container.querySelectorAll('.flow-group-tag').forEach(el => {
+      el.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const ids = [...(tagIndex.get(el.dataset.tag) || [])];
+        if (!ids.length) return;
+        selectedId = '';
+        applySelection();
+        onSelectGroup?.(ids, e);
+      });
+    });
+
+    applySelection(); // re-apply selected/neighbour highlight classes after the rebuild
+    if (!fitted) { fit(width, height); fitted = true; }
+    applyTransform();
+  }
+
+  function applyTransform() {
+    if (inner) inner.style.transform = `translate(${view.tx}px, ${view.ty}px) scale(${view.scale})`;
+  }
+
+  function focusNodeId(id) {
+    if (!id) return false;
+    if (!inner || !nodePositions.has(id)) render();
+    const pos = nodePositions.get(id);
+    if (!pos) return false;
+    const cw = container.clientWidth || 1;
+    const ch = container.clientHeight || 1;
+    view.scale = Math.max(view.scale, FOCUS_SCALE);
+    view.tx = (cw / 2) - (pos.x + NODE_W / 2) * view.scale;
+    view.ty = (ch / 2) - (pos.y + NODE_H / 2) * view.scale;
+    applyTransform();
+    return true;
+  }
+
+  function fit(width, height) {
+    const cw = container.clientWidth || 1, ch = container.clientHeight || 1;
+    view.scale = Math.min(1, Math.max(0.2, Math.min(cw / width, ch / height) * 0.92));
+    view.tx = Math.max(0, (cw - width * view.scale) / 2);
+    view.ty = Math.max(MARGIN, (ch - height * view.scale) / 2);
+  }
+
+  function applySelection() {
+    // Colour the selected node's edges and remember which nodes they reach, so those neighbours can be
+    // outlined to match: in-neighbours (feed it) orange, out-neighbours (it drives) green.
+    const inNodes = new Set(), outNodes = new Set();
+    const selectedIds = getSelectedNodeIds?.();
+    container.querySelectorAll('.flow-edge').forEach(p => {
+      const isOut = Boolean(selectedId) && p.dataset.src === selectedId; // node drives these
+      const isIn = Boolean(selectedId) && p.dataset.tgt === selectedId;  // these feed the node
+      p.classList.toggle('sg-out', isOut);
+      p.classList.toggle('sg-in', isIn);
+      if (isOut) outNodes.add(p.dataset.tgt);
+      if (isIn) inNodes.add(p.dataset.src);
+    });
+    container.querySelectorAll('.flow-node').forEach(n => {
+      const id = n.dataset.nodeId;
+      n.classList.toggle('selected', id === selectedId || selectedIds?.has?.(id));
+      n.classList.toggle('sg-in-node', id !== selectedId && inNodes.has(id));
+      n.classList.toggle('sg-out-node', id !== selectedId && outNodes.has(id));
+    });
+  }
+
+  // --- pan + zoom -------------------------------------------------------------------------------
+  let panning = false, panStart = null;
+  container.addEventListener('pointerdown', (e) => {
+    if (e.button !== 0 || e.target.closest('.flow-node, .flow-group-select, .flow-group-tag')) return;
+    panning = true; panStart = { x: e.clientX, y: e.clientY, tx: view.tx, ty: view.ty };
+    container.setPointerCapture(e.pointerId);
+  });
+  container.addEventListener('pointermove', (e) => {
+    if (!panning) return;
+    view.tx = panStart.tx + (e.clientX - panStart.x);
+    view.ty = panStart.ty + (e.clientY - panStart.y);
+    applyTransform();
+  });
+  container.addEventListener('pointerup', (e) => {
+    if (panning && panStart) {
+      const dx = e.clientX - panStart.x;
+      const dy = e.clientY - panStart.y;
+      if (Math.hypot(dx, dy) < 4 && !e.target.closest('.flow-node, .flow-group-select, .flow-group-tag')) {
+        selectedId = '';
+        applySelection();
+        onClearSelection?.(e);
+      }
+    }
+    panning = false;
+  });
+  const endPan = () => { panning = false; };
+  container.addEventListener('pointercancel', endPan);
+  container.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    const rect = container.getBoundingClientRect();
+    const cx = e.clientX - rect.left, cy = e.clientY - rect.top;
+    const factor = e.deltaY < 0 ? 1.1 : 1 / 1.1;
+    const next = Math.min(3, Math.max(0.1, view.scale * factor));
+    const ratio = next / view.scale;
+    view.tx = cx - (cx - view.tx) * ratio;
+    view.ty = cy - (cy - view.ty) * ratio;
+    view.scale = next;
+    applyTransform();
+  }, { passive: false });
+
+  return {
+    render,
+    setSelected(item) {
+      selectedId = item?.ueObj ? idOf(item.ueObj) : '';
+      applySelection();
+    },
+    focusNode(itemOrId) {
+      const id = typeof itemOrId === 'string'
+        ? itemOrId
+        : (itemOrId?.ueObj ? idOf(itemOrId.ueObj) : selectedId);
+      if (id) selectedId = id;
+      applySelection();
+      return focusNodeId(id);
+    },
+    resetView() { fitted = false; },
+    setSelectedIds(ids, options = {}) {
+      if (!options.keepFocused) selectedId = '';
+      const selectedIds = ids instanceof Set ? ids : new Set(ids || []);
+      container.querySelectorAll('.flow-node').forEach(n => n.classList.toggle('selected', selectedIds.has(n.dataset.nodeId)));
+      applySelection();
+    },
+  };
+}

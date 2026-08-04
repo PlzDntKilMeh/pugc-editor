@@ -1,1 +1,59 @@
-function s(n,i,e){const r=String(i||"").split(".").filter(Boolean);if(!r.length)return;let t=n;for(let u=0;u<r.length-1;u++)t[r[u]]??={},t=t[r[u]];t[r.at(-1)]=e}function o(n,i=!1){let e="",r=!1;for(const t of String(n||""))t>="0"&&t<="9"?e+=t:!i&&t==="."&&!r?(e+=t,r=!0):!i&&t==="-"&&e.length===0&&(e+=t);return e}function d(n,i=0){const e=document.getElementById(n);if(!e)return i;const r=o(e.value,e.dataset.integer==="true");e.value!==r&&(e.value=r);const t=Number(r);return Number.isFinite(t)?t:i}function l(n){n.addEventListener("beforeinput",i=>{const e=n.dataset.integer==="true";!i.data||(e?/^[0-9]+$/:/^[0-9.-]+$/).test(i.data)||i.preventDefault()}),n.addEventListener("input",()=>{n.value=o(n.value,n.dataset.integer==="true")})}function c(n,i,e,r){const t=document.getElementById(n),u=document.getElementById(i),a=()=>{u&&(u.value=e(t,u)),r()};t?.addEventListener("input",a),t?.addEventListener("change",a)}export{l as bindNumericInput,c as bindSliderInputPair,d as numericInputValue,o as sanitizeNumericText,s as setPathValue};
+export function setPathValue(target, dottedPath, value) {
+  const parts = String(dottedPath || '').split('.').filter(Boolean);
+  if (!parts.length) return;
+  let cur = target;
+  for (let i = 0; i < parts.length - 1; i++) {
+    cur[parts[i]] ??= {};
+    cur = cur[parts[i]];
+  }
+  cur[parts.at(-1)] = value;
+}
+
+export function sanitizeNumericText(value, integerOnly = false) {
+  let out = '';
+  let dot = false;
+  for (const ch of String(value || '')) {
+    if (ch >= '0' && ch <= '9') {
+      out += ch;
+    } else if (!integerOnly && ch === '.' && !dot) {
+      out += ch;
+      dot = true;
+    } else if (!integerOnly && ch === '-' && out.length === 0) {
+      out += ch;
+    }
+  }
+  return out;
+}
+
+export function numericInputValue(id, fallback = 0) {
+  const el = document.getElementById(id);
+  if (!el) return fallback;
+  const cleaned = sanitizeNumericText(el.value, el.dataset.integer === 'true');
+  if (el.value !== cleaned) el.value = cleaned;
+  const n = Number(cleaned);
+  return Number.isFinite(n) ? n : fallback;
+}
+
+export function bindNumericInput(el) {
+  el.addEventListener('beforeinput', e => {
+    const integerOnly = el.dataset.integer === 'true';
+    if (!e.data || (integerOnly ? /^[0-9]+$/ : /^[0-9.-]+$/).test(e.data)) return;
+    e.preventDefault();
+  });
+  el.addEventListener('input', () => {
+    el.value = sanitizeNumericText(el.value, el.dataset.integer === 'true');
+  });
+}
+
+// Binds a <input type="range"> slider to a paired numeric input: on 'input'/'change',
+// formats the slider's value into the input (via formatValue) and calls onApply.
+export function bindSliderInputPair(sliderId, inputId, formatValue, onApply) {
+  const slider = document.getElementById(sliderId);
+  const input = document.getElementById(inputId);
+  const handler = () => {
+    if (input) input.value = formatValue(slider, input);
+    onApply();
+  };
+  slider?.addEventListener('input', handler);
+  slider?.addEventListener('change', handler);
+}

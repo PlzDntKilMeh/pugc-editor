@@ -1,1 +1,97 @@
-import*as o from"three";const p=.1;let f=null,i=null,a="round",m="quat",l=0;function h({translation:e=null,rotation:t=null,mode:n="round",rotFormat:r="quat",rotSnapDeg:u=0}={}){f=e,i=t,a=n,m=r,l=u}function x(e,t,n){if(t===null||!Number.isFinite(t))return e;const r=10**t;switch(n){case"floor":return Math.floor(e*r)/r;case"ceil":return Math.ceil(e*r)/r;case"trunc":return Math.trunc(e*r)/r;default:return Math.round(e*r)/r}}function T(e){return new o.Vector3(e.x/100,e.z/100,e.y/100)}function d(e){return new o.Quaternion(-e.x,-e.z,-e.y,e.w)}function w(e){return new o.Vector3(e.x,e.z,e.y)}function M(e){const t=n=>x(n,f,a);return{x:t(e.x*100),y:t(e.z*100),z:t(e.y*100)}}function N(e){if(l>0||m==="euler"){const n=new o.Euler().setFromQuaternion(e,"YXZ"),r=y=>{const s=o.MathUtils.radToDeg(y);return l>0?o.MathUtils.degToRad(Math.round(s/l)*l):o.MathUtils.degToRad(x(s,i,a))},u=new o.Quaternion().setFromEuler(new o.Euler(r(n.x),r(n.y),r(n.z),"YXZ"));return{x:-u.x,y:-u.z,z:-u.y,w:u.w}}const t=n=>x(n,i,a);return{x:t(-e.x),y:t(-e.z),z:t(-e.y),w:t(e.w)}}function b(e){return{x:e.x,y:e.z,z:e.y}}function c(e){const t=Number(e);return Number.isFinite(t)?Math.max(p,t):p}function z(e={}){return{x:c(e.x??1),y:c(e.y??1),z:c(e.z??1)}}function S(e){return e.set(c(e.x),c(e.y),c(e.z)),e}function E(e,t){return z({x:Number(e?.x??1)*Number(t?.x??1),y:Number(e?.y??1)*Number(t?.y??1),z:Number(e?.z??1)*Number(t?.z??1)})}export{p as MIN_OBJECT_SCALE,c as clampObjectScaleValue,S as clampThreeScale,z as clampUeScale3D,E as multiplyScale3D,h as setPrecisionTest,M as threePosToUe4,N as threeQuatToUe4,b as threeScaleToUe4,T as ue4PosToThree,d as ue4QuatToThree,w as ue4ScaleToThree};
+import * as THREE from 'three';
+
+export const MIN_OBJECT_SCALE = 0.1;
+
+let _transPrecision = null;
+let _rotPrecision = null;
+let _mode = 'round';     // shared rounding mode for both translation and rotation decimals
+let _rotFormat = 'quat'; // 'quat' | 'euler'
+let _rotSnapDeg = 0;     // 0 = off; snap to nearest N degrees (always nearest)
+
+export function setPrecisionTest({ translation = null, rotation = null, mode = 'round', rotFormat = 'quat', rotSnapDeg = 0 } = {}) {
+  _transPrecision = translation;
+  _rotPrecision = rotation;
+  _mode = mode;
+  _rotFormat = rotFormat;
+  _rotSnapDeg = rotSnapDeg;
+}
+
+function applyPrec(v, precision, mode) {
+  if (precision === null || !Number.isFinite(precision)) return v;
+  const f = 10 ** precision;
+  switch (mode) {
+    case 'floor': return Math.floor(v * f) / f;
+    case 'ceil':  return Math.ceil(v * f) / f;
+    case 'trunc': return Math.trunc(v * f) / f;
+    default:      return Math.round(v * f) / f;
+  }
+}
+
+export function ue4PosToThree(t) {
+  return new THREE.Vector3(t.x / 100, t.z / 100, t.y / 100);
+}
+
+export function ue4QuatToThree(q) {
+  // det(T)=-1 mapping conjugation negates the vector part.
+  return new THREE.Quaternion(-q.x, -q.z, -q.y, q.w);
+}
+
+export function ue4ScaleToThree(s) {
+  return new THREE.Vector3(s.x, s.z, s.y);
+}
+
+export function threePosToUe4(v) {
+  const p = (n) => applyPrec(n, _transPrecision, _mode);
+  return { x: p(v.x * 100), y: p(v.z * 100), z: p(v.y * 100) };
+}
+
+export function threeQuatToUe4(q) {
+  if (_rotSnapDeg > 0 || _rotFormat === 'euler') {
+    const euler = new THREE.Euler().setFromQuaternion(q, 'YXZ');
+    const processAngle = (rad) => {
+      const deg = THREE.MathUtils.radToDeg(rad);
+      if (_rotSnapDeg > 0) return THREE.MathUtils.degToRad(Math.round(deg / _rotSnapDeg) * _rotSnapDeg);
+      return THREE.MathUtils.degToRad(applyPrec(deg, _rotPrecision, _mode));
+    };
+    const eq = new THREE.Quaternion().setFromEuler(
+      new THREE.Euler(processAngle(euler.x), processAngle(euler.y), processAngle(euler.z), 'YXZ')
+    );
+    return { x: -eq.x, y: -eq.z, z: -eq.y, w: eq.w };
+  }
+  const p = (n) => applyPrec(n, _rotPrecision, _mode);
+  return { x: p(-q.x), y: p(-q.z), z: p(-q.y), w: p(q.w) };
+}
+
+export function threeScaleToUe4(s) {
+  return { x: s.x, y: s.z, z: s.y };
+}
+
+export function clampObjectScaleValue(value) {
+  const n = Number(value);
+  return Number.isFinite(n) ? Math.max(MIN_OBJECT_SCALE, n) : MIN_OBJECT_SCALE;
+}
+
+export function clampUeScale3D(s = {}) {
+  return {
+    x: clampObjectScaleValue(s.x ?? 1),
+    y: clampObjectScaleValue(s.y ?? 1),
+    z: clampObjectScaleValue(s.z ?? 1),
+  };
+}
+
+export function clampThreeScale(v) {
+  v.set(
+    clampObjectScaleValue(v.x),
+    clampObjectScaleValue(v.y),
+    clampObjectScaleValue(v.z)
+  );
+  return v;
+}
+
+export function multiplyScale3D(a, b) {
+  return clampUeScale3D({
+    x: Number(a?.x ?? 1) * Number(b?.x ?? 1),
+    y: Number(a?.y ?? 1) * Number(b?.y ?? 1),
+    z: Number(a?.z ?? 1) * Number(b?.z ?? 1),
+  });
+}

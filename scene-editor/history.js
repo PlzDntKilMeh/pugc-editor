@@ -1,1 +1,87 @@
-function g({canRecord:h,makeSnapshot:o,restoreSnapshot:d,snapshotKey:u,setStatus:c,limit:f=60}){const e=[],r=[];let l=null,i=!1;function p(t,n="Edit"){if(i||!t)return;const a=o();!a||u(t)===u(a)||(e.push({label:n,state:t}),e.length>f&&e.shift(),r.length=0)}function s(t){i=!0;try{d(t)}finally{i=!1}}return{get applying(){return i},reset(){e.length=0,r.length=0,l=null},begin(t="Edit"){i||l||!h()||(l={label:t,before:o()})},commit(t=l?.label||"Edit"){if(!l)return;const n=l.before;l=null,p(n,t)},cancel(){l=null},undo(){this.commit();const t=e.pop();if(!t){c("Nothing to undo");return}const n=o();n&&r.push({label:t.label,state:n}),r.length>f&&r.shift(),s(t.state),c(`Undid ${t.label}`)},redo(){this.commit();const t=r.pop();if(!t){c("Nothing to redo");return}const n=o();n&&e.push({label:t.label,state:n}),e.length>f&&e.shift(),s(t.state),c(`Redid ${t.label}`)}}}export{g as createHistoryController};
+export function createHistoryController({
+  canRecord,
+  makeSnapshot,
+  restoreSnapshot,
+  snapshotKey,
+  setStatus,
+  limit = 60,
+}) {
+  const undoStack = [];
+  const redoStack = [];
+  let transaction = null;
+  let applying = false;
+
+  function pushUndoSnapshot(before, label = 'Edit') {
+    if (applying || !before) return;
+    const after = makeSnapshot();
+    if (!after || snapshotKey(before) === snapshotKey(after)) return;
+    undoStack.push({ label, state: before });
+    if (undoStack.length > limit) undoStack.shift();
+    redoStack.length = 0;
+  }
+
+  function applySnapshot(snapshot) {
+    applying = true;
+    try {
+      restoreSnapshot(snapshot);
+    } finally {
+      applying = false;
+    }
+  }
+
+  return {
+    get applying() {
+      return applying;
+    },
+
+    reset() {
+      undoStack.length = 0;
+      redoStack.length = 0;
+      transaction = null;
+    },
+
+    begin(label = 'Edit') {
+      if (applying || transaction || !canRecord()) return;
+      transaction = { label, before: makeSnapshot() };
+    },
+
+    commit(label = transaction?.label || 'Edit') {
+      if (!transaction) return;
+      const before = transaction.before;
+      transaction = null;
+      pushUndoSnapshot(before, label);
+    },
+
+    cancel() {
+      transaction = null;
+    },
+
+    undo() {
+      this.commit();
+      const entry = undoStack.pop();
+      if (!entry) {
+        setStatus('Nothing to undo');
+        return;
+      }
+      const current = makeSnapshot();
+      if (current) redoStack.push({ label: entry.label, state: current });
+      if (redoStack.length > limit) redoStack.shift();
+      applySnapshot(entry.state);
+      setStatus(`Undid ${entry.label}`);
+    },
+
+    redo() {
+      this.commit();
+      const entry = redoStack.pop();
+      if (!entry) {
+        setStatus('Nothing to redo');
+        return;
+      }
+      const current = makeSnapshot();
+      if (current) undoStack.push({ label: entry.label, state: current });
+      if (undoStack.length > limit) undoStack.shift();
+      applySnapshot(entry.state);
+      setStatus(`Redid ${entry.label}`);
+    },
+  };
+}

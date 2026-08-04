@@ -1,1 +1,265 @@
-const J={creatorData:"Creator",roundRuleData:"Round Rules",gameRuleData:"Game Rules",characterRuleData:"Character Rules",userSelectableData:"User Selectable"};function u(c){return String(c??"").replace(/[&<>"]/g,i=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"})[i])}function G(c){return c.replace(/^b([A-Z])/,"$1").replace(/([a-z0-9])([A-Z])/g,"$1 $2").replace(/^./,i=>i.toUpperCase())}function R(c){const i=String(c.type||"");return i==="Bool"?"bool":i==="Enum"?"enum":i==="Array"?"array":i||"string"}function ee(c){const i=c.validatorParam||{},p=i.minValue??i.minNum??null,f=i.maxValue??i.maxNum??null;return p!=null&&f!=null?`${p} - ${f}`:p!=null?`>= ${p}`:f!=null?`<= ${f}`:""}function _(c){return Array.isArray(c)?c.filter(i=>i&&i.path).map(i=>({key:i.path,field:i})):c&&typeof c=="object"?Object.entries(c).map(([i,p])=>({key:i,field:p})):[]}const F="MainTag",L=(c,i)=>(c.sortOrder??0)-(i.sortOrder??0)||String(c.label).localeCompare(String(i.label));function ae({catalog:c,getPugcJson:i,getPugcFileInfo:p,getEnums:f,translateText:S,commitHistory:T,setStatus:U}){function j(e){const s=f()[e];return Array.isArray(s)?s.map(n=>({value:n.value,label:n.label||n.value})):[]}function D(e){return j(e.unrealType||e.enum||"")}function M(){return c.tags.filter(e=>e.categoryId===F).sort(L)}function I(e){return c.tags.filter(s=>s.categoryId===e).sort(L)}function H(){return i()?.creatorData?.mainTagId??"MainTag_None"}function E(e){return c.tagCategories.filter(s=>s.id!==F&&Array.isArray(s.availableForMainTagIds)&&s.availableForMainTagIds.includes(e))}function P(e,s){const n=new Set(E(e).map(a=>a.id)),t=new Map(c.tags.map(a=>[a.id,a]));return(Array.isArray(s)?s:[]).filter(a=>n.has(t.get(a)?.categoryId))}function x(e){return S("NS_UGC_TAG",e.displayKey,e.label||e.id)}function V(e,s,n){const t=M().map(a=>`<option value="${u(a.id)}"${a.id===n?" selected":""}>${u(x(a))}</option>`).join("");return`<label class="gs-row"><span>${u(G(s))}</span><select data-gs-sec="${e}" data-gs-key="${s}" data-gs-type="string" data-gs-maintag="1">${t}</select></label>`}function B(e,s){const n=E(e);if(!n.length)return"";const t=new Set(Array.isArray(s)?s:[]);let a='<div class="gs-row gs-row-block"><span>Sub Tags</span><div class="gs-tag-groups">';for(const o of n){const l=I(o.id);if(!l.length)continue;const r=Number(o.maxSelectCount)||0,g=r>0?` <span class="gs-tag-limit">(max ${r})</span>`:"",d=S("NS_UGC_TAG",o.displayKey,o.label||o.id);a+=`<div class="gs-tag-group"><div class="gs-tag-group-title">${u(d)}${g}</div>`;for(const m of l)a+=`<label class="gs-tag-option"><input type="checkbox" data-gs-subtag="${u(m.id)}" data-gs-cat="${u(o.id)}" data-gs-max="${r}"${t.has(m.id)?" checked":""}><span>${u(x(m))}</span></label>`;a+="</div>"}return a+"</div></div>"}function q(e,s,n,t){const a=i(),o=Array.isArray(a.creatorData?.subTagIds)?[...a.creatorData.subTagIds]:[];let l=o;if(t){if(n>0){const r=I(s).map(d=>d.id).filter(d=>o.includes(d)),g=new Set(r.slice(0,Math.max(0,r.length-(n-1))));l=o.filter(d=>!g.has(d))}l.includes(e)||l.push(e)}else l=o.filter(r=>r!==e);(a.creatorData??={}).subTagIds=l,T("Edit Game Settings"),v()}function k(){const e=[],s=new Set,n=t=>(c.enums?.[t]||[]).forEach(a=>{const o=(a.rowName||"").replace(/^EModUserSelectPlayType_/,"")||a.value;!o||s.has(o)||(s.add(o),e.push({value:o,label:S("NS_UGC_ENUM",a.key,a.label||o)}))});return n("EModUserSelectPlayType"),n("EModUserSelectPlayType_SHOOTING"),n("EModUserSelectPlayType_NONSHOOTING"),e}function K(e,s,n){const t=k().map(a=>`<option value="${u(a.value)}"${String(a.value)===String(n)?" selected":""}>${u(a.label)}</option>`).join("");return`<label class="gs-row"><span>Play Type</span><select data-gs-sec="${e}" data-gs-key="${s}" data-gs-type="string">${t}</select></label>`}function z(){const e=p?.()||{},s=e.hasHeader===!0?"New header present":e.hasHeader===!1?"Legacy/no header loaded":"No .pugc header loaded",n=[["Loaded file",e.source||"Untitled blank project"],["Loaded header",s],["Save header",e.saveHeader===!1?"No":"Yes, writes 13-byte v2 header"]];return e.magic&&n.push(["Magic",e.magic]),e.version!=null&&n.push(["Version",String(e.version)]),e.marker&&n.push(["Marker",e.marker]),e.headerHex&&n.push(["Header bytes",e.headerHex]),'<div class="gs-section gs-file-header"><div class="gs-section-title">File Header</div>'+n.map(([t,a])=>`<div class="gs-info-row"><span>${u(t)}</span><code>${u(a)}</code></div>`).join("")+"</div>"}function v(){const e=i(),s=document.getElementById("gsBody");let n="";for(const[t,a]of Object.entries(c.rules||{})){const o=_(a);if(o.length){(!e[t]||typeof e[t]!="object")&&(e[t]={}),n+=`<div class="gs-section"><div class="gs-section-title">${u(J[t]||t)}</div>`;for(const{key:l,field:r}of o){const g=R(r),d=e[t][l]??r.default,m=r.label||G(l),w=r.description||"",Q=w?` title="${u(w)}"`:"";if(l==="mainTagId"&&M().length){n+=V(t,l,d);continue}if(l==="subTagIds"){n+=B(H(),d);continue}if(l==="modUserSelectPlayType"&&k().length>1){n+=K(t,l,d);continue}if(g==="array"||g==="Array")continue;const $=`data-gs-sec="${t}" data-gs-key="${l}" data-gs-type="${g}"`,h=r.validatorParam||{},N=h.minValue??h.minNum??null,O=h.maxValue??h.maxNum??null,C=ee(r),W=C?`${u(m)}<span class="devf-range">${u(C)}</span>`:u(m);let y;if(g==="bool")y=`<input type="checkbox" ${$}${d?" checked":""}>`;else if(g==="enum"){const A=D(r);y=`<select ${$}>${A.map(b=>`<option value="${u(b.value)}"${String(b.value)===String(d)?" selected":""}>${u(b.label)}</option>`).join("")}</select>`}else if(g==="number"||g==="Float"||g==="Int"){const A=g==="Float"?"any":"1",b=N!=null?` min="${N}"`:"",X=O!=null?` max="${O}"`:"";y=`<input type="number" step="${A}" ${$}${b}${X} value="${u(d??N??"")}">`}else y=`<input type="text" ${$} value="${u(d??"")}">`;n+=`<label class="gs-row"${Q}><span>${W}</span>${y}</label>`}n+="</div>"}}n+=z(),s.innerHTML=n||'<div class="subtle" style="padding:12px">No settings schema loaded.</div>',s.querySelectorAll("[data-gs-sec]").forEach(t=>{t.addEventListener("change",()=>{const a=t.dataset.gsSec,o=t.dataset.gsKey,l=t.dataset.gsType;let r;if(l==="bool")r=t.checked;else if(l==="number"||l==="Float"||l==="Int"){if(r=Number(t.value),!Number.isFinite(r))return;t.min!==""&&(r=Math.max(r,Number(t.min))),t.max!==""&&(r=Math.min(r,Number(t.max)))}else r=t.value;if((e[a]??={})[o]=r,t.dataset.gsMaintag){e[a].subTagIds=P(r,e[a].subTagIds),T("Edit Game Settings"),v();return}T("Edit Game Settings")})}),s.querySelectorAll("[data-gs-subtag]").forEach(t=>{t.addEventListener("change",()=>q(t.dataset.gsSubtag,t.dataset.gsCat,Number(t.dataset.gsMax)||0,t.checked))})}function Y(){if(!i()){U("Open or start a project first",!0);return}v(),document.getElementById("gameSettingsModal").hidden=!1}function Z(){const e={};for(const[s,n]of Object.entries(c.rules||{})){e[s]={};for(const{key:t,field:a}of _(n)){const o=R(a),l=a.validatorParam||{},r=l.minValue??l.minNum??null;o==="Int"||o==="Float"?e[s][t]=r??0:(o==="bool"||o==="Bool")&&(e[s][t]=!1)}}return e.roundRuleData&&(e.roundRuleData.timeLimit=300),e}return{renderGameSettings:v,openGameSettings:Y,defaultRuleSections:Z}}export{ae as createGameSettingsController};
+// --- Project / game settings (creator, round/game rules) - schema from rules.json ----------------
+const RULE_SECTION_TITLES = {
+  creatorData: 'Creator', roundRuleData: 'Round Rules', gameRuleData: 'Game Rules',
+  characterRuleData: 'Character Rules', userSelectableData: 'User Selectable',
+};
+
+function gsEsc(s) { return String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c])); }
+function gsLabel(k) { return k.replace(/^b([A-Z])/, '$1').replace(/([a-z0-9])([A-Z])/g, '$1 $2').replace(/^./, c => c.toUpperCase()); }
+// Maps UE4 schema Type strings to the gs render type used in data-gs-type / input logic.
+function gsNormalizeType(field) {
+  const t = String(field.type || '');
+  if (t === 'Bool') return 'bool';
+  if (t === 'Enum') return 'enum';
+  if (t === 'Array') return 'array';
+  // Int/Float passed through; change handler and input branch both check for them.
+  return t || 'string';
+}
+// Returns a short range annotation string for a game-settings field, e.g. "1 - 100" or ">= 1".
+function gsRangeNote(field) {
+  const vp = field.validatorParam || {};
+  const mn = vp.minValue ?? vp.minNum ?? null;
+  const mx = vp.maxValue ?? vp.maxNum ?? null;
+  if (mn != null && mx != null) return `${mn} - ${mx}`;
+  if (mn != null) return `>= ${mn}`;
+  if (mx != null) return `<= ${mx}`;
+  return '';
+}
+// Returns [{key, field}] for a section value - handles both new (array) and legacy (object) formats.
+function gsSectionFields(sectionValue) {
+  if (Array.isArray(sectionValue))
+    return sectionValue.filter(f => f && f.path).map(f => ({ key: f.path, field: f }));
+  if (sectionValue && typeof sectionValue === 'object')
+    return Object.entries(sectionValue).map(([key, def]) => ({ key, field: def }));
+  return [];
+}
+
+// --- Game Settings tag pickers (driven by tags.json / tagCategories.json) ---
+const MAIN_TAG_CATEGORY = 'MainTag';
+const bySortOrder = (a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0) || String(a.label).localeCompare(String(b.label));
+
+export function createGameSettingsController({ catalog, getPugcJson, getPugcFileInfo, getEnums, translateText, commitHistory, setStatus }) {
+  function gsEnumOptions(name) {
+    const rows = getEnums()[name];
+    return Array.isArray(rows) ? rows.map(r => ({ value: r.value, label: r.label || r.value })) : [];
+  }
+  // New array-format: field has unrealType (for enum class lookup) or legacy enum string.
+  function gsEnumOptionsForField(field) {
+    return gsEnumOptions(field.unrealType || field.enum || '');
+  }
+
+  function mainTagList() { return catalog.tags.filter(t => t.categoryId === MAIN_TAG_CATEGORY).sort(bySortOrder); }
+  function tagsInCategory(catId) { return catalog.tags.filter(t => t.categoryId === catId).sort(bySortOrder); }
+  function currentMainTagId() {
+    return getPugcJson()?.creatorData?.mainTagId ?? 'MainTag_None';
+  }
+  function subCategoriesForMain(mainTagId) {
+    return catalog.tagCategories.filter(c => c.id !== MAIN_TAG_CATEGORY
+      && Array.isArray(c.availableForMainTagIds) && c.availableForMainTagIds.includes(mainTagId));
+  }
+  // Drop selected sub-tags whose category isn't available for the given main tag.
+  function validSubTagIds(mainTagId, selected) {
+    const allowed = new Set(subCategoriesForMain(mainTagId).map(c => c.id));
+    const byId = new Map(catalog.tags.map(t => [t.id, t]));
+    return (Array.isArray(selected) ? selected : []).filter(id => allowed.has(byId.get(id)?.categoryId));
+  }
+
+  function tagLabel(t) { return translateText('NS_UGC_TAG', t.displayKey, t.label || t.id); }
+
+  function renderMainTagRow(sec, key, cur) {
+    const options = mainTagList().map(t =>
+      `<option value="${gsEsc(t.id)}"${t.id === cur ? ' selected' : ''}>${gsEsc(tagLabel(t))}</option>`).join('');
+    return `<label class="gs-row"><span>${gsEsc(gsLabel(key))}</span>` +
+      `<select data-gs-sec="${sec}" data-gs-key="${key}" data-gs-type="string" data-gs-maintag="1">${options}</select></label>`;
+  }
+
+  function renderSubTagSection(mainTagId, selected) {
+    const cats = subCategoriesForMain(mainTagId);
+    if (!cats.length) return '';
+    const sel = new Set(Array.isArray(selected) ? selected : []);
+    let html = '<div class="gs-row gs-row-block"><span>Sub Tags</span><div class="gs-tag-groups">';
+    for (const cat of cats) {
+      const tags = tagsInCategory(cat.id);
+      if (!tags.length) continue;
+      const limit = Number(cat.maxSelectCount) || 0;
+      const note = limit > 0 ? ` <span class="gs-tag-limit">(max ${limit})</span>` : '';
+      const catLabel = translateText('NS_UGC_TAG', cat.displayKey, cat.label || cat.id);
+      html += `<div class="gs-tag-group"><div class="gs-tag-group-title">${gsEsc(catLabel)}${note}</div>`;
+      for (const t of tags) {
+        html += `<label class="gs-tag-option"><input type="checkbox" data-gs-subtag="${gsEsc(t.id)}"` +
+          ` data-gs-cat="${gsEsc(cat.id)}" data-gs-max="${limit}"${sel.has(t.id) ? ' checked' : ''}>` +
+          `<span>${gsEsc(tagLabel(t))}</span></label>`;
+      }
+      html += '</div>';
+    }
+    return html + '</div></div>';
+  }
+
+  function toggleSubTag(tagId, catId, maxSelect, checked) {
+    const pugcJson = getPugcJson();
+    const cur = Array.isArray(pugcJson.creatorData?.subTagIds) ? [...pugcJson.creatorData.subTagIds] : [];
+    let next = cur;
+    if (checked) {
+      if (maxSelect > 0) {
+        const inCat = tagsInCategory(catId).map(t => t.id).filter(id => cur.includes(id));
+        // Make room within this category's limit (drop the oldest selections), then add.
+        const drop = new Set(inCat.slice(0, Math.max(0, inCat.length - (maxSelect - 1))));
+        next = cur.filter(id => !drop.has(id));
+      }
+      if (!next.includes(tagId)) next.push(tagId);
+    } else {
+      next = cur.filter(id => id !== tagId);
+    }
+    (pugcJson.creatorData ??= {}).subTagIds = next;
+    commitHistory('Edit Game Settings');
+    renderGameSettings();
+  }
+
+  // userSelectableData.modUserSelectPlayType is stored as "<GROUP>_<VALUE>" (e.g. SHOOTING_OCCUPATION) or
+  // "NONE" - i.e. the enum rowName minus the EModUserSelectPlayType_ prefix. Offer it as one dropdown built
+  // from the NONE / SHOOTING / NONSHOOTING enums, labels localized via NS_UGC_ENUM.
+  function playTypeOptions() {
+    const out = [];
+    const seen = new Set();
+    const push = (enumName) => (catalog.enums?.[enumName] || []).forEach(e => {
+      const value = (e.rowName || '').replace(/^EModUserSelectPlayType_/, '') || e.value;
+      if (!value || seen.has(value)) return;
+      seen.add(value);
+      out.push({ value, label: translateText('NS_UGC_ENUM', e.key, e.label || value) });
+    });
+    push('EModUserSelectPlayType');
+    push('EModUserSelectPlayType_SHOOTING');
+    push('EModUserSelectPlayType_NONSHOOTING');
+    return out;
+  }
+  function renderPlayTypeRow(sec, key, cur) {
+    const opts = playTypeOptions().map(o =>
+      `<option value="${gsEsc(o.value)}"${String(o.value) === String(cur) ? ' selected' : ''}>${gsEsc(o.label)}</option>`).join('');
+    return `<label class="gs-row"><span>Play Type</span>` +
+      `<select data-gs-sec="${sec}" data-gs-key="${key}" data-gs-type="string">${opts}</select></label>`;
+  }
+
+  function renderFileHeaderSection() {
+    const info = getPugcFileInfo?.() || {};
+    const status = info.hasHeader === true
+      ? 'New header present'
+      : info.hasHeader === false
+        ? 'Legacy/no header loaded'
+        : 'No .pugc header loaded';
+    const rows = [
+      ['Loaded file', info.source || 'Untitled blank project'],
+      ['Loaded header', status],
+      ['Save header', info.saveHeader === false ? 'No' : 'Yes, writes 13-byte v2 header'],
+    ];
+    if (info.magic) rows.push(['Magic', info.magic]);
+    if (info.version != null) rows.push(['Version', String(info.version)]);
+    if (info.marker) rows.push(['Marker', info.marker]);
+    if (info.headerHex) rows.push(['Header bytes', info.headerHex]);
+    return '<div class="gs-section gs-file-header"><div class="gs-section-title">File Header</div>' +
+      rows.map(([label, value]) =>
+        `<div class="gs-info-row"><span>${gsEsc(label)}</span><code>${gsEsc(value)}</code></div>`).join('') +
+      '</div>';
+  }
+
+  function renderGameSettings() {
+    const pugcJson = getPugcJson();
+    const body = document.getElementById('gsBody');
+    let html = '';
+    for (const [sec, sectionValue] of Object.entries(catalog.rules || {})) {
+      const entries = gsSectionFields(sectionValue);
+      if (!entries.length) continue;
+      if (!pugcJson[sec] || typeof pugcJson[sec] !== 'object') pugcJson[sec] = {};
+      html += `<div class="gs-section"><div class="gs-section-title">${gsEsc(RULE_SECTION_TITLES[sec] || sec)}</div>`;
+      for (const { key: k, field: def } of entries) {
+        const type = gsNormalizeType(def);
+        const cur  = pugcJson[sec][k] ?? def.default;
+        const label = def.label || gsLabel(k);
+        const desc  = def.description || '';
+        const descAttr = desc ? ` title="${gsEsc(desc)}"` : '';
+        if (k === 'mainTagId' && mainTagList().length) { html += renderMainTagRow(sec, k, cur); continue; }
+        if (k === 'subTagIds') { html += renderSubTagSection(currentMainTagId(), cur); continue; }
+        if (k === 'modUserSelectPlayType' && playTypeOptions().length > 1) { html += renderPlayTypeRow(sec, k, cur); continue; }
+        if (type === 'array' || type === 'Array') continue;
+        const attrs = `data-gs-sec="${sec}" data-gs-key="${k}" data-gs-type="${type}"`;
+        const vp = def.validatorParam || {};
+        // validators use minValue/maxValue (game schema) or minNum/maxNum (legacy)
+        const vpMin = vp.minValue ?? vp.minNum ?? null;
+        const vpMax = vp.maxValue ?? vp.maxNum ?? null;
+        const rangeNote = gsRangeNote(def);
+        const labelHtml = rangeNote
+          ? `${gsEsc(label)}<span class="devf-range">${gsEsc(rangeNote)}</span>`
+          : gsEsc(label);
+        let input;
+        if (type === 'bool') {
+          input = `<input type="checkbox" ${attrs}${cur ? ' checked' : ''}>`;
+        } else if (type === 'enum') {
+          const opts = gsEnumOptionsForField(def);
+          input = `<select ${attrs}>${opts.map(o => `<option value="${gsEsc(o.value)}"${String(o.value) === String(cur) ? ' selected' : ''}>${gsEsc(o.label)}</option>`).join('')}</select>`;
+        } else if (type === 'number' || type === 'Float' || type === 'Int') {
+          const step = type === 'Float' ? 'any' : '1';
+          const minA = vpMin != null ? ` min="${vpMin}"` : '';
+          const maxA = vpMax != null ? ` max="${vpMax}"` : '';
+          const displayVal = cur ?? vpMin ?? '';
+          input = `<input type="number" step="${step}" ${attrs}${minA}${maxA} value="${gsEsc(displayVal)}">`;
+        } else {
+          input = `<input type="text" ${attrs} value="${gsEsc(cur ?? '')}">`;
+        }
+        html += `<label class="gs-row"${descAttr}><span>${labelHtml}</span>${input}</label>`;
+      }
+      html += '</div>';
+    }
+    html += renderFileHeaderSection();
+    body.innerHTML = html || '<div class="subtle" style="padding:12px">No settings schema loaded.</div>';
+    body.querySelectorAll('[data-gs-sec]').forEach(el => {
+      el.addEventListener('change', () => {
+        const sec = el.dataset.gsSec, key = el.dataset.gsKey, t = el.dataset.gsType;
+        let v;
+        if (t === 'bool') v = el.checked;
+        else if (t === 'number' || t === 'Float' || t === 'Int') {
+          v = Number(el.value);
+          if (!Number.isFinite(v)) return;
+          if (el.min !== '') v = Math.max(v, Number(el.min));
+          if (el.max !== '') v = Math.min(v, Number(el.max));
+        } else v = el.value;
+        (pugcJson[sec] ??= {})[key] = v;
+        if (el.dataset.gsMaintag) {
+          pugcJson[sec].subTagIds = validSubTagIds(v, pugcJson[sec].subTagIds);
+          commitHistory('Edit Game Settings');
+          renderGameSettings();
+          return;
+        }
+        commitHistory('Edit Game Settings');
+      });
+    });
+    body.querySelectorAll('[data-gs-subtag]').forEach(el => {
+      el.addEventListener('change', () =>
+        toggleSubTag(el.dataset.gsSubtag, el.dataset.gsCat, Number(el.dataset.gsMax) || 0, el.checked));
+    });
+  }
+
+  function openGameSettings() {
+    if (!getPugcJson()) { setStatus('Open or start a project first', true); return; }
+    renderGameSettings();
+    document.getElementById('gameSettingsModal').hidden = false;
+  }
+
+  // Builds default creator/rule data for a new blank project, from rules.json's schema.
+  function defaultRuleSections() {
+    const out = {};
+    for (const [sec, sectionValue] of Object.entries(catalog.rules || {})) {
+      out[sec] = {};
+      for (const { key, field } of gsSectionFields(sectionValue)) {
+        const type = gsNormalizeType(field);
+        const vp = field.validatorParam || {};
+        const vpMin = vp.minValue ?? vp.minNum ?? null;
+        if (type === 'Int') out[sec][key] = vpMin ?? 0;
+        else if (type === 'Float') out[sec][key] = vpMin ?? 0;
+        else if (type === 'bool' || type === 'Bool') out[sec][key] = false;
+      }
+    }
+    if (out.roundRuleData) out.roundRuleData.timeLimit = 300;
+    return out;
+  }
+
+  return { renderGameSettings, openGameSettings, defaultRuleSections };
+}

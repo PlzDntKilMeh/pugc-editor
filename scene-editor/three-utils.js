@@ -1,1 +1,25 @@
-import*as c from"three";function p(e){const t=Array.isArray(e)?e:[e];for(const s of t)s?.dispose?.()}function a(e){e.traverse(t=>{t.isMesh&&(t.geometry?.dispose(),p(t.material))})}function f(e,{camera:t,orbitControls:s}){const n=new c.Box3().setFromObject(e);if(n.isEmpty())return;const o=n.getCenter(new c.Vector3),r=n.getSize(new c.Vector3),i=Math.sqrt(r.x*r.x+r.z*r.z);s.target.copy(o),t.position.set(o.x,o.y+i*.3,o.z+i*.55),s.update()}export{p as disposeObjectMaterials,a as disposeSceneObject,f as frameObject};
+import * as THREE from 'three';
+
+export function disposeObjectMaterials(material) {
+  const mats = Array.isArray(material) ? material : [material];
+  for (const m of mats) m?.dispose?.();
+}
+
+export function disposeSceneObject(root) {
+  root.traverse(obj => {
+    if (!obj.isMesh) return;
+    obj.geometry?.dispose();
+    disposeObjectMaterials(obj.material);
+  });
+}
+
+export function frameObject(root, { camera, orbitControls }) {
+  const box = new THREE.Box3().setFromObject(root);
+  if (box.isEmpty()) return;
+  const center = box.getCenter(new THREE.Vector3());
+  const size = box.getSize(new THREE.Vector3());
+  const diag = Math.sqrt(size.x * size.x + size.z * size.z);
+  orbitControls.target.copy(center);
+  camera.position.set(center.x, center.y + diag * 0.3, center.z + diag * 0.55);
+  orbitControls.update();
+}
