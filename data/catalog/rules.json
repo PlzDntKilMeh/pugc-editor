@@ -240,7 +240,7 @@
       "descriptionKey": "K_IGU_40",
       "descriptionNs": "NS_UGC_SETTINGS",
       "label": "Team Assignment Method",
-      "description": "Set how players are assigned to teams.\r\nCustom: Players manually select their teams.\r\nBalanced: Players are assigned at random and automatically placed into evenly sized teams.\r\nSequential: Players are assigned at random and placed into teams in sequential order."
+      "description": "Set how players are assigned to teams.\r\nHost Assignment: The host manually assigns players to teams.\r\nBalanced: Players are assigned at random and automatically placed into evenly sized teams.\r\nSequential: Players are assigned at random and placed into teams in sequential order.\r\nTeam Selection UI: A team selection UI is displayed during the standby phase, allowing players to choose their team. Players who do not select a team are assigned at random to teams with fewer members to keep team sizes balanced."
     },
     {
       "path": "teamSize",
@@ -457,6 +457,22 @@
       "descriptionNs": "NS_UGC_SETTINGS",
       "label": "Show Killfeed Team Numbers",
       "description": "Determine whether to show each team's number in the killfeed."
+    },
+    {
+      "path": "useScoreLeaderboard",
+      "schemaPath": "UseScoreLeaderboard",
+      "type": "Bool",
+      "unrealType": "BoolProperty",
+      "validator": "",
+      "validatorParam": null,
+      "advanced": false,
+      "hidden": false,
+      "labelKey": "K_IGU_45",
+      "labelNs": "NS_UGC_SETTINGS",
+      "descriptionKey": "K_IGU_46",
+      "descriptionNs": "NS_UGC_SETTINGS",
+      "label": "Show Scoreboard",
+      "description": "Determine whether players can open and view the scoreboard during the match."
     }
   ],
   "userSelectableData": [

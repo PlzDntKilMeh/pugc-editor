@@ -18,13 +18,26 @@
       "K_IGU_05": "خارج الخريطة.",
       "K_IGU_03": "لا يمكن اللعب. تم تجاوز أقصى عدد للأحداث لكل جهاز.",
       "K_IGU_02": "لا يمكن اللعب. تم تجاوز أقصى عدد للعناصر.",
+      "K_IGU_16": "الحقول المطلوبة مفقودة. يُرجى إعادة المحاولة.",
+      "K_IGU_17": "تم تجاوز حد لاعبي الاختبار ({Count})",
       "K_IGU_12": "تم تفكيك مولد منطقة زرقاء.",
       "K_IGU_11": "تم تثبيت مولد منطقة زرقاء.",
       "K_IGU_07": "تم تعيينك في دور المضيف.",
       "K_IGU_09": "انقطع الاتصال بالمضيف.",
       "K_IGU_08": "طرده المضيف.",
       "K_IGU_10": "تم الطرد بسبب ملكية غير صالحة.",
-      "K_IGU_14": "لا يمكن تثبيت المزيد من موّلدات المنطقة الزرقاء."
+      "K_IGU_14": "لا يمكن تثبيت المزيد من موّلدات المنطقة الزرقاء.",
+      "K_IGU_15": "لا يمكن اختيار هذا الفريق. تم تجاوز الحد الأقصى لعدد اللاعبين في الفريق الواحد."
+    },
+    "NS_UGC_UI": {
+      "K_IGU_04": "فريق {TeamNumber}",
+      "K_IGU_02": "الحالي",
+      "K_IGU_08": "كامل",
+      "K_IGU_05": "نتائج المباراة",
+      "K_IGU_01": "نتائج الجولة",
+      "K_IGU_07": "التبديل",
+      "K_IGU_06": "حدد فريقًا",
+      "K_IGU_03": "الإجمالي"
     },
     "NS_UGC_ACTIONRESTRICTDEVICE": {
       "K_IGU_02": "قيد حركات محددة للاعب، أو اسمح بها.",
@@ -648,7 +661,7 @@
       "K_IGU_65": "اتخاذ دور صانع المحتوى",
       "K_IGU_73": "تحذير",
       "K_IGU_74": "سيتم تحويل الملف. هل تريد المتابعة؟\n لا يمكن تشغيل هذا الملف إلا بعد تحويله.",
-      "K_IGU_66": "صانع المحتوى",
+      "K_IGU_66": "معلومات صانع المحتوى",
       "K_IGU_58": "آخر تعديل من صانع المحتوى",
       "K_IGU_04": "جهاز",
       "K_IGU_15": "هل تود المتابعة في هذا الفعل؟ ستفقد كل التغييرات.",
@@ -663,9 +676,9 @@
       "K_IGU_63": "الوصف",
       "K_IGU_71": "وصف لوضع اللعب بما في ذلك سماته الرئيسية وقواعده (ما يصل إلى 4000 حرف على مستوى جميع اللغات).",
       "K_IGU_60": "اسم وضع اللعب",
-      "K_IGU_68": "الاسم المستخدم لتمييز وضع اللعب (حروف وأرقام فقط، 30 حرفًا بحد أقصى).",
+      "K_IGU_68": "الاسم المستخدم لتمييز وضع اللعب (حروف وأرقام فقط، 30 حرفًا بحد أقصى).\nهذا الحقل مطلوب.",
       "K_IGU_61": "الإصدار",
-      "K_IGU_69": "الإصدار الحالي من وضع اللعب (3 أرقام بحد أقصى للإصدار الرئيسي والتحديثات البسيطة).",
+      "K_IGU_69": "الإصدار الحالي من وضع اللعب (3 أرقام بحد أقصى للإصدار الرئيسي والتحديثات البسيطة).\nهذا الحقل مطلوب.",
       "K_IGU_34": "لا يوجد",
       "K_IGU_72": "لا شيء",
       "K_IGU_01": "قائمة العناصر",
@@ -692,7 +705,7 @@
       "K_IGU_02": "الإعدادات",
       "K_IGU_32": "المتفرج",
       "K_IGU_62": "الوسومات",
-      "K_IGU_70": "الوسومات المستخدمة لتصنيف وضع اللعب (وسم واحد رئيسي، وما يصل إلى وسمين ثانويين).",
+      "K_IGU_70": "الوسومات المستخدمة لتصنيف وضع اللعب (وسم واحد رئيسي، وما يصل إلى وسمين ثانويين).\nهذا الحقل مطلوب.",
       "K_IGU_07": "الفرق",
       "K_IGU_37": "نقل دور المضيف",
       "K_IGU_38": "نقل دور المضيف إلى {PlayerName}",
@@ -765,7 +778,7 @@
       "K_IGU_093": "الشخصيات فقط",
       "K_IGU_094": "المركبات فقط",
       "K_IGU_072": "متوازن",
-      "K_IGU_071": "مخصص",
+      "K_IGU_071": "تعيين المُضيف",
       "K_IGU_073": "تتابعي",
       "K_IGU_096": "الدقائق، والثواني",
       "K_IGU_097": "الدقائق، والثواني، والملي ثواني",
@@ -806,7 +819,8 @@
       "K_IGU_040": "عاصفة ثلجية",
       "K_IGU_042": "نبضة كهرومغناطيسية",
       "K_IGU_039": "لا يوجد",
-      "K_IGU_041": "عاصفة رملية"
+      "K_IGU_041": "عاصفة رملية",
+      "K_IGU_103": "واجهة اختيار الفريق"
     },
     "NS_UGC_HUDDEVICE": {
       "K_IGU_13": "تفعيل الجهاز المستهدَف عند تفعيل هذا الجهاز.",
@@ -1516,7 +1530,7 @@
     },
     "NS_UGC_SAVEOWNERCHECK": {
       "K_IGU_01": "انتقل إلى شاشة صانع المحتوى",
-      "K_IGU_00": "لا يوجد صانع محتوى معين إلى هذا الملف. هل تريد الحفظ على أي حال؟"
+      "K_IGU_00": "لا توجد معلومات صانع محتوى معينة لهذا الملف. هل تريد الحفظ على أي حال؟"
     },
     "NS_UGC_SETTINGS": {
       "K_IGU_12": "تعيين منظور كاميرا اللاعب.",
@@ -1532,7 +1546,7 @@
       "K_IGU_18": "تعيين مدة بقاء صندوق اللاعب.",
       "K_IGU_37": "مدة صندوق اللاعب (ث)",
       "K_IGU_39": "وسيلة تعيين الفريق",
-      "K_IGU_40": "قم بتعيين كيفية تعيين اللاعبين في الفرق.\nمخصص: يختار اللاعبون فرقهم يدويًا.\nمتوازن: يتم تعيين اللاعبين عشوائيًا ووضعهم تلقائيًا في فرق متساوية الحجم.\nمتسلسل: يتم تعيين اللاعبين عشوائيًا ووضعهم في فرق بترتيب تسلسلي.",
+      "K_IGU_40": "اضبط كيفية تعيين اللاعبين في الفِرق.\nتعيين المُضيف: يضبط المُضيف تعيين اللاعبين للفرق يدويًا\nمتوازن: يتم تعيين اللاعبين عشوائيًا ووضعهم تلقائيًا في فرق متساوية الحجم.\nتسلسل: يتم تعيين اللاعبين عشوائيًا ووضعهم في فرق بترتيب تسلسلي.\nواجهة اختيار الفريق: يتم عرض واجهة لاختيار الفريق أثناء مرحلة الاستعداد، مما يسمح للاعبين باختيار فريقهم. أما اللاعبون الذين لا يختارون فريق فيتم تعيينهم عشوائيًا في الفِرق التي تحتوي على عدد أعضاء أقل للحفاظ على توازن أحجام الفرق.",
       "K_IGU_01": "تحديد نوع الوضع.",
       "K_IGU_20": "نوع الوضع",
       "K_IGU_15": "تحديد ما إذا كان تعزيز الحصانة سيُطبق عند إعادة الظهور.",
@@ -1551,6 +1565,8 @@
       "K_IGU_41": "نقل عناصر المخزون",
       "K_IGU_19": "تحديد ما إذا كان عدد كل فريق سيظهر في إعلان القتل.",
       "K_IGU_38": "إظهار أعداد الفرق في إعلان القتل",
+      "K_IGU_46": "تحديد ما إذا كان بإمكان اللاعبين فتح وعرض لوحة النتائج أثناء المباراة.",
+      "K_IGU_45": "إظهار لوحة النتائج",
       "K_IGU_09": "تعيين عدد اللاعبين في الفريق.",
       "K_IGU_28": "حجم الفريق",
       "K_IGU_10": "تعيين معدل ضرر النيران الصديقة.",
@@ -1958,13 +1974,26 @@
       "K_IGU_05": "Außerhalb der Karte.",
       "K_IGU_03": "Spielen nicht möglich. Maximale Anzahl von Events pro Gerät überschritten.",
       "K_IGU_02": "Spielen nicht möglich. Maximale Anzahl von Objekten überschritten.",
+      "K_IGU_16": "Pflichtfelder fehlen. Bitte versuche es noch einmal.",
+      "K_IGU_17": "Test-Spielerlimit ({Count}) überschritten.",
       "K_IGU_12": "Ein Blaue-Zone-Generator wurde demontiert.",
       "K_IGU_11": "Ein Blaue-Zone-Generator wurde installiert.",
       "K_IGU_07": "Du wurdest zum Host ernannt.",
       "K_IGU_09": "Host getrennt.",
       "K_IGU_08": "Vom Host entfernt.",
       "K_IGU_10": "Entfernt wegen ungültiger Eigenschaft.",
-      "K_IGU_14": "Es können keine weiteren Blaue-Zone-Generatoren installiert werden."
+      "K_IGU_14": "Es können keine weiteren Blaue-Zone-Generatoren installiert werden.",
+      "K_IGU_15": "Dieses Team kann nicht gewählt werden. Maximale Anzahl der Spieler pro Team überschritten."
+    },
+    "NS_UGC_UI": {
+      "K_IGU_04": "TEAM {TeamNumber}",
+      "K_IGU_02": "AKTUELL",
+      "K_IGU_08": "VOLL",
+      "K_IGU_05": "MATCH-ERGEBNISSE",
+      "K_IGU_01": "RUNDENERGEBNISSE",
+      "K_IGU_07": "WECHSELN",
+      "K_IGU_06": "TEAM WÄHLEN",
+      "K_IGU_03": "GESAMT"
     },
     "NS_UGC_ACTIONRESTRICTDEVICE": {
       "K_IGU_02": "Schränkt bestimmte Spieleraktionen ein oder erlaubt sie",
@@ -2588,7 +2617,7 @@
       "K_IGU_65": "CREATOR-ROLLE ÜBERNEHMEN",
       "K_IGU_73": "Verbesserungswürdig",
       "K_IGU_74": "Die Datei wird konvertiert. Möchtest du fortfahren?\nDiese Datei kann nicht abgespielt werden, solange sie nicht konvertiert ist.",
-      "K_IGU_66": "CREATOR",
+      "K_IGU_66": "CREATOR-INFO",
       "K_IGU_58": "Zuletzt geändert vom Creator",
       "K_IGU_04": "GERÄT",
       "K_IGU_15": "Möchtest du diese Aktion wirklich ausführen? Alle Änderungen gehen verloren.",
@@ -2603,9 +2632,9 @@
       "K_IGU_63": "Beschreibung",
       "K_IGU_71": "Eine Beschreibung des Modus, einschließlich seiner wichtigsten Funktionen und Regeln (maximal 4.000 Zeichen in allen Sprachen).",
       "K_IGU_60": "Modus-Name",
-      "K_IGU_68": "Der Name, der zur Identifizierung des Modus verwendet wird (nur Buchstaben und Zahlen, maximal 30 Zeichen).",
+      "K_IGU_68": "Der Name, der zur Identifizierung des Modus verwendet wird (nur Buchstaben und Zahlen, maximal 30 Zeichen).\nDie ist ein Pflichtfeld.",
       "K_IGU_61": "Version",
-      "K_IGU_69": "Die aktuelle Version des Modus (bis zu 3 Ziffern für Haupt- und Nebenversionen).",
+      "K_IGU_69": "Die aktuelle Version des Modus (bis zu 3 Ziffern für Haupt- und Nebenversionen).\nDie ist ein Pflichtfeld.",
       "K_IGU_34": "Keine",
       "K_IGU_72": "Keine",
       "K_IGU_01": "OBJEKTLISTE",
@@ -2632,7 +2661,7 @@
       "K_IGU_02": "EINSTELLUNGEN",
       "K_IGU_32": "Zuschauer",
       "K_IGU_62": "Tags",
-      "K_IGU_70": "Tags zur Kategorisierung des Modus (1 Haupt-Tag erforderlich, bis zu 2 Sub-Tags)",
+      "K_IGU_70": "Tags zur Kategorisierung des Modus (1 Haupt-Tag erforderlich, bis zu 2 Sub-Tags).\nDie ist ein Pflichtfeld.",
       "K_IGU_07": "TEAMS",
       "K_IGU_37": "HOST ÜBERTRAGEN",
       "K_IGU_38": "Host an {PlayerName} übertragen",
@@ -2705,7 +2734,7 @@
       "K_IGU_093": "Nur Charaktere",
       "K_IGU_094": "Nur Fahrzeuge",
       "K_IGU_072": "Ausgewogen",
-      "K_IGU_071": "Benutzerdefiniert",
+      "K_IGU_071": "Host-Zuweisung",
       "K_IGU_073": "Sequentiell",
       "K_IGU_096": "Minuten, Sekunden (MM:SS)",
       "K_IGU_097": "Minuten, Sekunden, Millisekunden (MM:SS:MS)",
@@ -2746,7 +2775,8 @@
       "K_IGU_040": "Schneesturm",
       "K_IGU_042": "EMP",
       "K_IGU_039": "Keine",
-      "K_IGU_041": "Sandsturm"
+      "K_IGU_041": "Sandsturm",
+      "K_IGU_103": "Teamauswahl-UI"
     },
     "NS_UGC_HUDDEVICE": {
       "K_IGU_13": "Aktiviert das Zielgerät, wenn dieses Gerät ausgelöst wird.",
@@ -3456,7 +3486,7 @@
     },
     "NS_UGC_SAVEOWNERCHECK": {
       "K_IGU_01": "ZU CREATOR GEHEN",
-      "K_IGU_00": "Dieser Datei ist kein Creator zugewiesen. Trotzdem speichern?"
+      "K_IGU_00": "Dieser Datei sind keine Creator-Informationen zugewiesen. Trotzdem speichern?"
     },
     "NS_UGC_SETTINGS": {
       "K_IGU_12": "Legt die Kameraperspektive des Spielers fest.",
@@ -3472,7 +3502,7 @@
       "K_IGU_18": "Legt die Dauer fest, für die die Todeskiste bestehen bleibt.",
       "K_IGU_37": "Todeskisten-Dauer (Sek.)",
       "K_IGU_39": "Team-Zuweisungsmethode",
-      "K_IGU_40": "Lege fest, wie die Spieler den Teams zugewiesen werden.\nBenutzerdefiniert: Die Spieler wählen ihre Teams manuell aus.\nAusgewogen: Die Spieler werden nach dem Zufallsprinzip zugewiesen und automatisch in gleichgroße Teams eingeteilt.\nSequentiell: Die Spieler werden nach dem Zufallsprinzip zugewiesen und in fortlaufender Reihenfolge in Teams eingeteilt.",
+      "K_IGU_40": "Lege fest, wie die Spieler den Teams zugewiesen werden.\nHost-Zuweisung: Der Host weist die Spieler manuell ihren Teams zu.\nAusgewogen: Die Spieler werden nach dem Zufallsprinzip zugewiesen und automatisch in gleichgroße Teams eingeteilt.\nSequentiell: Die Spieler werden nach dem Zufallsprinzip zugewiesen und in fortlaufender Reihenfolge in Teams eingeteilt.\nTeamauswahl-UI: Während der Bereitschaftsphase wird eine Teamauswahl-UI angezeigt, über die die Spieler ihr Team auswählen können. Spieler, die kein Team auswählen, werden nach dem Zufallsprinzip Teams mit weniger Mitgliedern zugewiesen, um die Teamgrößen ausgeglichen zu halten.",
       "K_IGU_01": "Legt den Modus fest.",
       "K_IGU_20": "Modus-Typ",
       "K_IGU_15": "Lege fest, ob beim Respawn ein Unverwundbarkeits-Buff angewendet wird.",
@@ -3491,6 +3521,8 @@
       "K_IGU_41": "Inventarübernahme",
       "K_IGU_19": "Lege fest, ob die Teamnummer im Killfeed angezeigt wird.",
       "K_IGU_38": "Teamnummern im Killfeed anzeigen",
+      "K_IGU_46": "Lege fest, ob Spieler während des Matches die Punktetafel aufrufen und ansehen können.",
+      "K_IGU_45": "Punktetafel anzeigen",
       "K_IGU_09": "Lege die Anzahl der Spieler pro Team fest.",
       "K_IGU_28": "Teamgröße",
       "K_IGU_10": "Lege den Schadensfaktor für Teambeschuss fest.",
@@ -4502,7 +4534,7 @@
       "K_IGU_65": "TAKE CREATOR ROLE",
       "K_IGU_73": "Warning",
       "K_IGU_74": "The file will be converted. Do you want to continue?\r\nThis file cannot be played unless it is converted.",
-      "K_IGU_66": "CREATOR",
+      "K_IGU_66": "CREATOR INFO",
       "K_IGU_58": "Last modified by creator",
       "K_IGU_04": "DEVICE",
       "K_IGU_15": "Do you want to proceed with this action? All changes will be lost.",
@@ -4517,9 +4549,9 @@
       "K_IGU_63": "Description",
       "K_IGU_71": "A description of the mode, including its key features and rules (up to 4,000 characters across all languages).",
       "K_IGU_60": "Mode Name",
-      "K_IGU_68": "The name used to identify the mode (letters and numbers only, up to 30 characters).",
+      "K_IGU_68": "The name used to identify the mode (letters and numbers only, up to 30 characters).\r\nThis field is required.",
       "K_IGU_61": "Version",
-      "K_IGU_69": "The current version of the mode (up to 3 digits for both major and minor versions).",
+      "K_IGU_69": "The current version of the mode (up to 3 digits for both major and minor versions).\r\nThis field is required.",
       "K_IGU_34": "None",
       "K_IGU_72": "None",
       "K_IGU_01": "OBJECT LIST",
@@ -4546,7 +4578,7 @@
       "K_IGU_02": "SETTINGS",
       "K_IGU_32": "Spectator",
       "K_IGU_62": "Tags",
-      "K_IGU_70": "Tags used to categorize the mode (1 main tag required, up to 2 sub tags).",
+      "K_IGU_70": "Tags used to categorize the mode (1 main tag required, up to 2 sub tags).\r\nThis field is required.",
       "K_IGU_07": "TEAMS",
       "K_IGU_37": "TRANSFER HOST",
       "K_IGU_38": "Transfer Host to {PlayerName}",
@@ -4619,7 +4651,7 @@
       "K_IGU_093": "Character Only",
       "K_IGU_094": "Vehicle Only",
       "K_IGU_072": "Balanced",
-      "K_IGU_071": "Custom",
+      "K_IGU_071": "Host Assignment",
       "K_IGU_073": "Sequential",
       "K_IGU_096": "Minutes, Seconds (MM:SS)",
       "K_IGU_097": "Minutes, Seconds, Milliseconds (MM:SS:MS)",
@@ -4660,7 +4692,8 @@
       "K_IGU_040": "Blizzard",
       "K_IGU_042": "EMP",
       "K_IGU_039": "None",
-      "K_IGU_041": "Sandstorm"
+      "K_IGU_041": "Sandstorm",
+      "K_IGU_103": "Team Selection UI"
     },
     "NS_UGC_HUD": {
       "K_IGU_04": "POINTS",
@@ -5379,7 +5412,7 @@
     },
     "NS_UGC_SAVEOWNERCHECK": {
       "K_IGU_01": "GO TO CREATOR",
-      "K_IGU_00": "No creator is assigned to this file. Do you want to save anyway?"
+      "K_IGU_00": "No creator information is assigned to this file. Do you want to save anyway?"
     },
     "NS_UGC_SETTINGS": {
       "K_IGU_12": "Set the player's camera view.",
@@ -5395,7 +5428,7 @@
       "K_IGU_18": "Set the duration for which the deathbox remains.",
       "K_IGU_37": "Deathbox Duration (s)",
       "K_IGU_39": "Team Assignment Method",
-      "K_IGU_40": "Set how players are assigned to teams.\r\nCustom: Players manually select their teams.\r\nBalanced: Players are assigned at random and automatically placed into evenly sized teams.\r\nSequential: Players are assigned at random and placed into teams in sequential order.",
+      "K_IGU_40": "Set how players are assigned to teams.\r\nHost Assignment: The host manually assigns players to teams.\r\nBalanced: Players are assigned at random and automatically placed into evenly sized teams.\r\nSequential: Players are assigned at random and placed into teams in sequential order.\r\nTeam Selection UI: A team selection UI is displayed during the standby phase, allowing players to choose their team. Players who do not select a team are assigned at random to teams with fewer members to keep team sizes balanced.",
       "K_IGU_01": "Determine the type of mode.",
       "K_IGU_20": "Mode Type",
       "K_IGU_15": "Determine whether to apply an invincibility buff on respawn.",
@@ -5414,6 +5447,8 @@
       "K_IGU_41": "Inventory Item Carry-Over",
       "K_IGU_19": "Determine whether to show each team's number in the killfeed.",
       "K_IGU_38": "Show Killfeed Team Numbers",
+      "K_IGU_46": "Determine whether players can open and view the scoreboard during the match.",
+      "K_IGU_45": "Show Scoreboard",
       "K_IGU_09": "Set the number of players per team.",
       "K_IGU_28": "Team Size",
       "K_IGU_10": "Set the damage modifier for friendly fire.",
@@ -5542,7 +5577,10 @@
       "K_IGU_14": "Cannot install any more Blue Zone Generators.",
       "K_IGU_05": "Outside of map.",
       "K_IGU_03": "Cannot play. Maximum number of events per device exceeded.",
-      "K_IGU_02": "Cannot play. Maximum number of objects exceeded."
+      "K_IGU_02": "Cannot play. Maximum number of objects exceeded.",
+      "K_IGU_16": "Required fields are missing. Please try again.",
+      "K_IGU_15": "Cannot select this team. Maximum number of players per team exceeded.",
+      "K_IGU_17": "Test player limit ({Count}) exceeded."
     },
     "NS_UGC_TAG": {
       "K_IGU_08": "Common Tags",
@@ -5685,6 +5723,16 @@
       "K_IGU_21": "Trigger Area Device",
       "K_IGU_12": "Set the trigger condition.\r\nOn Enter: Triggers an event when entering the trigger area.\r\nOn Exit: Triggers an event when exiting the trigger area.\r\nBoth: Triggers an event when entering or exiting the trigger area.",
       "K_IGU_32": "Trigger Type"
+    },
+    "NS_UGC_UI": {
+      "K_IGU_02": "CURRENT",
+      "K_IGU_08": "FULL",
+      "K_IGU_05": "MATCH RESULTS",
+      "K_IGU_01": "ROUND RESULTS",
+      "K_IGU_07": "SWITCH",
+      "K_IGU_04": "TEAM {TeamNumber}",
+      "K_IGU_06": "SELECT TEAM",
+      "K_IGU_03": "TOTAL"
     },
     "NS_UGC_VEHICLESPAWNDEVICE": {
       "K_IGU_17": "Enables the target device when this device is triggered.",
@@ -5838,13 +5886,26 @@
       "K_IGU_05": "Fuera del mapa.",
       "K_IGU_03": "No se puede jugar. Número máximo de eventos por dispositivo superado.",
       "K_IGU_02": "No se puede jugar. Número máximo de objetos superado.",
+      "K_IGU_16": "Faltan campos obligatorios. Vuelve a intentarlo más tarde.",
+      "K_IGU_17": "Se ha excedido el límite de ({Count}) jugadores de prueba.",
       "K_IGU_12": "Se ha desmantelado un generador de zona azul.",
       "K_IGU_11": "Se ha instalado un generador de zona azul.",
       "K_IGU_07": "Has sido asignado como anfitrión.",
       "K_IGU_09": "El anfitrión se ha desconectado.",
       "K_IGU_08": "Expulsado por el anfitrión.",
       "K_IGU_10": "Expulsado por propiedad no válida.",
-      "K_IGU_14": "No se pueden instalar más generadores de zona azul."
+      "K_IGU_14": "No se pueden instalar más generadores de zona azul.",
+      "K_IGU_15": "No puedes seleccionar este equipo. Se ha superado el número máximo de jugadores por equipo."
+    },
+    "NS_UGC_UI": {
+      "K_IGU_04": "EQUIPO {TeamNumber}",
+      "K_IGU_02": "ACTUAL",
+      "K_IGU_08": "LLENO",
+      "K_IGU_05": "RESULTADOS DE LA PARTIDA",
+      "K_IGU_01": "RESULTADOS DE LA RONDA",
+      "K_IGU_07": "CAMBIAR",
+      "K_IGU_06": "SELECCIONAR EQUIPO",
+      "K_IGU_03": "TOTAL"
     },
     "NS_UGC_ACTIONRESTRICTDEVICE": {
       "K_IGU_02": "Restringe o permite acciones específicas del jugador.",
@@ -6468,7 +6529,7 @@
       "K_IGU_65": "ASUMIR EL ROL DE CREADOR",
       "K_IGU_73": "Advertencia",
       "K_IGU_74": "El archivo se convertirá. ¿Quieres continuar?\nEste archivo no puede reproducirse a menos que se convierta.",
-      "K_IGU_66": "CREADOR",
+      "K_IGU_66": "INFORMACIÓN DEL CREADOR",
       "K_IGU_58": "Modificado por última vez por el creador",
       "K_IGU_04": "DISPOSITIVO",
       "K_IGU_15": "¿Quieres continuar con esta acción? Se perderán todos los cambios.",
@@ -6483,9 +6544,9 @@
       "K_IGU_63": "Descripción",
       "K_IGU_71": "Una descripción del modo, incluyendo funciones principales y reglas (hasta 4000 caracteres en todos los idiomas).",
       "K_IGU_60": "Nombre del modo",
-      "K_IGU_68": "El nombre que se utiliza para identificar el modo (solo letras y números con un máximo de 30\u00A0caracteres).",
+      "K_IGU_68": "El nombre que se utiliza para identificar el modo (solo letras y números con un máximo de 30\u00A0caracteres).\nEste campo es obligatorio.",
       "K_IGU_61": "Versión",
-      "K_IGU_69": "La versión actual del modo (hasta tres dígitos para versiones tanto mayores como menores).",
+      "K_IGU_69": "La versión actual del modo (hasta tres dígitos para versiones tanto mayores como menores).\nEste campo es obligatorio.",
       "K_IGU_34": "Ninguno",
       "K_IGU_72": "Nada",
       "K_IGU_01": "LISTA DE OBJETOS",
@@ -6512,7 +6573,7 @@
       "K_IGU_02": "AJUSTES",
       "K_IGU_32": "Espectador",
       "K_IGU_62": "Etiquetas",
-      "K_IGU_70": "Etiquetas usadas para categorizar el modo (mínimo una etiqueta principal, y dos subetiquetas como máximo).",
+      "K_IGU_70": "Etiquetas usadas para categorizar el modo (mínimo una etiqueta principal y dos subetiquetas como máximo).\nEste campo es obligatorio.",
       "K_IGU_07": "EQUIPOS",
       "K_IGU_37": "TRANSFERIR ANFITRIÓN",
       "K_IGU_38": "Transferir anfitrión a {PlayerName}",
@@ -6585,7 +6646,7 @@
       "K_IGU_093": "Solo personajes",
       "K_IGU_094": "Solo vehículos",
       "K_IGU_072": "Equilibrado",
-      "K_IGU_071": "Personalizado",
+      "K_IGU_071": "Asignación del anfitrión",
       "K_IGU_073": "Secuencial",
       "K_IGU_096": "Minutos, segundos (MM:SS)",
       "K_IGU_097": "Minutos, segundos, milisegundos (MM:SS:MS)",
@@ -6626,7 +6687,8 @@
       "K_IGU_040": "Ventisca",
       "K_IGU_042": "Pulso electromagnético",
       "K_IGU_039": "Ninguno",
-      "K_IGU_041": "Tormenta de arena"
+      "K_IGU_041": "Tormenta de arena",
+      "K_IGU_103": "IU de selección de equipo"
     },
     "NS_UGC_HUDDEVICE": {
       "K_IGU_13": "Activa el dispositivo objetivo cuando se acciona este.",
@@ -7336,7 +7398,7 @@
     },
     "NS_UGC_SAVEOWNERCHECK": {
       "K_IGU_01": "IR A CREADOR",
-      "K_IGU_00": "No hay ningún creador asignado a este archivo. ¿Quieres guardarlo de todos modos?"
+      "K_IGU_00": "No hay ninguna información de creador asignada a este archivo. ¿Quieres guardarla de todos modos?"
     },
     "NS_UGC_SETTINGS": {
       "K_IGU_12": "Establece la perspectiva de cámara del jugador.",
@@ -7352,7 +7414,7 @@
       "K_IGU_18": "Establece la duración de la caja de jugador.",
       "K_IGU_37": "Duración de las cajas de jugador (s)",
       "K_IGU_39": "Método de asignación de equipos",
-      "K_IGU_40": "Elige el método de asignación de equipos.\nPersonalizado: Los jugadores seleccionan manualmente sus equipos.\nEquilibrado: Los jugadores se asignan aleatoriamente y se reparten de forma equilibrada en equipos.\nSecuencial: Los jugadores se asignan aleatoriamente y se colocan en los equipos secuencialmente.",
+      "K_IGU_40": "Elige el método de asignación de equipos.\nAsignación del anfitrión: el anfitrión asigna manualmente los equipos a los jugadores.\nEquilibrado: los jugadores se asignan aleatoriamente y se reparten de forma equilibrada en equipos.\nSecuencial: los jugadores se asignan aleatoriamente y se colocan en los equipos secuencialmente.\nIU de selección de equipo: una interfaz de selección de equipo se muestra durante la fase de espera, permitiendo a los jugadores elegir su equipo. A los jugadores que no eligen un equipo se les asignarán aleatoriamente los equipos con menos miembros para mantener los tamaños de los equipos equilibrados.",
       "K_IGU_01": "Determina el tipo de modo.",
       "K_IGU_20": "Tipo de modo",
       "K_IGU_15": "Determina si se aplica una ventaja de inmunidad al reaparecer.",
@@ -7371,6 +7433,8 @@
       "K_IGU_41": "Transferencia de objetos del inventario",
       "K_IGU_19": "Determina si aparece el número de cada equipo en la Killfeed.",
       "K_IGU_38": "Mostrar número de los equipos en la Killfeed",
+      "K_IGU_46": "Determina si los jugadores pueden abrir y ver el marcador durante la partida.",
+      "K_IGU_45": "Mostrar marcador",
       "K_IGU_09": "Establece el número de jugadores por equipo.",
       "K_IGU_28": "Tamaño de los equipos",
       "K_IGU_10": "Establece el modificador de daño para el fuego amigo.",
@@ -7778,13 +7842,26 @@
       "K_IGU_05": "Fuera del mapa.",
       "K_IGU_03": "No se puede jugar. Número máximo de eventos por dispositivo superado.",
       "K_IGU_02": "No se puede jugar. Número máximo de objetos superado.",
+      "K_IGU_16": "Faltan campos obligatorios. Vuelve a intentarlo más tarde.",
+      "K_IGU_17": "Se ha excedido el límite de ({Count}) jugadores de prueba.",
       "K_IGU_12": "Se ha desmantelado un generador de zona azul.",
       "K_IGU_11": "Se ha instalado un generador de zona azul.",
       "K_IGU_07": "Has sido asignado como anfitrión.",
       "K_IGU_09": "El anfitrión se ha desconectado.",
       "K_IGU_08": "Expulsado por el anfitrión.",
       "K_IGU_10": "Expulsado por propiedad no válida.",
-      "K_IGU_14": "No se pueden instalar más generadores de zona azul."
+      "K_IGU_14": "No se pueden instalar más generadores de zona azul.",
+      "K_IGU_15": "No puedes seleccionar este equipo. Se ha superado el número máximo de jugadores por equipo."
+    },
+    "NS_UGC_UI": {
+      "K_IGU_04": "EQUIPO {TeamNumber}",
+      "K_IGU_02": "ACTUAL",
+      "K_IGU_08": "LLENO",
+      "K_IGU_05": "RESULTADOS DE LA PARTIDA",
+      "K_IGU_01": "RESULTADOS DE LA RONDA",
+      "K_IGU_07": "CAMBIAR",
+      "K_IGU_06": "SELECCIONAR EQUIPO",
+      "K_IGU_03": "TOTAL"
     },
     "NS_UGC_ACTIONRESTRICTDEVICE": {
       "K_IGU_02": "Restringe o permite acciones específicas del jugador.",
@@ -8408,7 +8485,7 @@
       "K_IGU_65": "ASUMIR EL ROL DE CREADOR",
       "K_IGU_73": "Advertencia",
       "K_IGU_74": "El archivo se convertirá. ¿Quieres continuar?\nEste archivo no puede reproducirse a menos que se convierta.",
-      "K_IGU_66": "CREADOR",
+      "K_IGU_66": "INFORMACIÓN DEL CREADOR",
       "K_IGU_58": "Modificado por última vez por el creador",
       "K_IGU_04": "DISPOSITIVO",
       "K_IGU_15": "¿Quieres continuar con esta acción? Se perderán todos los cambios.",
@@ -8423,9 +8500,9 @@
       "K_IGU_63": "Descripción",
       "K_IGU_71": "Una descripción del modo, incluyendo funciones principales y reglas (hasta 4000 caracteres en todos los idiomas).",
       "K_IGU_60": "Nombre del modo",
-      "K_IGU_68": "El nombre que se utiliza para identificar el modo (solo letras y números con un máximo de 30\u00A0caracteres).",
+      "K_IGU_68": "El nombre que se utiliza para identificar el modo (solo letras y números con un máximo de 30\u00A0caracteres).\nEste campo es obligatorio.",
       "K_IGU_61": "Versión",
-      "K_IGU_69": "La versión actual del modo (hasta tres dígitos para versiones tanto mayores como menores).",
+      "K_IGU_69": "La versión actual del modo (hasta tres dígitos para versiones tanto mayores como menores).\nEste campo es obligatorio.",
       "K_IGU_34": "Ninguno",
       "K_IGU_72": "Nada",
       "K_IGU_01": "LISTA DE OBJETOS",
@@ -8452,7 +8529,7 @@
       "K_IGU_02": "AJUSTES",
       "K_IGU_32": "Espectador",
       "K_IGU_62": "Etiquetas",
-      "K_IGU_70": "Etiquetas usadas para categorizar el modo (mínimo una etiqueta principal, y dos subetiquetas como máximo).",
+      "K_IGU_70": "Etiquetas usadas para categorizar el modo (mínimo una etiqueta principal y dos subetiquetas como máximo).\nEste campo es obligatorio.",
       "K_IGU_07": "EQUIPOS",
       "K_IGU_37": "TRANSFERIR ANFITRIÓN",
       "K_IGU_38": "Transferir anfitrión a {PlayerName}",
@@ -8525,7 +8602,7 @@
       "K_IGU_093": "Solo personajes",
       "K_IGU_094": "Solo vehículos",
       "K_IGU_072": "Equilibrado",
-      "K_IGU_071": "Personalizado",
+      "K_IGU_071": "Asignación del anfitrión",
       "K_IGU_073": "Secuencial",
       "K_IGU_096": "Minutos, segundos (MM:SS)",
       "K_IGU_097": "Minutos, segundos, milisegundos (MM:SS:MS)",
@@ -8566,7 +8643,8 @@
       "K_IGU_040": "Ventisca",
       "K_IGU_042": "Pulso electromagnético",
       "K_IGU_039": "Ninguno",
-      "K_IGU_041": "Tormenta de arena"
+      "K_IGU_041": "Tormenta de arena",
+      "K_IGU_103": "IU de selección de equipo"
     },
     "NS_UGC_HUDDEVICE": {
       "K_IGU_13": "Activa el dispositivo objetivo cuando se acciona este.",
@@ -9276,7 +9354,7 @@
     },
     "NS_UGC_SAVEOWNERCHECK": {
       "K_IGU_01": "IR A CREADOR",
-      "K_IGU_00": "No hay ningún creador asignado a este archivo. ¿Quieres guardarlo de todos modos?"
+      "K_IGU_00": "No hay ninguna información de creador asignada a este archivo. ¿Quieres guardarla de todos modos?"
     },
     "NS_UGC_SETTINGS": {
       "K_IGU_12": "Establece la perspectiva de cámara del jugador.",
@@ -9292,7 +9370,7 @@
       "K_IGU_18": "Establece la duración de la caja de jugador.",
       "K_IGU_37": "Duración de las cajas de jugador (s)",
       "K_IGU_39": "Método de asignación de equipos",
-      "K_IGU_40": "Elige el método de asignación de equipos.\nPersonalizado: Los jugadores seleccionan manualmente sus equipos.\nEquilibrado: Los jugadores se asignan aleatoriamente y se reparten de forma equilibrada en equipos.\nSecuencial: Los jugadores se asignan aleatoriamente y se colocan en los equipos secuencialmente.",
+      "K_IGU_40": "Elige el método de asignación de equipos.\nAsignación del anfitrión: el anfitrión asigna manualmente los equipos a los jugadores.\nEquilibrado: los jugadores se asignan aleatoriamente y se reparten de forma equilibrada en equipos.\nSecuencial: los jugadores se asignan aleatoriamente y se colocan en los equipos secuencialmente.\nIU de selección de equipo: una interfaz de selección de equipo se muestra durante la fase de espera, permitiendo a los jugadores elegir su equipo. A los jugadores que no eligen un equipo se les asignarán aleatoriamente los equipos con menos miembros para mantener los tamaños de los equipos equilibrados.",
       "K_IGU_01": "Determina el tipo de modo.",
       "K_IGU_20": "Tipo de modo",
       "K_IGU_15": "Determina si se aplica una ventaja de inmunidad al reaparecer.",
@@ -9311,6 +9389,8 @@
       "K_IGU_41": "Transferencia de objetos del inventario",
       "K_IGU_19": "Determina si aparece el número de cada equipo en la Killfeed.",
       "K_IGU_38": "Mostrar número de los equipos en la Killfeed",
+      "K_IGU_46": "Determina si los jugadores pueden abrir y ver el marcador durante la partida.",
+      "K_IGU_45": "Mostrar marcador",
       "K_IGU_09": "Establece el número de jugadores por equipo.",
       "K_IGU_28": "Tamaño de los equipos",
       "K_IGU_10": "Establece el modificador de daño para el fuego amigo.",
@@ -9718,13 +9798,26 @@
       "K_IGU_05": "Extérieur de la carte.",
       "K_IGU_03": "Impossible de jouer. Nombre maximal d'événements par dispositif dépassé.",
       "K_IGU_02": "Impossible de jouer. Nombre maximal d'éléments dépassé.",
+      "K_IGU_16": "Des champs obligatoires ne sont pas remplis. Veuillez réessayer.",
+      "K_IGU_17": "Limite de joueurs de test ({Count}) dépassée.",
       "K_IGU_12": "Un générateur de zone bleue a été démantelé.",
       "K_IGU_11": "Un générateur de zone bleue a été installé.",
       "K_IGU_07": "Vous avez été désigné comme hôte.",
       "K_IGU_09": "Hôte déconnecté.",
       "K_IGU_08": "Exclu par l'hôte.",
       "K_IGU_10": "Exclu en raison d'une propriété non valide.",
-      "K_IGU_14": "Impossible d’installer plus de générateurs de zone bleue"
+      "K_IGU_14": "Impossible d’installer plus de générateurs de zone bleue",
+      "K_IGU_15": "Impossible de sélectionner cette équipe. Le nombre max de joueurs par équipe est dépassé."
+    },
+    "NS_UGC_UI": {
+      "K_IGU_04": "ÉQUIPE {TeamNumber}",
+      "K_IGU_02": "ACTUEL",
+      "K_IGU_08": "COMPLET",
+      "K_IGU_05": "RÉSULTATS DE LA PARTIE",
+      "K_IGU_01": "RÉSULTATS DE LA MANCHE",
+      "K_IGU_07": "CHANGER",
+      "K_IGU_06": "SÉLECTIONNER ÉQUIPE",
+      "K_IGU_03": "TOTAL"
     },
     "NS_UGC_ACTIONRESTRICTDEVICE": {
       "K_IGU_02": "Limiter ou autoriser les actions spécifiques du joueur.",
@@ -10348,7 +10441,7 @@
       "K_IGU_65": "PRENDRE LE RÔLE DE CRÉATEUR",
       "K_IGU_73": "Avertissement",
       "K_IGU_74": "Le fichier va être converti. Souhaitez-vous continuer\u00A0? \nIl est impossible de lire ce fichier sans l’avoir d’abord converti.",
-      "K_IGU_66": "CRÉATEUR",
+      "K_IGU_66": "INFOS SUR LE CRÉATEUR",
       "K_IGU_58": "Dernière modification par le créateur",
       "K_IGU_04": "DISPOSITIF",
       "K_IGU_15": "Souhaitez-vous poursuivre cette action\u00A0? Toutes les modifications seront perdues.",
@@ -10363,9 +10456,9 @@
       "K_IGU_63": "Description",
       "K_IGU_71": "Une description du mode, comportant ses fonctionnalités clés, ainsi que ses règles principales (jusqu’à 4\u00A0000\u00A0caractères toutes langues confondues).",
       "K_IGU_60": "Nom du mode",
-      "K_IGU_68": "Le nom utilisé pour identifier le mode (lettres et chiffres uniquement, jusqu’à 30\u00A0caractères).",
+      "K_IGU_68": "Le nom utilisé pour identifier le mode (lettres et chiffres uniquement, jusqu’à 30\u00A0caractères).\nCe champ est obligatoire.",
       "K_IGU_61": "Version",
-      "K_IGU_69": "La version actuelle du mode (jusqu’à 3\u00A0chiffres pour les versions majeures et mineures).",
+      "K_IGU_69": "La version actuelle du mode (jusqu’à 3\u00A0chiffres pour les versions majeures et mineures).\nCe champ est obligatoire.",
       "K_IGU_34": "Aucun",
       "K_IGU_72": "Aucune",
       "K_IGU_01": "LISTE D’ÉLÉMENTS",
@@ -10392,7 +10485,7 @@
       "K_IGU_02": "PARAMÈTRES",
       "K_IGU_32": "Spectateur",
       "K_IGU_62": "Balises",
-      "K_IGU_70": "Balises utilisées pour classer le mode (1\u00A0balise principale requise, jusqu’à 2\u00A0sous-balises).",
+      "K_IGU_70": "Balises utilisées pour classer le mode (1\u00A0balise principale requise, jusqu’à 2\u00A0sous-balises).\nCe champ est obligatoire.",
       "K_IGU_07": "ÉQUIPES",
       "K_IGU_37": "TRANSFÉRER L’HÔTE",
       "K_IGU_38": "Transférer le rôle d’hôte à {PlayerName}",
@@ -10465,7 +10558,7 @@
       "K_IGU_093": "Personnage uniquement",
       "K_IGU_094": "Véhicule uniquement",
       "K_IGU_072": "Équilibré",
-      "K_IGU_071": "Perso.",
+      "K_IGU_071": "Attribution par l’hôte",
       "K_IGU_073": "Séquentiel",
       "K_IGU_096": "Minutes, Secondes (MM:SS)",
       "K_IGU_097": "Minutes, Secondes, Millisecondes (MM:SS:MS)",
@@ -10506,7 +10599,8 @@
       "K_IGU_040": "Blizzard",
       "K_IGU_042": "EMP",
       "K_IGU_039": "Aucun",
-      "K_IGU_041": "Tempête de sable"
+      "K_IGU_041": "Tempête de sable",
+      "K_IGU_103": "Interface de sélection des équipes"
     },
     "NS_UGC_HUDDEVICE": {
       "K_IGU_13": "Active le dispositif cible lorsque ce dispositif est déclenché.",
@@ -11216,7 +11310,7 @@
     },
     "NS_UGC_SAVEOWNERCHECK": {
       "K_IGU_01": "ALLER AU CRÉATEUR",
-      "K_IGU_00": "Aucun créateur affecté à ce fichier. Voulez-vous sauvegarder malgré tout\u00A0?"
+      "K_IGU_00": "Aucune information sur le créateur n’est associée à ce fichier. Voulez-vous quand même l’enregistrer\u00A0?"
     },
     "NS_UGC_SETTINGS": {
       "K_IGU_12": "Définissez la vue de la caméra du joueur.",
@@ -11232,7 +11326,7 @@
       "K_IGU_18": "Définissez la durée pendant laquelle la caisse de joueur reste visible.",
       "K_IGU_37": "Durée des coffres de joueur (s)",
       "K_IGU_39": "Méthode d’affectation d’équipes",
-      "K_IGU_40": "Définir la façon dont les joueurs sont affectés aux équipes.\nPersonnalisé\u00A0: les joueurs choisissent manuellement leurs équipes.\nÉquilibré\u00A0: les joueurs sont affectés aléatoirement et placés automatiquement dans des équipes de taille égale.\nSéquentiel\u00A0: les joueurs sont affectés aléatoirement et placés dans des équipes par ordre séquentiel.",
+      "K_IGU_40": "Définir la manière dont les joueurs sont affectés aux équipes.\nAttribution par l’hôte\u00A0: l’hôte affecte manuellement les joueurs aux équipes.\nÉquilibré\u00A0: les joueurs sont affectés aléatoirement et placés automatiquement dans des équipes de taille égale.\nSéquentiel\u00A0: les joueurs sont affectés aléatoirement et placés dans des équipes par ordre séquentiel.\nInterface de sélection des équipes\u00A0: une interface de sélection des équipes s’affiche pendant la phase d’attente, permettant aux joueurs de choisir leur équipe. Les joueurs qui ne sélectionnent pas d’équipe sont affectés au hasard aux équipes comptant le moins de membres afin de maintenir l’équilibre entre les équipes.",
       "K_IGU_01": "Déterminer le type de mode.",
       "K_IGU_20": "Type de mode",
       "K_IGU_15": "Déterminez l'application ou non d'un bonus d'invincibilité à la réapparition.",
@@ -11251,6 +11345,8 @@
       "K_IGU_41": "Objets d’inventaire conservés",
       "K_IGU_19": "Déterminez si le nombre de joueurs de chaque équipe doit être affiché dans le killfeed.",
       "K_IGU_38": "Afficher les numéros des équipes dans le killfeed",
+      "K_IGU_46": "Déterminez si les joueurs peuvent ouvrir et consulter le tableau des scores pendant la partie.",
+      "K_IGU_45": "Afficher le tableau des scores",
       "K_IGU_09": "Définissez le nombre de joueurs par équipe.",
       "K_IGU_28": "Taille des équipes",
       "K_IGU_10": "Définissez le modificateur de dégâts pour les tirs amis.",
@@ -11658,13 +11754,26 @@
       "K_IGU_05": "Diluar map.",
       "K_IGU_03": "Tidak dapat dimainkan. Melebihi Jumlah event maksimal per perangkat.",
       "K_IGU_02": "Tidak dapat dimainkan. melebihi Jumlah objek maksimum.",
+      "K_IGU_16": "Ada kolom wajib yang belum diisi. Silakan coba lagi.",
+      "K_IGU_17": "Batas jumlah pemain uji ({Count}) telah terlampaui.",
       "K_IGU_12": "Blue Zone Generator telah dibongkar.",
       "K_IGU_11": "Blue Zone Generator telah dipasang.",
       "K_IGU_07": "Kamu telah ditunjuk sebagai host.",
       "K_IGU_09": "Host terputus.",
       "K_IGU_08": "Dikeluarkan oleh host.",
       "K_IGU_10": "Dikeluarkan karena properti tidak valid.",
-      "K_IGU_14": "Tidak dapat memasang Blue Zone Generator lagi."
+      "K_IGU_14": "Tidak dapat memasang Blue Zone Generator lagi.",
+      "K_IGU_15": "Tim ini tidak dapat dipilih karena batas maksimum pemain per tim telah terlampaui."
+    },
+    "NS_UGC_UI": {
+      "K_IGU_04": "TIM {TeamNumber}",
+      "K_IGU_02": "SAAT INI",
+      "K_IGU_08": "PENUH",
+      "K_IGU_05": "HASIL MATCH",
+      "K_IGU_01": "HASIL RONDE",
+      "K_IGU_07": "GANTI",
+      "K_IGU_06": "PILIH TIM",
+      "K_IGU_03": "TOTAL"
     },
     "NS_UGC_ACTIONRESTRICTDEVICE": {
       "K_IGU_02": "Batasi atau izinkan aksi pemain tertentu.",
@@ -12288,7 +12397,7 @@
       "K_IGU_65": "AMBIL PERAN KREATOR",
       "K_IGU_73": "Peringatan",
       "K_IGU_74": "File ini akan dikonversi. Apakah kamu ingin melanjutkan? File ini tidak dapat diputar kecuali dikonversi terlebih dahulu.",
-      "K_IGU_66": "KREATOR",
+      "K_IGU_66": "INFO KREATOR",
       "K_IGU_58": "Terakhir diubah oleh kreator",
       "K_IGU_04": "PERANGKAT",
       "K_IGU_15": "Apa kamu ingin melanjutkan? Semua ubahan akan hilang.",
@@ -12303,9 +12412,9 @@
       "K_IGU_63": "Deskripsi",
       "K_IGU_71": "Deskripsi mode, termasuk fitur utama dan aturannya (hingga 4.000 karakter untuk semua bahasa).",
       "K_IGU_60": "Nama Mode",
-      "K_IGU_68": "Nama yang digunakan untuk mengidentifikasi mode (hanya huruf dan angka, maksimal 30 karakter).",
+      "K_IGU_68": "Nama yang digunakan untuk mengidentifikasi mode (hanya huruf dan angka, maksimal 30 karakter). Kolom ini wajib diisi.",
       "K_IGU_61": "Versi",
-      "K_IGU_69": "Versi mode saat ini (hingga 3 digit untuk versi utama dan minor).",
+      "K_IGU_69": "Versi mode saat ini (maksimal 3 digit untuk versi mayor dan 3 digit untuk versi minor). Kolom ini wajib diisi.",
       "K_IGU_34": "Tidak ada",
       "K_IGU_72": "Tidak ada",
       "K_IGU_01": "DAFTAR OBJEK",
@@ -12332,7 +12441,7 @@
       "K_IGU_02": "SETELAN",
       "K_IGU_32": "Penonton",
       "K_IGU_62": "Tag",
-      "K_IGU_70": "Tag yang digunakan untuk mengategorikan mode (1 tag utama wajib, hingga 2 subtag).",
+      "K_IGU_70": "Tag yang digunakan untuk mengategorikan mode (wajib 1 tag utama, maksimal 2 subtag). Kolom ini wajib diisi.",
       "K_IGU_07": "TIM",
       "K_IGU_37": "PINDAHKAN HOST",
       "K_IGU_38": "Pindahkan Host ke {PlayerName}",
@@ -12405,7 +12514,7 @@
       "K_IGU_093": "Karakter Saja",
       "K_IGU_094": "Kendaraan Saja",
       "K_IGU_072": "Seimbang",
-      "K_IGU_071": "Custom",
+      "K_IGU_071": "Penetapan Host",
       "K_IGU_073": "Berurutan",
       "K_IGU_096": "Menit, Detik (MM:SS)",
       "K_IGU_097": "Menit, Detik, Milidetik (MM:SS:MS)",
@@ -12446,7 +12555,8 @@
       "K_IGU_040": "Blizzard",
       "K_IGU_042": "EMP",
       "K_IGU_039": "Tidak ada",
-      "K_IGU_041": "Sandstorm"
+      "K_IGU_041": "Sandstorm",
+      "K_IGU_103": "UI Pemilihan Tim"
     },
     "NS_UGC_HUDDEVICE": {
       "K_IGU_13": "Aktifkan perangkat target saat perangkat ini diaktifkan.",
@@ -13156,7 +13266,7 @@
     },
     "NS_UGC_SAVEOWNERCHECK": {
       "K_IGU_01": "BUKA KREATOR",
-      "K_IGU_00": "Tidak ada kreator yang ditetapkan untuk file ini. Tetap ingin menyimpan?"
+      "K_IGU_00": "Tidak ada informasi kreator yang ditetapkan untuk file ini. Tetap simpan?"
     },
     "NS_UGC_SETTINGS": {
       "K_IGU_12": "Atur view kamera pemain.",
@@ -13172,7 +13282,7 @@
       "K_IGU_18": "Tentukan durasi deathbox.",
       "K_IGU_37": "Durasi Deathbox (dtk)",
       "K_IGU_39": "Metode Penempatan Tim",
-      "K_IGU_40": "Atur cara penempatan pemain ke tim.\nCustom: Pemain memilih tim secara manual.\nSeimbang: Poemain ditempatkan secara acak dan otomatis ke tim dengan jumlah pemain yang sama.\nBeurutan: Pemain ditempatkan secara acak dan ditempatkan ke tim secara berurutan.",
+      "K_IGU_40": "Atur cara pemain ditempatkan ke dalam tim.\nPenetapan oleh Host: Host menempatkan pemain ke dalam tim secara manual.\nSeimbang: Pemain ditempatkan secara acak dan otomatis dibagi ke dalam tim dengan jumlah anggota yang seimbang.\nBerurutan: Pemain dipilih secara acak lalu ditempatkan ke dalam tim secara berurutan.\nUI Pemilihan Tim: UI pemilihan tim akan ditampilkan selama fase standby sehingga pemain dapat memilih tim mereka. Pemain yang tidak memilih tim akan ditempatkan secara acak ke dalam tim dengan jumlah anggota lebih sedikit agar jumlah anggota setiap tim tetap seimbang.",
       "K_IGU_01": "Tentukan tipe mode.",
       "K_IGU_20": "Tipe Mode",
       "K_IGU_15": "Tentukan apakah ingin menggunakan buff invincibility saat respawn.",
@@ -13191,6 +13301,8 @@
       "K_IGU_41": "Item Inventaris Dibawa ke Ronde Berikutnya",
       "K_IGU_19": "Tentukan apakah ingin menampilkan nomor tim di killfeed.",
       "K_IGU_38": "Tamplikan Nomor Tim di Killfeed",
+      "K_IGU_46": "Tentukan apakah pemain dapat membuka dan melihat papan skor selama pertandingan.",
+      "K_IGU_45": "Tampilkan Papan Skor",
       "K_IGU_09": "Atur jumlah pemain per tim.",
       "K_IGU_28": "Hitungan Tim",
       "K_IGU_10": "Atur damage modifier untuk friendly fire.",
@@ -13598,13 +13710,26 @@
       "K_IGU_05": "Fuori dalla mappa.",
       "K_IGU_03": "Non si può giocare. Numero massimo di eventi per dispositivo superato.",
       "K_IGU_02": "Non si può giocare. Numero massimo di oggetti superato.",
+      "K_IGU_16": "Mancano i campi richiesti. Riprova.",
+      "K_IGU_17": "Limite giocatori test ({Count}) superato.",
       "K_IGU_12": "Un generatore di zona blu è stato distrutto.",
       "K_IGU_11": "Un generatore di zona blu è stato installato.",
       "K_IGU_07": "Sei stato assegnato come ospite.",
       "K_IGU_09": "Ospite disconnesso.",
       "K_IGU_08": "Espulso dall'ospite.",
       "K_IGU_10": "Espulso per proprietà non valida.",
-      "K_IGU_14": "Non è possibile installare altri generatori di zona blu."
+      "K_IGU_14": "Non è possibile installare altri generatori di zona blu.",
+      "K_IGU_15": "Impossibile selezionare questa squadra. Superato il numero massimo di giocatori per squadra."
+    },
+    "NS_UGC_UI": {
+      "K_IGU_04": "SQUADRA {TeamNumber}",
+      "K_IGU_02": "ATTUALE",
+      "K_IGU_08": "PIENA",
+      "K_IGU_05": "RISULTATI PARTITA",
+      "K_IGU_01": "RISULTATI ROUND",
+      "K_IGU_07": "CAMBIA",
+      "K_IGU_06": "SELEZIONA SQUADRA",
+      "K_IGU_03": "TOTALE"
     },
     "NS_UGC_ACTIONRESTRICTDEVICE": {
       "K_IGU_02": "Limita o permetti specifiche azioni del giocatore.",
@@ -14228,7 +14353,7 @@
       "K_IGU_65": "PRENDI IL RUOLO DI CREATORE",
       "K_IGU_73": "Attenzione",
       "K_IGU_74": "Il file sarà convertito. Vuoi continuare?\nQuesto file non può essere eseguito se non viene convertito.",
-      "K_IGU_66": "CREATORE",
+      "K_IGU_66": "INFO CREATORE",
       "K_IGU_58": "Ultima modifica del creatore",
       "K_IGU_04": "DISPOSITIVO",
       "K_IGU_15": "Vuoi continuare? Tutte le modifiche verranno perse.",
@@ -14243,9 +14368,9 @@
       "K_IGU_63": "Descrizione",
       "K_IGU_71": "Una descrizione della modalità, incluse le caratteristiche principali e regole (fino a 4.000 caratteri per tutte le lingue).",
       "K_IGU_60": "Nome della modalità",
-      "K_IGU_68": "Il nome usato per identificare la modalità (solo lettere e numeri, fino a 30 caratteri).",
+      "K_IGU_68": "Il nome usato per identificare la modalità (solo lettere e numeri, fino a 30 caratteri).\nQuesto campo è obbligatorio.",
       "K_IGU_61": "Versione",
-      "K_IGU_69": "La versione attuale della modalità (fino a 3 cifre, sia per le versioni principali che secondarie).",
+      "K_IGU_69": "La versione attuale della modalità (fino a 3 cifre, sia per le versioni principali sia per quelle secondarie).\nQuesto campo è obbligatorio.",
       "K_IGU_34": "Nessuno",
       "K_IGU_72": "Nessuno",
       "K_IGU_01": "LISTA OGGETTI",
@@ -14272,7 +14397,7 @@
       "K_IGU_02": "IMPOSTAZIONI",
       "K_IGU_32": "Spettatore",
       "K_IGU_62": "Tag",
-      "K_IGU_70": "Tag usati per categorizzate la modalità (1 tag principale obbligatorio, fino a 2 tag secondari).",
+      "K_IGU_70": "Tag usati per categorizzare la modalità (1 tag principale obbligatorio, fino a 2 tag secondari).\nQuesto campo è obbligatorio.",
       "K_IGU_07": "SQUADRE",
       "K_IGU_37": "TRASFERIMENTO HOST",
       "K_IGU_38": "Trasferisci l'host a {PlayerName}",
@@ -14345,7 +14470,7 @@
       "K_IGU_093": "Solo personaggio",
       "K_IGU_094": "Solo veicolo",
       "K_IGU_072": "Equilibrato",
-      "K_IGU_071": "Personalizzato",
+      "K_IGU_071": "Assegnazione ospite",
       "K_IGU_073": "Sequenziale",
       "K_IGU_096": "Minuti, secondi (MM:SS)",
       "K_IGU_097": "Minuti, secondi, millisecondi (MM:SS:MS)",
@@ -14386,7 +14511,8 @@
       "K_IGU_040": "Bufera",
       "K_IGU_042": "VUOTO",
       "K_IGU_039": "Nessuno",
-      "K_IGU_041": "Tempesta di sabbia"
+      "K_IGU_041": "Tempesta di sabbia",
+      "K_IGU_103": "Interfaccia selezione della squadra"
     },
     "NS_UGC_HUDDEVICE": {
       "K_IGU_13": "Abilita il dispositivo target quando questo dispositivo è innescato.",
@@ -15096,7 +15222,7 @@
     },
     "NS_UGC_SAVEOWNERCHECK": {
       "K_IGU_01": "VAI A \"CREATORE\"",
-      "K_IGU_00": "Nessun creatore assegnato a questo file. Vuoi salvare comunque?"
+      "K_IGU_00": "Nessuna informazione creatore assegnata a questo file. Vuoi salvare comunque?"
     },
     "NS_UGC_SETTINGS": {
       "K_IGU_12": "Imposta la visuale del giocatore.",
@@ -15112,7 +15238,7 @@
       "K_IGU_18": "Imposta la durata di permanenza della cassa di un giocatore ucciso.",
       "K_IGU_37": "Durata cassa di un giocatore ucciso (s)",
       "K_IGU_39": "Metodo di assegnazione alla squadra",
-      "K_IGU_40": "Imposta il metodo di assegnazione alla squadra.\nPersonalizzato: i giocatori scelgono manualmente la propria squadra.\nEquilibrato: i giocatori vengono assegnati in maniera casuale e inseriti automaticamente in squadre di dimensioni omogenee.\nSequenziale: i giocatori vengono assegnati in maniera casuale e inseriti nelle squadre in ordine sequenziale.",
+      "K_IGU_40": "Imposta il metodo di assegnazione alla squadra.\nAssegnazione ospite: l'ospite assegna manualmente i giocatori alle squadre.\nEquilibrato: i giocatori vengono assegnati in maniera casuale e inseriti automaticamente in squadre di dimensioni omogenee.\nSequenziale: i giocatori vengono assegnati in maniera casuale e inseriti nelle squadre in ordine sequenziale.\nInterfaccia selezione della squadra: viene mostrata un'interfaccia di selezione della squadra che permette ai giocatori di scegliere la propria squadra. I giocatori che non selezionano una squadra vengono assegnati casualmente alle squadre con meno membri, per mantenere le squadre bilanciate.",
       "K_IGU_01": "Determina il tipo di modalità.",
       "K_IGU_20": "Modalità tipo",
       "K_IGU_15": "Determina se applicare un potenziamento di invincibilità sulla rigenerazione.",
@@ -15131,6 +15257,8 @@
       "K_IGU_41": "Oggetti dell'inventario conservabili",
       "K_IGU_19": "Determina se mostrare nel killfeed il numero di ogni squadra.",
       "K_IGU_38": "Mostra numeri di killfeed della squadra",
+      "K_IGU_46": "Determina se i giocatori possono aprire e visualizzare la classifica durante la partita.",
+      "K_IGU_45": "Mostra classifica",
       "K_IGU_09": "Imposta il numero di giocatori per squadra.",
       "K_IGU_28": "Dimensione squadra",
       "K_IGU_10": "Imposta il modificatore danno per il fuoco amico.",
@@ -15538,13 +15666,26 @@
       "K_IGU_05": "マップ外に出ました。",
       "K_IGU_03": "イベント数の上限を超えたため、プレイできません。",
       "K_IGU_02": "オブジェクトの最大配置数を超えたため、プレイできません。",
+      "K_IGU_16": "入力必須項目が空欄になっています。もう一度お試しください。",
+      "K_IGU_17": "テストプレイヤー上限 ({Count}) を超えています。",
       "K_IGU_12": "ブルーゾーンジェネレーターが解除されました。",
       "K_IGU_11": "ブルーゾーンジェネレーターが設置されました。",
       "K_IGU_07": "あなたがホストに設定されました。",
       "K_IGU_09": "ホストの接続が切断され、すべてのプレイヤーが退出させられました。",
       "K_IGU_08": "ホストによって退出させられました。",
       "K_IGU_10": "不正なプロパティが送信されたため退出させられました。",
-      "K_IGU_14": "もうブルーゾーンジェネレーターを設置できません。"
+      "K_IGU_14": "もうブルーゾーンジェネレーターを設置できません。",
+      "K_IGU_15": "このチームは選択できません。チームごとのプレイヤー数の上限を超えています。"
+    },
+    "NS_UGC_UI": {
+      "K_IGU_04": "チーム{TeamNumber}",
+      "K_IGU_02": "現在",
+      "K_IGU_08": "定員",
+      "K_IGU_05": "マッチ結果",
+      "K_IGU_01": "ラウンド結果",
+      "K_IGU_07": "交代",
+      "K_IGU_06": "チーム選択",
+      "K_IGU_03": "合計"
     },
     "NS_UGC_ACTIONRESTRICTDEVICE": {
       "K_IGU_02": "特定のプレイヤー行動を制限または許可します。",
@@ -16168,7 +16309,7 @@
       "K_IGU_65": "作成者の役割開始",
       "K_IGU_73": "警告",
       "K_IGU_74": "このファイルは変換されます。続行しますか？\nこのファイルは変換しないとプレイできません。",
-      "K_IGU_66": "作成者",
+      "K_IGU_66": "作成者情報",
       "K_IGU_58": "作成者による前回の更新",
       "K_IGU_04": "デバイス",
       "K_IGU_15": "この操作を続行しますか？すべての変更が失われます。",
@@ -16183,9 +16324,9 @@
       "K_IGU_63": "説明",
       "K_IGU_71": "モードの説明。主な特徴やルールなど（全言語とも最大4000文字）",
       "K_IGU_60": "モード名",
-      "K_IGU_68": "モードを特定するために使う名前（英数字で最大30文字）",
+      "K_IGU_68": "モードを特定するために使う名前です（英数字で最大30文字）。\n入力必須項目です。",
       "K_IGU_61": "バージョン",
-      "K_IGU_69": "モードの現在のバージョン（メジャーおよびマイナーバージョンとも最大3桁）",
+      "K_IGU_69": "モードの現在のバージョンです（メジャーおよびマイナーバージョンとも最大3桁）。\n入力必須項目です。",
       "K_IGU_34": "なし",
       "K_IGU_72": "なし",
       "K_IGU_01": "オブジェクト一覧",
@@ -16212,7 +16353,7 @@
       "K_IGU_02": "設定",
       "K_IGU_32": "観戦者",
       "K_IGU_62": "タグ",
-      "K_IGU_70": "モードを分類するために使うタグ（メインタグが最低1つは必要、サブタグは最大2つ）",
+      "K_IGU_70": "モードを分類するために使うタグです（メインタグが最低1つは必要、サブタグは最大2つ）。\n入力必須項目です。",
       "K_IGU_07": "チーム",
       "K_IGU_37": "ホストを変更",
       "K_IGU_38": "ホストが {PlayerName} に変更されました",
@@ -16285,7 +16426,7 @@
       "K_IGU_093": "キャラクター限定",
       "K_IGU_094": "車両限定",
       "K_IGU_072": "バランス",
-      "K_IGU_071": "カスタム",
+      "K_IGU_071": "ホスト割り当て",
       "K_IGU_073": "順番に出現",
       "K_IGU_096": "分, 秒 (MM:SS)",
       "K_IGU_097": "分, 秒, ミリ秒 (MM:SS:MS)",
@@ -16326,7 +16467,8 @@
       "K_IGU_040": "ブリザード(吹雪)",
       "K_IGU_042": "EMP(電磁パルス)",
       "K_IGU_039": "なし",
-      "K_IGU_041": "サンドストーム(砂嵐)"
+      "K_IGU_041": "サンドストーム(砂嵐)",
+      "K_IGU_103": "チーム選択UI"
     },
     "NS_UGC_HUDDEVICE": {
       "K_IGU_13": "このデバイスがトリガーされた際に、対象デバイスを有効化します。",
@@ -17036,7 +17178,7 @@
     },
     "NS_UGC_SAVEOWNERCHECK": {
       "K_IGU_01": "作成者へ",
-      "K_IGU_00": "このファイルを担当する作成者はいません。保存しますか？"
+      "K_IGU_00": "このファイルには作成者情報が割り当てられていません。保存しますか？"
     },
     "NS_UGC_SETTINGS": {
       "K_IGU_12": "プレイヤー視点（FPS/TPS）を設定します。",
@@ -17052,7 +17194,7 @@
       "K_IGU_18": "生成されたデスボックスの存続時間を設定します。",
       "K_IGU_37": "デスボックス保持時間 (秒)",
       "K_IGU_39": "チームの割り当て方法",
-      "K_IGU_40": "チーム割り当て方法を設定します。\nカスタム: プレイヤーが手動でチームを選択\nバランス: プレイヤーはランダムに割り当てられ、チーム間の人数バランスを考慮して自動配置\nシーケンシャル: プレイヤーはランダムに割り当てられ、順番に配置",
+      "K_IGU_40": "チーム割り当ての方法を設定します。\nホスト割り当て: ホストが手動でプレイヤーをチームに割り当てます。\nバランス: プレイヤーはランダムに割り当てられ、チーム間の人数バランスが等しくなるように自動で配置されます。\nシーケンシャル: プレイヤーはランダムに割り当てられ、順番に配置されます。\nチーム選択UI: 待機フェーズ中にチーム選択UIが表示され、プレイヤーが自分でチームを選択します。チームを選択しなかったプレイヤーは、チーム間の人数バランスが保たれるように、人数の少ないチームに配置されます。",
       "K_IGU_01": "モードの種類を設定します。",
       "K_IGU_20": "モードタイプ",
       "K_IGU_15": "リスポーン時の無敵バフを有効にするかを設定します。",
@@ -17071,6 +17213,8 @@
       "K_IGU_41": "インベントリアイテムの持ち越し",
       "K_IGU_19": "キルフィードにチーム番号を表示するかを設定します。",
       "K_IGU_38": "キルフィードにチーム番号表示",
+      "K_IGU_46": "マッチ中にプレイヤーがスコアボードを表示・確認できるかを設定します。",
+      "K_IGU_45": "スコアボード表示",
       "K_IGU_09": "1チームあたりのプレイヤー数を設定します。",
       "K_IGU_28": "チームメンバー数",
       "K_IGU_10": "フレンドリーファイア時のダメージ倍率を設定します。",
@@ -17478,13 +17622,26 @@
       "K_IGU_05": "맵 범위를 벗어났습니다.",
       "K_IGU_03": "플레이할 수 없습니다. 디바이스 당 이벤트 수가 최대 한도를 초과했습니다.",
       "K_IGU_02": "플레이할 수 없습니다. 오브젝트 수가 최대 한도를 초과했습니다.",
+      "K_IGU_16": "필수 항목을 입력한 후 다시 시도해 주세요.",
+      "K_IGU_17": "테스트 플레이어 제한({Count})을 초과했습니다.",
       "K_IGU_12": "블루존 생성기가 해체되었습니다.",
       "K_IGU_11": "블루존 생성기가 설치되었습니다.",
       "K_IGU_07": "호스트로 지정되었습니다.",
       "K_IGU_09": "호스트의 연결이 끊겼습니다.",
       "K_IGU_08": "호스트에 의해 추방당했습니다.",
       "K_IGU_10": "유효하지 않은 속성으로 인해 추방되었습니다.",
-      "K_IGU_14": "최대 설치 가능 개수가 초과되어 더 이상 설치할 수 없습니다."
+      "K_IGU_14": "최대 설치 가능 개수가 초과되어 더 이상 설치할 수 없습니다.",
+      "K_IGU_15": "인원수가 초과되어 해당 팀을 선택할 수 없습니다."
+    },
+    "NS_UGC_UI": {
+      "K_IGU_04": "팀 {TeamNumber}",
+      "K_IGU_02": "현재",
+      "K_IGU_08": "가득 참",
+      "K_IGU_05": "매치 결과",
+      "K_IGU_01": "라운드 결과",
+      "K_IGU_07": "변경",
+      "K_IGU_06": "팀 선택",
+      "K_IGU_03": "전체"
     },
     "NS_UGC_ACTIONRESTRICTDEVICE": {
       "K_IGU_02": "플레이어의 행동을 제한합니다.",
@@ -18095,8 +18252,8 @@
       "K_IGU_28": "호스트가 오브젝트를 자유롭게 배치할 수 있도록 허용합니다.",
       "K_IGU_51": "허용 안 함",
       "K_IGU_52": "허용",
-      "K_IGU_25": "관전 음성 채팅 허용",
-      "K_IGU_26": "옵저버 간 음성 채팅의 허용 여부를 설정합니다.",
+      "K_IGU_25": "관전 보이스 채팅 허용",
+      "K_IGU_26": "옵저버 간 보이스 채팅의 허용 여부를 설정합니다.",
       "K_IGU_53": "허용 안 함",
       "K_IGU_54": "허용",
       "K_IGU_17": "팀 선택 허용",
@@ -18123,9 +18280,9 @@
       "K_IGU_63": "설명",
       "K_IGU_71": "모드의 주요 특징과 규칙을 포함한 설명입니다 (모든 언어 합산 최대 4,000자).",
       "K_IGU_60": "모드 이름",
-      "K_IGU_68": "모드를 구분하는 이름입니다 (영어 알파벳 및 숫자만 가능, 30자 이하).",
+      "K_IGU_68": "모드를 구분하는 이름입니다 (영어 알파벳 및 숫자만 가능, 30자 이하).\n필수 항목입니다.",
       "K_IGU_61": "버전",
-      "K_IGU_69": "현재 모드의 버전입니다 (메이저 및 마이너 버전은 각각 최대 세 자리까지 표기).",
+      "K_IGU_69": "현재 모드의 버전입니다 (메이저 및 마이너 버전은 각각 최대 세 자리까지 표기).\n필수 항목입니다.",
       "K_IGU_34": "해당 없음",
       "K_IGU_72": "없음",
       "K_IGU_01": "오브젝트 목록",
@@ -18152,7 +18309,7 @@
       "K_IGU_02": "설정",
       "K_IGU_32": "관전",
       "K_IGU_62": "태그",
-      "K_IGU_70": "모드 분류용 태그입니다 (메인 태그 1개는 필수, 서브 태그는 최대 2개까지 설정 가능).",
+      "K_IGU_70": "모드 분류용 태그입니다 (메인 태그 1개는 필수, 서브 태그는 최대 2개까지 설정 가능).\n필수 항목입니다.",
       "K_IGU_07": "팀",
       "K_IGU_37": "호스트 변경",
       "K_IGU_38": "호스트가 {PlayerName}님으로 변경됩니다.",
@@ -18225,7 +18382,7 @@
       "K_IGU_093": "캐릭터만",
       "K_IGU_094": "탈 것만",
       "K_IGU_072": "균형 배정",
-      "K_IGU_071": "커스텀",
+      "K_IGU_071": "호스트 지정",
       "K_IGU_073": "순차 배정",
       "K_IGU_096": "분, 초 (MM:SS)",
       "K_IGU_097": "분, 초, 밀리초 (MM:SS:MS)",
@@ -18266,7 +18423,8 @@
       "K_IGU_040": "블리자드",
       "K_IGU_042": "EMP",
       "K_IGU_039": "해당 없음",
-      "K_IGU_041": "모래 폭풍"
+      "K_IGU_041": "모래 폭풍",
+      "K_IGU_103": "팀 선택 UI"
     },
     "NS_UGC_HUDDEVICE": {
       "K_IGU_13": "이 디바이스가 발동되면 대상 디바이스를 활성화합니다.",
@@ -18961,7 +19119,7 @@
       "K_IGU_17": "불러오기",
       "K_IGU_18": "파일을 불러옵니다.",
       "K_IGU_07": "유효하지 않은 문자 포함",
-      "K_IGU_08": "파일명에 사용할 수 없는 문자가 포함되어 있습니다. 특수 문자를 제거하고 다시 시도해주세요.",
+      "K_IGU_08": "파일명에 사용할 수 없는 문자가 포함되어 있습니다. 특수 문자를 제거하고 다시 시도해 주세요.",
       "K_IGU_05": "파일 덮어쓰기",
       "K_IGU_06": "동일한 이름의 파일이 존재합니다. 덮어쓰시겠습니까?",
       "K_IGU_14": "저장 날짜",
@@ -18976,7 +19134,7 @@
     },
     "NS_UGC_SAVEOWNERCHECK": {
       "K_IGU_01": "창작자 정보로 이동",
-      "K_IGU_00": "창작자가 지정되지 않은 파일입니다. 이대로 저장하시겠습니까?"
+      "K_IGU_00": "창작자 정보가 지정되지 않은 파일입니다. 이대로 저장하시겠습니까?"
     },
     "NS_UGC_SETTINGS": {
       "K_IGU_12": "플레이어의 카메라 시점을 설정합니다.",
@@ -18992,7 +19150,7 @@
       "K_IGU_18": "전리품 상자가 유지되는 시간을 설정합니다.",
       "K_IGU_37": "전리품 상자 유지 시간 (초)",
       "K_IGU_39": "팀 배정 방식",
-      "K_IGU_40": "팀 배정 방식을 설정합니다.\n사용자 지정: 사용자가 직접 팀을 지정합니다.\n균형 배정: 플레이할 때마다 팀원이 무작위로 배정되며, 팀 간 인원 수를 균형 있게 자동 배정합니다.\n순차 배정: 플레이할 때마다 팀원이 무작위로 배정되며, 순차적으로 배정됩니다.",
+      "K_IGU_40": "팀 배정 방식을 설정합니다.\n호스트 지정: 호스트가 플레이어의 팀을 직접 지정합니다.\n균형 배정: 플레이할 때마다 플레이어를 무작위로 배정하며, 팀 간 인원 수를 균형 있게 맞춥니다.\n순차 배정: 플레이할 때마다 플레이어를 무작위로 순차 배정합니다.\n팀 선택 UI: 게임 준비 시간 동안 팀 선택 UI가 표시되며, 플레이어가 직접 팀을 선택할 수 있습니다. 팀을 선택하지 않은 플레이어는 인원이 부족한 팀에 균등하게 무작위 배정됩니다.",
       "K_IGU_01": "모드 유형을 설정합니다.",
       "K_IGU_20": "모드 유형",
       "K_IGU_15": "리스폰 시 무적 효과 적용 여부를 설정합니다.",
@@ -19011,6 +19169,8 @@
       "K_IGU_41": "라운드 종료 시 인벤토리 아이템 유지",
       "K_IGU_19": "킬피드에 팀 번호 표시 여부를 설정합니다.",
       "K_IGU_38": "팀 번호 킬피드에 표시",
+      "K_IGU_46": "플레이 중 점수판을 확인하는 기능의 사용 여부를 설정합니다.",
+      "K_IGU_45": "점수판 표시",
       "K_IGU_09": "한 팀에 속할 수 있는 팀원 수를 설정합니다.",
       "K_IGU_28": "팀 인원 수",
       "K_IGU_10": "아군 공격 시 입는 피해의 배율을 설정합니다.",
@@ -19418,13 +19578,26 @@
       "K_IGU_05": "Poza mapą.",
       "K_IGU_03": "Nie można grać. Przekroczono maksymalną liczbę zdarzeń na urządzenie.",
       "K_IGU_02": "Nie można grać. Przekroczono maksymalną liczbę obiektów.",
+      "K_IGU_16": "Wymagane pola nie są wypełnione. Spróbuj ponownie.",
+      "K_IGU_17": "Przekroczono limit graczy testowych ({Count}).",
       "K_IGU_12": "Generator niebieskiej strefy został rozmontowany.",
       "K_IGU_11": "Generator niebieskiej strefy został zamontowany.",
       "K_IGU_07": "Przydzielono ci rolę prowadzącego.",
       "K_IGU_09": "Prowadzący się rozłączył.",
       "K_IGU_08": "Prowadzący cię wyrzucił.",
       "K_IGU_10": "Wyrzucono z powodu nieprawidłowej właściwości.",
-      "K_IGU_14": "Nie można zamontować więcej generatorów niebieskiej strefy."
+      "K_IGU_14": "Nie można zamontować więcej generatorów niebieskiej strefy.",
+      "K_IGU_15": "Nie możesz wybrać tej drużyny. Przekroczono maksymalną liczbę graczy na drużynę."
+    },
+    "NS_UGC_UI": {
+      "K_IGU_04": "DRUŻYNA {TeamNumber}",
+      "K_IGU_02": "OBECNIE",
+      "K_IGU_08": "PEŁNA",
+      "K_IGU_05": "WYNIKI MECZU",
+      "K_IGU_01": "WYNIKI RUNDY",
+      "K_IGU_07": "ZMIEŃ",
+      "K_IGU_06": "WYBIERZ DRUŻYNĘ",
+      "K_IGU_03": "ŁĄCZNIE"
     },
     "NS_UGC_ACTIONRESTRICTDEVICE": {
       "K_IGU_02": "Ogranicz określone czynności gracza lub zezwól na nie.",
@@ -20048,7 +20221,7 @@
       "K_IGU_65": "PRZYJMIJ ROLĘ TWÓRCY",
       "K_IGU_73": "Ostrzeżenie",
       "K_IGU_74": "Plik zostanie skonwertowany. Czy chcesz kontynuować?\nNieskonwertowanego pliku nie można odtworzyć.",
-      "K_IGU_66": "TWÓRCA",
+      "K_IGU_66": "INFORMACJE O TWÓRCY",
       "K_IGU_58": "Ostatnio zmodyfikowane przez twórcę",
       "K_IGU_04": "URZĄDZENIE",
       "K_IGU_15": "Czy chcesz wykonać tę czynność? Wszystkie zmiany zostaną utracone.",
@@ -20063,9 +20236,9 @@
       "K_IGU_63": "Opis",
       "K_IGU_71": "Opis trybu z jego kluczowymi elementami i zasadami (do 4000 znaków na wszystkie języki).",
       "K_IGU_60": "Nazwa trybu",
-      "K_IGU_68": "Nazwa służąca do identyfikacji trybu (tylko litery i cyfry, maksymalnie 30 znaków).",
+      "K_IGU_68": "Nazwa służąca do identyfikacji trybu (tylko litery i cyfry, maksymalnie 30 znaków).\nTo pole jest wymagane.",
       "K_IGU_61": "Wersja",
-      "K_IGU_69": "Obecna wersja trybu (do 3 cyfr w głównym i dodatkowym numerze).",
+      "K_IGU_69": "Obecna wersja trybu (do 3 cyfr w głównym i dodatkowym numerze).\nTo pole jest wymagane.",
       "K_IGU_34": "Brak",
       "K_IGU_72": "Brak",
       "K_IGU_01": "LISTA OBIEKTÓW",
@@ -20092,7 +20265,7 @@
       "K_IGU_02": "USTAWIENIA",
       "K_IGU_32": "Widz",
       "K_IGU_62": "Tagi",
-      "K_IGU_70": "Tagi służące do skategoryzowania trybu (wymagany 1 główny tag, maksymalnie 2 dodatkowe tagi).",
+      "K_IGU_70": "Tagi służące do skategoryzowania trybu (wymagany 1 główny tag, maksymalnie 2 dodatkowe tagi).\nTo pole jest wymagane.",
       "K_IGU_07": "DRUŻYNY",
       "K_IGU_37": "PRZENIEŚ PROWADZĄCEGO",
       "K_IGU_38": "Przekaż prowadzenie graczowi {PlayerName}",
@@ -20165,7 +20338,7 @@
       "K_IGU_093": "Tylko postać",
       "K_IGU_094": "Tylko pojazdy",
       "K_IGU_072": "Po równo",
-      "K_IGU_071": "Niestandardowo",
+      "K_IGU_071": "Przypisanie hosta",
       "K_IGU_073": "Po kolei",
       "K_IGU_096": "Minuty, sekundy (MM:SS)",
       "K_IGU_097": "Minuty, sekundy, milisekundy (MM:SS:MS)",
@@ -20206,7 +20379,8 @@
       "K_IGU_040": "Zamieć",
       "K_IGU_042": "EMP",
       "K_IGU_039": "Brak",
-      "K_IGU_041": "Burza piaskowa"
+      "K_IGU_041": "Burza piaskowa",
+      "K_IGU_103": "Interfejs wyboru drużyny"
     },
     "NS_UGC_HUDDEVICE": {
       "K_IGU_13": "Włącza urządzenie docelowe, kiedy to urządzenie zostanie uruchomione.",
@@ -20916,7 +21090,7 @@
     },
     "NS_UGC_SAVEOWNERCHECK": {
       "K_IGU_01": "PRZEJDŹ DO TWÓRCY",
-      "K_IGU_00": "Do tego pliku nie przypisano żadnego twórcy. Czy chcesz zapisać mimo wszystko?"
+      "K_IGU_00": "Do tego pliku nie przypisano informacji o twórcy. Czy chcesz zapisać mimo wszystko?"
     },
     "NS_UGC_SETTINGS": {
       "K_IGU_12": "Ustaw widok z kamery gracza.",
@@ -20932,7 +21106,7 @@
       "K_IGU_18": "Ustaw okres, przez który skrzynia zabitego gracza pozostaje na mapie.",
       "K_IGU_37": "Czas trwania skrzyni zabitego gracza (s)",
       "K_IGU_39": "Metoda przydziału do drużyn",
-      "K_IGU_40": "Wybierz metodę przydziału graczy do drużyn.\nNiestandardowo: gracze ręcznie wybierają drużyny.\nPo równo: gracze są przydzielani losowo i automatycznie umieszczani w drużynach równej wielkości.\nPo kolei: gracze są przydzielani losowo i umieszczani w drużynach po kolei.",
+      "K_IGU_40": "Wybierz metodę przydziału graczy do drużyn.\nPrzypisanie hosta: host ręczne przydziela graczy do drużyn.\nPo równo: gracze są przydzielani losowo i automatycznie umieszczani w drużynach równej wielkości.\nPo kolei: gracze są przydzielani losowo i umieszczani w drużynach po kolei.\nInterfejs wyboru drużyny: w fazie oczekiwania jest wyświetlany interfejs wyboru drużyny umożliwiający graczom jej wybór. Gracze, którzy nie wybiorą drużyny, są przydzielani losowo do drużyn zawierających mniej osób w celu zrównoważenia drużyn.",
       "K_IGU_01": "Określ rodzaj trybu",
       "K_IGU_20": "Rodzaj trybu",
       "K_IGU_15": "Określ, czy przy respawnie nakładana jest niezniszczalność.",
@@ -20951,6 +21125,8 @@
       "K_IGU_41": "Przeniesienie przedmiotu w ekwipunku",
       "K_IGU_19": "Określ, czy pokazywać numer każdej drużyny w informacjach o zabójstwach.",
       "K_IGU_38": "Pokazuj numery drużyn w informacjach o zabójstwach",
+      "K_IGU_46": "Określ, czy gracze mogą otwierać i wyświetlać tablicę wyników podczas meczu.",
+      "K_IGU_45": "Pokaż tablicę wyników",
       "K_IGU_09": "Ustaw liczbę graczy w drużynie.",
       "K_IGU_28": "Rozmiar drużyny",
       "K_IGU_10": "Set modyfikator obrażeń od ognia bratobójczego.",
@@ -21358,13 +21534,26 @@
       "K_IGU_05": "Fora do mapa.",
       "K_IGU_03": "Não é possível jogar este modo. Limite máximo de eventos por dispositivo atingido.",
       "K_IGU_02": "Não é possível jogar este modo. Limite máximo de objetos atingido.",
+      "K_IGU_16": "Campos obrigatórios não preenchidos. Tenta novamente.",
+      "K_IGU_17": "Limite de jogadores de teste ({Count}) excedido.",
       "K_IGU_12": "Gerador de Zona Azul demolido.",
       "K_IGU_11": "Gerador de Zona Azul instalado.",
       "K_IGU_07": "Foi-te atribuído o papel de anfitrião.",
       "K_IGU_09": "Anfitrião desconectado.",
       "K_IGU_08": "Foste expulso pelo anfitrião.",
       "K_IGU_10": "Foste expulso devido a uma propriedade inválida.",
-      "K_IGU_14": "Não é possível instalar mais Geradores de Zona Azul."
+      "K_IGU_14": "Não é possível instalar mais Geradores de Zona Azul.",
+      "K_IGU_15": "Não é possível selecionar esta equipa. Número máximo de jogadores alcançado."
+    },
+    "NS_UGC_UI": {
+      "K_IGU_04": "EQUIPA {TeamNumber}",
+      "K_IGU_02": "ATUAL",
+      "K_IGU_08": "CHEIO",
+      "K_IGU_05": "RESULTADOS",
+      "K_IGU_01": "RESULTADOS DO ROUND",
+      "K_IGU_07": "MUDAR",
+      "K_IGU_06": "SELECIONAR EQUIPA",
+      "K_IGU_03": "TOTAL"
     },
     "NS_UGC_ACTIONRESTRICTDEVICE": {
       "K_IGU_02": "Proíbe ou permite aos jogadores executar certas ações.",
@@ -21988,7 +22177,7 @@
       "K_IGU_65": "TOMAR AUTORIA",
       "K_IGU_73": "Aviso",
       "K_IGU_74": "Este ficheiro precisa de ser convertido. Tens a certeza que queres continuar?\nNão é possível carregar o ficheiro para jogar sem antes o converter.",
-      "K_IGU_66": "AUTOR",
+      "K_IGU_66": "AUTORIA",
       "K_IGU_58": "Alteração mais recente pelo autor",
       "K_IGU_04": "DISPOSITIVOS",
       "K_IGU_15": "Tens a certeza que queres continuar? Irás perder todas as alterações.",
@@ -22003,9 +22192,9 @@
       "K_IGU_63": "Descrição",
       "K_IGU_71": "Descrição das características e regras principais do modo (máximo 4.000 caracteres no conjunto de todas as línguas).",
       "K_IGU_60": "Nome do Modo",
-      "K_IGU_68": "Nome usado para identificar o modo (letras e números até 30 caracteres).",
+      "K_IGU_68": "Nome usado para identificar o modo (letras e números até 30 caracteres).\nCampo obrigatório.",
       "K_IGU_61": "Versão",
-      "K_IGU_69": "Versão atual do modo (máximo 3 dígitos cada para principal e secundária).",
+      "K_IGU_69": "Versão atual do modo (máximo 3 dígitos cada para principal e secundária).\nCampo obrigatório.",
       "K_IGU_34": "Nenhum",
       "K_IGU_72": "Sem autor",
       "K_IGU_01": "LISTA DE OBJETOS",
@@ -22032,7 +22221,7 @@
       "K_IGU_02": "DEFINIÇÕES",
       "K_IGU_32": "Espetador",
       "K_IGU_62": "Etiquetas",
-      "K_IGU_70": "Etiquetas para categorizar o modo (1 etiqueta principal, máximo 2 subetiquetas).",
+      "K_IGU_70": "Etiquetas para categorizar o modo (1 etiqueta principal, máximo 2 subetiquetas).\nCampo obrigatório.",
       "K_IGU_07": "EQUIPAS",
       "K_IGU_37": "TRANSFERIR ANFITRIÃO",
       "K_IGU_38": "Transferir o papel de anfitrião para {PlayerName}",
@@ -22105,7 +22294,7 @@
       "K_IGU_093": "Só Personagem",
       "K_IGU_094": "Só Veículo",
       "K_IGU_072": "Equilibrado",
-      "K_IGU_071": "À Escolha",
+      "K_IGU_071": "Pelo Anfitrião",
       "K_IGU_073": "Por Ordem",
       "K_IGU_096": "Minutos, Segundos (MM:SS)",
       "K_IGU_097": "Minutos, Segundos, Milissegundos (MM:SS:MS)",
@@ -22146,7 +22335,8 @@
       "K_IGU_040": "Tempestade",
       "K_IGU_042": "PEM",
       "K_IGU_039": "Nenhuma",
-      "K_IGU_041": "Tempestade de Areia"
+      "K_IGU_041": "Tempestade de Areia",
+      "K_IGU_103": "Menu de Escolha"
     },
     "NS_UGC_HUDDEVICE": {
       "K_IGU_13": "Ativa o dispositivo-alvo quando este dispositivo for despoletado.",
@@ -22856,7 +23046,7 @@
     },
     "NS_UGC_SAVEOWNERCHECK": {
       "K_IGU_01": "VER AUTOR",
-      "K_IGU_00": "Ficheiro sem autor designado. Tens a certeza que queres guardar?"
+      "K_IGU_00": "Ficheiro sem informação de autoria. Tens a certeza que queres guardar?"
     },
     "NS_UGC_SETTINGS": {
       "K_IGU_12": "Configura a posição da câmara para o jogador.",
@@ -22872,7 +23062,7 @@
       "K_IGU_18": "Configura a duração de tempo durante a qual a caixa de morte se mantém no jogo.",
       "K_IGU_37": "Duração das Caixas de Morte (s)",
       "K_IGU_39": "Colocação em Equipas",
-      "K_IGU_40": "Configura o método pelo qual os jogadores são colocados nas equipas.\nÀ Escolha: Cada jogador escolhe manualmente a sua equipa.\nEquilibrado: Os jogadores são automaticamente colocados de forma aleatória em equipas de tamanho igual.\nPor Ordem: Os jogadores são aleatoriamente colocados em equipas um a um, por ordem.",
+      "K_IGU_40": "Configura o método pelo qual os jogadores são colocados nas equipas.\nPelo Anfitrião: O anfitrião do jogo coloca manualmente os jogadores nas equipas.\nEquilibrado: Os jogadores são automaticamente colocados de forma aleatória em equipas de tamanho igual.\nPor Ordem: Os jogadores são aleatoriamente colocados em equipas um a um, por ordem.\nMenu de Escolha: Antes do início do jogo aparece um menu no qual os jogadores podem escolher as próprias equipas. Jogadores que não tenham selecionado equipa são colocados aleatoriamente em equipas com menos jogadores, de forma a manter o equilíbrio.",
       "K_IGU_01": "Determina o tipo de modo.",
       "K_IGU_20": "Tipo de Modo",
       "K_IGU_15": "Determina se o jogador fica ou não temporariamente invulnerável após fazer respawn.",
@@ -22891,6 +23081,8 @@
       "K_IGU_41": "Permanência de Itens no Inventário",
       "K_IGU_19": "Determina se são ou não visíveis os números das equipas no feed de mortes.",
       "K_IGU_38": "Mostrar N.º das Equipas no Feed",
+      "K_IGU_46": "Determina se é permitido ou não aos jogadores abrir e visualizar a tabela de pontos durante o jogo.",
+      "K_IGU_45": "Mostrar Tabela de Pontos",
       "K_IGU_09": "Configura o número de jogadores por equipa.",
       "K_IGU_28": "Dimensão das Equipas",
       "K_IGU_10": "Configura o multiplicador dos danos provocados a colegas da mesma equipa.",
@@ -23298,13 +23490,26 @@
       "K_IGU_05": "Fora do mapa.",
       "K_IGU_03": "Não é possível jogar. Número máximo de eventos por dispositivo excedido.",
       "K_IGU_02": "Não é possível jogar. Número máximo de objetos excedido.",
+      "K_IGU_16": "Faltam campos obrigatórios. Tente novamente.",
+      "K_IGU_17": "Limite de jogadores de teste ({Count}) excedido.",
       "K_IGU_12": "Um Gerador da Zona Azul foi desmontado.",
       "K_IGU_11": "Um Gerador da Zona Azul foi instalado.",
       "K_IGU_07": "Você foi designado como anfitrião.",
       "K_IGU_09": "O anfitrião foi desconectado.",
       "K_IGU_08": "O anfitrião expulsou você.",
       "K_IGU_10": "Você foi expulso devido a propriedade inválida.",
-      "K_IGU_14": "Não é possível instalar mais Geradores da Zona Azul."
+      "K_IGU_14": "Não é possível instalar mais Geradores da Zona Azul.",
+      "K_IGU_15": "Não é possível selecionar esta equipe. O número máximo de jogadores por equipe foi excedido."
+    },
+    "NS_UGC_UI": {
+      "K_IGU_04": "EQUIPE {TeamNumber}",
+      "K_IGU_02": "ATUAL",
+      "K_IGU_08": "CHEIO",
+      "K_IGU_05": "RESULTADOS DA PARTIDA",
+      "K_IGU_01": "RESULTADOS DA RODADA",
+      "K_IGU_07": "ALTERAR",
+      "K_IGU_06": "SELECIONAR EQUIPE",
+      "K_IGU_03": "TOTAL"
     },
     "NS_UGC_ACTIONRESTRICTDEVICE": {
       "K_IGU_02": "Restrinja ou permita ações específicas do jogador.",
@@ -23928,7 +24133,7 @@
       "K_IGU_65": "ASSUMIR POSIÇÃO DE CRIADOR",
       "K_IGU_73": "Aviso",
       "K_IGU_74": "O arquivo será convertido. Deseja continuar?\nEste arquivo não pode ser reproduzido a menos que seja convertido.",
-      "K_IGU_66": "CRIADOR",
+      "K_IGU_66": "INFORMAÇÕES DE CRIADOR",
       "K_IGU_58": "Última modificação feita pelo criador",
       "K_IGU_04": "DISPOSITIVO",
       "K_IGU_15": "Deseja continuar com esta ação? Todas as alterações serão perdidas.",
@@ -23943,9 +24148,9 @@
       "K_IGU_63": "Descrição",
       "K_IGU_71": "Uma descrição do modo, incluindo suas principais funcionalidades e regras (até 4.000 caracteres em todos os idiomas).",
       "K_IGU_60": "Nome do Modo",
-      "K_IGU_68": "O nome usado para identificar o modo (apenas letras e números, até 30 caracteres).",
+      "K_IGU_68": "O nome usado para identificar o modo (apenas letras e números, até 30 caracteres).\nEste campo é obrigatório.",
       "K_IGU_61": "Versão",
-      "K_IGU_69": "A versão atual do modo (até 3 dígitos para as versões principais e secundárias).",
+      "K_IGU_69": "A versão atual do modo (até 3 dígitos para as versões principais e secundárias).\nEste campo é obrigatório.",
       "K_IGU_34": "Nenhum",
       "K_IGU_72": "Nenhum",
       "K_IGU_01": "LISTA DE OBJETOS",
@@ -23972,7 +24177,7 @@
       "K_IGU_02": "CONFIGURAÇÕES",
       "K_IGU_32": "Observador",
       "K_IGU_62": "Tags",
-      "K_IGU_70": "Tags utilizadas para categorizar o modo (é necessária uma tag principal e até duas subtags).",
+      "K_IGU_70": "Tags utilizadas para categorizar o modo (é necessária uma tag principal e até duas subtags).\nEste campo é obrigatório.",
       "K_IGU_07": "EQUIPES",
       "K_IGU_37": "TRANSFERIR ANFITRIÃO",
       "K_IGU_38": "Transferir Anfitrião para {PlayerName}",
@@ -24045,7 +24250,7 @@
       "K_IGU_093": "Apenas Personagem",
       "K_IGU_094": "Apenas Veículo",
       "K_IGU_072": "Equilibrado",
-      "K_IGU_071": "Personalizado",
+      "K_IGU_071": "Atribuição de Anfitrião",
       "K_IGU_073": "Sequencial",
       "K_IGU_096": "Minutos, Segundos (MM:SS)",
       "K_IGU_097": "Minutos, Segundos, Milissegundos (MM:SS:MS)",
@@ -24086,7 +24291,8 @@
       "K_IGU_040": "Nevasca",
       "K_IGU_042": "Zona Magnética",
       "K_IGU_039": "Nenhum",
-      "K_IGU_041": "Tempestade de Areia"
+      "K_IGU_041": "Tempestade de Areia",
+      "K_IGU_103": "Interface de Seleção de Equipe"
     },
     "NS_UGC_HUDDEVICE": {
       "K_IGU_13": "Ativa o dispositivo-alvo quando este dispositivo é acionado.",
@@ -24796,7 +25002,7 @@
     },
     "NS_UGC_SAVEOWNERCHECK": {
       "K_IGU_01": "IR PARA CRIADOR",
-      "K_IGU_00": "Nenhum criador foi atribuído a este arquivo. Deseja salvar mesmo assim?"
+      "K_IGU_00": "Nenhuma informação de criador está atribuída a este arquivo. Deseja salvar mesmo assim?"
     },
     "NS_UGC_SETTINGS": {
       "K_IGU_12": "Defina a visão da câmera do jogador.",
@@ -24812,7 +25018,7 @@
       "K_IGU_18": "Defina a duração da caixa de jogador morto.",
       "K_IGU_37": "Duração da Caixa de Jogador Morto (segundos)",
       "K_IGU_39": "Método de Atribuição de Equipes",
-      "K_IGU_40": "Defina como os jogadores são atribuídos às equipes.\nPersonalizado: os jogadores selecionam manualmente suas equipes.\nEquilibrado: os jogadores são atribuídos aleatoriamente e colocados automaticamente em equipes de tamanhos iguais.\nSequencial: os jogadores são atribuídos aleatoriamente e colocados em equipes em ordem sequencial.",
+      "K_IGU_40": "Defina como os jogadores são atribuídos às equipes.\nAtribuição de Anfitrião: o anfitrião atribui manualmente os jogadores às equipes.\nEquilibrado: os jogadores são atribuídos aleatoriamente e colocados automaticamente em equipes de tamanhos iguais.\nSequencial: os jogadores são atribuídos aleatoriamente e colocados em equipes em ordem sequencial.\nInterface de Seleção de Equipe: uma interface de seleção de equipe é exibida durante a fase de espera, permitindo que os jogadores escolham sua equipe. Os jogadores que não selecionarem uma equipe são designados aleatoriamente para equipes com menos membros, a fim de manter o equilíbrio.",
       "K_IGU_01": "Determine o tipo de modo.",
       "K_IGU_20": "Tipo de Modo",
       "K_IGU_15": "Determine se deve aplicar um bônus de invencibilidade ao ressurgir.",
@@ -24831,6 +25037,8 @@
       "K_IGU_41": "Transferência de Itens do Inventário",
       "K_IGU_19": "Determine se deve mostrar o número de cada equipe no killfeed.",
       "K_IGU_38": "Mostrar Números das Equipes no Killfeed",
+      "K_IGU_46": "Determine se os jogadores podem abrir e visualizar os resultados durante a partida.",
+      "K_IGU_45": "Mostrar Resultados",
       "K_IGU_09": "Defina o número de jogadores por equipe.",
       "K_IGU_28": "Tamanho da Equipe",
       "K_IGU_10": "Defina o modificador de dano para fogo amigo.",
@@ -25238,13 +25446,26 @@
       "K_IGU_05": "Вне карты.",
       "K_IGU_03": "Запуск невозможен. Превышено максимальное количество событий для устройства.",
       "K_IGU_02": "Запуск невозможен. Превышено максимальное количество объектов.",
+      "K_IGU_16": "Не заполнены необходимые поля. Попробуйте еще раз.",
+      "K_IGU_17": "Превышен тестовый лимит игроков ({Count}).",
       "K_IGU_12": "Обезврежен генератор синей зоны.",
       "K_IGU_11": "Установлен генератор синей зоны.",
       "K_IGU_07": "Вы назначены хостом.",
       "K_IGU_09": "Соединение с хостом разорвано.",
       "K_IGU_08": "Исключен из игры хостом.",
       "K_IGU_10": "Исключен из-за некорректного параметра.",
-      "K_IGU_14": "Нельзя установить больше генераторов синей зоны."
+      "K_IGU_14": "Нельзя установить больше генераторов синей зоны.",
+      "K_IGU_15": "Нельзя выбрать эту команду. Превышено максимальное количество игроков на команду."
+    },
+    "NS_UGC_UI": {
+      "K_IGU_04": "КОМАНДА {TeamNumber}",
+      "K_IGU_02": "ТЕКУЩИЙ",
+      "K_IGU_08": "ПЕРЕПОЛНЕНО",
+      "K_IGU_05": "РЕЗУЛЬТАТЫ МАТЧА",
+      "K_IGU_01": "РЕЗУЛЬТАТЫ РАУНДА",
+      "K_IGU_07": "СМЕНИТЬ",
+      "K_IGU_06": "ВЫБЕРИТЕ КОМАНДУ",
+      "K_IGU_03": "ВСЕГО"
     },
     "NS_UGC_ACTIONRESTRICTDEVICE": {
       "K_IGU_02": "Позволяет конкретному игроку действовать или ограничивает его действия.",
@@ -25868,7 +26089,7 @@
       "K_IGU_65": "СТАТЬ СОЗДАТЕЛЕМ",
       "K_IGU_73": "Внимание",
       "K_IGU_74": "Файл будет преобразован. Продолжить?\nБез преобразования этот файл невозможно воспроизвести.",
-      "K_IGU_66": "СОЗДАТЕЛЬ",
+      "K_IGU_66": "ОБ АВТОРЕ",
       "K_IGU_58": "Последним изменил: создатель",
       "K_IGU_04": "УСТРОЙСТВО",
       "K_IGU_15": "Продолжить выполнение действия? Все изменения будут утрачены.",
@@ -25883,9 +26104,9 @@
       "K_IGU_63": "Описание",
       "K_IGU_71": "Описание режима с указанием ключевых особенностей и правил (до 4 000 символов на всех языках).",
       "K_IGU_60": "Название режима",
-      "K_IGU_68": "Название режима (только латинские буквы и цифры, до 30 символов).",
+      "K_IGU_68": "Название, используемое для идентификации режима (только буквы и цифры, до 30\u00A0символов).\nОбязательное поле.",
       "K_IGU_61": "Версия",
-      "K_IGU_69": "Текущая версия режима (до 3 цифр для основной и дополнительных версий).",
+      "K_IGU_69": "Текущая версия режима (до 3\u00A0цифр для основной и дополнительной версий).\nОбязательное поле.",
       "K_IGU_34": "Нет",
       "K_IGU_72": "Нет",
       "K_IGU_01": "СПИСОК ОБЪЕКТОВ",
@@ -25912,7 +26133,7 @@
       "K_IGU_02": "НАСТРОЙКИ",
       "K_IGU_32": "Зритель",
       "K_IGU_62": "Теги",
-      "K_IGU_70": "Теги для категоризации режима (1 основной и до 2 дополнительных).",
+      "K_IGU_70": "Теги, используемые для классификации режима (1\u00A0основной тег обязателен, можно добавить до 2\u00A0дополнительных).\nОбязательное поле.",
       "K_IGU_07": "КОМАНДЫ",
       "K_IGU_37": "ПОМЕНЯТЬ ХОСТА",
       "K_IGU_38": "Сделать хостом игрока {PlayerName}",
@@ -25985,7 +26206,7 @@
       "K_IGU_093": "Только персонажи",
       "K_IGU_094": "Только транспорт",
       "K_IGU_072": "Сбалансированный",
-      "K_IGU_071": "Пользовательский",
+      "K_IGU_071": "По назначению хоста",
       "K_IGU_073": "Последовательный",
       "K_IGU_096": "Минуты, секунды (MM:SS)",
       "K_IGU_097": "Минуты, секунды, миллисекунды (MM:SS:MS)",
@@ -26026,7 +26247,8 @@
       "K_IGU_040": "Метель",
       "K_IGU_042": "Электромагнит. зона",
       "K_IGU_039": "Нет",
-      "K_IGU_041": "Песчаная буря"
+      "K_IGU_041": "Песчаная буря",
+      "K_IGU_103": "Интерфейс выбора команды"
     },
     "NS_UGC_HUDDEVICE": {
       "K_IGU_13": "Включает целевое устройство при срабатывании данного устройства.",
@@ -26736,7 +26958,7 @@
     },
     "NS_UGC_SAVEOWNERCHECK": {
       "K_IGU_01": "ПЕРЕЙТИ К СОЗДАТЕЛЮ",
-      "K_IGU_00": "Создатель не назначен. Продолжить сохранение?"
+      "K_IGU_00": "Для этого файла не указана информация об авторе. Все равно сохранить его?"
     },
     "NS_UGC_SETTINGS": {
       "K_IGU_12": "Установить режим камеры игрока.",
@@ -26752,7 +26974,7 @@
       "K_IGU_18": "Задать время, в течение которого остается ящик игрока.",
       "K_IGU_37": "Длительность ящика игрока (сек.)",
       "K_IGU_39": "Метод распределения по командам",
-      "K_IGU_40": "Установить метод распределения игроков по командам:\nПользовательский: Игроки вручную выбирают свои команды.\nСбалансированный: Игроки распределяются случайным образом и автоматически размещаются в команды одинакового размера.\nПоследовательный: Игроки распределяются случайным образом и назначаются в команды по порядку.  ",
+      "K_IGU_40": "Настройте способ распределения игроков по командам.\nПо назначению хоста: хост вручную распределяет игроков по командам.\nСбалансированно: игроки случайным образом распределяются по командам одинакового размера.\nПо порядку: игроки случайным образом распределяются по командам в последовательном порядке.\nИнтрефейс выбора команды: во время фазы ожидания отображается окно выбора команды, где игроки могут выбрать команду самостоятельно. Игроки, не сделавшие выбор, автоматически распределяются в команды с меньшим числом участников, чтобы сохранить баланс.",
       "K_IGU_01": "Определить тип режима.",
       "K_IGU_20": "Тип режима",
       "K_IGU_15": "Определить, следует ли применять эффект неуязвимости при возрождении.",
@@ -26771,6 +26993,8 @@
       "K_IGU_41": "Перенос предметов в инвентаре",
       "K_IGU_19": "Настроить отображение номеров команд в ленте убийств.",
       "K_IGU_38": "Показать номера команд в ленте убийств",
+      "K_IGU_46": "Определите, могут ли игроки открывать и просматривать таблицу результатов во время матча.",
+      "K_IGU_45": "Показывать таблицу результатов",
       "K_IGU_09": "Установить количество игроков в команде.",
       "K_IGU_28": "Размер команды",
       "K_IGU_10": "Задать коэффициент урона при дружественном огне.",
@@ -27178,13 +27402,26 @@
       "K_IGU_05": "ด้านนอกของแผนที่",
       "K_IGU_03": "ไม่สามารถเล่นได้ มีอีเว้นท์เกินจำนวนที่จำกัดไว้ให้มีต่อแต่ละดีไวซ์แล้ว",
       "K_IGU_02": "ไม่สามารถเล่นได้ มีอ็อบเจกต์เกินจำนวนที่จำกัดไว้สูงสุดแล้ว",
+      "K_IGU_16": "ข้อมูลในช่องที่จำเป็นยังกรอกไม่ครบถ้วน กรุณาลองใหม่อีกครั้ง",
+      "K_IGU_17": "ผู้เล่นทดสอบ ({Count}) เกินขีดจำกัดแล้ว",
       "K_IGU_12": "เครื่องกำเนิดบลูโซนถูกรื้อถอนแล้ว",
       "K_IGU_11": "เครื่องกำเนิดบลูโซนถูกติดตั้งแล้ว",
       "K_IGU_07": "คุณได้รับการแต่งตั้งให้เป็นเจ้าของห้อง",
       "K_IGU_09": "เจ้าของห้องหลุดจากการเชื่อมต่อแล้ว",
       "K_IGU_08": "ถูกเตะโดยเจ้าของห้อง",
       "K_IGU_10": "ถูกเตะเนื่องจากคุณสมบัติไม่ถูกต้อง",
-      "K_IGU_14": "ไม่สามารถติดตั้งเครื่องกำเนิดบลูโซนไปมากกว่านี้ได้แล้ว"
+      "K_IGU_14": "ไม่สามารถติดตั้งเครื่องกำเนิดบลูโซนไปมากกว่านี้ได้แล้ว",
+      "K_IGU_15": "ไม่สามารถเลือกทีมนี้ได้ จำนวนผู้เล่นเกินขีดจำกัดสูงสุดต่อทีมแล้ว"
+    },
+    "NS_UGC_UI": {
+      "K_IGU_04": "ทีม {TeamNumber}",
+      "K_IGU_02": "ปัจจุบัน",
+      "K_IGU_08": "เต็ม",
+      "K_IGU_05": "ผลของแมตช์",
+      "K_IGU_01": "ผลของรอบ",
+      "K_IGU_07": "สลับ",
+      "K_IGU_06": "เลือกทีม",
+      "K_IGU_03": "รวม"
     },
     "NS_UGC_ACTIONRESTRICTDEVICE": {
       "K_IGU_02": "จำกัด หรืออนุญาตให้สามารถใช้การกระทำบางรูปแบบของผู้เล่น",
@@ -27796,7 +28033,7 @@
       "K_IGU_51": "ไม่อนุญาต",
       "K_IGU_52": "อนุญาต",
       "K_IGU_25": "เปิดการพูดคุยด้วยเสียงของผู้สังเกตุการณ์",
-      "K_IGU_26": "ตัดสินว่าผู้สังเกตุการณ์จะสามารถใช้งานระบบพูดคุยด้วยเสียงหรือไม่",
+      "K_IGU_26": "ตัดสินว่าผู้สังเกตุการณ์จะสามารถใช้งานระบบพูดคุยด้วยเสียงได้หรือไม่",
       "K_IGU_53": "ไม่อนุญาต",
       "K_IGU_54": "อนุญาต",
       "K_IGU_17": "อนุญาตให้เลือกทีม",
@@ -27808,7 +28045,7 @@
       "K_IGU_65": "รับตำแหน่งครีเอเตอร์",
       "K_IGU_73": "คำเตือน",
       "K_IGU_74": "ไฟล์นี้จะถูกแปลงเป็นแบบใหม่ คุณยังต้องการจะดำเนินการต่อไหม?\nไฟล์นี้จะไม่สามารถใช้เล่นได้จนกว่าจะถูกแปลงไปเป็นแบบใหม่",
-      "K_IGU_66": "ครีเอเตอร์",
+      "K_IGU_66": "ข้อมูลครีเอเตอร์",
       "K_IGU_58": "แก้ไขครั้งล่าสุดโดยครีเอเตอร์",
       "K_IGU_04": "ดีไวซ์",
       "K_IGU_15": "คุณต้องการจะดำเนินการกับการกระทำนี้ใช่หรือไม่? เพราะการเปลี่ยนแปลงทั้งหมดจะหายไป",
@@ -27823,9 +28060,9 @@
       "K_IGU_63": "คำอธิบาย",
       "K_IGU_71": "คำอธิบายของโหมดการเล่น รวมทั้งระบบหลัก และกฎกติกาการเล่น (สูงสุด 4,000 ตัวอักษรที่นับรวมกันจากทุกภาษา)",
       "K_IGU_60": "ชื่อโหมด",
-      "K_IGU_68": "ชื่อที่ใช้เรียกโหมดการเล่น (ตัวหนังสือและตัวเลขเท่านั้น สูงสุด 30 ตัวอักษร)",
+      "K_IGU_68": "ชื่อที่ใช้ระบุโหมด (เฉพาะตัวอักษร และตัวเลข สูงสุด 30 ตัวอักษร)\nจำเป็นต้องกรอกข้อมูลในช่องนี้",
       "K_IGU_61": "เวอร์ชั่น",
-      "K_IGU_69": "เวอร์ชั่นปัจจุบันของโหมดการเล่น (สูงสุด 3 หลักในทั้งส่วนของเลขเมเจอร์ และเลขไมเนอร์)",
+      "K_IGU_69": "เวอร์ชั่นปัจจุบันของโหมด (สูงสุด 3 หลักในทั้งส่วนของเลขเมเจอร์ และเลขไมเนอร์)\nจำเป็นต้องกรอกข้อมูลในช่องนี้",
       "K_IGU_34": "ไม่มี",
       "K_IGU_72": "ไม่มี",
       "K_IGU_01": "รายชื่ออ็อบเจกต์",
@@ -27852,7 +28089,7 @@
       "K_IGU_02": "การตั้งค่า",
       "K_IGU_32": "ผู้ชม",
       "K_IGU_62": "แท็ก",
-      "K_IGU_70": "แท็กจะใช้ในการจัดหมวดหมู่ของโหมดการเล่น (จำเป็นต้องมีแท็กหลัก 1 แท็ก และมีแท็กรองได้สูงสุด 2 แท็ก)",
+      "K_IGU_70": "แท็กจะใช้ในการจัดหมวดหมู่ของโหมด (จำเป็นต้องมีแท็กหลัก 1 แท็ก แท็กรองมีได้สูงสุด 2 แท็ก)\nจำเป็นต้องกรอกข้อมูลในช่องนี้",
       "K_IGU_07": "ทีม",
       "K_IGU_37": "โอนเจ้าของห้อง",
       "K_IGU_38": "โอนสิทธิ์เจ้าของไปที่ {PlayerName}",
@@ -27882,7 +28119,7 @@
       "K_IGU_078": "ไม่มี",
       "K_IGU_090": "น้อยไปมาก",
       "K_IGU_091": "มากไปน้อย",
-      "K_IGU_076": "ก้ม",
+      "K_IGU_076": "ย่อตัว",
       "K_IGU_077": "หมอบ",
       "K_IGU_075": "ยืน",
       "K_IGU_030": "ช่องเก็บของผู้เล่น",
@@ -27925,7 +28162,7 @@
       "K_IGU_093": "ตัวละครเท่านั้น",
       "K_IGU_094": "พาหนะเท่านั้น",
       "K_IGU_072": "เท่าเทียมกัน",
-      "K_IGU_071": "ตกแต่งได้",
+      "K_IGU_071": "ผู้สร้างเป็นคนกำหนด",
       "K_IGU_073": "ตามลำดับ",
       "K_IGU_096": "นาที, วินาที (MM:SS)",
       "K_IGU_097": "นาที, วินาที, มิลลิวินาที (MM:SS:MS)",
@@ -27966,7 +28203,8 @@
       "K_IGU_040": "พายุหิมะ",
       "K_IGU_042": "EMP",
       "K_IGU_039": "ไม่มี",
-      "K_IGU_041": "พายุทราย"
+      "K_IGU_041": "พายุทราย",
+      "K_IGU_103": "UI เลือกทีม"
     },
     "NS_UGC_HUDDEVICE": {
       "K_IGU_13": "เปิดใช้งานทาร์เก็ตดีไวซ์เมื่อดีไวซ์นี้ถูกทริกเกอร์",
@@ -28676,7 +28914,7 @@
     },
     "NS_UGC_SAVEOWNERCHECK": {
       "K_IGU_01": "ไปที่ครีเอเตอร์",
-      "K_IGU_00": "ไม่มีครีเอเตอร์ที่ถูกแต่งตั้งไว้สำหรับไฟล์นี้ คุณยังต้องการที่จะทำการบันทึกต่อไปหรือไม่?"
+      "K_IGU_00": "ไม่มีข้อมูลครีเอเตอร์ที่ถูกแต่งตั้งไว้สำหรับไฟล์นี้ คุณยังต้องการที่จะทำการบันทึกต่อไปหรือไม่?"
     },
     "NS_UGC_SETTINGS": {
       "K_IGU_12": "ตั้งมุมกล้องของผู้เล่น",
@@ -28692,7 +28930,7 @@
       "K_IGU_18": "ตั้งระยะเวลาที่กล่องของผู้เล่นที่ถูกฆ่าจะยังคงอยู่",
       "K_IGU_37": "ระยะเวลาของกล่องของผู้เล่นที่ถูกฆ่า (วิ)",
       "K_IGU_39": "วิธีการกำหนดทีม",
-      "K_IGU_40": "ตั้งค่าวิธีการกำหนดว่าผู้เล่นจะถูกจัดให้อยูในทีมอย่างไร\nกำหนดเอง: ผู้เล่นสามารถเลือกทีมของตัวเองได้เอง\nเท่าเทียมกัน: ผู้เล่นจะถูกตั้งทีมให้แบบสุ่ม และระบบจะพยายามทำให้แต่ละทีมมีจำนวนผู้เล่นเท่ากันโดยอัตโนมัติ\nตามลำดับ: ผู้เล่นจะถูกตั้งทีมให้แบบสุ่ม และระบบจะจัดให้ไปอยู่ในทีมตามลำดับ",
+      "K_IGU_40": "ตั้งค่าว่าผู้เล่นจะถูกจัดทีมอย่างไร\nผู้สร้างเป็นคนกำหนด: ผู้สร้างห้องจะเป็นคนกำหนดทีมของผู้เล่นแต่ละคน\nสมดุล: ผู้เล่นจะถูกจัดทีมแบบสุ่มโดยระบบจะจัดทีมให้มีขนาดเท่ากันโดยอัตโนมัติ\nตามลำดับ: ระบบจะทำการสุ่มทีมให้ โดยจะจัดให้เข้าทีมตามลำดับ\nUI เลือกทีม: จะมีการแสดง UI ในระหว่างช่วงเตรียมตัว และผู้เล่นจะสามารถเลือกทีมของตัวเองได้\nผู้เล่นที่ไม่ได้เลือกทีมจะถูกจัดให้เข้าทีมแบบสุ่มโดยจะเลือกทีมที่ขนาดเล็กกว่าเพื่อพยายามทำให้ขนาดทีมมีความสมดุล",
       "K_IGU_01": "ตัดสินชนิดของโหมด",
       "K_IGU_20": "ชนิดของโหมด",
       "K_IGU_15": "ตัดสินว่าจะให้บัฟเป็นอมตะในตอนเกิดใหม่หรือไม่",
@@ -28711,6 +28949,8 @@
       "K_IGU_41": "การนำไอเทมในช่องเก็บของติดตัวไป",
       "K_IGU_19": "ตัดสินว่าจะแสดงตัวเลขของแต่ละทีมในคิลฟีดหรือไม่",
       "K_IGU_38": "แสดงตัวเลขของทีมที่คิลฟีด",
+      "K_IGU_46": "ตัดสินว่าผู้เล่นจะสามารถเปิด และดูกระดานคะแนนในระหว่างการเล่นในแมตช์หรือไม่",
+      "K_IGU_45": "แสดงกระดานคะแนน",
       "K_IGU_09": "ตั้งจำนวนผู้เล่นในแต่ละทีม",
       "K_IGU_28": "ขนาดทีม",
       "K_IGU_10": "ตั้งอัตราความเสียหายของการยิงฝ่ายเดียวกันเอง",
@@ -29118,13 +29358,26 @@
       "K_IGU_05": "Haritanın dışında.",
       "K_IGU_03": "Oynanamıyor. Cihaz başına maksimum olay sayısı aşıldı.",
       "K_IGU_02": "Oynanamıyor. Maksimum nesne sayısı aşıldı.",
+      "K_IGU_16": "Gerekli alanlar eksik. Lütfen tekrar dene.",
+      "K_IGU_17": "Test oyuncu sınırı ({Count}) aşıldı.",
       "K_IGU_12": "Bir Mavi Alan Jeneratörü söküldü.",
       "K_IGU_11": "Bir Mavi Alan Jeneratörü kuruldu.",
       "K_IGU_07": "Yönetici olarak atandın.",
       "K_IGU_09": "Yöneticinin bağlantısı koptu.",
       "K_IGU_08": "Yönetici tarafından atıldın.",
       "K_IGU_10": "Geçersiz özellik sebebiyle atıldın.",
-      "K_IGU_14": "Daha fazla Mavi Alan Jeneratörü kurulamaz."
+      "K_IGU_14": "Daha fazla Mavi Alan Jeneratörü kurulamaz.",
+      "K_IGU_15": "Takım başına maksimum oyuncu sayısı aşıldığı için bu takımı seçemezsin."
+    },
+    "NS_UGC_UI": {
+      "K_IGU_04": "{TeamNumber}. TAKIM",
+      "K_IGU_02": "MEVCUT",
+      "K_IGU_08": "DOLU",
+      "K_IGU_05": "MAÇ SONUÇLARI",
+      "K_IGU_01": "TUR SONUÇLARI",
+      "K_IGU_07": "DEĞİŞTİR",
+      "K_IGU_06": "TAKIM SEÇ",
+      "K_IGU_03": "TOPLAM"
     },
     "NS_UGC_ACTIONRESTRICTDEVICE": {
       "K_IGU_02": "Belirli oyuncu eylemlerini kısıtla veya serbest bırak.",
@@ -29748,7 +30001,7 @@
       "K_IGU_65": "OLUŞTURUCU ROLÜNÜ AL",
       "K_IGU_73": "Uyarı",
       "K_IGU_74": "Dosya dönüştürülecek. Devam etmek istiyor musun?\nBu dosya dönüştürülmeden oynanamaz.",
-      "K_IGU_66": "OLUŞTURUCU",
+      "K_IGU_66": "TASARIMCI BİLGİSİ",
       "K_IGU_58": "En son oluşturucu tarafından değiştirilmiş",
       "K_IGU_04": "CİHAZ",
       "K_IGU_15": "Bu eylemle devam etmek istiyor musun? Tüm değişiklikler kaybolacak.",
@@ -29763,9 +30016,9 @@
       "K_IGU_63": "Açıklama",
       "K_IGU_71": "Modun başlıca özelliklerini ve kurallarını içeren bir açıklaması (tüm dillerde en fazla 4.000 karakter).",
       "K_IGU_60": "Mod Adı",
-      "K_IGU_68": "Modu tanımlamak için kullanılan isim (sadece harfler ve sayılar, en fazla 30 karakter).",
+      "K_IGU_68": "Modu tanımlamak için kullanılan isim (sadece harfler ve sayılar, en fazla 30 karakter).\nBu alan gereklidir.",
       "K_IGU_61": "Sürüm",
-      "K_IGU_69": "Modun mevcut sürümü (hem büyük hem küçük sürümler için en fazla 3 hane).",
+      "K_IGU_69": "Modun mevcut sürümü (hem büyük hem küçük sürümler için en fazla 3 hane).\nBu alan gereklidir.",
       "K_IGU_34": "Hiçbiri",
       "K_IGU_72": "Yok",
       "K_IGU_01": "NESNE LİSTESİ",
@@ -29792,7 +30045,7 @@
       "K_IGU_02": "AYARLAR",
       "K_IGU_32": "İzleyici",
       "K_IGU_62": "Etiketler",
-      "K_IGU_70": "Modu kategorize etmek için kullanılan etiketler (1 ana etiket gereklidir, en fazla 2 alt etiket).",
+      "K_IGU_70": "Modu kategorize etmek için kullanılan etiketler (1 ana etiket gereklidir, en fazla 2 alt etiket).\nBu alan gereklidir.",
       "K_IGU_07": "TAKIMLAR",
       "K_IGU_37": "YÖNETİCİLİĞİ AKTAR",
       "K_IGU_38": "Yöneticiliği {PlayerName} Adlı Oyuncuya Aktar",
@@ -29865,7 +30118,7 @@
       "K_IGU_093": "Yalnızca Karakter",
       "K_IGU_094": "Yalnızca Araç",
       "K_IGU_072": "Dengeli",
-      "K_IGU_071": "Özel",
+      "K_IGU_071": "Yönetici Ataması",
       "K_IGU_073": "Sıralı",
       "K_IGU_096": "Dakika, Saniye (DD:SS)",
       "K_IGU_097": "Dakika, Saniye, Milisaniye (DD:SS:MS)",
@@ -29906,7 +30159,8 @@
       "K_IGU_040": "Tipi",
       "K_IGU_042": "EMP",
       "K_IGU_039": "Hiçbiri",
-      "K_IGU_041": "Kum Fırtınası"
+      "K_IGU_041": "Kum Fırtınası",
+      "K_IGU_103": "Takım Seçimi Arayüzü"
     },
     "NS_UGC_HUDDEVICE": {
       "K_IGU_13": "Bu cihaz tetiklendiğinde hedef cihazı etkinleştirir.",
@@ -30616,7 +30870,7 @@
     },
     "NS_UGC_SAVEOWNERCHECK": {
       "K_IGU_01": "OLUŞTURUCUYA GİT",
-      "K_IGU_00": "Bu dosyaya hiçbir oluşturucu atanmamış. Yine de kaydetmek istiyor musun?"
+      "K_IGU_00": "Bu dosyaya hiçbir tasarımcı bilgisi atanmamış. Yine de kaydetmek istiyor musun?"
     },
     "NS_UGC_SETTINGS": {
       "K_IGU_12": "Oyuncunun kamera görünümünü ayarla.",
@@ -30632,7 +30886,7 @@
       "K_IGU_18": "Düşman sandığının ne kadar süre duracağını ayarla.",
       "K_IGU_37": "Düşman Sandığı Süresi (sn)",
       "K_IGU_39": "Takım Atama Metodu",
-      "K_IGU_40": "Oyuncuların takımlara nasıl atandığını ayarla.\nÖzel: Oyuncular takımlarını manuel olarak seçerler.\nDengeli: Oyuncular rastgele seçilir ve eşit büyüklükteki takımlara otomatik olarak yerleştirilir.\nSıralı: Oyuncular rastgele olarak seçilir ve sırayla takımlara yerleştirilir.",
+      "K_IGU_40": "Oyuncuların takımlara nasıl atandığını ayarla.\nYönetici Ataması: Yönetici oyuncuları manuel olarak takımlara atar.\nDengeli: Oyuncular rastgele seçilir ve eşit büyüklükteki takımlara otomatik olarak yerleştirilir.\nSıralı: Oyuncular rastgele olarak seçilir ve sırayla takımlara yerleştirilir.\nTakım Seçimi Arayüzü: Bekleme aşamasında oyuncuların takım seçmesine olanak tanıyan bir takım seçimi arayüzü görüntülenir. Takım seçmeyen oyuncular takım boyutlarını dengede tutmak için daha az üyeye sahip takımlara rastgele atanır.",
       "K_IGU_01": "Modun türünü belirle.",
       "K_IGU_20": "Mod Türü",
       "K_IGU_15": "Canlanma durumunda yenilmezlik güçlendirmesinin uygulanıp uygulanmayacağını belirle.",
@@ -30651,6 +30905,8 @@
       "K_IGU_41": "Envanter Eşya Aktarılması",
       "K_IGU_19": "Ölüm akışında her bir takımın numarasını gösterip göstermemeyi belirle.",
       "K_IGU_38": "Ölüm Akışı Takım Numaralarını Göster",
+      "K_IGU_46": "Oyuncuların maç sırasında puan tablosunu görüntüleyip görüntüleyemeyeceğini belirle.",
+      "K_IGU_45": "Puan Tablosunu Göster",
       "K_IGU_09": "Takım başına oyuncu sayısını ayarla.",
       "K_IGU_28": "Takım Boyutu",
       "K_IGU_10": "Dost ateşi için hasar çarpanını ayarla.",
@@ -31058,13 +31314,26 @@
       "K_IGU_05": "Ngoài bản đồ.",
       "K_IGU_03": "Không thể chơi. Đã vượt quá số lượng sự kiện tối đa mỗi thiết bị.",
       "K_IGU_02": "Không thể chơi. Đã vượt quá số lượng vật thể tối đa.",
+      "K_IGU_16": "Thiếu các trường bắt buộc. Vui lòng thử lại.",
+      "K_IGU_17": "Đã vượt quá giới hạn ({Count}) người chơi thử nghiệm.",
       "K_IGU_12": "Đã gỡ cài đặt một Bom Vòng Bo Xanh.",
       "K_IGU_11": "Đã cài đặt một Bom Vòng Bo Xanh.",
       "K_IGU_07": "Bạn đã được chỉ định làm host.",
       "K_IGU_09": "Host đã ngắt kết nối.",
       "K_IGU_08": "Bị xoá bởi host.",
       "K_IGU_10": "Bị xoá do thuộc tính không hợp lệ.",
-      "K_IGU_14": "Không thể cài đặt thêm Bom Vòng Bo Xanh."
+      "K_IGU_14": "Không thể cài đặt thêm Bom Vòng Bo Xanh.",
+      "K_IGU_15": "Không thể chọn đội này. Số người chơi tối đa mỗi đội đã đạt giới hạn."
+    },
+    "NS_UGC_UI": {
+      "K_IGU_04": "ĐỘI {TeamNumber}",
+      "K_IGU_02": "HIỆN TẠI",
+      "K_IGU_08": "ĐẦY",
+      "K_IGU_05": "KẾT QUẢ TRẬN ĐẤU",
+      "K_IGU_01": "KẾT QUẢ VÒNG ĐẤU",
+      "K_IGU_07": "ĐỔI",
+      "K_IGU_06": "CHỌN ĐỘI",
+      "K_IGU_03": "TỔNG"
     },
     "NS_UGC_ACTIONRESTRICTDEVICE": {
       "K_IGU_02": "Giới hạn hoặc cho phép hành động cụ thể.",
@@ -31688,7 +31957,7 @@
       "K_IGU_65": "NHẬN VAI TRÒ NGƯỜI TẠO",
       "K_IGU_73": "Cảnh Báo",
       "K_IGU_74": "\"Tệp sẽ được chuyển đổi. Bạn có muốn tiếp tục không?\nTệp này không thể phát trừ khi được chuyển đổi.",
-      "K_IGU_66": "NGƯỜI TẠO",
+      "K_IGU_66": "THÔNG TIN NGƯỜI TẠO",
       "K_IGU_58": "Cập nhật lần cuối bởi người tạo",
       "K_IGU_04": "THIẾT BỊ",
       "K_IGU_15": "Bạn có chắc muốn thực hiện hành động này? Mọi thay đổi sẽ bị mất.",
@@ -31703,9 +31972,9 @@
       "K_IGU_63": "Thẻ",
       "K_IGU_71": "Mô tả chế độ, bao gồm các tính năng và luật chính (tối đa 4.000 ký tự cho tất cả ngôn ngữ).",
       "K_IGU_60": "Tên Chế Độ",
-      "K_IGU_68": "Tên dùng để xác định chế độ (chỉ chữ và số, tối đa 30 ký tự).",
+      "K_IGU_68": "Tên dùng để xác định chế độ (chỉ chữ và số, tối đa 30 ký tự).\nTrường này là bắt buộc.",
       "K_IGU_61": "Phiên Bản",
-      "K_IGU_69": "Phiên bản hiện tại của chế độ (tối đa 3 chữ số cho cả phiên bản chính và phụ).",
+      "K_IGU_69": "Phiên bản hiện tại của chế độ (tối đa 3 chữ số cho cả phiên bản chính và phụ).\nTrường này là bắt buộc.",
       "K_IGU_34": "Không có",
       "K_IGU_72": "Không có",
       "K_IGU_01": "DANH SÁCH VẬT THỂ",
@@ -31732,7 +32001,7 @@
       "K_IGU_02": "CÀI ĐẶT",
       "K_IGU_32": "Người Xem",
       "K_IGU_62": "Thẻ",
-      "K_IGU_70": "Thẻ dùng để phân loại chế độ (bắt buộc 1 thẻ chính, tối đa 2 thẻ phụ).",
+      "K_IGU_70": "Thẻ dùng để phân loại chế độ (bắt buộc 1 thẻ chính, tối đa 2 thẻ phụ).\nTrường này là bắt buộc.",
       "K_IGU_07": "ĐỘI",
       "K_IGU_37": "CHUYỂN QUYỀN HOST",
       "K_IGU_38": "Chuyển host cho {PlayerName}",
@@ -31805,7 +32074,7 @@
       "K_IGU_093": "Chỉ Nhân Vật",
       "K_IGU_094": "Chỉ Phương Tiện",
       "K_IGU_072": "Cân Bằng",
-      "K_IGU_071": "Tùy biến",
+      "K_IGU_071": "Phân Công Bởi Chủ Phòng",
       "K_IGU_073": "Thứ Tự",
       "K_IGU_096": "Phút, Giây (MM:SS)",
       "K_IGU_097": "Phút, Giây, Mili Giây (MM:SS:MS)",
@@ -31846,7 +32115,8 @@
       "K_IGU_040": "Bão Tuyết",
       "K_IGU_042": "EMP",
       "K_IGU_039": "Không có",
-      "K_IGU_041": "Bão Cát"
+      "K_IGU_041": "Bão Cát",
+      "K_IGU_103": "Giao Diện Chọn Đội"
     },
     "NS_UGC_HUDDEVICE": {
       "K_IGU_13": "Kích hoạt thiết bị mục tiêu khi thiết bị này được kích hoạt.",
@@ -32556,7 +32826,7 @@
     },
     "NS_UGC_SAVEOWNERCHECK": {
       "K_IGU_01": "ĐI ĐẾN NGƯỜI TẠO",
-      "K_IGU_00": "Chưa có người tạo được gán cho tệp này. Bạn vẫn muốn lưu chứ?"
+      "K_IGU_00": "Không có thông tin người tạo được gán cho file này. Bạn có muốn lưu không?"
     },
     "NS_UGC_SETTINGS": {
       "K_IGU_12": "Thiết lập góc nhìn của người chơi.",
@@ -32572,7 +32842,7 @@
       "K_IGU_18": "Thiết lập thời gian hòm xác tồn tại trên bản đồ.",
       "K_IGU_37": "Thời gian tồn tại của Hòm Xác (giây)",
       "K_IGU_39": "Cách Phân Chia Đội",
-      "K_IGU_40": "Thiết lập cách phân chia người chơi vào các đội.\nTùy chỉnh: Người chơi tự chọn đội của mình.\nCân bằng: Người chơi được phân ngẫu nhiên và tự động chia đều vào các đội có số lượng cân bằng.\nTuần tự: Người chơi được phân ngẫu nhiên và xếp lần lượt vào các đội theo thứ tự.",
+      "K_IGU_40": "Đặt cách người chơi được phân vào đội.\nPhân Công Bởi Chủ Phòng: Chủ Phòng phân công người chơi vào đội theo cách thủ công.\nCân Bằng: Người chơi được phân ngẫu nhiên và tự động xếp vào các đội có số thành viên bằng nhau.\nTheo Thứ Tự: Người chơi được phân ngẫu nhiên và xếp vào đội theo thứ tự tuần tự.\nGiao Diện Chọn Đội: Giao diện chọn đội được hiển thị trong giai đoạn chờ, cho phép người chơi chọn đội. Người chơi không chọn đội sẽ được phân ngẫu nhiên vào các đội ít thành viên hơn để giữ cân bằng số lượng thành viên đội.",
       "K_IGU_01": "Xác định loại chế độ chơi.",
       "K_IGU_20": "Loại Chế độ",
       "K_IGU_15": "Xác định có áp dụng buff bất tử khi hồi sinh hay không.",
@@ -32591,6 +32861,8 @@
       "K_IGU_41": "Tích luỹ vật phẩm kho đồ",
       "K_IGU_19": "Xác định có hiển thị số đội trong killfeed hay không.",
       "K_IGU_38": "Hiển thị số đội trong killfeed",
+      "K_IGU_46": "Xác định xem người chơi có thể mở và xem bảng điểm trong trận đấu hay không.",
+      "K_IGU_45": "Hiển Thị Bảng Điểm",
       "K_IGU_09": "Thiết lập số người chơi mỗi đội.",
       "K_IGU_28": "Số Người Chơi Mỗi Đội",
       "K_IGU_10": "Thiết lập hệ số sát thương khi bắn hạ đồng đội.",
@@ -32998,13 +33270,26 @@
       "K_IGU_05": "超出地图范围。",
       "K_IGU_03": "无法运行。单个装置的事件数量已超过上限。",
       "K_IGU_02": "无法运行。物体数量已超过上限。",
+      "K_IGU_16": "未填写必填项。请重试。",
+      "K_IGU_17": "超过测试玩家人数限制（{Count}人）。",
       "K_IGU_12": "蓝圈生成器已被拆除",
       "K_IGU_11": "蓝圈生成器部署成功。",
       "K_IGU_07": "您被指定为了主机。",
       "K_IGU_09": "主机已断开连接。",
       "K_IGU_08": "已被主机踢出房间。",
       "K_IGU_10": "由于属性无效的缘故被踢出了房间。",
-      "K_IGU_14": "超过可部署的最大数量，无法继续部署。"
+      "K_IGU_14": "超过可部署的最大数量，无法继续部署。",
+      "K_IGU_15": "该队伍人数已达上限，无法加入。"
+    },
+    "NS_UGC_UI": {
+      "K_IGU_04": "队伍{TeamNumber}",
+      "K_IGU_02": "当前",
+      "K_IGU_08": "已满",
+      "K_IGU_05": "比赛结果",
+      "K_IGU_01": "回合结果",
+      "K_IGU_07": "更换",
+      "K_IGU_06": "选择队伍",
+      "K_IGU_03": "总计"
     },
     "NS_UGC_ACTIONRESTRICTDEVICE": {
       "K_IGU_02": "限制玩家行动。",
@@ -33628,7 +33913,7 @@
       "K_IGU_65": "指定我为创作者",
       "K_IGU_73": "警告",
       "K_IGU_74": "该文件将被转换，请问是否继续？\n若不进行转换，该文件将无法正常播放。",
-      "K_IGU_66": "创作者",
+      "K_IGU_66": "创作者信息",
       "K_IGU_58": "创作者最终修改",
       "K_IGU_04": "装置",
       "K_IGU_15": "您确定要进行此操作吗？进行此操作后所有的更改都将消失。",
@@ -33643,9 +33928,9 @@
       "K_IGU_63": "描述",
       "K_IGU_71": "模式的详细描述，包括其主要特点和规则（所有语言总计最多4,000个字符）。",
       "K_IGU_60": "模式名称",
-      "K_IGU_68": "用于识别模式的名称（仅限字母和数字，最多30个字符）。",
+      "K_IGU_68": "用于识别模式的名称（仅限字母和数字，最多30个字符）。此处为必填事项。",
       "K_IGU_61": "版本",
-      "K_IGU_69": "模式的当前版本（主版本和次版本最多均为3位数字）。",
+      "K_IGU_69": "模式的当前版本（主版本和次版本最多均为3位数字）。此处为必填事项。",
       "K_IGU_34": "无",
       "K_IGU_72": "无",
       "K_IGU_01": "物体列表",
@@ -33672,7 +33957,7 @@
       "K_IGU_02": "设置",
       "K_IGU_32": "观战",
       "K_IGU_62": "标签",
-      "K_IGU_70": "用于分类模式的标签（必须包含1个主标签，最多可选择 2 个副标签）。",
+      "K_IGU_70": "用于分类模式的标签（必须包含1个主标签，最多可选择 2 个副标签）。此处为必填事项。",
       "K_IGU_07": "队伍",
       "K_IGU_37": "变更主机",
       "K_IGU_38": "将主机变更为{PlayerName}",
@@ -33745,7 +34030,7 @@
       "K_IGU_093": "仅限角色",
       "K_IGU_094": "仅限载具",
       "K_IGU_072": "均衡分配",
-      "K_IGU_071": "自定义",
+      "K_IGU_071": "主机分配",
       "K_IGU_073": "依序分配",
       "K_IGU_096": "分、秒（MM:SS）",
       "K_IGU_097": "分、秒、毫秒 (MM:SS:MS)",
@@ -33786,7 +34071,8 @@
       "K_IGU_040": "雪暴",
       "K_IGU_042": "电磁脉冲",
       "K_IGU_039": "无",
-      "K_IGU_041": "沙尘暴"
+      "K_IGU_041": "沙尘暴",
+      "K_IGU_103": "队伍选择 UI"
     },
     "NS_UGC_HUDDEVICE": {
       "K_IGU_13": "在此装置被触发时启用目标装置。",
@@ -34496,7 +34782,7 @@
     },
     "NS_UGC_SAVEOWNERCHECK": {
       "K_IGU_01": "创作者信息",
-      "K_IGU_00": "此文件未指定创作者。是否仍要保存？"
+      "K_IGU_00": "此文件未指定创作者信息。是否仍要保存？"
     },
     "NS_UGC_SETTINGS": {
       "K_IGU_12": "设置玩家的镜头视角。",
@@ -34512,7 +34798,7 @@
       "K_IGU_18": "设置战利品盒子的持续时间。",
       "K_IGU_37": "战利品盒子持续时间（秒）",
       "K_IGU_39": "队伍分配方式",
-      "K_IGU_40": "设置为玩家分配队伍的方法。\n自定义：让玩家们手动选择自己的队伍。\n均衡分配：自动将玩家们平均地随机分配到各支队伍中。\n依序分配：随机分配玩家，将他们按顺序分配到各支队伍中。",
+      "K_IGU_40": "设置队伍分配方式。\n主机分配：由主机亲自将玩家分配到各队伍中。\n平衡分配：随机分配玩家，且保持队伍人数相同。\n顺序：随机分配玩家，且按顺序列依次分配。\n队伍选择 UI：在准备阶段显示队伍选择 UI，允许玩家自行选择队伍。未选择队伍的玩家将被随机分配至人数较少的队伍中，以保持队伍人数平衡。",
       "K_IGU_01": "决定模式类型。",
       "K_IGU_20": "模式类型",
       "K_IGU_15": "决定是否在重生时赋予无敌状态。",
@@ -34531,6 +34817,8 @@
       "K_IGU_41": "回合结束时保持物品栏内物品不变",
       "K_IGU_19": "决定是否要在淘汰信息中显示每支队伍的编号。",
       "K_IGU_38": "在淘汰信息中显示队伍编号",
+      "K_IGU_46": "设置玩家是否可以在比赛中查看记分板。",
+      "K_IGU_45": "显示计分板",
       "K_IGU_09": "设置每支队伍的玩家数量。",
       "K_IGU_28": "队伍规模",
       "K_IGU_10": "设置攻击队友时的伤害系数。",
@@ -35542,7 +35830,7 @@
       "K_IGU_65": "選擇創作者角色",
       "K_IGU_73": "警告",
       "K_IGU_74": "該檔案將會進行轉換。您要繼續嗎？\n此檔案必須經過轉換才能播放。",
-      "K_IGU_66": "創作者",
+      "K_IGU_66": "創作者資訊",
       "K_IGU_58": "創作者最終修改",
       "K_IGU_04": "裝置",
       "K_IGU_15": "是否要繼續此操作？所有變更都將遺失。",
@@ -35557,9 +35845,9 @@
       "K_IGU_63": "說明",
       "K_IGU_71": "此模式的說明，包含其主要特色與規則（所有語言合計最多 4,000 個字元）。",
       "K_IGU_60": "模式名稱",
-      "K_IGU_68": "用於識別此模式的名稱（僅限英文字母與數字，最長 30 個字元）。",
+      "K_IGU_68": "用於識別此模式的名稱（僅限英文字母與數字，最長 30 個字元）。\n此欄位為必填。",
       "K_IGU_61": "版本",
-      "K_IGU_69": "此模式的目前版本（主版號與次版號各最多 3 位數）。",
+      "K_IGU_69": "此模式的目前版本（主版號與次版號各最多 3 位數）。\n此欄位為必填。",
       "K_IGU_34": "無",
       "K_IGU_72": "無",
       "K_IGU_01": "物品列表",
@@ -35586,7 +35874,7 @@
       "K_IGU_02": "設定",
       "K_IGU_32": "觀戰者",
       "K_IGU_62": "標籤",
-      "K_IGU_70": "用於分類此模式的標籤（需 1 個主要標籤，最多可設定 2 個次要標籤）。",
+      "K_IGU_70": "用於分類此模式的標籤（需 1 個主要標籤，最多可設定 2 個次要標籤）。\n此欄位為必填。",
       "K_IGU_07": "隊伍",
       "K_IGU_37": "轉移主持人權限",
       "K_IGU_38": "將主持人權限轉移給 {PlayerName}",
@@ -35659,7 +35947,7 @@
       "K_IGU_093": "僅限角色",
       "K_IGU_094": "僅限載具",
       "K_IGU_072": "平衡",
-      "K_IGU_071": "自訂",
+      "K_IGU_071": "主持人分配",
       "K_IGU_073": "依序",
       "K_IGU_096": "分、秒 (MM:SS)",
       "K_IGU_097": "分、秒、毫秒 (MM:SS:MS)",
@@ -35700,7 +35988,8 @@
       "K_IGU_040": "暴風雪",
       "K_IGU_042": "EMP (電磁脈衝)",
       "K_IGU_039": "無",
-      "K_IGU_041": "沙塵暴"
+      "K_IGU_041": "沙塵暴",
+      "K_IGU_103": "隊伍選擇介面"
     },
     "NS_UGC_HUD": {
       "K_IGU_04": "點數",
@@ -36419,7 +36708,7 @@
     },
     "NS_UGC_SAVEOWNERCHECK": {
       "K_IGU_01": "前往創作者資訊",
-      "K_IGU_00": "此檔案尚未指定創作者。仍要儲存嗎？"
+      "K_IGU_00": "此檔案未指定任何創作者資訊。您確定仍要儲存嗎？"
     },
     "NS_UGC_SETTINGS": {
       "K_IGU_12": "設定玩家的鏡頭視角。",
@@ -36435,7 +36724,7 @@
       "K_IGU_18": "設定屍體箱的存留時間。",
       "K_IGU_37": "屍體箱存留時間 (秒)",
       "K_IGU_39": "隊伍分配方式",
-      "K_IGU_40": "設定玩家分隊方式。\n自訂：玩家可手動選擇隊伍。\n平衡：玩家會隨機分配並自動分入人數平均的隊伍。\n依序：玩家會隨機分配並依序加入各隊伍。",
+      "K_IGU_40": "設定玩家分組與隊伍分配的方式。\n主持人分配：由主持人手動將玩家分配至隊伍。\n平衡分配：系統隨機分配玩家，並自動放入人數均等的隊伍中。\n順序分配：系統隨機分配玩家，並依序放入各個隊伍中。\n隊伍選擇介面：在等待階段會顯示隊伍選擇介面，允許玩家選擇自己的隊伍。未選擇隊伍的玩家將被隨機分配至人數較少的隊伍，以保持各隊人數平衡。",
       "K_IGU_01": "決定模式類型。",
       "K_IGU_20": "模式類型",
       "K_IGU_15": "決定重生時是否套用無敵增益效果。",
@@ -36454,6 +36743,8 @@
       "K_IGU_41": "物品繼承",
       "K_IGU_19": "決定是否在擊殺訊息中顯示每個隊伍的編號。",
       "K_IGU_38": "顯示擊殺訊息中的隊伍編號",
+      "K_IGU_46": "設定玩家是否可以在對戰期間開啟並查看計分板。",
+      "K_IGU_45": "顯示計分板",
       "K_IGU_09": "設定每隊玩家人數。",
       "K_IGU_28": "隊伍人數",
       "K_IGU_10": "設定友軍傷害的傷害倍率。",
@@ -36582,7 +36873,10 @@
       "K_IGU_14": "無法再安裝更多藍區發動機。",
       "K_IGU_05": "超出地圖範圍。",
       "K_IGU_03": "無法遊玩，每個裝置的事件數量超出上限。",
-      "K_IGU_02": "無法遊玩，超出物件數量上限。"
+      "K_IGU_02": "無法遊玩，超出物件數量上限。",
+      "K_IGU_16": "缺少必填欄位。請再試一次。",
+      "K_IGU_15": "無法選擇此隊伍。已超過每隊最大玩家人數上限。",
+      "K_IGU_17": "已超過測試玩家人數上限 ({Count}人)。"
     },
     "NS_UGC_TAG": {
       "K_IGU_08": "常用標籤",
@@ -36725,6 +37019,16 @@
       "K_IGU_21": "觸發區域裝置",
       "K_IGU_12": "設定觸發條件。\n當進入時：當進入觸發區域時觸發事件。\n當離開時：當離開觸發區域時觸發事件。\n同時：當進入或離開觸發區域時皆會觸發事件。",
       "K_IGU_32": "觸發類型"
+    },
+    "NS_UGC_UI": {
+      "K_IGU_02": "當前",
+      "K_IGU_08": "已滿",
+      "K_IGU_05": "比賽結果",
+      "K_IGU_01": "回合結果",
+      "K_IGU_07": "切換",
+      "K_IGU_04": "隊伍 {TeamNumber}",
+      "K_IGU_06": "選擇隊伍",
+      "K_IGU_03": "總計"
     },
     "NS_UGC_VEHICLESPAWNDEVICE": {
       "K_IGU_17": "當此裝置被觸發時，將啟用目標裝置。",

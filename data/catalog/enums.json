@@ -966,7 +966,7 @@
   "EModTeamDistributionMethod": [
     {
       "value": "Custom",
-      "label": "Custom",
+      "label": "Host Assignment",
       "key": "K_IGU_071",
       "rowName": "EModTeamDistributionMethod_Custom"
     },
@@ -981,6 +981,12 @@
       "label": "Sequential",
       "key": "K_IGU_073",
       "rowName": "EModTeamDistributionMethod_Sequential"
+    },
+    {
+      "value": "Selector",
+      "label": "Team Selection UI",
+      "key": "K_IGU_103",
+      "rowName": "EModTeamDistributionMethod_Selector"
     }
   ],
   "EModTriggerVolumeTriggerType": [
@@ -1207,6 +1213,12 @@
       "label": "EMP",
       "key": "K_IGU_042",
       "rowName": "ESpecialZoneType_EMP"
+    },
+    {
+      "value": "RedZone",
+      "label": "RedZone",
+      "key": "K_LPU_04",
+      "rowName": "ESpecialZoneType_RedZone"
     }
   ],
   "ETimeCountFormat": [

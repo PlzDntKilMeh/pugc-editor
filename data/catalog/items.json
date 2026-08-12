@@ -286,11 +286,6 @@
   },
   {
     "rowName": "Attachment",
-    "itemId": "Item_Attach_Weapon_SideRail_DotSight_RMR_C",
-    "category": "EModItemCategory::Attachment"
-  },
-  {
-    "rowName": "Attachment",
     "itemId": "Item_Attach_Weapon_Stock_AR_Composite_C",
     "category": "EModItemCategory::Attachment"
   },
@@ -562,6 +557,11 @@
   {
     "rowName": "LMG",
     "itemId": "Item_Weapon_MG3_C",
+    "category": "EModItemCategory::LMG"
+  },
+  {
+    "rowName": "LMG4",
+    "itemId": "Item_Weapon_RPD_C",
     "category": "EModItemCategory::LMG"
   },
   {

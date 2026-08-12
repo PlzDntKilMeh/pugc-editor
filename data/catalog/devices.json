@@ -607,7 +607,7 @@
     "spawnWeight": 1,
     "objectClass": "/Game/Blueprints/Mod/Device/DeviceActor/BP_DummyActor.BP_DummyActor_C",
     "previewActorClass": "/Game/Blueprints/Mod/DefaultPreviewActor.DefaultPreviewActor_C",
-    "iconTexture": "/Game/Blueprints/Mod/UI/Textures/DeviceIcon/T_ModDevice_PlayerAction.T_ModDevice_PlayerAction",
+    "iconTexture": "/Game/Blueprints/Mod/UI/Textures/DeviceIcon/T_ModDevice_PlayerEvent.T_ModDevice_PlayerEvent",
     "fields": [
       {
         "path": "activationRoundPhase",
@@ -4166,7 +4166,7 @@
     "spawnWeight": 1,
     "objectClass": "/Game/Blueprints/Mod/Device/DeviceActor/BP_DummyActor.BP_DummyActor_C",
     "previewActorClass": "/Game/Blueprints/Mod/DefaultPreviewActor.DefaultPreviewActor_C",
-    "iconTexture": "/Game/Blueprints/Mod/UI/Textures/DeviceIcon/T_ModDevice_ClassicBlueZone.T_ModDevice_ClassicBlueZone",
+    "iconTexture": "/Game/Blueprints/Mod/UI/Textures/DeviceIcon/T_ModDevice_BlueZone.T_ModDevice_BlueZone",
     "fields": [
       {
         "path": "activationRoundPhase",
@@ -4299,24 +4299,24 @@
         "description": "Set the duration for the Blue Zone to shrink."
       },
       {
-        "path": "blueZoneCustomOptions[].spreadRatio",
-        "schemaPath": "BlueZoneCustomOptions[].SpreadRatio",
+        "path": "blueZoneCustomOptions[].spreadBias",
+        "schemaPath": "BlueZoneCustomOptions[].SpreadBias",
         "type": "Float",
         "unrealType": "FloatProperty",
         "validator": "Class'/Script/TslGameMode.ModFloatValidator'",
         "validatorParam": {
           "minValue": 0,
-          "maxValue": 15,
+          "maxValue": 1,
           "valueSet": []
         },
         "advanced": false,
         "hidden": false,
-        "labelKey": "K_IGU_33",
-        "labelNs": "NS_UGC_BLUEZONEDEVICE",
-        "descriptionKey": "K_IGU_10",
-        "descriptionNs": "NS_UGC_BLUEZONEDEVICE",
-        "label": "Expand Ratio",
-        "description": "Set the ratio by which the Blue Zone expands."
+        "labelKey": "",
+        "labelNs": "",
+        "descriptionKey": "",
+        "descriptionNs": "",
+        "label": "",
+        "description": ""
       },
       {
         "path": "blueZoneCustomOptions[].startDelay",
@@ -5331,7 +5331,7 @@
     "spawnWeight": 1,
     "objectClass": "/Game/Blueprints/Mod/Device/DeviceActor/BP_DummyActor.BP_DummyActor_C",
     "previewActorClass": "/Game/Blueprints/Mod/DefaultPreviewActor.DefaultPreviewActor_C",
-    "iconTexture": "/Game/Blueprints/Mod/UI/Textures/DeviceIcon/T_ModDevice_BuffManager.T_ModDevice_BuffManager",
+    "iconTexture": "/Game/Blueprints/Mod/UI/Textures/DeviceIcon/T_ModDevice_PlayerStatus.T_ModDevice_PlayerStatus",
     "fields": [
       {
         "path": "activationRoundPhase",
@@ -6758,193 +6758,6 @@
       }
     ]
   },
-  "24": {
-    "objectId": 24,
-    "rowName": "RedZoneDevice",
-    "namespace": "NS_UGC_REDZONEDEVICE",
-    "displayKey": "K_IGU_13",
-    "descriptionKey": "K_IGU_01",
-    "name": "Red Zone Device",
-    "description": "Configure Red Zone settings.",
-    "objectType": "EModObjectType::Device",
-    "subCategory": "EModObjectSubCategory::None",
-    "spawnWeight": 1,
-    "objectClass": "/Game/Blueprints/Mod/Device/DeviceActor/BP_EmptySceneComponentActor.BP_EmptySceneComponentActor_C",
-    "previewActorClass": "/Game/Blueprints/Mod/DefaultPreviewActor.DefaultPreviewActor_C",
-    "iconTexture": "/Game/Blueprints/Mod/UI/Textures/DeviceIcon/T_ModDevice_RedZone.T_ModDevice_RedZone",
-    "fields": [
-      {
-        "path": "activationRoundPhase",
-        "schemaPath": "ActivationRoundPhase",
-        "type": "Enum",
-        "unrealType": "EActivationRoundPhase",
-        "validator": "",
-        "validatorParam": null,
-        "advanced": false,
-        "hidden": false,
-        "labelKey": "K_IGU_14",
-        "labelNs": "NS_UGC_REDZONEDEVICE",
-        "descriptionKey": "K_IGU_02",
-        "descriptionNs": "NS_UGC_REDZONEDEVICE",
-        "label": "Activation Phase",
-        "description": "Set the phase during which the device is activated.\r\nNone: Activates only when triggered by an event.\r\nDevice Creation: Activates immediately when the device is created.\r\nStandby Before Spawn: Activates during the standby phase before players spawn.\r\nStandby After Spawn: Activates during the standby phase after players spawn.\r\nRound Start Before Spawn: Activates at round start, before players spawn.\r\nRound Start After Spawn: Activates at round start, after players spawn."
-      },
-      {
-        "path": "nextZoneInterval",
-        "schemaPath": "NextZoneInterval",
-        "type": "Float",
-        "unrealType": "FloatProperty",
-        "validator": "Class'/Script/TslGameMode.ModFloatValidator'",
-        "validatorParam": {
-          "minValue": 1,
-          "maxValue": 1000,
-          "valueSet": []
-        },
-        "advanced": false,
-        "hidden": false,
-        "labelKey": "K_IGU_16",
-        "labelNs": "NS_UGC_REDZONEDEVICE",
-        "descriptionKey": "K_IGU_04",
-        "descriptionNs": "NS_UGC_REDZONEDEVICE",
-        "label": "Next Zone Interval (s)",
-        "description": "Set the delay before the next Red Zone is created."
-      },
-      {
-        "path": "zoneBeginDelay",
-        "schemaPath": "ZoneBeginDelay",
-        "type": "Float",
-        "unrealType": "FloatProperty",
-        "validator": "Class'/Script/TslGameMode.ModFloatValidator'",
-        "validatorParam": {
-          "minValue": 1,
-          "maxValue": 1000,
-          "valueSet": []
-        },
-        "advanced": false,
-        "hidden": false,
-        "labelKey": "K_IGU_17",
-        "labelNs": "NS_UGC_REDZONEDEVICE",
-        "descriptionKey": "K_IGU_05",
-        "descriptionNs": "NS_UGC_REDZONEDEVICE",
-        "label": "Begin Delay (s)",
-        "description": "Set the delay before the Red Zone begins."
-      },
-      {
-        "path": "zoneDuration",
-        "schemaPath": "ZoneDuration",
-        "type": "Float",
-        "unrealType": "FloatProperty",
-        "validator": "Class'/Script/TslGameMode.ModFloatValidator'",
-        "validatorParam": {
-          "minValue": 1,
-          "maxValue": 1000,
-          "valueSet": []
-        },
-        "advanced": false,
-        "hidden": false,
-        "labelKey": "K_IGU_18",
-        "labelNs": "NS_UGC_REDZONEDEVICE",
-        "descriptionKey": "K_IGU_06",
-        "descriptionNs": "NS_UGC_REDZONEDEVICE",
-        "label": "Duration (s)",
-        "description": "Set the duration for which the Red Zone remains active."
-      },
-      {
-        "path": "zoneRadius",
-        "schemaPath": "ZoneRadius",
-        "type": "Float",
-        "unrealType": "FloatProperty",
-        "validator": "Class'/Script/TslGameMode.ModFloatValidator'",
-        "validatorParam": {
-          "minValue": 1,
-          "maxValue": 1000000,
-          "valueSet": []
-        },
-        "advanced": false,
-        "hidden": false,
-        "labelKey": "K_IGU_19",
-        "labelNs": "NS_UGC_REDZONEDEVICE",
-        "descriptionKey": "K_IGU_07",
-        "descriptionNs": "NS_UGC_REDZONEDEVICE",
-        "label": "Radius",
-        "description": "Set the radius of the Red Zone."
-      },
-      {
-        "path": "zoneRepeatTime",
-        "schemaPath": "ZoneRepeatTime",
-        "type": "Int",
-        "unrealType": "IntProperty",
-        "validator": "Class'/Script/TslGameMode.ModIntValidator'",
-        "validatorParam": {
-          "minValue": 1,
-          "maxValue": 1000,
-          "valueSet": []
-        },
-        "advanced": false,
-        "hidden": false,
-        "labelKey": "K_IGU_15",
-        "labelNs": "NS_UGC_REDZONEDEVICE",
-        "descriptionKey": "K_IGU_03",
-        "descriptionNs": "NS_UGC_REDZONEDEVICE",
-        "label": "Repeat Time (s)",
-        "description": "Set the interval at which the Red Zone repeats."
-      }
-    ],
-    "triggers": [
-      {
-        "name": "OnActivateDevice",
-        "labelKey": "K_IGU_21",
-        "labelNs": "NS_UGC_REDZONEDEVICE",
-        "descriptionKey": "K_IGU_09",
-        "descriptionNs": "NS_UGC_REDZONEDEVICE",
-        "label": "On Activate Device",
-        "description": "Triggered when the device is activated.",
-        "targetClass": ""
-      },
-      {
-        "name": "OnDeactivateDevice",
-        "labelKey": "K_IGU_20",
-        "labelNs": "NS_UGC_REDZONEDEVICE",
-        "descriptionKey": "K_IGU_08",
-        "descriptionNs": "NS_UGC_REDZONEDEVICE",
-        "label": "On Deactivate Device",
-        "description": "Triggered when the device is deactivated.",
-        "targetClass": ""
-      }
-    ],
-    "actions": [
-      {
-        "name": "ActivateDevice",
-        "labelKey": "K_IGU_24",
-        "labelNs": "NS_UGC_REDZONEDEVICE",
-        "descriptionKey": "K_IGU_12",
-        "descriptionNs": "NS_UGC_REDZONEDEVICE",
-        "label": "Activate Device",
-        "description": "Enables the target device when this device is triggered.",
-        "targetClass": ""
-      },
-      {
-        "name": "DeactivateDevice",
-        "labelKey": "K_IGU_23",
-        "labelNs": "NS_UGC_REDZONEDEVICE",
-        "descriptionKey": "K_IGU_11",
-        "descriptionNs": "NS_UGC_REDZONEDEVICE",
-        "label": "Deactivate Device",
-        "description": "Disables the target device when this device is triggered.",
-        "targetClass": ""
-      },
-      {
-        "name": "ActionRequestRedZone",
-        "labelKey": "K_IGU_22",
-        "labelNs": "NS_UGC_REDZONEDEVICE",
-        "descriptionKey": "K_IGU_10",
-        "descriptionNs": "NS_UGC_REDZONEDEVICE",
-        "label": "Request Red Zone",
-        "description": "Requests a Red Zone to be created.",
-        "targetClass": ""
-      }
-    ]
-  },
   "25": {
     "objectId": 25,
     "rowName": "VehicleSpawnDevice",
@@ -6958,7 +6771,7 @@
     "spawnWeight": 1,
     "objectClass": "/Game/Blueprints/Mod/Device/DeviceActor/BP_EmptySceneComponentActor.BP_EmptySceneComponentActor_C",
     "previewActorClass": "/Game/Blueprints/Mod/Device/PreviewActor/VehicleSpawnPreviewActor_BP.VehicleSpawnPreviewActor_BP_C",
-    "iconTexture": "/Game/Blueprints/Mod/UI/Textures/DeviceIcon/T_ModDevice_UAZSpawn.T_ModDevice_UAZSpawn",
+    "iconTexture": "/Game/Blueprints/Mod/UI/Textures/DeviceIcon/T_ModDevice_VehicleSpawn.T_ModDevice_VehicleSpawn",
     "fields": [
       {
         "path": "activationRoundPhase",
@@ -7459,7 +7272,6 @@
         "validatorParam": {
           "exceptEnums": [
             "BlackZone",
-            "RedZone",
             "SatelliteCrash"
           ],
           "selectEnums": []
@@ -7622,7 +7434,7 @@
     "spawnWeight": 1,
     "objectClass": "/Game/Blueprints/Mod/Device/DeviceActor/BP_DummyActor.BP_DummyActor_C",
     "previewActorClass": "/Game/Blueprints/Mod/DefaultPreviewActor.DefaultPreviewActor_C",
-    "iconTexture": "/Game/Blueprints/Mod/UI/Textures/DeviceIcon/T_ModDevice_MapIndicator.T_ModDevice_MapIndicator",
+    "iconTexture": "/Game/Blueprints/Mod/UI/Textures/DeviceIcon/T_ModDevice_PlayerIcon.T_ModDevice_PlayerIcon",
     "fields": [
       {
         "path": "activationRoundPhase",
@@ -7982,7 +7794,7 @@
     "spawnWeight": 1,
     "objectClass": "/Game/Blueprints/Mod/Device/DeviceActor/BP_EmptySceneComponentActor.BP_EmptySceneComponentActor_C",
     "previewActorClass": "/Game/Blueprints/Mod/DefaultPreviewActor.DefaultPreviewActor_C",
-    "iconTexture": "/Game/Blueprints/Mod/UI/Textures/DeviceIcon/T_ModDevice_Parachute.T_ModDevice_Parachute",
+    "iconTexture": "/Game/Blueprints/Mod/UI/Textures/DeviceIcon/T_ModDevice_Airplane.T_ModDevice_Airplane",
     "fields": [
       {
         "path": "activationRoundPhase",
