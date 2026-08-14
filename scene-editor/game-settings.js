@@ -149,7 +149,7 @@ export function createGameSettingsController({ catalog, getPugcJson, getPugcFile
     const rows = [
       ['Loaded file', info.source || 'Untitled blank project'],
       ['Loaded header', status],
-      ['Save header', info.saveHeader === false ? 'No' : 'Yes, writes 13-byte v2 header'],
+      ['Save header', info.saveHeader === false ? 'No' : 'Yes, writes the 13-byte .pugc header'],
     ];
     if (info.magic) rows.push(['Magic', info.magic]);
     if (info.version != null) rows.push(['Version', String(info.version)]);

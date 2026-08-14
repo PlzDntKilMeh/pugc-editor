@@ -7,9 +7,10 @@ import { getPugcCodec } from './codec/pugc-codec.js';
 import { trackEvent } from './analytics.js';
 
 const DEFAULT_PUGC_NAME = 'Untitled.pugc';
-// The .pugc wrapper format version - effectively invariant (see PUGC_V2_HEADER in the codec), so unlike
-// buildVersion it's safe to default without a catalog: there's nothing to go stale.
-const SAVE_FORMAT_DATA_VERSION = 1;
+// The .pugc wrapper/save format version. It is NOT invariant - the 2608.1.1 build bumped it 1 -> 3 and
+// refuses files still stamped 1 - so the catalog's saveFormat.json value (from a fresh in-game save)
+// wins when present; this is only the fallback for a catalog that hasn't loaded or is pre-bump.
+const SAVE_FORMAT_DATA_VERSION = 3;
 
 // The game's save format carries top-level name/dataVersion/buildVersion/editFileData fields that the editor
 // never had a reason to populate for a scene built from scratch. Without them the game silently rejects the file.
@@ -22,7 +23,14 @@ function ensurePugcSaveMetadata(pugcJson, saveFormatDefaults, warn) {
   const defaults = saveFormatDefaults && typeof saveFormatDefaults === 'object' ? saveFormatDefaults : {};
 
   if (typeof pugcJson.name !== 'string') pugcJson.name = '';
-  if (typeof pugcJson.dataVersion !== 'number') pugcJson.dataVersion = SAVE_FORMAT_DATA_VERSION;
+  // Re-saving a file the game wrote before the bump has to upgrade its dataVersion, not preserve it:
+  // the current build rejects the older version outright. The codec stamps the wrapper header to match.
+  // max(), not the catalog value outright: a catalog dumped before the bump still reports 1, and
+  // writing that would reproduce the rejection the constant exists to avoid.
+  const targetDataVersion = Math.max(SAVE_FORMAT_DATA_VERSION, Number.isInteger(defaults.dataVersion) ? defaults.dataVersion : 0);
+  if (typeof pugcJson.dataVersion !== 'number' || pugcJson.dataVersion < targetDataVersion) {
+    pugcJson.dataVersion = targetDataVersion;
+  }
   if (!pugcJson.buildVersion) {
     if (defaults.buildVersion) {
       pugcJson.buildVersion = defaults.buildVersion;
@@ -263,17 +271,9 @@ export function createProjectFileController({
           types: [{ description: 'PUGC File', accept: { 'application/octet-stream': ['.pugc'] } }],
         }, setStatus, 'save_pugc');
         if (savedName) {
-          setPugcFileInfo?.({
-            source: savedName,
-            hasHeader: true,
-            format: 'PUGC v2 wrapper',
-            headerLength: 13,
-            headerHex: '2E 70 75 67 63 01 00 00 00 99 76 E5 CD',
-            magic: '.pugc',
-            version: 1,
-            marker: '99 76 E5 CD',
-            saveHeader: true,
-          });
+          // Read the header back off the bytes we just wrote rather than restating it - the version
+          // is no longer a constant, so a hardcoded copy here would go stale on the next bump.
+          setPugcFileInfo?.({ source: savedName, ...codec.headerInfo(bytes) });
           trackEvent('project_export', { format: 'pugc', object_count: (getPugcObjects() || []).length });
         }
       } catch (err) {

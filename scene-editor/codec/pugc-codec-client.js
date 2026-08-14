@@ -27,18 +27,37 @@ function makeKey(payloadLen, payloadCrc) {
   return key;
 }
 const u32le = (b, o) => (b[o] | (b[o + 1] << 8) | (b[o + 2] << 16) | (b[o + 3] << 24)) >>> 0;
-const PUGC_V2_HEADER = new Uint8Array([0x2e, 0x70, 0x75, 0x67, 0x63, 0x01, 0x00, 0x00, 0x00, 0x99, 0x76, 0xe5, 0xcd]);
+const w32le = (b, o, v) => { b[o] = v & 0xff; b[o + 1] = (v >>> 8) & 0xff; b[o + 2] = (v >>> 16) & 0xff; b[o + 3] = (v >>> 24) & 0xff; };
+// The 13-byte wrapper the game puts in front of the encrypted payload:
+//   [0..4] ".pugc"  [5..8] version u32LE  [9..12] crc32 of bytes 0..8, u32LE
+// The trailing 4 bytes look like an opaque marker but are just that CRC, so any version's header can
+// be built rather than tabulated: v1 -> 99 76 E5 CD, v3 -> 12 BE EC 67 both fall out of the formula.
+const PUGC_MAGIC = new Uint8Array([0x2e, 0x70, 0x75, 0x67, 0x63]);
+const PUGC_HEADER_LENGTH = 13;
+// Wrapper version written on save. It tracks the JSON's dataVersion (the game bumped both 1 -> 3 in
+// the 2608.1.1 build), and the game rejects a file whose header version is older than it expects.
+export const PUGC_LATEST_VERSION = 3;
 
-function hasPugcV2Header(bytes) {
-  if (bytes.length < PUGC_V2_HEADER.length) return false;
-  for (let i = 0; i < PUGC_V2_HEADER.length; i++) {
-    if (bytes[i] !== PUGC_V2_HEADER[i]) return false;
+function buildPugcHeader(version) {
+  const header = new Uint8Array(PUGC_HEADER_LENGTH);
+  header.set(PUGC_MAGIC);
+  w32le(header, 5, version >>> 0);
+  w32le(header, 9, crc32(header.subarray(0, 9)));
+  return header;
+}
+
+function hasPugcMagic(bytes) {
+  if (bytes.length < PUGC_HEADER_LENGTH) return false;
+  for (let i = 0; i < PUGC_MAGIC.length; i++) {
+    if (bytes[i] !== PUGC_MAGIC[i]) return false;
   }
   return true;
 }
 
-function stripPugcV2Header(bytes) {
-  return hasPugcV2Header(bytes) ? bytes.subarray(PUGC_V2_HEADER.length) : bytes;
+// Version-agnostic: any ".pugc"-tagged file loses the same 13 bytes, so a future version bump reads
+// without a code change (the payload format behind the header has never changed).
+function stripPugcHeader(bytes) {
+  return hasPugcMagic(bytes) ? bytes.subarray(PUGC_HEADER_LENGTH) : bytes;
 }
 
 function hexBytes(bytes) {
@@ -46,23 +65,30 @@ function hexBytes(bytes) {
 }
 
 function pugcHeaderInfo(bytes) {
-  const hasHeader = hasPugcV2Header(bytes);
+  const hasHeader = hasPugcMagic(bytes);
+  if (!hasHeader) {
+    return { hasHeader: false, format: "Legacy PUGC payload", headerLength: 0, headerHex: "", magic: "", version: null, marker: "", saveHeader: true };
+  }
+  const header = bytes.subarray(0, PUGC_HEADER_LENGTH);
+  const version = u32le(header, 5);
   return {
-    hasHeader,
-    format: hasHeader ? "PUGC v2 wrapper" : "Legacy PUGC payload",
-    headerLength: hasHeader ? PUGC_V2_HEADER.length : 0,
-    headerHex: hasHeader ? hexBytes(PUGC_V2_HEADER) : "",
-    magic: hasHeader ? ".pugc" : "",
-    version: hasHeader ? 1 : null,
-    marker: hasHeader ? "99 76 E5 CD" : "",
+    hasHeader: true,
+    format: `PUGC v${version} wrapper`,
+    headerLength: PUGC_HEADER_LENGTH,
+    headerHex: hexBytes(header),
+    magic: ".pugc",
+    version,
+    marker: hexBytes(header.subarray(9)),
+    markerValid: u32le(header, 9) === crc32(header.subarray(0, 9)),
     saveHeader: true,
   };
 }
 
-function addPugcV2Header(bytes) {
-  const result = new Uint8Array(PUGC_V2_HEADER.length + bytes.length);
-  result.set(PUGC_V2_HEADER);
-  result.set(bytes, PUGC_V2_HEADER.length);
+function addPugcHeader(bytes, version) {
+  const header = buildPugcHeader(version);
+  const result = new Uint8Array(header.length + bytes.length);
+  result.set(header);
+  result.set(bytes, header.length);
   return result;
 }
 
@@ -76,7 +102,7 @@ const deflateRaw = (bytes) => streamBytes(new CompressionStream("deflate-raw"), 
 async function decode(fileBytes, name = "project.pugc") {
   const raw = fileBytes instanceof Uint8Array ? fileBytes : new Uint8Array(fileBytes);
   const fileInfo = pugcHeaderInfo(raw);
-  const f = stripPugcV2Header(raw);
+  const f = stripPugcHeader(raw);
   if (f.length < 24) throw new Error("File too small");
   const payloadLen = u32le(f, f.length - 8);
   const payloadCrc = u32le(f, f.length - 4);
@@ -98,7 +124,12 @@ async function decode(fileBytes, name = "project.pugc") {
   return { json, name, fileInfo };
 }
 
-async function encode(jsonObject) {
+// version: the wrapper version to stamp. Defaults to the JSON's own dataVersion so a file round-trips
+// as the game wrote it; a scene built from scratch (no dataVersion) gets the latest.
+async function encode(jsonObject, name, version) {
+  const headerVersion = Number.isInteger(version) ? version
+    : Number.isInteger(jsonObject?.dataVersion) ? jsonObject.dataVersion
+    : PUGC_LATEST_VERSION;
   let jsonBytes = new TextEncoder().encode(JSON.stringify(jsonObject));
   if (!jsonBytes.length || jsonBytes[jsonBytes.length - 1] !== 0) { // game expects null-terminated JSON
     const tmp = new Uint8Array(jsonBytes.length + 1); tmp.set(jsonBytes); jsonBytes = tmp;
@@ -111,7 +142,6 @@ async function encode(jsonObject) {
   zlib[za] = (adler >>> 24) & 0xff; zlib[za + 1] = (adler >>> 16) & 0xff; zlib[za + 2] = (adler >>> 8) & 0xff; zlib[za + 3] = adler & 0xff;
 
   const payload = new Uint8Array(8 + zlib.length);
-  const w32le = (b, o, v) => { b[o] = v & 0xff; b[o + 1] = (v >>> 8) & 0xff; b[o + 2] = (v >>> 16) & 0xff; b[o + 3] = (v >>> 24) & 0xff; };
   w32le(payload, 0, zlib.length);     // compressedLen
   w32le(payload, 4, jsonBytes.length); // originalLen
   payload.set(zlib, 8);
@@ -126,7 +156,7 @@ async function encode(jsonObject) {
   result.set(encrypted);
   w32le(result, encrypted.length, payloadLen);
   w32le(result, encrypted.length + 4, payloadCrc);
-  return addPugcV2Header(result);
+  return addPugcHeader(result, headerVersion);
 }
 
-export const clientCodec = { decode, encode };
+export const clientCodec = { decode, encode, headerInfo: pugcHeaderInfo };
