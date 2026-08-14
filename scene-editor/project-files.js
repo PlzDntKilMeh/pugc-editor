@@ -11,12 +11,30 @@ const DEFAULT_PUGC_NAME = 'Untitled.pugc';
 // refuses files still stamped 1 - so the catalog's saveFormat.json value (from a fresh in-game save)
 // wins when present; this is only the fallback for a catalog that hasn't loaded or is pre-bump.
 const SAVE_FORMAT_DATA_VERSION = 3;
+// Newest PUBG build we have confirmed values for, read off a .pugc that build saved. Unlike
+// SAVE_FORMAT_DATA_VERSION this changes every patch, so it is a floor and not a target: the catalog's
+// saveFormat.json wins whenever it is newer, and this only covers a catalog that is stale or unloaded.
+const SAVE_FORMAT_BUILD_VERSION = '2608.1.1';
+
+// Compares dotted numeric build strings ("2608.1.1" > "2607.1.2"). Non-numeric or malformed segments
+// sort as 0, so a surprise format degrades to "not newer" rather than throwing mid-save.
+function isNewerBuildVersion(candidate, current) {
+  if (!candidate) return false;
+  if (!current) return true;
+  const a = String(candidate).split('.');
+  const b = String(current).split('.');
+  for (let i = 0; i < Math.max(a.length, b.length); i++) {
+    const x = parseInt(a[i], 10) || 0;
+    const y = parseInt(b[i], 10) || 0;
+    if (x !== y) return x > y;
+  }
+  return false;
+}
 
 // The game's save format carries top-level name/dataVersion/buildVersion/editFileData fields that the editor
 // never had a reason to populate for a scene built from scratch. Without them the game silently rejects the file.
-// buildVersion has no invariant fallback - it changes every PUBG patch, so guessing a stale value here would
-// just reproduce the original bug more quietly. If data/catalog/saveFormat.json (from pak-server's
-// CatalogExtractor.BuildSaveFormatDefaults()) hasn't loaded, `warn` is called instead of faking a value.
+// Both are stamped to the newest value we know of (JSON vs catalog vs the constants above) rather than being
+// preserved: re-saving a pre-patch file has to carry it forward, or the current build rejects what we wrote.
 function ensurePugcSaveMetadata(pugcJson, saveFormatDefaults, warn) {
   const now = Math.floor(Date.now() / 1000);
   const accountId = String(pugcJson.creatorData?.ownerAccountId || '').trim();
@@ -31,12 +49,15 @@ function ensurePugcSaveMetadata(pugcJson, saveFormatDefaults, warn) {
   if (typeof pugcJson.dataVersion !== 'number' || pugcJson.dataVersion < targetDataVersion) {
     pugcJson.dataVersion = targetDataVersion;
   }
-  if (!pugcJson.buildVersion) {
-    if (defaults.buildVersion) {
-      pugcJson.buildVersion = defaults.buildVersion;
-    } else {
-      warn?.('buildVersion missing from saveFormat catalog - run a fresh pak-server dump; this .pugc may not load in-game.');
-    }
+  const targetBuildVersion = isNewerBuildVersion(defaults.buildVersion, SAVE_FORMAT_BUILD_VERSION)
+    ? defaults.buildVersion
+    : SAVE_FORMAT_BUILD_VERSION;
+  if (isNewerBuildVersion(targetBuildVersion, pugcJson.buildVersion)) {
+    pugcJson.buildVersion = targetBuildVersion;
+  }
+  if (!isNewerBuildVersion(defaults.buildVersion, SAVE_FORMAT_BUILD_VERSION) && defaults.buildVersion !== SAVE_FORMAT_BUILD_VERSION) {
+    warn?.(`saveFormat catalog buildVersion (${defaults.buildVersion || 'missing'}) is older than the built-in ` +
+      `${SAVE_FORMAT_BUILD_VERSION} - run a fresh pak-server dump; saves use the built-in value meanwhile.`);
   }
 
   const efd = pugcJson.editFileData || (pugcJson.editFileData = {
@@ -258,7 +279,7 @@ export function createProjectFileController({
       if (!pugcJson || !pugcName) return;
       ensurePugcSaveMetadata(pugcJson, getSaveFormatDefaults?.(), message => {
         console.warn(`[savePugc] ${message}`);
-        trackEvent('app_error', { error_type: 'save_pugc_missing_build_version', message });
+        trackEvent('app_error', { error_type: 'save_pugc_stale_build_version', message });
       });
       setStatus('Repacking...');
       try {
